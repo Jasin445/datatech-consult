@@ -1,3 +1,5 @@
+import { services as serviceContent } from "@/content/services";
+
 export const siteConfig = {
   name: "Datatechhub Consulting",
   parentBrand: "Datatechhub",
@@ -8,12 +10,7 @@ export const siteConfig = {
 
 export type NavItem = { label: string; href: string };
 
-export const services: readonly NavItem[] = [
-  { label: "Data Analytics & Business Intelligence", href: "/services/data-analytics" },
-  { label: "Data Infrastructure & Engineering", href: "/services/data-infrastructure" },
-  { label: "AI & Automation", href: "/services/ai-automation" },
-  { label: "Business & Technology Consulting", href: "/services/business-technology-consulting" },
-];
+export const services: readonly NavItem[] = serviceContent.map((s) => ({ label: s.title, href: s.href }));
 
 export type NavOptions = { showCaseStudies: boolean; showInsights: boolean };
 

@@ -19,3 +19,5 @@ Development completion is not launch readiness. Tick only after verification.
 - [ ] Responsive QA: mobile, tablet, desktop, wide
 - [ ] Production build, lint, type-check and tests pass on the release commit
 - [ ] Rate-limit/queue strategy documented for the chosen host
+- [ ] Homepage and service marketing copy reviewed and approved by the business
+- [ ] Hero imagery decision (keep decorative graphic or supply licensed photography)

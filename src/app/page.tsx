@@ -1,31 +1,67 @@
-import { ButtonLink } from "@/components/ui/Button";
-import { Section } from "@/components/ui/Section";
-import { DevNotice } from "@/components/ui/DevNotice";
+import { Hero } from "@/components/sections/Hero";
+import { ItemGrid } from "@/components/sections/ItemGrid";
+import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { CtaBand } from "@/components/sections/CtaBand";
+import { ServiceCard } from "@/components/services/ServiceCard";
+import { Section } from "@/components/ui/Section";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import {
+  audiences,
+  challenges,
+  credibilityEvidence,
+  credibilityFallback,
+  hero,
+  principles,
+  process,
+  servicesIntro,
+} from "@/content/home";
+import { services } from "@/content/services";
+import { filterPublishable } from "@/lib/content/status";
 
-/**
- * TEMPORARY SHELL (Checkpoint 1). The full homepage is built in Checkpoint 2.
- * It exists so the application runs and the shared layout can be verified.
- */
 export default function HomePage() {
+  const evidence = filterPublishable(credibilityEvidence).map((e) => e.data);
+  const credibility = evidence.length > 0 ? { ...credibilityFallback, items: evidence } : credibilityFallback;
+
   return (
     <>
-      <Section labelledBy="hero-heading">
-        <div className="reading">
-          <DevNotice>Checkpoint 1 shell. The full homepage is implemented in Checkpoint 2.</DevNotice>
-          <h1 id="hero-heading">Make your data and technology work for your business.</h1>
-          <p className="lead">
-            We help organisations solve business challenges, improve decision-making, and streamline operations through
-            practical data, analytics, AI, automation, and technology solutions.
-          </p>
-          <div className="btn-row">
-            <ButtonLink href="/contact">Discuss a business challenge</ButtonLink>
-            <ButtonLink variant="secondary" href="/services">
-              Explore our services
-            </ButtonLink>
-          </div>
+      <Hero {...hero} />
+
+      <Section tone="surface" labelledBy="challenges-heading">
+        <SectionHeading id="challenges-heading" heading={challenges.heading} lead={challenges.lead} />
+        <ItemGrid items={challenges.items} columns={3} variant="plain" />
+      </Section>
+
+      <Section id="services" labelledBy="services-heading">
+        <SectionHeading id="services-heading" heading={servicesIntro.heading} lead={servicesIntro.lead} />
+        <div className="card-grid">
+          {services.map((service) => (
+            <ServiceCard key={service.slug} service={service} />
+          ))}
         </div>
       </Section>
+
+      <Section tone="surface" labelledBy="principles-heading">
+        <SectionHeading id="principles-heading" heading={principles.heading} lead={principles.lead} />
+        <ItemGrid items={principles.items} columns={2} variant="plain" />
+      </Section>
+
+      <Section labelledBy="process-heading">
+        <SectionHeading id="process-heading" heading={process.heading} lead={process.lead} />
+        <ProcessSteps steps={process.steps} />
+      </Section>
+
+      <Section tone="surface" labelledBy="credibility-heading">
+        <SectionHeading id="credibility-heading" heading={credibility.heading} lead={credibility.lead} />
+        <ItemGrid items={credibility.items} columns={4} variant="card" />
+      </Section>
+
+      <Section labelledBy="audiences-heading">
+        <SectionHeading id="audiences-heading" heading={audiences.heading} lead={audiences.lead} />
+        <ItemGrid items={audiences.items} columns={4} variant="card" />
+      </Section>
+
+      {/* Insights preview renders only when approved articles exist. Implemented in Checkpoint 10. */}
+
       <CtaBand />
     </>
   );

@@ -1,43 +1,36 @@
-Current checkpoint: 1
-Status: COMPLETE (awaiting authorisation to start Checkpoint 2)
+Current checkpoint: 2
+Status: COMPLETE (awaiting authorisation to start Checkpoint 3)
 
 Completed checkpoints:
-- Checkpoint 1: complete (global application foundation)
+- Checkpoint 1: complete (global application foundation, official logo integrated)
+- Checkpoint 2: complete (homepage)
 
 Current work:
-- None in progress. Next: Checkpoint 2, Homepage.
+- None in progress. Next: Checkpoint 3, Services overview.
 
-Files completed:
-- Config: package.json, tsconfig.json (strict + noUncheckedIndexedAccess), next.config.ts, eslint.config.mjs, vitest.config.mts, .gitignore, .env.example
-- Styles: src/styles/tokens.css, src/styles/globals.css
-- App: src/app/layout.tsx, page.tsx (temporary shell), not-found.tsx, error.tsx, loading.tsx
-- Components: ui/{Button,Container,Section,DevNotice}, layout/{Brand,SiteHeader,SiteFooter}, navigation/{NavLink,MobileNav}, sections/CtaBand
-- Lib: site.ts, env.ts, content/status.ts, content/registry.ts
-- Tests: tests/content-status.test.ts (6 tests)
-- Docs: README.md, IMPLEMENTATION_PLAN.md, PROGRESS.md, CHECKPOINTS.md, RELEASE_CHECKLIST.md
+Files completed (Checkpoint 2):
+- src/app/page.tsx (composes sections from content)
+- src/content/home.ts, src/content/services.ts (data-driven copy; nav services in src/lib/site.ts now derive from services.ts)
+- src/components/sections/{Hero,ItemGrid,ProcessSteps}.tsx, src/components/services/ServiceCard.tsx, src/components/ui/SectionHeading.tsx
+- src/styles/sections.css; narrow-screen header fixes in globals.css; MobileNav label class
+- tests/home-content.test.ts
 
 Validation (actually run):
-- npm run typecheck: pass
-- npm run lint: pass
-- npm test: pass (6/6)
-- npm run build: pass
-- next start smoke test via curl: / returns 200; unknown path returns 404 with noindex and an h1; skip link, #main and one h1 present; Case Studies/Insights links absent; dev notice absent in production build; footer omits email and parent link when env unset.
-
-Browser checks run (Playwright/Chromium): mobile menu opens, Escape closes it and returns focus to the toggle; no horizontal overflow at 1280px and 390px; desktop header with official logo screenshot reviewed.
+- typecheck, lint: pass. Tests: 10/10 pass. Production build: pass.
+- Chromium (Playwright): no horizontal overflow at 320, 360, 390, 820, 1280, 1680px; one h1; every main section has an accessible name; header logo/descriptor/menu button do not collide at 320/360/390 (320px uses an icon-only menu button with a screen-reader label); first Tab stop is the skip link; Case Studies/Insights links absent; full-page desktop and mobile screenshots reviewed.
 
 Not yet verified:
-- Touch behaviour and keyboard focus visuals
-- Responsive layout at mobile/tablet/desktop/wide, colour contrast with a tool, reduced motion
-- Development-mode rendering (dev notice)
+- Colour contrast with a tool (palette ratios computed by hand only), touch behaviour, visible focus styling review, dev-mode rendering
+- Homepage Insights section: not built. Spec says it renders only with approved articles; there are none, and the article card component arrives in Checkpoint 10. Add the conditional section there.
 
 Outstanding issues:
-- Header/footer link to routes not yet built (/services*, /about, /contact, /book-consultation, /privacy). They 404 until their checkpoints. Expected; no stubs added.
-- Homepage is a temporary shell.
-- Logo is a dark wordmark: valid on white only (header). Do not use on the dark footer/CTA band.
+- Header/footer and homepage links to /services/*, /about, /contact, /book-consultation, /privacy 404 until their checkpoints.
+- Credibility section shows the working-commitments fallback (no approved evidence supplied).
+- Hero uses a decorative SVG (no data implied), not photography; swap in approved photography if supplied.
+- All homepage copy is proposed and needs business review.
 
 Configuration blockers:
-- (resolved) Official logo supplied and integrated
-- No email, booking, site URL, contact email or parent-brand URL configured (optional until their checkpoints/launch)
+- No email, booking, site URL, contact email or parent-brand URL configured (not needed until Checkpoints 11/12/14 or launch)
 
 Next action:
-- Checkpoint 2: build the full homepage (hero, challenges, four service cards, principles, process, credibility fallback, who we help, final CTA) driven by data in src/content, with Insights hidden until approved content exists.
+- Checkpoint 3: build /services (introduction, four service cards reusing ServiceCard, problems addressed, how services combine, engagement process reusing ProcessSteps, enquiry/consultation CTAs). Do not simply repeat the homepage section.

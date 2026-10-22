@@ -41,7 +41,7 @@ export function MobileNav({ items, cta }: { items: NavItem[]; cta: NavItem }) {
         onClick={() => setOpenPath(open ? null : pathname)}
       >
         <span aria-hidden="true">{open ? "✕" : "☰"}</span>
-        <span>Menu</span>
+        <span className="menu-toggle__label">Menu</span>
       </button>
       {open && (
         <nav id={menuId} className="mobile-menu" aria-label="Mobile">

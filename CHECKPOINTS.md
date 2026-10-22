@@ -3,7 +3,7 @@
 | # | Title | Status |
 |---|-------|--------|
 | 1 | Global application foundation | complete |
-| 2 | Homepage | not started |
+| 2 | Homepage | complete |
 | 3 | Services overview | not started |
 | 4 | Data Analytics & Business Intelligence | not started |
 | 5 | Data Infrastructure & Engineering | not started |
@@ -23,3 +23,9 @@ Delivered: Next.js app, strict TypeScript, design tokens, global styles, root la
 Validation: typecheck, lint, tests (6), build, curl smoke test all pass. Browser, responsive and contrast checks not yet run.
 Commit: `checkpoint-01: global application foundation` (see `git log`).
 Remaining: none within scope.
+
+## Checkpoint 2: Homepage (complete)
+Delivered: hero (two-column desktop, text first on mobile) with decorative SVG, challenges, four service cards, working principles, process (Understand to Support and improve), credibility fallback (no invented evidence), who we help, final CTA. Content in src/content/home.ts and services.ts. Narrow-screen header fix.
+Validation: typecheck, lint, 10 tests, build, Chromium overflow/structure/header checks pass. Contrast tooling, touch and dev-mode checks not run.
+Not delivered: homepage Insights section (conditional; deferred to Checkpoint 10).
+Commit: `checkpoint-02: implement responsive homepage` (see `git log`).

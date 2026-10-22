@@ -1,4 +1,5 @@
 @import "./tokens.css";
+@import "./sections.css";
 
 *,
 *::before,
@@ -208,5 +209,20 @@ img, svg { max-width: 100%; height: auto; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Narrow phones: keep logo, descriptor and menu button from colliding */
+@media (max-width: 479px) {
+  .brand { gap: var(--space-2); }
+  .brand__logo { height: 2.25rem; }
+  .brand__descriptor { padding-left: var(--space-2); font-size: var(--text-sm); }
+  .menu-toggle { padding: 0 var(--space-3); }
+}
+
+/* Very narrow (320px class): icon-only menu button; the "Menu" text stays available to screen readers */
+@media (max-width: 359px) {
+  .menu-toggle .menu-toggle__label {
+    position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
   }
 }
