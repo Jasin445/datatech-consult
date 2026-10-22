@@ -1,36 +1,37 @@
-Current checkpoint: 2
-Status: COMPLETE (awaiting authorisation to start Checkpoint 3)
+Current checkpoint: 3
+Status: COMPLETE (awaiting authorisation to start Checkpoint 4)
 
 Completed checkpoints:
-- Checkpoint 1: complete (global application foundation, official logo integrated)
+- Checkpoint 1: complete (foundation, official logo)
 - Checkpoint 2: complete (homepage)
+- Checkpoint 3: complete (services overview)
 
 Current work:
-- None in progress. Next: Checkpoint 3, Services overview.
+- None in progress. Next: Checkpoint 4, Data Analytics & Business Intelligence page.
 
-Files completed (Checkpoint 2):
-- src/app/page.tsx (composes sections from content)
-- src/content/home.ts, src/content/services.ts (data-driven copy; nav services in src/lib/site.ts now derive from services.ts)
-- src/components/sections/{Hero,ItemGrid,ProcessSteps}.tsx, src/components/services/ServiceCard.tsx, src/components/ui/SectionHeading.tsx
-- src/styles/sections.css; narrow-screen header fixes in globals.css; MobileNav label class
-- tests/home-content.test.ts
+Files completed (Checkpoint 3):
+- src/app/services/page.tsx
+- src/content/services-overview.ts
+- src/components/sections/PageHeader.tsx (reusable interior-page opening with the page h1)
+- src/components/services/{FitList,ConnectionList}.tsx
+- styles added to src/styles/sections.css
+- tests/services-overview.test.ts
 
 Validation (actually run):
-- typecheck, lint: pass. Tests: 10/10 pass. Production build: pass.
-- Chromium (Playwright): no horizontal overflow at 320, 360, 390, 820, 1280, 1680px; one h1; every main section has an accessible name; header logo/descriptor/menu button do not collide at 320/360/390 (320px uses an icon-only menu button with a screen-reader label); first Tab stop is the skip link; Case Studies/Insights links absent; full-page desktop and mobile screenshots reviewed.
+- typecheck, lint: pass. Tests: 12/12 pass. Production build: pass.
+- Chromium: /services returns 200, no horizontal overflow at 390, 820, 1280, 1680px; one h1; all sections labelled; "Services" marked current in nav; title and description set; desktop screenshot reviewed.
+- curl against the production server: / 200, /services 200, unknown path 404.
 
 Not yet verified:
-- Colour contrast with a tool (palette ratios computed by hand only), touch behaviour, visible focus styling review, dev-mode rendering
-- Homepage Insights section: not built. Spec says it renders only with approved articles; there are none, and the article card component arrives in Checkpoint 10. Add the conditional section there.
+- Contrast with a tool, touch behaviour, focus styling review, tablet/mobile screenshots visually reviewed (overflow only checked numerically)
 
 Outstanding issues:
-- Header/footer and homepage links to /services/*, /about, /contact, /book-consultation, /privacy 404 until their checkpoints.
-- Credibility section shows the working-commitments fallback (no approved evidence supplied).
-- Hero uses a decorative SVG (no data implied), not photography; swap in approved photography if supplied.
-- All homepage copy is proposed and needs business review.
+- The four service cards, fit list and connection links point to /services/* pages that 404 until Checkpoints 4-7.
+- No canonical URL is set on /services: canonicals need the verified production URL and are handled centrally in Checkpoint 14.
+- Copy is proposed and needs business review. Removed an unconfirmed claim ("no fixed packages") during review; keep engagement terms (pricing, packages) out of copy until the business confirms them.
 
 Configuration blockers:
-- No email, booking, site URL, contact email or parent-brand URL configured (not needed until Checkpoints 11/12/14 or launch)
+- No email, booking, site URL, contact email or parent-brand URL configured
 
 Next action:
-- Checkpoint 3: build /services (introduction, four service cards reusing ServiceCard, problems addressed, how services combine, engagement process reusing ProcessSteps, enquiry/consultation CTAs). Do not simply repeat the homepage section.
+- Checkpoint 4: build /services/data-analytics (introduction, problems addressed, capabilities, example deliverables, typical engagement approach, expected value without guarantees, related services, CTA). Make it distinct from the other service pages; consider a reusable ServiceDetail template since Checkpoints 5-7 share the structure.

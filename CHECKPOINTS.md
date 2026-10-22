@@ -4,7 +4,7 @@
 |---|-------|--------|
 | 1 | Global application foundation | complete |
 | 2 | Homepage | complete |
-| 3 | Services overview | not started |
+| 3 | Services overview | complete |
 | 4 | Data Analytics & Business Intelligence | not started |
 | 5 | Data Infrastructure & Engineering | not started |
 | 6 | AI & Automation | not started |
@@ -29,3 +29,9 @@ Delivered: hero (two-column desktop, text first on mobile) with decorative SVG, 
 Validation: typecheck, lint, 10 tests, build, Chromium overflow/structure/header checks pass. Contrast tooling, touch and dev-mode checks not run.
 Not delivered: homepage Insights section (conditional; deferred to Checkpoint 10).
 Commit: `checkpoint-02: implement responsive homepage` (see `git log`).
+
+## Checkpoint 3: Services overview (complete)
+Delivered: /services with introduction, four service cards (reused), situation-to-service guide, how services combine, engagement process (reused), enquiry/consultation CTA. Reusable PageHeader, FitList, ConnectionList.
+Validation: typecheck, lint, 12 tests, build, Chromium overflow/structure checks, curl status checks pass.
+Open: service links 404 until Checkpoints 4-7; canonical deferred to Checkpoint 14.
+Commit: `checkpoint-03: implement services overview` (see `git log`).
