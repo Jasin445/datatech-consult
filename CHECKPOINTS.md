@@ -5,7 +5,7 @@
 | 1 | Global application foundation | complete |
 | 2 | Homepage | complete |
 | 3 | Services overview | complete |
-| 4 | Data Analytics & Business Intelligence | not started |
+| 4 | Data Analytics & Business Intelligence | complete |
 | 5 | Data Infrastructure & Engineering | not started |
 | 6 | AI & Automation | not started |
 | 7 | Business & Technology Consulting | not started |
@@ -35,3 +35,9 @@ Delivered: /services with introduction, four service cards (reused), situation-t
 Validation: typecheck, lint, 12 tests, build, Chromium overflow/structure checks, curl status checks pass.
 Open: service links 404 until Checkpoints 4-7; canonical deferred to Checkpoint 14.
 Commit: `checkpoint-03: implement services overview` (see `git log`).
+
+## Checkpoint 4: Data Analytics & Business Intelligence (complete)
+Delivered: /services/data-analytics (introduction, problems, capabilities, example deliverables, what useful analytics depends on, 4-step approach, expected value without guarantees, related services, CTA, breadcrumb) built on a reusable ServiceDetailPage template driven by typed content.
+Validation: typecheck, lint, 16 tests, build, Chromium status/overflow/structure checks pass.
+Open: other service pages 404 until Checkpoints 5-7; canonical deferred to Checkpoint 14.
+Commit: `checkpoint-04: implement data analytics service page` (see `git log`).

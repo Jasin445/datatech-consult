@@ -1,37 +1,38 @@
-Current checkpoint: 3
-Status: COMPLETE (awaiting authorisation to start Checkpoint 4)
+Current checkpoint: 4
+Status: COMPLETE (awaiting authorisation to start Checkpoint 5)
 
 Completed checkpoints:
 - Checkpoint 1: complete (foundation, official logo)
 - Checkpoint 2: complete (homepage)
 - Checkpoint 3: complete (services overview)
+- Checkpoint 4: complete (Data Analytics & Business Intelligence page + reusable service-detail template)
 
 Current work:
-- None in progress. Next: Checkpoint 4, Data Analytics & Business Intelligence page.
+- None in progress. Next: Checkpoint 5, Data Infrastructure & Engineering page.
 
-Files completed (Checkpoint 3):
-- src/app/services/page.tsx
-- src/content/services-overview.ts
-- src/components/sections/PageHeader.tsx (reusable interior-page opening with the page h1)
-- src/components/services/{FitList,ConnectionList}.tsx
+Files completed (Checkpoint 4):
+- src/app/services/data-analytics/page.tsx
+- src/content/service-details/{types.ts,data-analytics.ts}
+- src/components/services/{ServiceDetailPage,RelatedServices}.tsx (shared template for Checkpoints 5-7)
+- src/components/sections/Breadcrumb.tsx; PageHeader gained an `above` slot; ProcessSteps now sizes columns to the step count
 - styles added to src/styles/sections.css
-- tests/services-overview.test.ts
+- tests/service-details.test.ts
 
 Validation (actually run):
-- typecheck, lint: pass. Tests: 12/12 pass. Production build: pass.
-- Chromium: /services returns 200, no horizontal overflow at 390, 820, 1280, 1680px; one h1; all sections labelled; "Services" marked current in nav; title and description set; desktop screenshot reviewed.
-- curl against the production server: / 200, /services 200, unknown path 404.
+- typecheck, lint: pass. Tests: 16/16 pass. Production build: pass (route /services/data-analytics prerendered).
+- Chromium: page returns 200; no horizontal overflow at 320, 390, 820, 1280, 1680px; one h1; every section labelled; breadcrumb with aria-current; title and meta description set; 4-column process on desktop; desktop screenshot reviewed.
 
 Not yet verified:
-- Contrast with a tool, touch behaviour, focus styling review, tablet/mobile screenshots visually reviewed (overflow only checked numerically)
+- Contrast with a tool, touch behaviour, focus styling review; mobile/tablet screenshots only checked for overflow
 
 Outstanding issues:
-- The four service cards, fit list and connection links point to /services/* pages that 404 until Checkpoints 4-7.
-- No canonical URL is set on /services: canonicals need the verified production URL and are handled centrally in Checkpoint 14.
-- Copy is proposed and needs business review. Removed an unconfirmed claim ("no fixed packages") during review; keep engagement terms (pricing, packages) out of copy until the business confirms them.
+- Remaining service pages (/services/data-infrastructure, /ai-automation, /business-technology-consulting) 404 until Checkpoints 5-7; the template and test (tests/service-details.test.ts) must be extended with each new detail file.
+- /about, /contact, /book-consultation, /privacy still 404 until their checkpoints.
+- No canonical URL (Checkpoint 14). All copy is proposed and needs business review; nothing states client outcomes, tools or pricing.
+- Service-page "considerations" section is intended to carry service-specific caveats: for AI & Automation use risks, maintenance and human oversight; for Infrastructure use "not every client needs a complex platform"; for Consulting use advisory vs implementation scope.
 
 Configuration blockers:
 - No email, booking, site URL, contact email or parent-brand URL configured
 
 Next action:
-- Checkpoint 4: build /services/data-analytics (introduction, problems addressed, capabilities, example deliverables, typical engagement approach, expected value without guarantees, related services, CTA). Make it distinct from the other service pages; consider a reusable ServiceDetail template since Checkpoints 5-7 share the structure.
+- Checkpoint 5: add src/content/service-details/data-infrastructure.ts and src/app/services/data-infrastructure/page.tsx using ServiceDetailPage; cover common problems, pipelines and integrations, data quality, architecture and reporting foundations, example deliverables, process, related services, CTA, and avoid implying every client needs a warehouse, cloud migration or complex architecture. Add it to tests/service-details.test.ts.
