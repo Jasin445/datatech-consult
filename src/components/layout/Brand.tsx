@@ -1,14 +1,18 @@
+import Image from "next/image";
 import Link from "next/link";
 
-/**
- * TEMPORARY LOGO PLACEHOLDER.
- * The official Datatechhub logo has not been supplied. This is a plain text wordmark,
- * not a logo. Replace with the supplied asset (unchanged) in public/logos/ before launch.
- */
+/** Official Datatechhub logo (supplied, unchanged) with the "Consulting" descriptor beside it. */
 export function Brand() {
   return (
     <Link href="/" className="brand" aria-label="Datatechhub Consulting home">
-      <span className="brand__name">Datatechhub</span>
+      <Image
+        src="/logos/datatechhub-logo.png"
+        alt=""
+        width={849}
+        height={294}
+        priority
+        className="brand__logo"
+      />
       <span className="brand__descriptor">Consulting</span>
     </Link>
   );

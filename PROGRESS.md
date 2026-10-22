@@ -23,17 +23,20 @@ Validation (actually run):
 - npm run build: pass
 - next start smoke test via curl: / returns 200; unknown path returns 404 with noindex and an h1; skip link, #main and one h1 present; Case Studies/Insights links absent; dev notice absent in production build; footer omits email and parent link when env unset.
 
+Browser checks run (Playwright/Chromium): mobile menu opens, Escape closes it and returns focus to the toggle; no horizontal overflow at 1280px and 390px; desktop header with official logo screenshot reviewed.
+
 Not yet verified:
-- Mobile menu behaviour (toggle, Escape, focus return, touch) and keyboard focus visuals in a real browser
+- Touch behaviour and keyboard focus visuals
 - Responsive layout at mobile/tablet/desktop/wide, colour contrast with a tool, reduced motion
 - Development-mode rendering (dev notice)
 
 Outstanding issues:
 - Header/footer link to routes not yet built (/services*, /about, /contact, /book-consultation, /privacy). They 404 until their checkpoints. Expected; no stubs added.
 - Homepage is a temporary shell.
+- Logo is a dark wordmark: valid on white only (header). Do not use on the dark footer/CTA band.
 
 Configuration blockers:
-- Official logo not supplied (text wordmark placeholder in Brand.tsx)
+- (resolved) Official logo supplied and integrated
 - No email, booking, site URL, contact email or parent-brand URL configured (optional until their checkpoints/launch)
 
 Next action:

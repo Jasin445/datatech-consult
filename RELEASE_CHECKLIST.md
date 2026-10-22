@@ -2,7 +2,7 @@
 
 Development completion is not launch readiness. Tick only after verification.
 
-- [ ] Official logo supplied and placed in public/logos (replace text wordmark in Brand.tsx)
+- [x] Official logo supplied and integrated (public/logos/datatechhub-logo.png); final approval of "Consulting" lockup still needed
 - [ ] Company and legal information verified
 - [ ] Leadership details approved (or company-only About layout confirmed)
 - [ ] Case studies approved (or section stays hidden)

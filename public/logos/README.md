@@ -1,7 +1,5 @@
 # Logo assets
 
-The official Datatechhub logo has not been supplied. `src/components/layout/Brand.tsx` renders a
-temporary text wordmark. Do not present it as the official logo.
-
-To finish: add the supplied logo file here unchanged (check it works on a white background),
-then update `Brand.tsx` to use it with meaningful alt text and add the "Consulting" descriptor beside it.
+`datatechhub-logo.png` is the official Datatechhub logo as supplied (849x294, transparent PNG, dark wordmark).
+Do not edit or recolour it. It suits white/light backgrounds only; do not place it on the dark footer or CTA band.
+The "Consulting" descriptor is rendered as live text in `src/components/layout/Brand.tsx`.
