@@ -11,6 +11,8 @@ const BANNED = [
   "game-changer", "game changer", "synergy", "world-class", "revolutionise", "revolutionize", "next-level",
   "best-in-class", "holistic", "supercharge", "in today’s", "fast-paced", "delve", "one-stop", "trusted partner",
   "passionate", "proven", "years of experience", "industry-leading", "award-winning",
+  // unverifiable claims about clients
+  "our clients", "many clients", "most clients", "clients say", "trusted by",
 ];
 
 function contentFiles(dir: string): string[] {

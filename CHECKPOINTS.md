@@ -204,7 +204,7 @@ Commit: `v2-7: imagery and copy pass, mobile menu, final v2 qa`.
 | V3-3 | Navigation (services menu, footer contact) | complete |
 | V3-4 | Homepage rework | complete |
 | V3-5 | Service pages shortened, per-service visuals, less hedging | complete |
-| V3-6 | Engagement and pricing signals | not started |
+| V3-6 | Engagement and pricing signals | complete |
 | V3-7 | About/overview de-duplication, de-formularising pass | not started |
 | V3-8 | Performance, images, final QA, docs | not started |
 
@@ -237,3 +237,9 @@ Delivered: service template cut from ~10 sections to 7 (8 on AI): hero with the 
 Tests: service-details tests updated; new test asserts "can’t guarantee" appears only in each page's disclaimer and "where agreed" nowhere in service content.
 Validation: typecheck, lint, vitest 160/160; infrastructure page full-page and AI hero screenshots reviewed on the dev server (infrastructure page now ~6,600px tall at 1440 wide).
 Commit: `v3-5: shorter service pages with per-service mockups and one disclaimer`.
+
+## V3-6: Engagement and pricing signals (complete, 2026-10-23)
+Delivered: src/content/engagement.ts (three shapes: Diagnostic, Project, Ongoing support, each with "best when", description and "you get"; "How pricing works": quote after the first conversation, written scope with every quote, no work before agreement, changes agreed in writing). NO prices, rates or durations; restates commitments already published; listed for owner confirmation. `EngagementShapes` section (connected three-step track + folded pricing panel) on every service page and on /services (replacing the old engagement notes paragraph, which it supersedes; the process timeline stays on /services only).
+Fixes during review: removed an unverifiable claim ("many clients begin with a diagnostic"); folded corner clipped pricing text (panel padding). Copy guard now also bans "our clients", "many clients", "most clients", "clients say", "trusted by".
+Validation: typecheck, lint, vitest 161/161; engagement section screenshot reviewed on the dev server.
+Commit: `v3-6: engagement shapes and how pricing works`.

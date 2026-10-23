@@ -31,3 +31,4 @@ Development completion is not launch readiness. Tick only after verification.
 - [ ] V2 copy: homepage and remaining page copy approved by the business (all V2 statements are proposals)
 - [ ] Official favicon/touch icon supplied (current src/app/icon.tsx and apple-icon.tsx are typographic placeholders)
 - [ ] Production server start log shows no `[launch]` warnings (at minimum: a public contact email or booking link, so visitors can make contact before the form is enabled)
+- [ ] Engagement shapes and "How pricing works" (src/content/engagement.ts) confirmed by the business; add prices or durations only if the business wants them published

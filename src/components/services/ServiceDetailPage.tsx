@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FolioCard } from "@/components/cards/FolioCard";
 import { Breadcrumb } from "@/components/sections/Breadcrumb";
 import { ContentsList } from "@/components/sections/ContentsList";
+import { EngagementShapes } from "@/components/sections/EngagementShapes";
 import { NextStep } from "@/components/sections/NextStep";
 import { PageHero } from "@/components/sections/PageHero";
 import { ProblemStory } from "@/components/sections/ProblemStory";
@@ -28,9 +29,9 @@ const heroVisuals: Record<string, ReactNode> = {
 /**
  * Shared template for the four service pages (V3: shortened). Order: hero with the service's mockup,
  * problem story with the problems as tags, what we do, where it fits (optional), what you get with the
- * page's single disclaimer, before we start, how engagements work (slot), closing with related links.
+ * page's single disclaimer, before we start, how engagements work, closing with related links.
  */
-export function ServiceDetailPage({ detail, engagement }: { detail: ServiceDetail; engagement?: ReactNode }) {
+export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
   const index = services.findIndex((s) => s.slug === detail.slug);
   const service = services[index];
   const crumbLabel = service?.title ?? detail.metaTitle;
@@ -127,7 +128,7 @@ export function ServiceDetailPage({ detail, engagement }: { detail: ServiceDetai
         </ul>
       </Section>
 
-      {engagement}
+      <EngagementShapes id={`${p}-engagement`} />
 
       <NextStep id={`${p}-cta`} eyebrow={nextStep.eyebrow} heading={detail.cta.heading} lead={detail.cta.body} options={nextStep.options} />
       <nav aria-label="Related services" className="bg-charcoal pb-16 text-footer-text">
