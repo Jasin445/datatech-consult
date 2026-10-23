@@ -17,8 +17,8 @@ export type ServiceDetail = {
   deliverables: { heading: string; lead?: string; items: TitledItem[] };
   /** Service-specific caveats, risks or prerequisites */
   considerations: { heading: string; lead?: string; items: TitledItem[] };
-  approach: { heading: string; lead?: string; steps: TitledItem[] };
-  value: { heading: string; lead: string; items: string[] };
+  /** The page's single "results depend on..." statement (stated once, not repeated per section). */
+  disclaimer: string;
   /** Slugs of related services */
   related: string[];
   cta: { heading: string; body: string };

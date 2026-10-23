@@ -17,8 +17,7 @@ describe.each(details)("service detail: $slug", (d) => {
   it("has content in every section", () => {
     expect(d.intro.length).toBeGreaterThan(0);
     for (const s of [d.problems, d.capabilities, d.deliverables, d.considerations]) expect(s.items.length).toBeGreaterThan(0);
-    expect(d.approach.steps.length).toBeGreaterThanOrEqual(3);
-    expect(d.value.items.length).toBeGreaterThan(0);
+    expect(d.disclaimer.length).toBeGreaterThan(20);
   });
 
   it("links related services that exist and never to itself", () => {
@@ -32,7 +31,15 @@ describe.each(details)("service detail: $slug", (d) => {
   it("does not promise guaranteed outcomes", () => {
     const text = JSON.stringify(d).toLowerCase().replaceAll("can’t guarantee", "");
     expect(text).not.toMatch(/guarantee|eliminate|risk-free|error-free results? (?:are|is) /);
-    expect(d.value.lead.toLowerCase()).toContain("can’t guarantee");
+    expect(d.disclaimer.toLowerCase()).toContain("can’t guarantee");
+  });
+});
+
+describe("hedging is stated once per page", () => {
+  it.each(details)("$slug says 'can’t guarantee' only in its disclaimer", (d) => {
+    const { disclaimer, ...rest } = d;
+    expect(disclaimer).toMatch(/can’t guarantee/);
+    expect(JSON.stringify(rest)).not.toMatch(/can’t guarantee|where agreed/);
   });
 });
 

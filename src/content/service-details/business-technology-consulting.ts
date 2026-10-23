@@ -40,7 +40,7 @@ export const businessTechnologyConsulting: ServiceDetail = {
   },
   deliverables: {
     heading: "Example advisory deliverables",
-    lead: "These are examples of advice and planning outputs, not a fixed menu. Implementation is scoped separately, where agreed.",
+    lead: "Examples of advice and planning outputs, not a fixed menu. If you want us to build what we recommend, that is scoped as a separate piece of work.",
     items: [
       { title: "Discovery findings", text: "A summary of what we learned about your goals, processes, systems and constraints." },
       { title: "Requirements specification", text: "A written, prioritised statement of what the solution needs to do." },
@@ -59,26 +59,7 @@ export const businessTechnologyConsulting: ServiceDetail = {
       { title: "Agreeing the boundary", text: "You decide how far we go. Some organisations may prefer to stop at a plan, and others may want continued help. We agree the boundary in the scope." },
     ],
   },
-  approach: {
-    heading: "A typical approach",
-    lead: "The steps are adapted to your situation. The last step applies where agreed.",
-    steps: [
-      { title: "Discover", text: "We learn about your goals, people, processes and systems, and talk to the people affected." },
-      { title: "Assess and compare", text: "We set out your requirements and weigh the realistic options against them." },
-      { title: "Design and plan", text: "We recommend an approach and plan how to deliver it in stages." },
-      { title: "Support delivery, where agreed", text: "We stay involved as the plan is carried out, within the scope we agree." },
-    ],
-  },
-  value: {
-    heading: "What this can help you achieve",
-    lead: "Results depend on your organisation, the decisions you take and how the plan is carried out. We can’t guarantee specific outcomes.",
-    items: [
-      "A clearer shared understanding of what is needed",
-      "Technology choices made against your actual requirements",
-      "A realistic plan that can be acted on",
-      "Better visibility of scope, effort and dependencies before work begins",
-    ],
-  },
+  disclaimer: "Results depend on your organisation, the decisions you take and how the plan is carried out. We can’t guarantee specific outcomes.",
   related: ["data-infrastructure", "ai-automation"],
   cta: {
     heading: "Bring us the decision you’re stuck on.",

@@ -14,6 +14,7 @@ export function PageHero({
   accent,
   lead,
   photo,
+  visual,
   above,
   actions,
 }: {
@@ -23,6 +24,8 @@ export function PageHero({
   lead: string;
   /** Omit for text-only openings (index pages, legal pages, case studies). */
   photo?: PhotoData;
+  /** A coded visual (product mockup) shown instead of a photo. */
+  visual?: ReactNode;
   above?: ReactNode;
   actions?: ReactNode;
 }) {
@@ -31,7 +34,7 @@ export function PageHero({
       <Container>
         {above}
         <div className="mt-6 grid items-center gap-12 lg:mt-10 lg:grid-cols-12 lg:gap-12">
-          <div className={photo ? "lg:col-span-7" : "lg:col-span-10"}>
+          <div className={visual ? "lg:col-span-6" : photo ? "lg:col-span-7" : "lg:col-span-10"}>
             <div className="animate-rise">
               <Eyebrow>{eyebrow}</Eyebrow>
             </div>
@@ -47,7 +50,13 @@ export function PageHero({
             <p className="mb-0 max-w-[54ch] animate-rise text-lg text-muted [animation-delay:180ms]">{lead}</p>
             {actions && <div className="mt-9 flex animate-rise flex-wrap items-center gap-x-8 gap-y-4 [animation-delay:270ms]">{actions}</div>}
           </div>
-          {photo && (
+          {visual && (
+            <div className="relative min-w-0 animate-rise [animation-delay:200ms] lg:col-span-6">
+              <div aria-hidden="true" className="absolute top-6 -right-3 -bottom-3 left-8 bg-gold-tint" />
+              <div className="relative">{visual}</div>
+            </div>
+          )}
+          {!visual && photo && (
             <div className="relative animate-rise [animation-delay:200ms] lg:col-span-5">
               <div aria-hidden="true" className="absolute top-5 -right-3 -bottom-5 left-5 border border-gold" />
               <div className="relative aspect-[4/3] overflow-hidden bg-surface lg:aspect-[4/5]">

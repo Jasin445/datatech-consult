@@ -71,26 +71,7 @@ export const aiAutomation: ServiceDetail = {
       { title: "Impact on people", text: "Automation changes how people work. We involve the people affected and consider the effect on their roles." },
     ],
   },
-  approach: {
-    heading: "A typical approach",
-    lead: "The steps are adapted to your situation. The last step applies where agreed.",
-    steps: [
-      { title: "Identify candidates", text: "We look at your processes and list the tasks that might be worth improving." },
-      { title: "Assess fit and feasibility", text: "We weigh benefit, effort, risk and oversight needs, and recommend what to pursue and what not to." },
-      { title: "Build and test", text: "We build a small, working version and test it with the people who will use it." },
-      { title: "Run and maintain, where agreed", text: "We help you operate it, monitor it and adjust it as things change." },
-    ],
-  },
-  value: {
-    heading: "What this can help you achieve",
-    lead: "Results depend on the process, your systems and how the solution is used. We can’t guarantee cost savings, error-free results or particular staffing outcomes.",
-    items: [
-      "Less time spent on repetitive tasks",
-      "More consistent handling of routine work",
-      "Information that moves between systems without re-entry",
-      "A clearer view of where AI does and doesn’t help",
-    ],
-  },
+  disclaimer: "Results depend on the process, your systems and how the solution is used. We can’t guarantee cost savings, error-free results or particular staffing outcomes.",
   related: ["business-technology-consulting", "data-infrastructure"],
   cta: {
     heading: "Tell us which task eats the most hours.",

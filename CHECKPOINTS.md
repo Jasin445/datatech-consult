@@ -203,7 +203,7 @@ Commit: `v2-7: imagery and copy pass, mobile menu, final v2 qa`.
 | V3-2 | CTA vocabulary + launch conversion safeguards | complete |
 | V3-3 | Navigation (services menu, footer contact) | complete |
 | V3-4 | Homepage rework | complete |
-| V3-5 | Service pages shortened, per-service visuals, less hedging | not started |
+| V3-5 | Service pages shortened, per-service visuals, less hedging | complete |
 | V3-6 | Engagement and pricing signals | not started |
 | V3-7 | About/overview de-duplication, de-formularising pass | not started |
 | V3-8 | Performance, images, final QA, docs | not started |
@@ -231,3 +231,9 @@ Delivered: hero visual is now the dashboard mockup (boardroom photo removed) wit
 Fixes during review: field note hid the dashboard caption at desktop; 320px overflow from grid columns holding mockups (min-w-0 on mock containers and MockFrame); KPI labels truncated on small phones (now wrap).
 Validation: typecheck, lint, vitest 156/156; on the owner's dev server: qa:a11y on / passes; qa:responsive on / passes after the fix; desktop and 320px screenshots reviewed.
 Commit: `v3-4: homepage shows the work (dashboard, spreadsheet, showcase)`.
+
+## V3-5: Service pages shortened, per-service visuals, less hedging (complete, 2026-10-23)
+Delivered: service template cut from ~10 sections to 7 (8 on AI): hero with the service's own mockup (`PageHero` now accepts `visual`): dashboard / pipeline / workflow / options appraisal; hook story with the problems as tags (separate strip removed); what we do; where it fits (AI); what you get, ending with the page's single disclaimer; before we start (compact ornament list instead of large cards); an `engagement` slot (filled in V3-6); closing cards with a "Works well with" related-services link row (the related photo-card section is gone). Removed per page: approach timeline and value section. Content model: `approach` and `value` removed, `disclaimer` added (the old value lead); consulting deliverables lead no longer says "where agreed".
+Tests: service-details tests updated; new test asserts "can’t guarantee" appears only in each page's disclaimer and "where agreed" nowhere in service content.
+Validation: typecheck, lint, vitest 160/160; infrastructure page full-page and AI hero screenshots reviewed on the dev server (infrastructure page now ~6,600px tall at 1440 wide).
+Commit: `v3-5: shorter service pages with per-service mockups and one disclaimer`.

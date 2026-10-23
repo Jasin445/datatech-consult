@@ -56,26 +56,7 @@ export const dataInfrastructure: ServiceDetail = {
       { title: "Plan for running it", text: "Whatever is built has to be understandable and affordable for your team to maintain over time." },
     ],
   },
-  approach: {
-    heading: "A typical approach",
-    lead: "The steps are adapted to your situation. The last step applies where agreed.",
-    steps: [
-      { title: "Map what exists", text: "We identify your data sources, how data moves today and where the problems arise." },
-      { title: "Define what’s needed", text: "We agree what the reporting and operations need from the data, and what is proportionate." },
-      { title: "Build and verify", text: "We implement the agreed pipelines and checks, and test results against your own figures." },
-      { title: "Document and hand over, where agreed", text: "We record how everything works and help your team take it on." },
-    ],
-  },
-  value: {
-    heading: "What this can help you achieve",
-    lead: "Results depend on your systems, your data and how the foundations are used. We can’t guarantee specific outcomes.",
-    items: [
-      "Less manual copying and reformatting between systems",
-      "More consistent figures across reports",
-      "A firmer base for reporting, analysis and automation",
-      "Data your team can understand and maintain",
-    ],
-  },
+  disclaimer: "Results depend on your systems, your data and how the foundations are used. We can’t guarantee specific outcomes.",
   related: ["data-analytics", "business-technology-consulting"],
   cta: {
     heading: "Show us where your data lives today.",

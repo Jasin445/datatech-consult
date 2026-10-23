@@ -55,26 +55,7 @@ export const dataAnalytics: ServiceDetail = {
       { title: "Appropriate interpretation", text: "Numbers need context. We explain what the data does and doesn’t show, including its limits." },
     ],
   },
-  approach: {
-    heading: "A typical approach",
-    lead: "The steps are adapted to your situation. The last step applies where agreed.",
-    steps: [
-      { title: "Clarify the questions", text: "We agree the decisions the reporting must support and the measures that matter." },
-      { title: "Assess the data", text: "We review the sources, their quality and what is needed to use them reliably." },
-      { title: "Build and test", text: "We build the reporting and check it with the people who will use it." },
-      { title: "Hand over and refine, where agreed", text: "We document the work, train your team and improve it as questions change." },
-    ],
-  },
-  value: {
-    heading: "What this can help you achieve",
-    lead: "Results depend on your data, your organisation and how the reporting is used. We can’t guarantee specific outcomes.",
-    items: [
-      "Less time spent preparing reports",
-      "A shared understanding of how the organisation is performing",
-      "Faster access to answers about the business",
-      "Earlier visibility of problems and opportunities",
-    ],
-  },
+  disclaimer: "Results depend on your data, your organisation and how the reporting is used. We can’t guarantee specific outcomes.",
   related: ["data-infrastructure", "ai-automation"],
   cta: {
     heading: "Bring us the report everyone argues about.",
