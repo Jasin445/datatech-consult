@@ -380,3 +380,6 @@ Services mega-menu now animates out (0.3s fade and lift, `animate-menu-out`) on 
 
 ### Owner adjustments: banner link, button trace, card link colour (2026-10-24)
 Banner "Book a consultation" link is now soft gold and underlined (white on hover): reads as a link without relying on colour alone, about 7:1 on charcoal. Blue buttons (`primary`, `primary-pill`) carry a faint plotted-line trace (white polyline with three points and one dashed readout, 10-20% opacity) on the right via the `--btn-trace` token in globals.css; label contrast unchanged. Closing-card italic links now use primary blue (hover primary-hover). Validation: typecheck, lint, vitest 167/167; production build; screenshots; qa:responsive and qa:a11y on all 10 routes pass. Commit: `adjust: gold banner link, button chart trace, blue card links`.
+
+### Owner adjustment: statement accent (2026-10-24)
+Homepage statement restored to "The best sign the work is done:" + "the meeting gets shorter." with the part after the colon in soft gold italic (as in V2). `StatementBand` accents use gold-soft italic again (also affects About: "Your context is the brief."). STYLING.md updated. Validation: typecheck, lint, vitest 167/167; production build; screenshot; qa:a11y on / and /about pass. Commit: `adjust: gold italic statement accent restored`.

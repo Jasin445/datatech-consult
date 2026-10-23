@@ -2,7 +2,6 @@ import type { Photo as PhotoData } from "@/content/media/photos";
 import { Container } from "@/components/ui/Container";
 import { Mark } from "@/components/ui/Mark";
 import { Photo } from "@/components/ui/Photo";
-import { Accent } from "@/components/ui/Accent";
 
 /** Full-bleed photograph with a large serif statement. The photo is decorative here. */
 export function StatementBand({ text, accent, photo }: { text: string; accent: string; photo: PhotoData }) {
@@ -13,7 +12,7 @@ export function StatementBand({ text, accent, photo }: { text: string; accent: s
       <Container>
         <Mark className="mb-8 size-10 text-gold-soft" />
         <p className="mb-0 max-w-[18ch] font-display text-display text-white">
-          {text} <Accent onDark>{accent}</Accent>
+          {text} <em className="text-gold-soft">{accent}</em>
         </p>
       </Container>
     </section>

@@ -108,8 +108,8 @@ export const servicePhotos: Record<string, Photo> = {
 
 /** Full-bleed statement over a photograph. */
 export const statement = {
-  text: "The best sign the work is done: the meeting",
-  accent: "gets shorter.",
+  text: "The best sign the work is done:",
+  accent: "the meeting gets shorter.",
   photo: photos.bridgeNight,
 };
 

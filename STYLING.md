@@ -115,6 +115,6 @@ Other tokens kept: font stack (Segoe UI system stack, no network fonts), type sc
 - Section labels: `Eyebrow` (mark + sentence-case label). No leading rules, no uppercase tracking on section labels.
 - Accent words: `Accent` (measurement bracket). No gold italic accent words. Keep accents short (it wraps as one unit).
 - Numbers: light tabular sans (big) or small semibold tabular (labels). No italic serif numerals.
-- Italics for real quotations, plus two owner-approved exceptions: the hero secondary link ("Send an enquiry") and the closing-card (MarkCard) links, which are italic serif. Other links are sans semibold with an arrow.
+- Italics for real quotations, plus two owner-approved exceptions: statement-band accents (gold-soft italic), the hero secondary link ("Send an enquiry") and the closing-card (MarkCard) links, which are italic serif. Other links are sans semibold with an arrow.
 - Micro-labels are sentence case (no tracked uppercase), except inside mockups.
 - Photos with mockups: use `visuals/InContext`; captions on photo strips describe settings, never clients.
