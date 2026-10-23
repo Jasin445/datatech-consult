@@ -358,3 +358,10 @@ The charcoal "next step" section (closing cards on every page) now has `ChartBac
 - Header: the top banner is now inside the sticky header (both stay pinned); main bar taller (--nav-height 6.25rem on desktop; --header-height = banner + bar, used for sticky offsets and scroll padding); navigation moved into its own rounded tray separated from the brand, current page shown as a raised white tab; pill-shaped primary button (new `primary-pill` variant).
 Validation: typecheck, lint, vitest 167/167; production build; nav behaviour tested in Chrome (hover opens, click keeps open, moving into the panel keeps open, leaving closes, Enter opens, Escape closes, banner and bar both at top after scrolling); qa:responsive and qa:a11y on all 10 routes pass.
 Commit: `adjust: sticky banner, tray navigation, hover services menu, settling-points backdrop`.
+
+### Owner adjustments: banner message and entrance motion (2026-10-23)
+- Top banner now carries a prompt and the primary action: "Planning a dashboard, an automation or a new system? Talk it through before you commit budget. Book a consultation ->", with "How we work and how pricing works" on the right (replaced by the public email once configured). No unconfirmed offers (e.g. no "free").
+- Page entrance: src/app/template.tsx wraps each page's content in a 0.45s slide-up (`animate-page-in`: starts at 40% opacity, never 0, so text still counts as painted for LCP; `backwards` fill leaves no transform behind). Header and footer stay still. Dropdowns (services mega-menu, mobile menu) use `animate-menu-in` (0.22s fade and drop). All disabled by the reduced-motion rule.
+- Owner removed "How we work" from the primary nav (src/lib/site.ts, commented out); nav test updated to match.
+Validation: typecheck, lint, vitest 167/167; production build; animation verified in Chrome (runs on client navigation, menu animates, reduced-motion duration ~0, no residual transform); qa:responsive and qa:a11y on all 10 routes pass; Lighthouse / perf 90, CLS 0.
+Commit: `adjust: banner call to action, page and menu entrance motion`.

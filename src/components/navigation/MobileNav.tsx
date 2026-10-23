@@ -50,7 +50,7 @@ export function MobileNav({ items, cta, services = [] }: { items: NavItem[]; cta
         <span className="sr-only min-[360px]:not-sr-only">Menu</span>
       </button>
       {open && (
-        <nav id={menuId} className="absolute inset-x-0 top-full max-h-[calc(100dvh-var(--header-height))] overflow-y-auto border-y border-border bg-white shadow-[0_30px_50px_-30px_rgb(23_43_58/45%)]" aria-label="Mobile">
+        <nav id={menuId} className="absolute inset-x-0 top-full animate-menu-in max-h-[calc(100dvh-var(--header-height))] overflow-y-auto border-y border-border bg-white shadow-[0_30px_50px_-30px_rgb(23_43_58/45%)]" aria-label="Mobile">
           <Container className="pb-6">
             <ul className="pt-4 pb-6">
               {items.map((item, i) => (

@@ -87,7 +87,7 @@ export function ServicesMenu({ services, buttonClassName = "" }: { services: rea
         </svg>
       </button>
       {open && (
-        <div id={id} className="absolute inset-x-0 top-full z-50 border-t border-border bg-white shadow-[0_40px_60px_-40px_rgb(23_43_58/45%)]">
+        <div id={id} className="absolute inset-x-0 top-full z-50 animate-menu-in border-t border-border bg-white shadow-[0_40px_60px_-40px_rgb(23_43_58/45%)]">
           <div className="mx-auto grid w-full max-w-[calc(var(--container-max)+2*var(--gutter))] grid-cols-12 gap-10 px-(--gutter) py-10">
             <div className="col-span-8">
               <p className="mb-5 flex items-center gap-2.5 text-[0.95rem] font-semibold text-gold">

@@ -66,6 +66,20 @@
     from { opacity: 0; transform: translateY(18px); }
     to { opacity: 1; transform: none; }
   }
+
+  /* Page entrance: brief slide up. Never starts fully transparent, so text still counts as painted (LCP). */
+  --animate-page-in: page-in 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) backwards; /* no transform left behind (keeps sticky/fixed children normal) */
+  @keyframes page-in {
+    from { opacity: 0.4; transform: translateY(14px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  /* Dropdown panels: short fade and drop. */
+  --animate-menu-in: menu-in 0.22s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  @keyframes menu-in {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: none; }
+  }
 }
 
 /*
