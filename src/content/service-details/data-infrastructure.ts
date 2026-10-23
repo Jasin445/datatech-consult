@@ -48,7 +48,7 @@ export const dataInfrastructure: ServiceDetail = {
     ],
   },
   considerations: {
-    heading: "Dependable foundations, not necessarily complex ones",
+    heading: "Foundations sized to the problem",
     lead: "A bigger platform is not always a better answer. We size the solution to the problem.",
     items: [
       { title: "Start with what you have", text: "Many organisations are better served by cleaning up and connecting existing systems than by adding new ones." },
@@ -60,17 +60,17 @@ export const dataInfrastructure: ServiceDetail = {
   related: ["data-analytics", "business-technology-consulting"],
   cta: {
     heading: "Show us where your data lives today.",
-    body: "Tell us which systems hold your data and what isn’t working. We’ll tell you honestly what is worth doing, and what isn’t.",
+    body: "Tell us which systems hold your data and what isn’t working. We’ll tell you what is worth doing, and what isn’t.",
   },
   v2: {
     heroPhoto: photos.riverCity,
     hook: {
-      heading: "Your systems don’t talk. Your people do the translating.",
+      heading: "Your people are doing the translating your systems should.",
       paragraphs: [
         "The accounting package, the CRM, the field app and a dozen spreadsheets each hold part of the truth. Joining them up means exports, copy and paste, and one person who knows which column means what.",
         "When that person is on leave, the reports stop.",
       ],
-      turn: "Dependable data is built, not hoped for. It doesn’t have to be complicated.",
+      turn: "Dependable data is built on purpose, and it can stay simple.",
       photo: photos.streetAerial,
     },
     deliverablesPhoto: photos.bridgePylon,

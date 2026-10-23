@@ -31,7 +31,7 @@ export const businessTechnologyConsulting: ServiceDetail = {
     heading: "What we can help with",
     items: [
       { title: "Discovery and requirements", text: "The problem, the people affected and what “done” looks like, written down before anyone buys anything." },
-      { title: "Technology assessment", text: "An honest look at your current systems: what works, what doesn’t and what it costs to keep." },
+      { title: "Technology assessment", text: "A clear look at your current systems: what works, what doesn’t and what it costs to keep." },
       { title: "Options appraisal", text: "Routes compared side by side on cost, risk, time and fit, with one recommended." },
       { title: "Solution architecture", text: "How the recommended option fits together, at a level your team and suppliers can build from." },
       { title: "Implementation roadmap", text: "Phases, dependencies and decisions in an order your organisation can actually deliver." },
@@ -63,12 +63,12 @@ export const businessTechnologyConsulting: ServiceDetail = {
   related: ["data-infrastructure", "ai-automation"],
   cta: {
     heading: "Bring us the decision you’re stuck on.",
-    body: "Tell us what you are trying to achieve and what is in the way. We’ll tell you honestly how we can help.",
+    body: "Tell us what you are trying to achieve and what is in the way. We’ll tell you how we can help.",
   },
   v2: {
     heroPhoto: photos.threeColleagues,
     hook: {
-      heading: "Something has to change. Nobody agrees on what.",
+      heading: "Something has to change, and nobody agrees on what.",
       paragraphs: [
         "A vendor is pitching a new system. A board member has read about AI. Operations wants the old process fixed first. Every option has a cost, and none comes with a plan your team can actually deliver.",
         "Decisions made in that fog tend to be expensive to reverse.",

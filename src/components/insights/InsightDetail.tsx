@@ -117,7 +117,7 @@ export function InsightDetail({ status, insight }: { status: ContentStatus; insi
         </Section>
       )}
 
-      <NextStep id={`${p}-cta`} eyebrow={nextStep.eyebrow} heading="Want to talk this through for your organisation?" lead="Tell us what you’re dealing with and we’ll tell you honestly whether and how we can help." options={nextStep.options} />
+      <NextStep id={`${p}-cta`} eyebrow={nextStep.eyebrow} heading="Want to talk this through for your organisation?" lead="Describe the challenge and we’ll reply with questions or a suggested next step." options={nextStep.options} />
     </>
   );
 }

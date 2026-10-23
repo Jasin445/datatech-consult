@@ -59,12 +59,12 @@ export const dataAnalytics: ServiceDetail = {
   related: ["data-infrastructure", "ai-automation"],
   cta: {
     heading: "Bring us the report everyone argues about.",
-    body: "Tell us what you need to measure and where the data lives now. We’ll tell you honestly how we can help.",
+    body: "Tell us what you need to measure and where the data lives now. We’ll tell you how we can help.",
   },
   v2: {
     heroPhoto: photos.analystWindow,
     hook: {
-      heading: "Everyone has a number. Nobody has the number.",
+      heading: "Five teams, five versions of last month’s revenue.",
       paragraphs: [
         "Sales reports one figure, finance another, and the monthly pack takes three days to assemble because the data lives in five places. By the time it reaches the meeting, it describes last month.",
         "Dashboards were supposed to fix this. Too often they just show the disagreement in colour.",

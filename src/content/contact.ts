@@ -5,8 +5,8 @@ export const contactPage = {
   title: "Contact",
   metaDescription: "Tell Datatechhub Consulting about the business challenge you are trying to solve and we will respond by email.",
   eyebrow: "Contact",
-  heading: "Tell us what isn’t working.",
-  accent: "We’ll take it from there.",
+  heading: "Describe the problem in",
+  accent: "your own words.",
   lead: "You don’t need a finished brief. A clear description of the situation is enough to start a useful conversation.",
   formHeading: "Send an enquiry",
   next: {

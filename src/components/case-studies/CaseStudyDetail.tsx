@@ -136,7 +136,7 @@ export function CaseStudyDetail({ status, study, index = 0 }: { status: ContentS
         </Section>
       )}
 
-      <NextStep id={`${p}-cta`} eyebrow={nextStep.eyebrow} heading="Facing a similar challenge?" lead="Tell us what you’re dealing with and we’ll tell you honestly whether and how we can help." options={nextStep.options} />
+      <NextStep id={`${p}-cta`} eyebrow={nextStep.eyebrow} heading="Facing a similar challenge?" lead="Describe the challenge and we’ll reply with questions or a suggested next step." options={nextStep.options} />
     </>
   );
 }

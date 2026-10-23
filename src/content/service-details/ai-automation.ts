@@ -32,7 +32,7 @@ export const aiAutomation: ServiceDetail = {
       { title: "AI-assisted drafting and summaries", text: "First drafts and summaries prepared by AI and reviewed by a named person before use." },
       { title: "Sorting and routing requests", text: "Enquiries, tickets and forms sent to the right person or queue automatically." },
       { title: "Internal tools", text: "Small, focused applications for tasks your team still does in spreadsheets and email." },
-      { title: "An honest AI assessment", text: "Whether AI suits a given problem, what it would take, and what could go wrong." },
+      { title: "An AI suitability check", text: "Whether AI suits a given problem, what it would take, and what could go wrong." },
     ],
   },
   deliverables: {
@@ -63,17 +63,17 @@ export const aiAutomation: ServiceDetail = {
   related: ["business-technology-consulting", "data-infrastructure"],
   cta: {
     heading: "Tell us which task eats the most hours.",
-    body: "Describe the task and what you’re considering. We’ll tell you honestly whether automation or AI is likely to help.",
+    body: "Describe the task and what you’re considering. We’ll tell you whether automation or AI is likely to help.",
   },
   v2: {
     heroPhoto: photos.codeLaptop,
     hook: {
-      heading: "Everyone wants AI. Few can say what it should do.",
+      heading: "Everyone wants AI; few can say which task it should take on.",
       paragraphs: [
         "Somewhere in your organisation, capable people spend hours re-typing invoices, chasing approvals and copying figures between systems. That is usually where automation helps first, and it rarely needs anything exotic.",
         "Elsewhere, an AI tool is being trialled with no clear problem, no owner and no way to check its answers.",
       ],
-      turn: "Start with the work, not the hype.",
+      turn: "Start with the task that eats the most hours.",
       photo: photos.focusedWork,
     },
     deliverablesPhoto: photos.laptopFocus,

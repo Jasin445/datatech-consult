@@ -6,7 +6,7 @@ export const servicesPage = {
   metaDescription:
     "Data analytics, data infrastructure, AI and automation, and business and technology consulting for organisations in Nigeria and across Africa.",
   eyebrow: "Services",
-  heading: "Start with the problem. We’ll find the service.",
+  heading: "Start with the problem you can name.",
   lead: "Four connected service areas. Some organisations need one; many need a combination. Either way, we agree the scope with you before any work begins.",
   photo: photos.workshop,
   areas: {

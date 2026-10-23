@@ -15,8 +15,8 @@ export const aboutPage = {
   photo: photos.teamOffice,
   overview: {
     eyebrow: "Who we are",
-    heading: "We’re not here to sell you a platform.",
-    statement: "We’re here to make the decision in front of you easier, and the one after it.",
+    heading: "The technology comes second here.",
+    statement: "Our job is to make the next decision easier, and the one after it.",
     paragraphs: [
       "We work with organisations in Nigeria and across Africa that want to solve a business problem using data and technology, without taking on more complexity than they need.",
       "Our work spans analytics and reporting, data foundations, AI and automation, and technology consulting. We treat these as connected: the right answer often involves more than one, and sometimes it is simpler than expected.",
@@ -37,8 +37,8 @@ export const aboutPage = {
     lead: "The people responsible for our work.",
   },
   statement: {
-    text: "Context isn’t a detail.",
-    accent: "It’s the brief.",
+    text: "Your context is",
+    accent: "the brief.",
     photo: photos.skylineWide,
   },
   next: {

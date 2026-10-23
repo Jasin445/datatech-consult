@@ -25,7 +25,7 @@ export default function NotFound() {
         <div className="lg:col-span-7">
           <Eyebrow>Page not found</Eyebrow>
           <h1 id="page-heading" className="mb-5">
-            This page isn’t in the report. <Accent>Let’s find it.</Accent>
+            We can’t find <Accent>that page.</Accent>
           </h1>
           <p className="mb-8 max-w-[52ch] text-lg text-muted">The link may be out of date, or the page may have moved.</p>
           <div className={buttonRowClass}>

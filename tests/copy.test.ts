@@ -44,3 +44,29 @@ describe("site copy", () => {
     }
   });
 });
+
+/** Heading-like values (heading, headline, title, turn, accent, statement) from content files. */
+function headings(source: string): string[] {
+  const noComments = source.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  return [...noComments.matchAll(/\b(?:heading|headline|headlineAccent|title|turn|accent|statement):\s*"([^"]+)"/g)].map((m) => m[1]!);
+}
+
+describe("site copy avoids formulaic patterns", () => {
+  const files = contentFiles(root);
+
+  it("uses no em dashes in visitor copy", () => {
+    for (const file of files) expect(visibleText(fs.readFileSync(file, "utf8")), path.relative(root, file)).not.toContain("—");
+  });
+
+  it("has no two-beat slogan headings (e.g. “Four ways in. One joined-up approach.”)", () => {
+    const slogan = /^[^.?!]{3,40}\. [^.?!]{3,45}\.$/;
+    const found = files.flatMap((f) => headings(fs.readFileSync(f, "utf8")).filter((h) => slogan.test(h)).map((h) => `${path.relative(root, f)}: ${h}`));
+    expect(found).toEqual([]);
+  });
+
+  it("has no “not X, Y” contrast headings", () => {
+    const contrast = /(?:,\s*not\b|\bnot\b[^.]*,|n’t (?:a|just) [^.]+\. It’s)/i;
+    const found = files.flatMap((f) => headings(fs.readFileSync(f, "utf8")).filter((h) => contrast.test(h)).map((h) => `${path.relative(root, f)}: ${h}`));
+    expect(found).toEqual([]);
+  });
+});

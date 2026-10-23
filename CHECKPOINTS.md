@@ -319,7 +319,7 @@ Commit: `fix(f9): sophisticated two-tier header and services mega-menu`.
 |---|-------|--------|
 | V4-1 | Readout mark replaces the star | complete |
 | V4-2 | Motif pass: labels, headline accent, links | complete |
-| V4-3 | Copy pass and guard | not started |
+| V4-3 | Copy pass and guard | complete |
 | V4-4 | Imagery and photo-plus-mockup compositions | not started |
 | V4-5 | QA, Lighthouse, docs | not started |
 
@@ -330,3 +330,7 @@ New project symbol `Mark` (src/components/ui/Mark.tsx): a chart corner with one 
 Section labels: gold rule + uppercase tracking replaced by the readout mark + sentence-case label (Eyebrow, mega-menu). Headline accents: gold italic words replaced by the measurement bracket (`Accent`: upright words with a fine gold dimension line ticked at both ends) in the hero, page heroes, statement bands, contact, 404, error and footer slogan. Numerals: italic serif replaced by light tabular sans "readout" figures (large) or small semibold tabular counters (labels) across process steps, contents lists, report sections, cards, mosaic, menus, case covers, 404. Links: italic serif links replaced by sans semibold with an arrow (hero, closing cards, insights preview, contact band, about). Italics now only for genuine quotations (field note, problem quotes). Process markers: rotated diamonds replaced by plotted points.
 Validation: typecheck, lint, vitest 164/164; production build; qa:a11y on 5 routes passes; hero screenshot reviewed.
 Commit: `v4-2: measurement bracket, readout numerals, mark labels`.
+
+## V4-3: Copy pass and guard (complete, 2026-10-23)
+Rewrote formulaic headings: two-beat slogans (e.g. "Four ways in. One joined-up approach." -> "Four services that hand work to each other."; "Bring us the problem. We’ll bring the plan." -> "Start with a conversation about the problem."; "Three ways to start. One honest quote." -> "Three ways to work with us, each quoted up front.") and "not X, Y" contrasts (e.g. "Start with the work, not the hype." -> "Start with the task that eats the most hours."; "Context isn’t a detail. It’s the brief." -> "Your context is the brief."; "We’re not here to sell you a platform." -> "The technology comes second here."). Hero headline: "Your numbers should settle the argument." "Honest/honestly" removed from visitor copy (was ~10 uses). Copy guard (tests/copy.test.ts) now also fails on em dashes in visitor copy, short two-sentence slogan headings and "not X, Y" contrast headings; it caught one more ("Dependable foundations, not necessarily complex ones" -> "Foundations sized to the problem").
+Validation: typecheck, lint, vitest 167/167. Commit: `v4-3: copy without formula headlines; guard extended`.

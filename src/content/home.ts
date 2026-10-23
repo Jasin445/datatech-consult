@@ -11,8 +11,8 @@ export type TitledItem = { title: string; text: string };
 
 export const hero = {
   eyebrow: "Data, analytics, AI and technology consulting",
-  headline: "Your numbers should settle arguments,",
-  headlineAccent: "not start them.",
+  headline: "Your numbers should",
+  headlineAccent: "settle the argument.",
   body: "We help organisations in Nigeria and across Africa turn scattered data and stubborn manual work into reporting people trust, systems that talk to each other, and automation that earns its place.",
   primary: ctas.consultation,
   secondary: ctas.enquiry,
@@ -36,13 +36,13 @@ export const problem = {
 /** "What the work looks like": each item is illustrated by a coded mockup (chosen in src/app/page.tsx). */
 export const showcase = {
   eyebrow: "What the work looks like",
-  heading: "Less talk about data. More of this.",
-  lead: "A few examples of what we build and hand over. The figures are illustrative; the shapes of the work are real.",
+  heading: "What we build and hand over.",
+  lead: "Three examples of the kind of work we deliver. The figures in them are illustrative.",
   items: [
     {
       key: "pipeline",
       kicker: "Data infrastructure",
-      title: "Many sources. One version of the truth.",
+      title: "One reporting store everyone reads from.",
       text: "Your systems keep doing their jobs. We connect them, clean what comes out, and load one reporting store everyone reads from.",
       href: "/services/data-infrastructure",
       linkLabel: "Explore data infrastructure",
@@ -59,7 +59,7 @@ export const showcase = {
       key: "options",
       kicker: "Business & technology consulting",
       title: "Options weighed before money is spent.",
-      text: "When a decision is expensive to reverse, we lay the routes side by side, rate them honestly and recommend one, including “fix what you have”.",
+      text: "When a decision is expensive to reverse, we lay the routes side by side, rate them against your constraints and recommend one, including “fix what you have”.",
       href: "/services/business-technology-consulting",
       linkLabel: "Explore technology consulting",
     },
@@ -80,8 +80,8 @@ export const challenges = {
 
 export const servicesIntro = {
   eyebrow: "What we do",
-  heading: "Four ways in. One joined-up approach.",
-  lead: "Start wherever the pain is. Most engagements touch more than one of these.",
+  heading: "Four services that hand work to each other.",
+  lead: "Start wherever the problem costs you most; most engagements end up touching more than one.",
 };
 
 /** Photo for each service card, keyed by service slug. */
@@ -94,8 +94,8 @@ export const servicePhotos: Record<string, Photo> = {
 
 /** Full-bleed statement over a photograph. */
 export const statement = {
-  text: "The best sign the work is done:",
-  accent: "the meeting gets shorter.",
+  text: "The best sign the work is done: the meeting",
+  accent: "gets shorter.",
   photo: photos.bridgeNight,
 };
 
@@ -130,7 +130,7 @@ export const workingWithUs = {
   heading: "What working with us is like.",
   items: [
     { title: "Problem first", text: "We start with the decision you need to make. The technology comes second." },
-    { title: "Honest advice", text: "If a tool, including AI, isn’t the right fit, we’ll say so. Sometimes the answer is to do less." },
+    { title: "Straight answers", text: "If a tool, including AI, isn’t the right fit, we’ll say so. Sometimes the answer is to do less." },
     { title: "Scope before work", text: "You see what’s included, what isn’t and what it costs before anything starts." },
     { title: "Work you can own", text: "Documented and handed over, so your team can understand and run it." },
   ] satisfies TitledItem[],
@@ -153,7 +153,7 @@ export const audiences = {
 /** Closing section: the two ways to start, as ornament cards. */
 export const nextStep = {
   eyebrow: "Your next step",
-  heading: "Bring us the problem. We’ll bring the plan.",
+  heading: "Start with a conversation about the problem.",
   options: [
     {
       title: "Talk it through",

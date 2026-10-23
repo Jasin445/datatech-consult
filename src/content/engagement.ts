@@ -55,7 +55,7 @@ const shapes: EngagementShape[] = [
 
 export const engagement = {
   eyebrow: "How we work",
-  heading: "Three ways to start. One honest quote.",
+  heading: "Three ways to work with us, each quoted up front.",
   lead: "Every engagement moves through the same five stages: understand, diagnose, design, implement, support. Each way of working covers some of them. Start with whichever fits; if you’re not sure, a diagnostic is a sensible first step.",
   shapes,
   pricing: {

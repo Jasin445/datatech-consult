@@ -4,6 +4,6 @@ export const caseStudiesPage = {
   metaDescription:
     "Examples of how Datatechhub Consulting approaches data, analytics, AI, automation and technology problems, with the type of each project stated.",
   eyebrow: "Case studies",
-  heading: "The work, labelled honestly.",
+  heading: "Projects, labelled by what they were.",
   lead: "Examples of the problems we work on and how we approach them. Each one states what kind of project it was, so you can see what is completed client work and what is not.",
 } as const;

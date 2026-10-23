@@ -64,7 +64,7 @@ export default function ServicesPage() {
 
       <EngagementShapes id="how-we-work" tone="surface" />
 
-      <NextStep id="services-next-heading" eyebrow={nextStep.eyebrow} heading="Not sure which service you need?" lead="Describe the challenge and we’ll tell you honestly whether and how we can help." options={nextStep.options} />
+      <NextStep id="services-next-heading" eyebrow={nextStep.eyebrow} heading="Not sure which service you need?" lead="Describe the challenge and we’ll reply with questions or a suggested next step." options={nextStep.options} />
     </>
   );
 }
