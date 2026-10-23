@@ -22,6 +22,7 @@ export function FolioCard({
   featured = false,
   tone = "surface",
   headingLevel = "h3",
+  titleStyle = "condensed",
   children,
 }: {
   folio?: string;
@@ -32,6 +33,8 @@ export function FolioCard({
   featured?: boolean;
   tone?: keyof typeof foldClass;
   headingLevel?: "h2" | "h3";
+  /** "condensed" = uppercase condensed sans (reference style); "serif" = calmer display serif. */
+  titleStyle?: "condensed" | "serif";
   /** Extra content after the text (e.g. related links). */
   children?: ReactNode;
 }) {
@@ -44,7 +47,13 @@ export function FolioCard({
     >
       <span aria-hidden="true" className={`pointer-events-none absolute -top-px -right-px size-14 lg:size-18 ${foldClass[tone]}`} />
       {folio && <p className={`mb-4 font-display text-xl italic ${featured ? "text-charcoal" : "text-gold"}`}>{folio}</p>}
-      <Heading className="mb-4 font-sans text-2xl leading-tight font-medium tracking-[0.04em] uppercase font-stretch-condensed">{title}</Heading>
+      <Heading
+        className={
+          titleStyle === "serif" ? "mb-3 text-3xl leading-tight" : "mb-4 font-sans text-2xl leading-tight font-medium tracking-[0.04em] uppercase font-stretch-condensed"
+        }
+      >
+        {title}
+      </Heading>
       <p className="mb-8 text-muted">{text}</p>
       {children}
       {href && (

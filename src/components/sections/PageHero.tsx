@@ -30,7 +30,7 @@ export function PageHero({
   actions?: ReactNode;
 }) {
   return (
-    <section aria-labelledby="page-heading" className="relative overflow-hidden border-b border-border pt-8 pb-16 lg:pt-12 lg:pb-24">
+    <section aria-labelledby="page-heading" className={`relative overflow-hidden pt-8 lg:pt-12 ${photo || visual ? "border-b border-border pb-16 lg:pb-24" : "pb-12 lg:pb-16"}`}>
       <Container>
         {above}
         <div className="mt-6 grid items-center gap-12 lg:mt-10 lg:grid-cols-12 lg:gap-12">

@@ -27,24 +27,12 @@ export const aiAutomation: ServiceDetail = {
   capabilities: {
     heading: "What we can help with",
     items: [
-      { title: "Workflow automation", text: "Automating routine, rules-based steps such as routing, notifications and approvals." },
-      { title: "AI-assisted business processes", text: "Using AI to support a task, such as drafting or sorting, with a person reviewing the result." },
-      { title: "Internal tools", text: "Simple tools that replace spreadsheet-and-email processes your team relies on." },
-      { title: "System integrations", text: "Connecting the tools you already use so information moves without re-entry." },
-      { title: "Repetitive-task reduction", text: "Finding and removing steps that add effort but little value." },
-      { title: "Practical AI implementation", text: "Putting an agreed AI use case into working use, with testing and clear ownership." },
-    ],
-  },
-  useCases: {
-    heading: "Where automation and AI tend to fit",
-    lead: "Good candidates are usually tasks that are frequent, follow clear rules, and where mistakes are easy to spot and correct.",
-    items: [
-      { title: "Routine documents and reports", text: "Preparing standard documents or summaries from information you already hold." },
-      { title: "Sorting and routing requests", text: "Directing enquiries, tickets or forms to the right person or process." },
-      { title: "Data entry and transfer", text: "Moving information between systems without manual re-keying." },
-      { title: "Reminders, approvals and updates", text: "Keeping routine processes moving without someone chasing." },
-      { title: "Drafting and summarising for review", text: "AI-prepared first drafts or summaries that a person checks before use." },
-      { title: "Checking records for obvious errors", text: "Flagging missing, duplicate or inconsistent entries for a person to resolve." },
+      { title: "Workflow automation", text: "Approvals, reminders, hand-offs and status updates that run on their own, with exceptions routed to a person." },
+      { title: "Document and data entry", text: "Invoices, forms and records read and entered into your systems, checked before anything is posted." },
+      { title: "AI-assisted drafting and summaries", text: "First drafts and summaries prepared by AI and reviewed by a named person before use." },
+      { title: "Sorting and routing requests", text: "Enquiries, tickets and forms sent to the right person or queue automatically." },
+      { title: "Internal tools", text: "Small, focused applications for tasks your team still does in spreadsheets and email." },
+      { title: "An honest AI assessment", text: "Whether AI suits a given problem, what it would take, and what could go wrong." },
     ],
   },
   deliverables: {

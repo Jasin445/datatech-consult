@@ -27,8 +27,8 @@ const heroVisuals: Record<string, ReactNode> = {
 };
 
 /**
- * Shared template for the four service pages (V3: shortened). Order: hero with the service's mockup,
- * problem story with the problems as tags, what we do, where it fits (optional), what you get with the
+ * Shared template for the four service pages (V3 fixes). Order: hero, the service's mockup full width,
+ * problem story with the problems as tags, one "what we do" list, what you get with the
  * page's single disclaimer, before we start, how engagements work, closing with related links.
  */
 export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
@@ -45,7 +45,6 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
         eyebrow={`Service ${String(index + 1).padStart(2, "0")}`}
         heading={detail.heading}
         lead={detail.lead}
-        visual={heroVisuals[detail.slug]}
         actions={
           <>
             <ButtonLink href={ctas.consultation.href}>{ctas.consultation.label}</ButtonLink>
@@ -56,47 +55,22 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
         }
       />
 
-      <ProblemStory eyebrow="Sound familiar?" {...detail.v2.hook} />
-      <section aria-labelledby={`${p}-problems`} className="border-b border-border bg-surface pb-12">
-        <div className="mx-auto w-full max-w-[calc(var(--container-max)+2*var(--gutter))] px-(--gutter)">
-          <h2 id={`${p}-problems`} className="sr-only">
-            {detail.problems.heading}
-          </h2>
-          <ul className="flex flex-wrap gap-2">
-            {detail.problems.items.map((item) => (
-              <li key={item.title} className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-sm text-charcoal">
-                <Ornament className="size-2.5 text-gold" />
-                {item.title}
-              </li>
-            ))}
-          </ul>
-        </div>
+      {/* The service's mockup, full width (it was cramped at half width in the hero). */}
+      <section aria-label={`What ${service?.shortName ?? "the work"} looks like`} className="pb-(--section-space)">
+        <div className="mx-auto w-full max-w-[calc(64rem+2*var(--gutter))] px-(--gutter)">{heroVisuals[detail.slug]}</div>
       </section>
 
+      <ProblemStory eyebrow="Sound familiar?" {...detail.v2.hook} tags={detail.problems.items.map((i) => i.title)} />
       <Section labelledBy={`${p}-capabilities`}>
         <SectionHeading id={`${p}-capabilities`} eyebrow="What we do" heading={detail.capabilities.heading} lead={detail.intro[1] ?? detail.capabilities.lead} />
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {detail.capabilities.items.map((item, i) => (
             <li key={item.title}>
-              <FolioCard title={item.title} text={item.text} featured={i === 0} tone="white" />
+              <FolioCard title={item.title} text={item.text} featured={i === 0} tone="white" titleStyle="serif" />
             </li>
           ))}
         </ul>
       </Section>
-
-      {detail.useCases && (
-        <Section tone="charcoal" labelledBy={`${p}-use-cases`}>
-          <SectionHeading id={`${p}-use-cases`} eyebrow="Where it fits" heading={detail.useCases.heading} lead={detail.useCases.lead} onDark />
-          <ul className="grid gap-x-10 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
-            {detail.useCases.items.map((item) => (
-              <li key={item.title} className="border-t border-gold-soft/40 pt-5">
-                <h3 className="mb-2 text-2xl text-white">{item.title}</h3>
-                <p className="mb-0">{item.text}</p>
-              </li>
-            ))}
-          </ul>
-        </Section>
-      )}
 
       <Section tone="surface" labelledBy={`${p}-deliverables`}>
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">

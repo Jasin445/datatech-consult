@@ -27,12 +27,12 @@ export const dataInfrastructure: ServiceDetail = {
   capabilities: {
     heading: "What we can help with",
     items: [
-      { title: "Data pipelines and processing", text: "Repeatable ways of collecting data, cleaning it and getting it where it is needed." },
-      { title: "Data integration", text: "Connecting information from different systems so it can be used together." },
-      { title: "Data quality and consistency", text: "Agreeing definitions, finding duplicates and gaps, and putting checks in place." },
-      { title: "Data architecture", text: "Deciding how data should be organised and stored, with options and trade-offs explained." },
-      { title: "Reporting infrastructure", text: "The data layer that dashboards and reports draw from, built so they stay accurate." },
-      { title: "Documentation and maintainability", text: "Recording how data flows and what it means, so your team can look after it." },
+      { title: "Connecting your systems", text: "Accounting, CRM, field apps and spreadsheets feeding one place, without re-keying." },
+      { title: "Automated data pipelines", text: "Scheduled jobs that extract, clean and load data, and tell someone when they fail." },
+      { title: "Data quality checks", text: "Rules that catch duplicates, missing values and inconsistent formats before they reach a report." },
+      { title: "A reporting store sized to you", text: "Often a well-structured database; a warehouse only when volume or reliability needs it." },
+      { title: "Definitions and documentation", text: "A data dictionary and run notes, so the knowledge isn’t locked in one person’s head." },
+      { title: "Fixing what you already have", text: "Cleaning up and connecting existing systems before adding anything new." },
     ],
   },
   deliverables: {

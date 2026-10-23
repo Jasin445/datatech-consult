@@ -12,8 +12,6 @@ export type ServiceDetail = {
   intro: string[];
   problems: { heading: string; lead?: string; items: TitledItem[] };
   capabilities: { heading: string; lead?: string; items: TitledItem[] };
-  /** Optional: where the service is a good fit (rendered after capabilities) */
-  useCases?: { heading: string; lead?: string; items: TitledItem[] };
   deliverables: { heading: string; lead?: string; items: TitledItem[] };
   /** Service-specific caveats, risks or prerequisites */
   considerations: { heading: string; lead?: string; items: TitledItem[] };

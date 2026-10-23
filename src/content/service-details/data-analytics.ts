@@ -27,12 +27,12 @@ export const dataAnalytics: ServiceDetail = {
   capabilities: {
     heading: "What we can help with",
     items: [
-      { title: "Business intelligence dashboards", text: "Interactive views of performance for managers and leadership, designed around the decisions they make." },
-      { title: "KPI reporting and measurement", text: "Defining indicators, how they are calculated and who owns them, so everyone reads the same numbers." },
-      { title: "Business and operational analysis", text: "Examining sales, finance, operations or programme data to understand what is happening and why." },
-      { title: "Reporting automation", text: "Replacing repeated manual preparation with scheduled, repeatable reports where the data allows." },
-      { title: "Decision-support reporting", text: "Summaries that set out findings, options and caveats for a specific decision." },
-      { title: "Trends and performance gaps", text: "Identifying patterns, outliers and shortfalls that are worth investigating." },
+      { title: "Management dashboards", text: "One screen for the measures leadership actually uses, refreshed from your systems instead of rebuilt by hand." },
+      { title: "KPI definitions everyone agrees on", text: "What each number means, how it’s calculated and who owns it, written down once." },
+      { title: "Automated monthly packs", text: "The recurring report produced on schedule, so the people who built it can analyse it instead." },
+      { title: "Answers to a specific question", text: "A focused analysis of sales, costs, collections or programme data, with the evidence and its limits." },
+      { title: "Early warnings", text: "Trend views and alerts that flag slipping performance before it shows up at quarter end." },
+      { title: "Decision papers", text: "A short summary of findings, options and caveats for one decision on the table." },
     ],
   },
   deliverables: {

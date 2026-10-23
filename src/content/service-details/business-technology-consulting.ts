@@ -30,12 +30,12 @@ export const businessTechnologyConsulting: ServiceDetail = {
   capabilities: {
     heading: "What we can help with",
     items: [
-      { title: "Business and technical discovery", text: "Understanding your goals, processes, systems and constraints before proposing anything." },
-      { title: "Requirements gathering", text: "Turning stakeholder needs into clear, prioritised requirements that people have agreed." },
-      { title: "Technology assessment", text: "Comparing the options, including your current tools, against your actual requirements." },
-      { title: "Solution architecture", text: "Outlining how the parts of a solution fit together, with trade-offs explained." },
-      { title: "Implementation planning", text: "Breaking the work into realistic stages, with dependencies, risks and resources identified." },
-      { title: "Technology advisory", text: "Independent advice on technology decisions as they arise, within an agreed scope." },
+      { title: "Discovery and requirements", text: "The problem, the people affected and what “done” looks like, written down before anyone buys anything." },
+      { title: "Technology assessment", text: "An honest look at your current systems: what works, what doesn’t and what it costs to keep." },
+      { title: "Options appraisal", text: "Routes compared side by side on cost, risk, time and fit, with one recommended." },
+      { title: "Solution architecture", text: "How the recommended option fits together, at a level your team and suppliers can build from." },
+      { title: "Implementation roadmap", text: "Phases, dependencies and decisions in an order your organisation can actually deliver." },
+      { title: "Technology advisory", text: "A second opinion on technology decisions, proposals and quotes before you commit." },
     ],
   },
   deliverables: {
