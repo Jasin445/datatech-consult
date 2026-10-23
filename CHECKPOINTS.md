@@ -365,3 +365,6 @@ Commit: `adjust: sticky banner, tray navigation, hover services menu, settling-p
 - Owner removed "How we work" from the primary nav (src/lib/site.ts, commented out); nav test updated to match.
 Validation: typecheck, lint, vitest 167/167; production build; animation verified in Chrome (runs on client navigation, menu animates, reduced-motion duration ~0, no residual transform); qa:responsive and qa:a11y on all 10 routes pass; Lighthouse / perf 90, CLS 0.
 Commit: `adjust: banner call to action, page and menu entrance motion`.
+
+### Owner adjustments: number overlap and menu speed (2026-10-24)
+Fixed numerals overlapping text in the contact "What happens next" list (fixed 2.75rem column was narrower than the V4 light numerals); the same risk in `ContentsList` (service deliverables) fixed the same way: auto-width number column with a gap. Dropdown animation slowed from 0.22s to 0.45s with a softer ease and a 12px drop. Validation: typecheck, lint, vitest 167/167; production build; screenshots of both lists; qa:responsive and qa:a11y pass. Commit: `adjust: fix numeral overlap, slower dropdown animation`.

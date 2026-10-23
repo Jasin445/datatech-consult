@@ -47,7 +47,7 @@ export default function ContactPage() {
             </h2>
             <ol aria-labelledby="next-heading" className="mb-10 border-t border-charcoal/15">
               {contactPage.next.steps.map((step, i) => (
-                <li key={step} className="grid grid-cols-[2.75rem_1fr] gap-x-3 border-b border-charcoal/15 py-4">
+                <li key={step} className="grid grid-cols-[auto_1fr] items-baseline gap-x-5 border-b border-charcoal/15 py-4">
                   <span aria-hidden="true" className="font-sans text-3xl font-light leading-none text-gold tabular-nums">
                     {String(i + 1).padStart(2, "0")}
                   </span>
