@@ -14,35 +14,50 @@ export type EngagementShape = {
   bestWhen: string;
   text: string;
   youGet: string;
+  /** How big the commitment is, in words (no figures unless supplied by the business). */
+  scale: string;
+  /**
+   * Optional "from" price, e.g. "₦1,500,000". Leave null until the business supplies and confirms a figure;
+   * it renders only when set (tests/engagement.test.ts requires confirmed: true).
+   */
+  price: { from: string; confirmed: true } | null;
 };
+
+const shapes: EngagementShape[] = [
+  {
+    name: "Diagnostic",
+    stages: [0, 1, 2],
+    bestWhen: "You know something isn’t working, but not what to do about it.",
+    text: "A fixed-scope look at one problem: the data, systems and process behind it.",
+    youGet: "A written assessment and a recommended plan you can act on, with us or without us.",
+    scale: "The smallest commitment: one problem, one written plan.",
+    price: null,
+  },
+  {
+    name: "Project",
+    stages: [2, 3],
+    bestWhen: "You know what you need built or fixed.",
+    text: "We build or configure an agreed solution, such as a dashboard, a pipeline or an automation, against a written scope.",
+    youGet: "A working, tested solution, handed over with documentation your team can use.",
+    scale: "Sized to one agreed deliverable. Bigger work is split into stages you approve one at a time.",
+    price: null,
+  },
+  {
+    name: "Ongoing support",
+    stages: [4],
+    bestWhen: "Something we built needs looking after as your needs change.",
+    text: "Monitoring, maintenance and improvements on terms agreed in advance.",
+    youGet: "A named contact and a clear understanding of what is covered.",
+    scale: "Covers only what is agreed in advance, nothing open-ended.",
+    price: null,
+  },
+];
 
 export const engagement = {
   eyebrow: "How we work",
   heading: "Three ways to start. One honest quote.",
   lead: "Every engagement moves through the same five stages: understand, diagnose, design, implement, support. Each way of working covers some of them. Start with whichever fits; if you’re not sure, a diagnostic is a sensible first step.",
-  shapes: [
-    {
-      name: "Diagnostic",
-      stages: [0, 1, 2],
-      bestWhen: "You know something isn’t working, but not what to do about it.",
-      text: "A fixed-scope look at one problem: the data, systems and process behind it.",
-      youGet: "A written assessment and a recommended plan you can act on, with us or without us.",
-    },
-    {
-      name: "Project",
-      stages: [2, 3],
-      bestWhen: "You know what you need built or fixed.",
-      text: "We build or configure an agreed solution, such as a dashboard, a pipeline or an automation, against a written scope.",
-      youGet: "A working, tested solution, handed over with documentation your team can use.",
-    },
-    {
-      name: "Ongoing support",
-      stages: [4],
-      bestWhen: "Something we built needs looking after as your needs change.",
-      text: "Monitoring, maintenance and improvements on terms agreed in advance.",
-      youGet: "A named contact and a clear understanding of what is covered.",
-    },
-  ] satisfies EngagementShape[],
+  shapes,
   pricing: {
     heading: "How pricing works",
     points: [

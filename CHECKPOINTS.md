@@ -273,7 +273,7 @@ Owner decisions: Book a consultation is the primary action. Fix critique items 1
 | F3 | Service pages: one specific "what we do" list, plain titles, mockup full width instead of cramped in the hero | complete |
 | F4 | One engagement model (shapes with their stages) on /services; service pages link to it instead of repeating it | complete |
 | F5 | Weak stock photos replaced (services hero; services rows use mockups) | complete |
-| F6 | Scale/cost signals (qualitative, optional price fields hidden until supplied) | not started |
+| F6 | Scale/cost signals (qualitative, optional price fields hidden until supplied) | complete |
 | F7 | Smaller items (mobile hero, sound-familiar strip) | not started |
 | F8 | QA, Lighthouse, docs | not started |
 
@@ -291,3 +291,6 @@ One engagement model: each shape lists which of the five stages it covers (Diagn
 
 ### F5 (complete, 2026-10-23)
 Services hero photo replaced (casual "shorts and sandals" shot -> professional working meeting `workshop`); the four /services rows now show each service's mockup instead of stock people (`ServiceFeature` takes a `visual`). Removed three photos no longer used (team-casual, team-discussion, planning-wall): 22 photos, 8.6MB. Validation: typecheck, lint, vitest 164/164; screenshot reviewed. Commit: `fix(f5): services page shows mockups, weak stock photo replaced`.
+
+### F6 (complete, 2026-10-23)
+Each engagement shape now has a "Scale" line (Diagnostic: the smallest commitment, one problem, one written plan; Project: sized to one agreed deliverable, bigger work split into approved stages; Ongoing support: only what is agreed in advance) and an optional `price: { from, confirmed: true } | null` that renders "From ..." only when the business supplies a figure. All prices are null. Tests: every shape has a scale signal; prices may only appear through the confirmed field; no figures or durations elsewhere. Validation: typecheck, lint, vitest 165/165. Commit: `fix(f6): scale signals and optional confirmed prices`.
