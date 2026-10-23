@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Ornament } from "@/components/ui/Ornament";
 import { getParentBrandUrl, getPublicContactEmail } from "@/lib/env";
-import { ctas, primaryCta, services, siteConfig } from "@/lib/site";
+import { ctas, services, siteConfig } from "@/lib/site";
 
 /** Only verified details appear here. Unset env values are omitted, never replaced with invented ones. */
 export function SiteFooter() {
@@ -16,13 +15,6 @@ export function SiteFooter() {
           <p className="mb-0 max-w-[16ch] font-display text-4xl text-white">
             Empowering <span className="text-gold-soft italic">through data.</span>
           </p>
-          <Link
-            href={primaryCta.href}
-            className="group inline-flex items-center gap-4 self-start font-display text-2xl italic no-underline lg:self-auto"
-          >
-            <Ornament className="size-6 text-gold-soft transition-transform duration-500 group-hover:rotate-45" />
-            <span className="underline decoration-1 underline-offset-8">{primaryCta.label}</span>
-          </Link>
         </div>
 
         <div className="grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">

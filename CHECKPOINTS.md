@@ -259,3 +259,23 @@ Performance (first Lighthouse measurement on the project; Lighthouse 12, simulat
 Images: removed the one photo no longer used (boardroom, replaced by the dashboard mockup); 25 photos remain, all used; next/image serves resized modern formats.
 Final QA (fresh production build of the project in the scratchpad copy): typecheck, lint, vitest 161/161 (15 files); qa:responsive on all 10 public routes, two clean runs; qa:a11y (31 links, axe WCAG 2.2 AA, keyboard, reduced motion): pass; unapproved content and unknown routes 404; [launch] warnings logged as expected with nothing configured.
 Commit: `v3-8: measured performance, text no longer fades in, final v3 qa`.
+
+---
+
+# V3 fixes (after the V3 critique; owner: "not version 4, just fixes")
+
+Owner decisions: Book a consultation is the primary action. Fix critique items 1-8 and 10 of the V3 critique, except item 9 (contact configuration) and the parked "real team/proof" item. No invented prices or durations (item 8 gets qualitative scale notes and optional price fields that stay hidden until the business supplies figures).
+
+| # | Fix | Status |
+|---|-----|--------|
+| F1 | Primary action = Book a consultation (hero, service heroes, closing cards, footer duplicate CTA removed) | complete |
+| F2 | Homepage cut to ~7 sections (principles + commitments merged, audiences moved to About, challenges folded into the problem story) | not started |
+| F3 | Service pages: one specific "what we do" list, plain titles, mockup full width instead of cramped in the hero | not started |
+| F4 | One engagement model (shapes with their stages) on /services; service pages link to it instead of repeating it | not started |
+| F5 | Weak stock photos replaced (services hero; services rows use mockups) | not started |
+| F6 | Scale/cost signals (qualitative, optional price fields hidden until supplied) | not started |
+| F7 | Smaller items (mobile hero, sound-familiar strip) | not started |
+| F8 | QA, Lighthouse, docs | not started |
+
+### F1 (complete, 2026-10-23)
+Homepage hero primary button is now "Book a consultation" (enquiry secondary); service, About and services-overview heroes put booking first; closing cards list "Talk it through" first with a gold ring and "Recommended first step" label (`OrnamentCard recommended`); the footer's duplicate booking link after the closing cards is removed (header CTA unchanged). Validation: typecheck, lint, vitest 161/161. Commit: `fix(f1): book a consultation is the primary action`.

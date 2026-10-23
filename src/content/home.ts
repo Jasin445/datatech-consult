@@ -14,8 +14,8 @@ export const hero = {
   headline: "Your numbers should settle arguments,",
   headlineAccent: "not start them.",
   body: "We help organisations in Nigeria and across Africa turn scattered data and stubborn manual work into reporting people trust, systems that talk to each other, and automation that earns its place.",
-  primary: ctas.enquiry,
-  secondary: { label: "Explore our services", href: "/services" },
+  primary: ctas.consultation,
+  secondary: ctas.enquiry,
   note: {
     label: "Field note",
     text: "Most reporting problems aren’t technology problems. They start with a question nobody agreed on.",
@@ -166,16 +166,17 @@ export const nextStep = {
   heading: "Bring us the problem. We’ll bring the plan.",
   options: [
     {
-      title: "Write to us",
-      text: "Describe the challenge in your own words. We reply by email with questions or a suggested next step.",
-      cta: ctas.enquiry.label,
-      href: ctas.enquiry.href,
-    },
-    {
       title: "Talk it through",
       text: "An initial conversation to understand the situation and whether we’re the right people to help.",
       cta: ctas.consultation.label,
       href: ctas.consultation.href,
+      recommended: true,
+    },
+    {
+      title: "Write to us",
+      text: "Prefer writing? Describe the challenge in your own words and we’ll reply by email with questions or a next step.",
+      cta: ctas.enquiry.label,
+      href: ctas.enquiry.href,
     },
   ],
 };

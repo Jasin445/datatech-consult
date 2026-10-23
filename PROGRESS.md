@@ -1,4 +1,4 @@
-Current phase: VERSION 3 COMPLETE (V3-1 to V3-8). V1 and V2 complete before it.
+Current phase: V3 FIXES (F1-F8, see CHECKPOINTS.md). V3 complete before it.
 Status: development complete. NOT LAUNCH-READY: business, legal and configuration inputs outstanding (RELEASE_CHECKLIST.md). Critique item 1 (real people, credentials, case studies) is PARKED by owner decision (2026-10-23): it will be the final piece of work, after everything else.
 
 Next action:

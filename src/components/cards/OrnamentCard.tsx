@@ -11,16 +11,28 @@ export function OrnamentCard({
   href,
   cta,
   headingLevel = "h3",
+  recommended = false,
 }: {
   title: string;
   text: string;
   href?: string;
   cta?: string;
   headingLevel?: "h2" | "h3";
+  /** Marks the primary option (gold ring and a "Recommended first step" label). */
+  recommended?: boolean;
 }) {
   const Heading = headingLevel;
   return (
-    <article className="group relative flex h-full flex-col items-center rounded-[1.25rem] bg-white px-8 py-12 text-center text-charcoal transition-transform duration-300 hover:-translate-y-1 lg:px-12 lg:py-16">
+    <article
+      className={`group relative flex h-full flex-col items-center rounded-[1.25rem] bg-white px-8 py-12 text-center text-charcoal transition-transform duration-300 hover:-translate-y-1 lg:px-12 lg:py-16 ${
+        recommended ? "ring-2 ring-gold-soft ring-offset-4 ring-offset-charcoal" : ""
+      }`}
+    >
+      {recommended && (
+        <p className="absolute -top-3.5 left-1/2 mb-0 -translate-x-1/2 rounded-full bg-gold px-4 py-1 text-xs font-semibold tracking-[0.14em] whitespace-nowrap text-white uppercase">
+          Recommended first step
+        </p>
+      )}
       <Ornament className="mb-8 size-12 text-gold transition-transform duration-500 group-hover:rotate-45" />
       <Heading className="mb-5 text-4xl text-charcoal">{title}</Heading>
       <p className={`max-w-[30ch] text-lg ${href ? "mb-8" : "mb-0"}`}>{text}</p>

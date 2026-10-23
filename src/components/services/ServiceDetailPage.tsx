@@ -48,9 +48,9 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
         visual={heroVisuals[detail.slug]}
         actions={
           <>
-            <ButtonLink href={ctas.enquiry.href}>{ctas.enquiry.label}</ButtonLink>
-            <ButtonLink href={ctas.consultation.href} variant="secondary">
-              {ctas.consultation.label}
+            <ButtonLink href={ctas.consultation.href}>{ctas.consultation.label}</ButtonLink>
+            <ButtonLink href={ctas.enquiry.href} variant="secondary">
+              {ctas.enquiry.label}
             </ButtonLink>
           </>
         }
