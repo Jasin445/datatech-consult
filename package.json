@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "qa:responsive": "node scripts/qa/responsive.mjs http://localhost:3000 \"/,/services,/services/data-analytics,/services/data-infrastructure,/services/ai-automation,/services/business-technology-consulting,/about,/contact,/book-consultation,/privacy\"",
+    "qa:a11y": "node scripts/qa/a11y-crawl.mjs http://localhost:3000 \"/,/services,/services/data-analytics,/services/data-infrastructure,/services/ai-automation,/services/business-technology-consulting,/about,/contact,/book-consultation,/privacy\""
   },
   "dependencies": {
     "next": "^16.4.2",
@@ -22,8 +24,10 @@
     "@types/node": "^22.20.5",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "axe-core": "^4.14.0",
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.4.2",
+    "playwright-core": "^1.64.1",
     "tailwindcss": "^4.1.0",
     "typescript": "^5.9.3",
     "vitest": "^5.0.5"

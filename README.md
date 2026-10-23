@@ -11,13 +11,17 @@ npm start          # serve the production build
 npm run lint
 npm run typecheck
 npm test
+# QA against a running production server on :3000 (needs Google Chrome installed)
+npm run qa:responsive   # 10 routes x 320/390/820/1280/1680: overflow, one h1, console errors
+npm run qa:a11y         # internal link crawl, axe WCAG 2.2 AA, keyboard focus, reduced motion
 ```
 
 ## Environment
 Copy `.env.example` to `.env.local`. Every variable is optional until the feature that needs it is used; unconfigured integrations must degrade honestly (no fake success). Never commit `.env.local`.
+`NEXT_PUBLIC_SITE_URL` must be set at build time. Without it the whole site is noindex, robots.txt blocks crawling and the sitemap is empty (safe for previews).
 
 ## Structure
-`src/app` routes · `src/components/{ui,layout,navigation,sections}` · `src/styles/globals.css` (Tailwind import, `@theme` tokens, base) · `src/lib` site config, env validation, content governance · `src/content` typed content (home, services, about, leadership, case studies, insights) · `tests` vitest.
+`src/app` routes, `sitemap.ts`, `robots.ts`, `opengraph-image.tsx`, `api/contact` · `src/components/{ui,layout,navigation,sections,services,case-studies,insights,forms,seo}` · `src/styles/globals.css` (Tailwind import, `@theme` tokens, base) · `src/lib` site config, env validation, content governance (`content/`), enquiry pipeline (`contact/`, `email/`, `validation/`), booking, SEO (`seo/`) · `src/content` typed content (home, services, about, leadership, case studies, insights, booking, privacy) · `tests` vitest · `scripts/qa` browser QA.
 
 ## Styling
 Tailwind CSS v4 utilities only. Rules, colour tokens and class mapping are in `STYLING.md`. Read it before touching UI.

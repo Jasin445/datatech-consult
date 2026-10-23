@@ -1,39 +1,43 @@
-Current checkpoint: 15 (Final integration and QA)
-Status: NOT STARTED
+Current checkpoint: 15 of 15 (Final integration and QA)
+Status: ALL CHECKPOINTS COMPLETE FOR DEVELOPMENT. NOT LAUNCH-READY (business, legal and configuration inputs outstanding).
 
 Completed checkpoints:
-- Checkpoints 1-10: complete (see CHECKPOINTS.md for deliverables and validation)
-- Checkpoint 11: complete (verified 2026-10-23 on a networked machine)
-- Checkpoint 12: complete (booking page; validation in CHECKPOINTS.md)
-- Checkpoint 13: complete (privacy notice draft + production collection gate)
-- Checkpoint 14: complete (metadata, canonical, sitemap, robots, Open Graph, structured data)
+- Checkpoints 1-15: complete (deliverables, files and validation per checkpoint in CHECKPOINTS.md)
 
-Current work:
-- Checkpoint 15: full route/link crawl, keyboard/focus/contrast/reduced-motion checks, responsive QA on every route, final docs.
+Next phase:
+- Version 2 adjustments (instructions to come from the business owner). Build on the existing design system, content model and QA scripts; keep the records below current.
 
-Validation (last run, 2026-10-23, Checkpoint 11):
-- npm ci, typecheck, lint (0 problems), vitest 87/87, production build: pass.
-- Production server, no email env: /contact 200 shows the honest "form not available" message and a booking link, no <form>; POST /api/contact 503 not_configured; GET 405.
-- Production server, EMAIL_PROVIDER=resend with an invalid key: form renders; invalid input 400 with field errors; valid input reaches the real Resend API, which returns 401, and the route returns 502 send_failed; 6th request in the window returns 429; non-JSON returns 415. Logs contain only event names, provider and HTTP status (no personal data).
-- Chrome (headless, Playwright): /, /services, all four service pages, /about, /contact at 320/390/820/1280/1680px: no horizontal overflow, one h1, no console errors. Mobile menu: keyboard open (Enter), Escape closes and returns focus.
+## Report by area (master prompt section 11, production acceptance)
+Development functionality completed:
+- All 14 required routes plus /api/contact, sitemap.xml, robots.txt, opengraph-image. Four distinct service pages. Conditional Case Studies and Insights (hidden in production until approved items exist). Content governance (dummy/draft/approved) enforced in pages, navigation, metadata and sitemap; critical violations fail the build.
+- Enquiry form with shared client/server validation, honeypot, rate limit, provider adapter (Resend), honest unavailable states. Booking page with HTTPS provider link or honest unconfigured state. Draft privacy notice describing actual behaviour, with a production gate on personal-data collection.
 
-Defects fixed in Checkpoint 11 verification:
-- Desktop "Book a consultation" header button was visible on mobile (Tailwind `hidden` lost to the Button's `inline-flex`), causing horizontal overflow at 320px. Now `max-lg:hidden`; rule 10 added to STYLING.md.
-- Mobile menu panel had no bottom padding or edge; added padding, bottom border and card shadow.
-- Unused eslint-disable directive removed.
+Production build and tests completed (2026-10-23, this machine):
+- typecheck, lint (0 problems), vitest 111/111, production build: pass.
+- npm run qa:responsive and npm run qa:a11y against the production build: pass (0 axe violations, no overflow, all links resolve, focus visible, reduced motion respected). Development-only routes also checked.
 
-Not verified:
-- A successful real email send (no real provider credentials available).
-- Contrast with a dedicated tool; touch-device behaviour; screen-reader pass.
+External integrations configured and tested:
+- NOT configured. Email: tested against the real Resend API only with an invalid key (correct 502 path); a successful send is untested. Scheduling: no provider chosen. Domain/hosting: none.
 
-Outstanding issues:
-- Privacy notice is a draft: production contact form stays disabled until business facts are supplied, the notice is legally reviewed and approved.
-- Booking meeting length and format are unconfirmed (src/content/booking.ts).
-- NEXT_PUBLIC_SITE_URL must be set at build time; without it the whole site is noindex by design.
-- All marketing copy is proposed and needs business review.
+Business information verified:
+- NO. Pending: legal/company details, leadership, relationship statement with Datatechhub, approved case studies and articles, review of all marketing copy, meeting length/format, public contact email, parent-brand URL.
 
-Configuration blockers:
-- No email provider credentials, booking URL, site URL, public contact email or parent-brand URL configured.
+Legal and privacy review completed:
+- NO. Privacy notice is a draft with six business facts missing; production disables the contact form until it is approved.
 
-Next action:
-- Run the Checkpoint 15 QA script across every route.
+Domain and deployment configured:
+- NO. NEXT_PUBLIC_SITE_URL unset (site is noindex everywhere by design until set at build time).
+
+Remaining launch blockers: see RELEASE_CHECKLIST.md (unticked items).
+
+## Known limitations (documented decisions)
+- Rate limiting is in-memory per server instance; no durable email queue/retry (failures are shown to the visitor).
+- No root loading.tsx (it hid static content until JS ran); add segment-level loading UI only where data is slow.
+- Booking is a link, not an embed, until a provider is chosen.
+- Share image headline renders in the bundled regular-weight font.
+
+## Not verified
+- Screen-reader pass, real touch devices, Lighthouse/performance budget, deployment on the target host, real email delivery, real scheduling provider.
+
+## Resume instructions
+Read this file, STYLING.md, CHECKPOINTS.md, IMPLEMENTATION_PLAN.md and MASTER_PROMPT.md. Run `npm ci && npm run typecheck && npm run lint && npm test && npm run build`, then `npm start` and `npm run qa:responsive && npm run qa:a11y`.

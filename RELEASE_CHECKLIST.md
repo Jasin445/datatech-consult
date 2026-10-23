@@ -14,11 +14,12 @@ Development completion is not launch readiness. Tick only after verification.
 - [ ] HTTPS enforced by the host (the privacy notice states the site is served over an encrypted connection)
 - [ ] Domain and hosting configured; NEXT_PUBLIC_SITE_URL set
 - [ ] Verified contact email and parent-brand URL set (or intentionally omitted)
-- [ ] SEO: canonical URLs, sitemap, robots, Open Graph verified
-- [ ] Analytics: decision recorded (none implemented by default)
-- [ ] Accessibility QA (keyboard, focus, contrast, reduced motion) with real tooling
-- [ ] Responsive QA: mobile, tablet, desktop, wide
-- [ ] Production build, lint, type-check and tests pass on the release commit
+- [ ] SEO: implemented and verified with an example URL (Checkpoint 14); re-verify canonical URLs, sitemap, robots and Open Graph on the real domain
+- [ ] Analytics: decision recorded (none implemented; the privacy notice says no cookies or analytics, so update it first if this changes)
+- [x] Automated accessibility QA (axe WCAG 2.2 AA, keyboard focus, reduced motion): 0 violations on 2026-10-23 (`npm run qa:a11y`)
+- [ ] Manual accessibility QA: screen reader (VoiceOver/NVDA) and real touch devices
+- [x] Responsive QA: 320/390/820/1280/1680 on every route, 2026-10-23 (`npm run qa:responsive`); re-run after content changes
+- [ ] Production build, lint, type-check and tests pass on the release commit (pass on the checkpoint-15 commit; re-run on the release commit)
 - [ ] Rate-limit/queue strategy: current limiter is in-memory per instance and there is no queue/retry (documented in PROGRESS.md); confirm or upgrade for the chosen host
 - [x] Checkpoint 11 verified on a networked machine (install, typecheck, lint, tests, build, /contact and /api/contact checks). A real successful send is still untested (see the email item)
 - [ ] Verify the sender domain with the email provider (Resend requires it) and confirm EMAIL_PROVIDER=resend

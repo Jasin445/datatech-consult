@@ -23,7 +23,10 @@ Confirmed: primary `#1E64AB`, secondary `#15A8EA` (accents/graphics only, 2.7:1 
 Production output = `approved` only. `dummy`/`draft` visible in development with `DUMMY DATA — REPLACE BEFORE LAUNCH` notices, never indexed or in sitemap. Build-time validation of statuses is added with each content registry (Checkpoints 8-10) and finalised in 14-15.
 
 ## Integration boundaries
-Email: provider adapter behind `/api/contact` (Checkpoint 11); env `EMAIL_PROVIDER`, `EMAIL_API_KEY`, `CONTACT_RECIPIENT_EMAIL`, `CONTACT_SENDER_EMAIL`. Booking: `NEXT_PUBLIC_BOOKING_URL` (Checkpoint 12). No analytics.
+Email: provider adapter behind `/api/contact` (Checkpoint 11); env `EMAIL_PROVIDER`, `EMAIL_API_KEY`, `CONTACT_RECIPIENT_EMAIL`, `CONTACT_SENDER_EMAIL`. Booking: `NEXT_PUBLIC_BOOKING_URL` (HTTPS provider link, opened in a new tab; no embed until a provider is chosen). Privacy: `src/content/privacy.ts` (draft); production disables the enquiry form until it is approved. SEO: `src/lib/seo`; indexable only with `NEXT_PUBLIC_SITE_URL` (build time) and approved content. No analytics, no cookies.
+
+## Loading states
+There is deliberately no root `loading.tsx`: it wrapped every route in a Suspense boundary so static pages shipped a "Loading…" fallback with the real content hidden until JavaScript ran. Add `loading.tsx` only to a segment that genuinely awaits slow data.
 
 ## Checkpoint sequence
 1 Foundation · 2 Homepage · 3 Services overview · 4 Data Analytics · 5 Data Infrastructure · 6 AI & Automation · 7 Business & Technology Consulting (completes services) · 8 About · 9 Case studies · 10 Insights · 11 Contact + enquiry API · 12 Book consultation · 13 Privacy · 14 SEO/discovery · 15 Final QA.

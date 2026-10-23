@@ -18,7 +18,7 @@
 | 12 | Consultation booking | complete |
 | 13 | Privacy | complete |
 | 14 | SEO and site discovery | complete |
-| 15 | Final integration and QA | not started |
+| 15 | Final integration and QA | complete (development); launch blocked on business inputs, see RELEASE_CHECKLIST.md |
 
 ## Checkpoint 1: Global application foundation (complete)
 Delivered: Next.js app, strict TypeScript, design tokens, global styles, root layout and metadata defaults, skip link, sticky header, accessible mobile disclosure menu, footer (verified details only), Button/ButtonLink, Container, Section, DevNotice, CtaBand, loading/error/not-found states, per-feature env validation, content status model with filtering and violation detection, conditional nav for Case Studies/Insights, .env.example, docs.
@@ -109,6 +109,23 @@ Commit: `checkpoint-13: implement privacy notice and collection gate`.
 ## Checkpoint 14: SEO and site discovery (complete, 2026-10-23)
 Delivered: shared `pageMetadata()` (src/lib/seo/page.ts over pure buildPageMetadata in metadata.ts) on every route: title, description, absolute canonical, Open Graph (url, image, article type/date/verified authors), Twitter card. Indexing policy: indexable only with NEXT_PUBLIC_SITE_URL set AND approved/public content; otherwise noindex and no canonical. src/app/sitemap.ts and robots.ts over pure buildSitemap/buildRobots (src/lib/seo/discovery.ts): sitemap lists static public pages, approved case studies/insights (and their indexes) only, privacy only when approved, empty without a site URL; robots disallows everything without a site URL or outside production, otherwise allows / except /api/ and links the sitemap. Structured data: Organization (name, URL, official logo only) on the homepage, Article on approved insights; JsonLd escapes "<". Generated share image src/app/opengraph-image.tsx (official logo unchanged). Conditional index pages emit no canonical when they 404; 404s rely on Next's own single noindex.
 Files: src/lib/seo/{metadata,page,discovery,structured-data}.ts; src/components/seo/JsonLd.tsx; src/app/{sitemap,robots}.ts; src/app/opengraph-image.tsx; metadata in every page, layout.tsx, not-found.tsx; tests/seo.test.ts (12 tests).
-Validation: typecheck, lint, vitest 112/112, build pass. Production without site URL: all pages noindex, no canonical, robots.txt Disallow /, empty sitemap. Production with NEXT_PUBLIC_SITE_URL=https://www.example.com (build-time variable): canonicals and og:url absolute, og/twitter image 200 PNG 1200x630, Organization JSON-LD on /, privacy noindex (draft), robots allows / with sitemap link, sitemap = 9 static pages (no dummy, no draft privacy), /case-studies, unknown slugs and /nope 404 with a single noindex and no canonical.
+Validation: typecheck, lint, vitest 111/111, build pass. Production without site URL: all pages noindex, no canonical, robots.txt Disallow /, empty sitemap. Production with NEXT_PUBLIC_SITE_URL=https://www.example.com (build-time variable): canonicals and og:url absolute, og/twitter image 200 PNG 1200x630, Organization JSON-LD on /, privacy noindex (draft), robots allows / with sitemap link, sitemap = 9 static pages (no dummy, no draft privacy), /case-studies, unknown slugs and /nope 404 with a single noindex and no canonical.
 Note: NEXT_PUBLIC_SITE_URL must be set at BUILD time (static pages, robots and sitemap are prerendered).
 Commit: `checkpoint-14: implement seo metadata, sitemap and robots`.
+
+## Checkpoint 15: Final integration and QA (complete for development, 2026-10-23)
+Checks run (all on this machine, Chrome headless via Playwright, axe-core 4):
+- typecheck, lint (0 problems), vitest 111/111 across 11 files, production build: pass.
+- Responsive: all 10 production routes at 320/390/820/1280/1680 and the 5 development-only routes (case studies, insights, contact form): no horizontal overflow, exactly one h1, no console errors.
+- Link crawl: every internal link and in-page anchor on every route resolves (production 30 links, development 21).
+- axe WCAG 2.0/2.1/2.2 A+AA + best-practice at 390 and 1280 on every route: 0 violations after fixes.
+- Keyboard: skip link is the first Tab stop; every Tab stop shows a visible focus indicator; mobile menu opens with Enter, Escape closes and returns focus.
+- Reduced motion: transitions ~0s, scroll-behavior auto.
+- Contact form in browser: empty submit focuses the error summary, marks 3 fields aria-invalid with summary links; provider failure shows the honest error and preserves input.
+- Unknown slugs and /nope return 404 with one noindex; content filtering, privacy gate, missing-env states verified in Checkpoints 11-14.
+Defects found and fixed:
+- Root loading.tsx made static pages ship "Loading…" with content hidden until JS ran (axe intermittently found no h1). Removed; content is now in the initial HTML.
+- Links in muted text were distinguishable by colour only (axe link-in-text-block, serious). Links are now underlined globally; footer list links underline on hover.
+Added: scripts/qa/{responsive,a11y-crawl}.mjs with npm scripts qa:responsive and qa:a11y (devDependencies playwright-core, axe-core).
+Not run / not possible here: screen-reader testing, real touch devices, a successful real email send, a real scheduling provider, deployment on the target host, Lighthouse/performance budget.
+Commit: `checkpoint-15: final integration and qa`.

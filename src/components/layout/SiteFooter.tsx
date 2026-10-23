@@ -9,7 +9,7 @@ export function SiteFooter() {
   const parentUrl = getParentBrandUrl();
 
   return (
-    <footer className="bg-charcoal pt-16 pb-8 text-footer-text [&_a]:text-white [&_a:hover]:text-footer-link-hover">
+    <footer className="bg-charcoal pt-16 pb-8 text-footer-text [&_a]:text-white [&_a:hover]:text-footer-link-hover [&_li_a]:no-underline [&_li_a:hover]:underline">
       <Container>
         <div className="grid gap-8 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
