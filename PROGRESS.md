@@ -1,38 +1,38 @@
-Current checkpoint: 4
-Status: COMPLETE (awaiting authorisation to start Checkpoint 5)
+Current checkpoint: 5
+Status: COMPLETE (awaiting authorisation to start Checkpoint 6)
 
 Completed checkpoints:
 - Checkpoint 1: complete (foundation, official logo)
 - Checkpoint 2: complete (homepage)
 - Checkpoint 3: complete (services overview)
 - Checkpoint 4: complete (Data Analytics & Business Intelligence page + reusable service-detail template)
+- Checkpoint 5: complete (Data Infrastructure & Engineering page)
 
 Current work:
-- None in progress. Next: Checkpoint 5, Data Infrastructure & Engineering page.
+- None in progress. Next: Checkpoint 6, AI & Automation page.
 
-Files completed (Checkpoint 4):
-- src/app/services/data-analytics/page.tsx
-- src/content/service-details/{types.ts,data-analytics.ts}
-- src/components/services/{ServiceDetailPage,RelatedServices}.tsx (shared template for Checkpoints 5-7)
-- src/components/sections/Breadcrumb.tsx; PageHeader gained an `above` slot; ProcessSteps now sizes columns to the step count
-- styles added to src/styles/sections.css
-- tests/service-details.test.ts
+Files completed (Checkpoint 5):
+- src/app/services/data-infrastructure/page.tsx
+- src/content/service-details/data-infrastructure.ts
+- tests/service-details.test.ts extended: runs the shared checks on both pages, checks pages do not share section copy, and checks the infrastructure page does not assume a warehouse or migration is needed
+- (Checkpoint 4 template, Breadcrumb, RelatedServices remain in place)
 
 Validation (actually run):
-- typecheck, lint: pass. Tests: 16/16 pass. Production build: pass (route /services/data-analytics prerendered).
-- Chromium: page returns 200; no horizontal overflow at 320, 390, 820, 1280, 1680px; one h1; every section labelled; breadcrumb with aria-current; title and meta description set; 4-column process on desktop; desktop screenshot reviewed.
+- typecheck, lint: pass. Tests: 22/22 pass. Production build: pass.
+- Chromium: /services/data-infrastructure returns 200; no horizontal overflow at 320, 390, 820, 1280, 1680px; one h1; every section labelled; breadcrumb correct; title set; desktop screenshot reviewed.
+- Route status: /services, /services/data-analytics, /services/data-infrastructure return 200; /services/ai-automation and /services/business-technology-consulting return 404.
 
 Not yet verified:
 - Contrast with a tool, touch behaviour, focus styling review; mobile/tablet screenshots only checked for overflow
 
 Outstanding issues:
-- Remaining service pages (/services/data-infrastructure, /ai-automation, /business-technology-consulting) 404 until Checkpoints 5-7; the template and test (tests/service-details.test.ts) must be extended with each new detail file.
+- /services/ai-automation and /services/business-technology-consulting 404 until Checkpoints 6-7; add each new detail to tests/service-details.test.ts.
 - /about, /contact, /book-consultation, /privacy still 404 until their checkpoints.
-- No canonical URL (Checkpoint 14). All copy is proposed and needs business review; nothing states client outcomes, tools or pricing.
-- Service-page "considerations" section is intended to carry service-specific caveats: for AI & Automation use risks, maintenance and human oversight; for Infrastructure use "not every client needs a complex platform"; for Consulting use advisory vs implementation scope.
+- No canonical URL (Checkpoint 14). All copy is proposed and needs business review.
+- AI & Automation page: use the "considerations" section for risks, maintenance and human oversight; do not imply AI is always right, or promise job elimination, error removal or guaranteed savings. Consulting page: distinguish advisory deliverables from implementation.
 
 Configuration blockers:
 - No email, booking, site URL, contact email or parent-brand URL configured
 
 Next action:
-- Checkpoint 5: add src/content/service-details/data-infrastructure.ts and src/app/services/data-infrastructure/page.tsx using ServiceDetailPage; cover common problems, pipelines and integrations, data quality, architecture and reporting foundations, example deliverables, process, related services, CTA, and avoid implying every client needs a warehouse, cloud migration or complex architecture. Add it to tests/service-details.test.ts.
+- Checkpoint 6: add src/content/service-details/ai-automation.ts and src/app/services/ai-automation/page.tsx using ServiceDetailPage. Cover suitable automation and AI use cases, workflow automation, AI-assisted processes, internal tools and integrations, feasibility, and risks, maintenance and human oversight. Add it to tests/service-details.test.ts.

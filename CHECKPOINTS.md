@@ -6,7 +6,7 @@
 | 2 | Homepage | complete |
 | 3 | Services overview | complete |
 | 4 | Data Analytics & Business Intelligence | complete |
-| 5 | Data Infrastructure & Engineering | not started |
+| 5 | Data Infrastructure & Engineering | complete |
 | 6 | AI & Automation | not started |
 | 7 | Business & Technology Consulting | not started |
 | 8 | About | not started |
@@ -41,3 +41,9 @@ Delivered: /services/data-analytics (introduction, problems, capabilities, examp
 Validation: typecheck, lint, 16 tests, build, Chromium status/overflow/structure checks pass.
 Open: other service pages 404 until Checkpoints 5-7; canonical deferred to Checkpoint 14.
 Commit: `checkpoint-04: implement data analytics service page` (see `git log`).
+
+## Checkpoint 5: Data Infrastructure & Engineering (complete)
+Delivered: /services/data-infrastructure via the shared ServiceDetailPage: common problems, pipelines and integration, data quality, architecture and reporting foundations, example deliverables, "dependable foundations, not necessarily complex ones" considerations, 4-step approach, expected value without guarantees, related services, CTA.
+Validation: typecheck, lint, 22 tests, build, Chromium status/overflow/structure checks pass.
+Open: AI & Automation and Business & Technology Consulting pages 404 until Checkpoints 6-7; canonical deferred to Checkpoint 14.
+Commit: `checkpoint-05: implement data infrastructure service page` (see `git log`).
