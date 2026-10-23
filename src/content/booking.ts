@@ -4,6 +4,8 @@
  * `details.duration` and `details.format` must stay null until the business confirms them.
  * They are rendered only when set; nothing about length or format is promised otherwise.
  */
+import { photos } from "./media/photos";
+
 export type BookingDetails = {
   /** e.g. "30 minutes". Null until confirmed. */
   duration: string | null;
@@ -15,9 +17,13 @@ export const bookingPage = {
   title: "Book a consultation",
   metaDescription:
     "Book an initial consultation with Datatechhub Consulting to discuss a business challenge and whether data, analytics, automation or technology work could help.",
-  heading: "Book a consultation",
+  eyebrow: "Book a consultation",
+  heading: "Let’s talk it through.",
+  accent: "No finished brief needed.",
   lead: "An initial conversation to understand the challenge you are facing and whether we are the right people to help.",
+  photo: photos.oneToOne,
   purpose: {
+    eyebrow: "The conversation",
     heading: "What the consultation is for",
     items: [
       {
@@ -35,6 +41,7 @@ export const bookingPage = {
     ],
   },
   prepare: {
+    eyebrow: "Before the call",
     heading: "How to prepare",
     items: [
       "A short description of the challenge and who it affects.",

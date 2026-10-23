@@ -140,7 +140,7 @@ Commit: `checkpoint-15: final integration and qa`.
 | V2-2 | Homepage | complete (direction approved by owner) |
 | V2-3 | Services overview + service detail template | complete |
 | V2-4 | About | complete |
-| V2-5 | Contact + Booking | not started |
+| V2-5 | Contact + Booking | complete |
 | V2-6 | Case studies, Insights, Privacy, 404 | not started |
 | V2-7 | Sitewide copy/imagery pass, QA, docs | not started |
 
@@ -171,3 +171,10 @@ Files: src/content/about.ts; src/app/about/page.tsx; src/components/sections/Lea
 Governance unchanged: no founding year, legal status, history, credentials, mission or partnerships (about test still enforces it); leadership filtered by status.
 Validation: typecheck, lint, vitest 115/115, build; qa:responsive /about at 5 widths; qa:a11y on production (leadership hidden) and on the development server (dummy profile shown): all pass. Screenshots reviewed.
 Commit: `v2-4: redesign about page`.
+
+## V2-5: Contact + Booking (complete, 2026-10-23)
+Delivered: /contact rebuilt as a split layout on surface: eyebrow, serif h1 ("Tell us what isn’t working. We’ll take it from there."), lead, numbered "what happens next" list, photo; the form (or the honest unavailable state) inside a folded-corner `Panel`; charcoal "Prefer to talk first?" band with italic link to booking. /book-consultation rebuilt the same way ("Let’s talk it through. No finished brief needed."), booking states in a `Panel`, purpose as ornament cards on charcoal, preparation list with ornaments. Form fields restyled via shared `fieldClass` (square editorial fields), error/success boxes squared, submit button with arrow. Copy moved to src/content/contact.ts; booking content gained eyebrows and a photo.
+Behaviour unchanged: availability check, privacy gate, validation, error summary, server messages, input preservation, booking URL parsing, unconfirmed length/format (null, dev notice only).
+Removed: sections/ItemGrid (unused).
+Validation: typecheck, lint, vitest 115/115, build. Production (no env): qa:responsive and qa:a11y on /contact and /book-consultation pass. A disposable copy of the project in the scratchpad running `next dev` with dummy email config and a booking URL: form and configured booking render; qa:responsive and qa:a11y pass; browser form test passes (empty submit focuses error summary with 3 invalid fields; real Resend rejects the dummy key and the visitor sees the honest error with input preserved).
+Commit: `v2-5: redesign contact and booking pages`.

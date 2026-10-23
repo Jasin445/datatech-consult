@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRef, useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/Button";
+import { ArrowRight } from "@/components/ui/Ornament";
 import { fieldClass, fieldErrorClass, hintClass, labelClass } from "@/components/ui/styles";
 import {
   emptyEnquiry,
@@ -90,7 +91,7 @@ export function ContactForm() {
 
   if (phase === "success") {
     return (
-      <div ref={statusRef} tabIndex={-1} role="status" className={`rounded-md border-2 border-primary bg-surface p-6 outline-offset-4 ${scrollClass}`}>
+      <div ref={statusRef} tabIndex={-1} role="status" className={`border-l-4 border-gold bg-surface p-6 outline-offset-4 ${scrollClass}`}>
         <h2 className="text-xl">Thank you. Your enquiry has been submitted.</h2>
         <p>
           We will respond to the email address you gave. If you do not hear from us within a few working days, please check your spam folder or{" "}
@@ -109,12 +110,12 @@ export function ContactForm() {
   return (
     <form onSubmit={onSubmit} noValidate aria-describedby={errorList.length ? "form-errors" : undefined} className="flex flex-col gap-6">
       <div ref={statusRef} tabIndex={-1} role="alert" className={`outline-offset-4 ${scrollClass}`}>
-        {serverError ? <p className="mb-0 rounded-sm border-2 border-danger bg-white p-4 font-semibold text-danger">{serverError}</p> : null}
+        {serverError ? <p className="mb-0 border-2 border-danger bg-white p-4 font-semibold text-danger">{serverError}</p> : null}
       </div>
 
       {errorList.length > 0 && (
-        <div ref={summaryRef} tabIndex={-1} id="form-errors" role="alert" className={`rounded-sm border-2 border-danger bg-white p-4 outline-offset-4 ${scrollClass}`}>
-          <h2 className="mb-2 text-lg text-danger">Please fix {errorList.length === 1 ? "this field" : "these fields"}</h2>
+        <div ref={summaryRef} tabIndex={-1} id="form-errors" role="alert" className={`border-2 border-danger bg-white p-4 outline-offset-4 ${scrollClass}`}>
+          <h2 className="mb-2 font-sans text-lg font-semibold text-danger">Please fix {errorList.length === 1 ? "this field" : "these fields"}</h2>
           <ul className="mb-0 list-disc pl-5">
             {errorList.map((f) => (
               <li key={f}>
@@ -181,8 +182,9 @@ export function ContactForm() {
       </div>
 
       <div>
-        <Button type="submit" disabled={phase === "submitting"} aria-disabled={phase === "submitting"}>
+        <Button type="submit" className="w-full sm:w-auto" disabled={phase === "submitting"} aria-disabled={phase === "submitting"}>
           {phase === "submitting" ? "Sending…" : "Send enquiry"}
+          <ArrowRight />
         </Button>
         <p className="mt-3 mb-0 text-sm text-muted">
           We use your details only to respond to your enquiry. See our <Link href="/privacy">privacy notice</Link>.

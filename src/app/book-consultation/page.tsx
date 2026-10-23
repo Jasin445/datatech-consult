@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo/page";
 import Link from "next/link";
-import { ItemGrid } from "@/components/sections/ItemGrid";
-import { PageHeader } from "@/components/sections/PageHeader";
+import { OrnamentCard } from "@/components/cards/OrnamentCard";
 import { ButtonLink, buttonRowClass } from "@/components/ui/Button";
+import { Container } from "@/components/ui/Container";
 import { DevNotice } from "@/components/ui/DevNotice";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { ArrowRight, Ornament } from "@/components/ui/Ornament";
+import { Panel } from "@/components/ui/Panel";
+import { Photo } from "@/components/ui/Photo";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { checkItemClass } from "@/components/ui/styles";
 import { bookingPage } from "@/content/booking";
 import { bookingProviderHost } from "@/lib/booking";
 import { getBookingUrl, getPublicContactEmail } from "@/lib/env";
+import { pageMetadata } from "@/lib/seo/page";
 
 export const metadata: Metadata = pageMetadata({
   title: bookingPage.title,
@@ -31,87 +34,109 @@ export default function BookConsultationPage() {
 
   return (
     <>
-      <PageHeader heading={bookingPage.heading} lead={bookingPage.lead} />
-
-      <Section labelledBy="schedule-heading">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
-          <div className="max-w-(--reading-max)">
-            <h2 id="schedule-heading" className="mb-6">
-              Choose a time
-            </h2>
-            {confirmedDetails.length === 0 && (
-              <DevNotice>Meeting length and format are not confirmed. Set them in src/content/booking.ts once the business confirms them.</DevNotice>
-            )}
-            {bookingUrl ? (
-              <div className="rounded-md border-2 border-border bg-white p-6">
-                {confirmedDetails.length > 0 && (
-                  <dl className="mb-4 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1">
-                    {confirmedDetails.map((d) => (
-                      <div key={d.label} className="contents">
-                        <dt className="font-semibold text-charcoal">{d.label}</dt>
-                        <dd className="m-0 text-muted">{d.value}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                )}
-                <p>
-                  Bookings are handled by our scheduling provider, which shows available times in your time zone and sends the
-                  confirmation. Where the provider supports it, the confirmation explains how to reschedule or cancel.
-                </p>
-                <div className={buttonRowClass}>
-                  <ButtonLink href={bookingUrl} target="_blank" rel="noopener noreferrer">
-                    Open the booking page
-                    <span className="sr-only"> (opens {bookingProviderHost(bookingUrl)} in a new tab)</span>
-                  </ButtonLink>
-                </div>
-                <p className="mt-3 mb-0 text-sm text-muted" aria-hidden="true">Opens {bookingProviderHost(bookingUrl)} in a new tab.</p>
-              </div>
-            ) : (
-              <div className="flex flex-col gap-4">
-                <DevNotice>
-                  Booking is not configured. Set NEXT_PUBLIC_BOOKING_URL to an HTTPS scheduling-provider link (see .env.example).
-                </DevNotice>
-                <div role="status" className="rounded-md border-2 border-border bg-surface p-6">
-                  <h3 className="text-xl">Online booking is not available right now</h3>
-                  <p>
-                    Send us an enquiry describing the challenge and we will reply by email to arrange a time.
-                    {publicEmail ? (
-                      <>
-                        {" "}
-                        You can also email <a href={`mailto:${publicEmail}`}>{publicEmail}</a>.
-                      </>
-                    ) : null}
-                  </p>
-                  <div className={buttonRowClass}>
-                    <ButtonLink href="/contact">Send an enquiry</ButtonLink>
-                  </div>
-                </div>
-              </div>
-            )}
+      <section aria-labelledby="page-heading" className="bg-surface py-12 lg:py-20">
+        <Container className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-6">
+            <div className="animate-rise">
+              <Eyebrow>{bookingPage.eyebrow}</Eyebrow>
+            </div>
+            <h1 id="page-heading" className="mb-6 animate-rise text-[clamp(2.6rem,1.6rem+3.6vw,4.5rem)] leading-[1] [animation-delay:90ms]">
+              {bookingPage.heading} <em className="text-gold">{bookingPage.accent}</em>
+            </h1>
+            <p className="mb-10 animate-rise text-lg text-muted [animation-delay:180ms]">{bookingPage.lead}</p>
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <Photo photo={bookingPage.photo} fill priority sizes="(min-width: 1024px) 45vw, 100vw" />
+            </div>
           </div>
 
-          <aside aria-labelledby="prepare-heading" className="max-w-(--reading-max)">
-            <h2 id="prepare-heading" className="text-xl">
-              {bookingPage.prepare.heading}
-            </h2>
-            <ul className="mb-4 flex flex-col gap-2">
-              {bookingPage.prepare.items.map((item) => (
-                <li key={item} className={checkItemClass}>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <p className="text-sm text-muted">{bookingPage.prepare.note}</p>
-            <p className="mb-0 text-sm text-muted">
+          <div className="lg:col-span-6 lg:pt-16">
+            <Panel>
+              <h2 id="schedule-heading" className="mb-6 text-4xl">
+                Choose a time
+              </h2>
+              {confirmedDetails.length === 0 && (
+                <DevNotice>Meeting length and format are not confirmed. Set them in src/content/booking.ts once the business confirms them.</DevNotice>
+              )}
+              {bookingUrl ? (
+                <>
+                  {confirmedDetails.length > 0 && (
+                    <dl className="mb-6 grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 border-y border-border py-4">
+                      {confirmedDetails.map((d) => (
+                        <div key={d.label} className="contents">
+                          <dt className="text-sm font-semibold tracking-[0.14em] text-gold uppercase">{d.label}</dt>
+                          <dd className="m-0 text-charcoal">{d.value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  )}
+                  <p>
+                    Bookings are handled by our scheduling provider, which shows available times in your time zone and sends the confirmation. Where the provider
+                    supports it, the confirmation explains how to reschedule or cancel.
+                  </p>
+                  <div className={buttonRowClass}>
+                    <ButtonLink href={bookingUrl} target="_blank" rel="noopener noreferrer">
+                      Open the booking page
+                      <span className="sr-only"> (opens {bookingProviderHost(bookingUrl)} in a new tab)</span>
+                      <ArrowRight />
+                    </ButtonLink>
+                  </div>
+                  <p className="mt-3 mb-0 text-sm text-muted" aria-hidden="true">
+                    Opens {bookingProviderHost(bookingUrl)} in a new tab.
+                  </p>
+                </>
+              ) : (
+                <div className="flex flex-col gap-4">
+                  <DevNotice>Booking is not configured. Set NEXT_PUBLIC_BOOKING_URL to an HTTPS scheduling-provider link (see .env.example).</DevNotice>
+                  <div role="status" className="border-l-4 border-gold bg-surface p-6">
+                    <h3 className="text-2xl">Online booking is not available right now</h3>
+                    <p>
+                      Send us an enquiry describing the challenge and we will reply by email to arrange a time.
+                      {publicEmail ? (
+                        <>
+                          {" "}
+                          You can also email <a href={`mailto:${publicEmail}`}>{publicEmail}</a>.
+                        </>
+                      ) : null}
+                    </p>
+                    <div className={buttonRowClass}>
+                      <ButtonLink href="/contact">Send an enquiry</ButtonLink>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </Panel>
+            <p className="mt-6 mb-0 text-sm text-muted">
               Prefer to write first? <Link href="/contact">Send an enquiry</Link>.
             </p>
-          </aside>
-        </div>
+          </div>
+        </Container>
+      </section>
+
+      <Section tone="charcoal" labelledBy="purpose-heading">
+        <SectionHeading id="purpose-heading" folio="01" eyebrow={bookingPage.purpose.eyebrow} heading={bookingPage.purpose.heading} onDark align="center" />
+        <ul className="grid gap-6 md:grid-cols-3">
+          {bookingPage.purpose.items.map((item) => (
+            <li key={item.title}>
+              <OrnamentCard title={item.title} text={item.text} />
+            </li>
+          ))}
+        </ul>
       </Section>
 
-      <Section tone="surface" labelledBy="purpose-heading">
-        <SectionHeading id="purpose-heading" heading={bookingPage.purpose.heading} />
-        <ItemGrid items={bookingPage.purpose.items} columns={3} variant="card" />
+      <Section labelledBy="prepare-heading">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <SectionHeading id="prepare-heading" folio="02" eyebrow={bookingPage.prepare.eyebrow} heading={bookingPage.prepare.heading} lead={bookingPage.prepare.note} />
+          </div>
+          <ul className="grid content-start lg:col-span-7">
+            {bookingPage.prepare.items.map((item) => (
+              <li key={item} className="flex items-baseline gap-4 border-b border-charcoal/15 py-5 font-display text-[clamp(1.4rem,1.1rem+0.9vw,1.9rem)] leading-snug text-charcoal">
+                <Ornament className="size-4 shrink-0 text-gold" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
       </Section>
     </>
   );

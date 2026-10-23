@@ -1,17 +1,21 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo/page";
 import Link from "next/link";
 import { ContactForm } from "@/components/forms/ContactForm";
-import { PageHeader } from "@/components/sections/PageHeader";
 import { ButtonLink, buttonRowClass } from "@/components/ui/Button";
+import { Container } from "@/components/ui/Container";
 import { DevNotice } from "@/components/ui/DevNotice";
-import { Section } from "@/components/ui/Section";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { Ornament } from "@/components/ui/Ornament";
+import { Panel } from "@/components/ui/Panel";
+import { Photo } from "@/components/ui/Photo";
+import { contactPage } from "@/content/contact";
 import { getContactAvailability } from "@/lib/contact/availability";
 import { getPublicContactEmail } from "@/lib/env";
+import { pageMetadata } from "@/lib/seo/page";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Contact",
-  description: "Tell Datatechhub Consulting about the business challenge you are trying to solve and we will respond by email.",
+  title: contactPage.title,
+  description: contactPage.metaDescription,
   path: "/contact",
 });
 
@@ -24,59 +28,86 @@ export default function ContactPage() {
 
   return (
     <>
-      <PageHeader
-        heading="Discuss a business challenge"
-        lead="Tell us what you are trying to solve. You do not need a finished brief; a clear description of the situation is enough to start a conversation."
-      />
-      <Section labelledBy="enquiry-heading">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
-          <div className="max-w-(--reading-max)">
-            <h2 id="enquiry-heading" className="mb-6">Send an enquiry</h2>
-            {availability.available ? (
-              <ContactForm />
-            ) : (
-              <div className="flex flex-col gap-4">
-                <DevNotice>
-                  Enquiry email is not configured, so the form is disabled. {availability.devDetail} Set the variables in .env.example (see IMPLEMENTATION_PLAN.md).
-                </DevNotice>
-                <div role="status" className="rounded-md border-2 border-border bg-surface p-6">
-                  <h3 className="text-xl">Our online enquiry form is not available right now</h3>
-                  <p>
-                    {publicEmail ? (
-                      <>
-                        Please email us at <a href={`mailto:${publicEmail}`}>{publicEmail}</a>, or book a consultation instead.
-                      </>
-                    ) : (
-                      <>Please try again later, or book a consultation instead.</>
-                    )}
-                  </p>
-                  <div className={buttonRowClass}>
-                    <ButtonLink href="/book-consultation">Book a consultation</ButtonLink>
-                  </div>
-                </div>
-              </div>
-            )}
+      <section aria-labelledby="page-heading" className="bg-surface py-12 lg:py-20">
+        <Container className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <div className="animate-rise">
+              <Eyebrow>{contactPage.eyebrow}</Eyebrow>
+            </div>
+            <h1 id="page-heading" className="mb-6 animate-rise text-[clamp(2.6rem,1.6rem+3.6vw,4.5rem)] leading-[1] [animation-delay:90ms]">
+              {contactPage.heading} <em className="text-gold">{contactPage.accent}</em>
+            </h1>
+            <p className="mb-10 animate-rise text-lg text-muted [animation-delay:180ms]">{contactPage.lead}</p>
+
+            <h2 id="next-heading" className="mb-5 font-sans text-sm font-semibold tracking-[0.18em] text-gold uppercase">
+              {contactPage.next.heading}
+            </h2>
+            <ol aria-labelledby="next-heading" className="mb-10 border-t border-charcoal/15">
+              {contactPage.next.steps.map((step, i) => (
+                <li key={step} className="grid grid-cols-[2.75rem_1fr] gap-x-3 border-b border-charcoal/15 py-4">
+                  <span aria-hidden="true" className="font-display text-3xl leading-none text-gold italic">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span>{step}</span>
+                </li>
+              ))}
+            </ol>
+
+            <div className="relative hidden aspect-[4/3] overflow-hidden lg:block">
+              <Photo photo={contactPage.photo} fill sizes="35vw" />
+            </div>
           </div>
 
-          <aside aria-labelledby="next-heading" className="max-w-(--reading-max)">
-            <h2 id="next-heading" className="text-xl">What happens next</h2>
-            <ol className="list-decimal pl-5 [&_li]:mb-2">
-              <li>We read your description and consider whether our services fit.</li>
-              <li>We reply by email, usually with questions or a suggested next step.</li>
-              <li>If it makes sense, we arrange a consultation to discuss the challenge in more depth.</li>
-            </ol>
-            <p className="text-sm text-muted">
-              Prefer to talk first? <Link href="/book-consultation">Book a consultation</Link>.
-              {publicEmail ? (
-                <>
-                  {" "}
-                  Or email <a href={`mailto:${publicEmail}`}>{publicEmail}</a>.
-                </>
-              ) : null}
-            </p>
-          </aside>
-        </div>
-      </Section>
+          <div className="lg:col-span-7">
+            <Panel>
+              <h2 id="enquiry-heading" className="mb-8 text-4xl">
+                {contactPage.formHeading}
+              </h2>
+              {availability.available ? (
+                <ContactForm />
+              ) : (
+                <div className="flex flex-col gap-4">
+                  <DevNotice>
+                    Enquiry email is not configured, so the form is disabled. {availability.devDetail} Set the variables in .env.example (see IMPLEMENTATION_PLAN.md).
+                  </DevNotice>
+                  <div role="status" className="border-l-4 border-gold bg-surface p-6">
+                    <h3 className="text-2xl">Our online enquiry form is not available right now</h3>
+                    <p>
+                      {publicEmail ? (
+                        <>
+                          Please email us at <a href={`mailto:${publicEmail}`}>{publicEmail}</a>, or book a consultation instead.
+                        </>
+                      ) : (
+                        <>Please try again later, or book a consultation instead.</>
+                      )}
+                    </p>
+                    <div className={buttonRowClass}>
+                      <ButtonLink href="/book-consultation">Book a consultation</ButtonLink>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </Panel>
+            {publicEmail ? (
+              <p className="mt-6 mb-0 text-sm text-muted">
+                Or email <a href={`mailto:${publicEmail}`}>{publicEmail}</a>.
+              </p>
+            ) : null}
+          </div>
+        </Container>
+      </section>
+
+      <section aria-label="Book a consultation instead" className="bg-charcoal py-16 lg:py-20">
+        <Container className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+          <p className="mb-0 flex items-center gap-4 font-display text-4xl text-white">
+            <Ornament className="size-8 shrink-0 text-gold-soft" />
+            {contactPage.talk.text}
+          </p>
+          <Link href="/book-consultation" className="font-display text-2xl text-white italic decoration-1 underline-offset-8 hover:text-gold-soft">
+            {contactPage.talk.cta}
+          </Link>
+        </Container>
+      </section>
     </>
   );
 }
