@@ -1,9 +1,9 @@
-Current phase: VERSION 2 (visual redesign). Current checkpoint: V2-4 (About)
-Status: V2-1, V2-2 (approved by owner) and V2-3 complete.
+Current phase: VERSION 2 (visual redesign). Current checkpoint: V2-5 (Contact + Booking)
+Status: V2-1, V2-2 (approved by owner), V2-3 and V2-4 complete.
 V1: checkpoints 1-15 complete for development; not launch-ready (see below).
 
 V2 next action:
-- Rebuild /about with PageHero, photo-led overview, parent-brand relationship, principles (folio cards), conditional leadership (V2 card), audiences mosaic and NextStep (see STYLING.md "V2 design system").
+- Rebuild /contact (form restyle, keep all validation/availability behaviour) and /book-consultation with V2 components.
 
 Completed checkpoints:
 - Checkpoints 1-15: complete (deliverables, files and validation per checkpoint in CHECKPOINTS.md)

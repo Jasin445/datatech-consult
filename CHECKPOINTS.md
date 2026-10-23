@@ -139,7 +139,7 @@ Commit: `checkpoint-15: final integration and qa`.
 | V2-1 | Design foundation (fonts, gold token, photo registry, card family, header/footer) | complete |
 | V2-2 | Homepage | complete (direction approved by owner) |
 | V2-3 | Services overview + service detail template | complete |
-| V2-4 | About | not started |
+| V2-4 | About | complete |
 | V2-5 | Contact + Booking | not started |
 | V2-6 | Case studies, Insights, Privacy, 404 | not started |
 | V2-7 | Sitewide copy/imagery pass, QA, docs | not started |
@@ -164,3 +164,10 @@ Content: `v2` block (hero photo, hook story, deliverables photo) added to each s
 Removed: ServiceCard, ConnectionList (unused).
 Validation: typecheck, lint, vitest 115/115, build; qa:responsive on the 5 services routes at 5 widths and qa:a11y (crawl, axe, keyboard, reduced motion): all pass. Desktop and mobile screenshots reviewed.
 Commit: `v2-3: redesign services overview and service pages`.
+
+## V2-4: About (complete, 2026-10-23)
+Delivered: /about rebuilt: PageHero ("A practical partner for problems that don’t fit a template."), "who we are" with a gold italic statement and an overlapping two-photo collage, parent-brand section with the official logo (unchanged) in a folded-corner card, principles as folio cards, conditional leadership (V2 cards with serif monogram, no stock faces; hidden in production until approved), full-bleed statement ("Context isn’t a detail. It’s the brief."), audience photo mosaic, closing ornament cards.
+Files: src/content/about.ts; src/app/about/page.tsx; src/components/sections/LeadershipGrid.tsx.
+Governance unchanged: no founding year, legal status, history, credentials, mission or partnerships (about test still enforces it); leadership filtered by status.
+Validation: typecheck, lint, vitest 115/115, build; qa:responsive /about at 5 widths; qa:a11y on production (leadership hidden) and on the development server (dummy profile shown): all pass. Screenshots reviewed.
+Commit: `v2-4: redesign about page`.
