@@ -368,3 +368,6 @@ Commit: `adjust: banner call to action, page and menu entrance motion`.
 
 ### Owner adjustments: number overlap and menu speed (2026-10-24)
 Fixed numerals overlapping text in the contact "What happens next" list (fixed 2.75rem column was narrower than the V4 light numerals); the same risk in `ContentsList` (service deliverables) fixed the same way: auto-width number column with a gap. Dropdown animation slowed from 0.22s to 0.45s with a softer ease and a 12px drop. Validation: typecheck, lint, vitest 167/167; production build; screenshots of both lists; qa:responsive and qa:a11y pass. Commit: `adjust: fix numeral overlap, slower dropdown animation`.
+
+### Owner adjustments: list alignment and card links (2026-10-24)
+Contact "What happens next": numerals now vertically centred on their text (baseline alignment had pushed the text low). Service deliverables (`ContentsList`): numerals top-aligned with each title. Closing-card links (`MarkCard`) restored to the italic serif style requested by the owner (V4 had made them sans with an arrow). Validation: typecheck, lint, vitest 167/167; production build; screenshots; qa:a11y and qa:responsive on 3 routes pass. Commit: `adjust: centre list numerals, restore italic card links`.
