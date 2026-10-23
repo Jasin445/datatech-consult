@@ -33,7 +33,7 @@ export default function InsightsPage() {
 
   return (
     <>
-      <PageHero eyebrow={insightsPage.eyebrow} heading={insightsPage.heading} accent={insightsPage.accent} lead={insightsPage.lead} />
+      <PageHero eyebrow={insightsPage.eyebrow} heading={insightsPage.heading} lead={insightsPage.lead} />
 
       <Section labelledBy="insights-list">
         <h2 id="insights-list" className="sr-only">

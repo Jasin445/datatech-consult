@@ -95,3 +95,10 @@ Other tokens kept: font stack (Segoe UI system stack, no network fonts), type sc
 - `PageHero` (inner-page opening; photo optional), `Panel` (white folded-corner panel for forms/booking/takeaways; `compact`), `ReportSection` (sticky label column + content; long-form pages), `ContentsList` (report contents rows), `ServiceFeature` (alternating photo rows).
 - Case studies never use stock photography: use `CaseCover` (typographic). Insights may use an optional registered `cover` photo.
 - Placeholder favicon in `src/app/icon.tsx` / `apple-icon.tsx` until an official one is supplied.
+
+## V3 rules (supersede earlier V2 guidance where they differ)
+- Folio numbers only for genuinely numbered items (card sets, steps, contents, report sections), never on section eyebrows.
+- Gold italic heading accent only on: homepage hero, statement bands, contact, 404. Elsewhere headings are plain.
+- Show the work: prefer a coded mockup (src/components/visuals) over a stock photo where the section is about what we deliver. Every mockup must keep its visible illustrative caption (MockFrame); never cover it with overlapping elements.
+- Grid columns that hold mockups need `min-w-0`.
+- Calls to action: only `ctas.enquiry` and `ctas.consultation` from src/lib/site.ts.

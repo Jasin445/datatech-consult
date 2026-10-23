@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { FolioCard } from "@/components/cards/FolioCard";
-import { AudienceMosaic } from "@/components/sections/AudienceMosaic";
 import { LeadershipGrid } from "@/components/sections/LeadershipGrid";
 import { NextStep } from "@/components/sections/NextStep";
 import { PageHero } from "@/components/sections/PageHero";
@@ -14,7 +12,7 @@ import { Photo } from "@/components/ui/Photo";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { aboutPage } from "@/content/about";
-import { audiences, nextStep, principles } from "@/content/home";
+import { nextStep } from "@/content/home";
 import { getPublishableLeadership } from "@/lib/content/leadership";
 import { getParentBrandUrl } from "@/lib/env";
 import { pageMetadata } from "@/lib/seo/page";
@@ -30,15 +28,12 @@ export default function AboutPage() {
   const leadership = getPublishableLeadership();
   const parentUrl = getParentBrandUrl();
   const { overview, parent } = aboutPage;
-  let n = 0;
-  const folio = () => String(++n).padStart(2, "0");
 
   return (
     <>
       <PageHero
         eyebrow={aboutPage.eyebrow}
         heading={aboutPage.heading}
-        accent={aboutPage.accent}
         lead={aboutPage.lead}
         photo={aboutPage.photo}
         actions={
@@ -54,7 +49,7 @@ export default function AboutPage() {
       <section aria-labelledby="who-heading" className="py-(--section-space)">
         <Container className="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
-            <Eyebrow folio={folio()}>{overview.eyebrow}</Eyebrow>
+            <Eyebrow>{overview.eyebrow}</Eyebrow>
             <h2 id="who-heading" className="mb-4 text-4xl">
               {overview.heading}
             </h2>
@@ -85,7 +80,7 @@ export default function AboutPage() {
             <p className="mb-0 text-center font-display text-2xl text-gold italic">{siteConfig.parentTagline}</p>
           </div>
           <div className="lg:col-span-7">
-            <SectionHeading id="parent-heading" folio={folio()} eyebrow={parent.eyebrow} heading={parent.heading} />
+            <SectionHeading id="parent-heading" eyebrow={parent.eyebrow} heading={parent.heading} />
             <div className="max-w-[58ch] text-lg [&_p]:mb-5">
               {parent.paragraphs.map((p) => (
                 <p key={p}>{p}</p>
@@ -101,30 +96,14 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section labelledBy="principles-heading">
-        <SectionHeading id="principles-heading" folio={folio()} eyebrow={aboutPage.principles.eyebrow} heading={principles.heading} lead={principles.lead} />
-        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {principles.items.map((p, i) => (
-            <li key={p.title}>
-              <FolioCard folio={["i.", "ii.", "iii.", "iv."][i]} title={p.title} text={p.text} featured={i === 0} tone="white" />
-            </li>
-          ))}
-        </ul>
-      </Section>
-
       {leadership.length > 0 ? (
-        <Section tone="surface" labelledBy="leadership-heading">
-          <SectionHeading id="leadership-heading" folio={folio()} eyebrow={aboutPage.leadership.eyebrow} heading={aboutPage.leadership.heading} lead={aboutPage.leadership.lead} />
+        <Section labelledBy="leadership-heading">
+          <SectionHeading id="leadership-heading" eyebrow={aboutPage.leadership.eyebrow} heading={aboutPage.leadership.heading} lead={aboutPage.leadership.lead} />
           <LeadershipGrid profiles={leadership} />
         </Section>
       ) : null}
 
       <StatementBand {...aboutPage.statement} />
-
-      <Section tone="surface" labelledBy="audiences-heading">
-        <SectionHeading id="audiences-heading" folio={folio()} eyebrow={aboutPage.audiences.eyebrow} heading={audiences.heading} lead={audiences.lead} />
-        <AudienceMosaic items={audiences.items} />
-      </Section>
 
       <NextStep id="about-next-heading" eyebrow={nextStep.eyebrow} heading={aboutPage.next.heading} options={nextStep.options} />
     </>

@@ -29,7 +29,6 @@ export default function ServicesPage() {
       <PageHero
         eyebrow={servicesPage.eyebrow}
         heading={servicesPage.heading}
-        accent={servicesPage.accent}
         lead={servicesPage.lead}
         photo={servicesPage.photo}
         actions={
@@ -43,7 +42,7 @@ export default function ServicesPage() {
       />
 
       <Section labelledBy="service-areas-heading">
-        <SectionHeading id="service-areas-heading" folio="01" eyebrow={servicesPage.areas.eyebrow} heading={servicesPage.areas.heading} />
+        <SectionHeading id="service-areas-heading" eyebrow={servicesPage.areas.eyebrow} heading={servicesPage.areas.heading} />
         <ul className="grid gap-20 lg:gap-28">
           {services.map((service, i) => (
             <li key={service.slug}>
@@ -54,12 +53,12 @@ export default function ServicesPage() {
       </Section>
 
       <Section tone="surface" labelledBy="fit-heading">
-        <SectionHeading id="fit-heading" folio="02" eyebrow={fit.eyebrow} heading={fit.heading} lead={fit.lead} />
+        <SectionHeading id="fit-heading" eyebrow={fit.eyebrow} heading={fit.heading} lead={fit.lead} />
         <FitList items={fit.items} />
       </Section>
 
       <Section labelledBy="together-heading">
-        <SectionHeading id="together-heading" folio="03" eyebrow={together.eyebrow} heading={together.heading} lead={together.lead} />
+        <SectionHeading id="together-heading" eyebrow={together.eyebrow} heading={together.heading} lead={together.lead} />
         <ul className="grid gap-6 lg:grid-cols-3">
           {together.items.map((item, i) => (
             <li key={item.title}>

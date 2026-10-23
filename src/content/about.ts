@@ -10,8 +10,7 @@ export const aboutPage = {
   metaDescription:
     "Datatechhub Consulting is a practical business problem-solving partner connecting business needs with data, technology and implementation.",
   eyebrow: "About us",
-  heading: "A practical partner for problems",
-  accent: "that don’t fit a template.",
+  heading: "A practical partner for problems that don’t fit a template.",
   lead: "Datatechhub Consulting connects business needs with data, technology and implementation, so organisations can make better-informed decisions.",
   photo: photos.teamOffice,
   overview: {
@@ -32,9 +31,6 @@ export const aboutPage = {
       "This website describes the consulting business only.",
     ],
   },
-  principles: {
-    eyebrow: "How we think",
-  },
   leadership: {
     eyebrow: "The people",
     heading: "Leadership",
@@ -44,9 +40,6 @@ export const aboutPage = {
     text: "Context isn’t a detail.",
     accent: "It’s the brief.",
     photo: photos.skylineWide,
-  },
-  audiences: {
-    eyebrow: "Who we work with",
   },
   next: {
     heading: "Tell us what you’re trying to solve.",

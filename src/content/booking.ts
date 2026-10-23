@@ -18,8 +18,7 @@ export const bookingPage = {
   metaDescription:
     "Book an initial consultation with Datatechhub Consulting to discuss a business challenge and whether data, analytics, automation or technology work could help.",
   eyebrow: "Book a consultation",
-  heading: "Let’s talk it through.",
-  accent: "No finished brief needed.",
+  heading: "Let’s talk it through. No finished brief needed.",
   lead: "An initial conversation to understand the challenge you are facing and whether we are the right people to help.",
   photo: photos.oneToOne,
   purpose: {

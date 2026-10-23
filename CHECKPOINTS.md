@@ -205,7 +205,7 @@ Commit: `v2-7: imagery and copy pass, mobile menu, final v2 qa`.
 | V3-4 | Homepage rework | complete |
 | V3-5 | Service pages shortened, per-service visuals, less hedging | complete |
 | V3-6 | Engagement and pricing signals | complete |
-| V3-7 | About/overview de-duplication, de-formularising pass | not started |
+| V3-7 | About/overview de-duplication, de-formularising pass | complete |
 | V3-8 | Performance, images, final QA, docs | not started |
 
 ## V3-1: Data visual system (complete, 2026-10-23)
@@ -243,3 +243,8 @@ Delivered: src/content/engagement.ts (three shapes: Diagnostic, Project, Ongoing
 Fixes during review: removed an unverifiable claim ("many clients begin with a diagnostic"); folded corner clipped pricing text (panel padding). Copy guard now also bans "our clients", "many clients", "most clients", "clients say", "trusted by".
 Validation: typecheck, lint, vitest 161/161; engagement section screenshot reviewed on the dev server.
 Commit: `v3-6: engagement shapes and how pricing works`.
+
+## V3-7: De-duplication and de-formularising (complete, 2026-10-23)
+Delivered: About no longer repeats the homepage (principles cards and audience mosaic removed; page is hero, who we are, relationship to Datatechhub, conditional leadership, statement, closing). Folio numbers removed from section eyebrows sitewide (kept only for genuinely numbered items: cards, steps, contents, case-study report sections). Gold italic heading accent kept only on the homepage hero, statement bands, contact and 404; services, about, booking, case studies and insights headings are now plain. Repetition summary after V3: process timeline only on /services; principles and audiences only on the homepage; engagement shapes on /services and service pages (by design).
+Validation: typecheck, lint, vitest 161/161; production build in the scratchpad copy: qa:responsive and qa:a11y on all 10 public routes pass; About screenshot reviewed (about 4,400px tall at 1440 wide).
+Commit: `v3-7: remove repeated sections, fewer folios and accents`.

@@ -33,7 +33,7 @@ export default function CaseStudiesPage() {
 
   return (
     <>
-      <PageHero eyebrow={caseStudiesPage.eyebrow} heading={caseStudiesPage.heading} accent={caseStudiesPage.accent} lead={caseStudiesPage.lead} />
+      <PageHero eyebrow={caseStudiesPage.eyebrow} heading={caseStudiesPage.heading} lead={caseStudiesPage.lead} />
 
       <Section tone="surface" labelledBy="case-studies-list">
         <h2 id="case-studies-list" className="sr-only">

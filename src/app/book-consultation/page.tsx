@@ -44,7 +44,7 @@ export default function BookConsultationPage() {
               <Eyebrow>{bookingPage.eyebrow}</Eyebrow>
             </div>
             <h1 id="page-heading" className="mb-6 animate-rise text-[clamp(2.6rem,1.6rem+3.6vw,4.5rem)] leading-[1] [animation-delay:90ms]">
-              {bookingPage.heading} <em className="text-gold">{bookingPage.accent}</em>
+              {bookingPage.heading}
             </h1>
             <p className="mb-10 animate-rise text-lg text-muted [animation-delay:180ms]">{bookingPage.lead}</p>
             <div className="relative aspect-[4/3] overflow-hidden">
@@ -123,7 +123,7 @@ export default function BookConsultationPage() {
       </section>
 
       <Section tone="charcoal" labelledBy="purpose-heading">
-        <SectionHeading id="purpose-heading" folio="01" eyebrow={bookingPage.purpose.eyebrow} heading={bookingPage.purpose.heading} onDark align="center" />
+        <SectionHeading id="purpose-heading" eyebrow={bookingPage.purpose.eyebrow} heading={bookingPage.purpose.heading} onDark align="center" />
         <ul className="grid gap-6 md:grid-cols-3">
           {bookingPage.purpose.items.map((item) => (
             <li key={item.title}>
@@ -136,7 +136,7 @@ export default function BookConsultationPage() {
       <Section labelledBy="prepare-heading">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <SectionHeading id="prepare-heading" folio="02" eyebrow={bookingPage.prepare.eyebrow} heading={bookingPage.prepare.heading} lead={bookingPage.prepare.note} />
+            <SectionHeading id="prepare-heading" eyebrow={bookingPage.prepare.eyebrow} heading={bookingPage.prepare.heading} lead={bookingPage.prepare.note} />
           </div>
           <ul className="grid content-start lg:col-span-7">
             {bookingPage.prepare.items.map((item) => (
