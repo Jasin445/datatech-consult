@@ -1,5 +1,5 @@
 Current phase: VERSION 3 COMPLETE (V3-1 to V3-8). V1 and V2 complete before it.
-Status: development complete. NOT LAUNCH-READY: business, legal and configuration inputs outstanding (RELEASE_CHECKLIST.md). Critique item 1 (real people, credentials, case studies) deliberately left for owner input.
+Status: development complete. NOT LAUNCH-READY: business, legal and configuration inputs outstanding (RELEASE_CHECKLIST.md). Critique item 1 (real people, credentials, case studies) is PARKED by owner decision (2026-10-23): it will be the final piece of work, after everything else.
 
 Next action:
 - Owner review of V3; supply launch inputs (team/credentials, contact email or booking link, privacy facts, domain, email provider).
