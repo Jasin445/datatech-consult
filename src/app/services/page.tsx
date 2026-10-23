@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { FolioCard } from "@/components/cards/FolioCard";
 import { EngagementShapes } from "@/components/sections/EngagementShapes";
@@ -7,9 +8,10 @@ import { PageHero } from "@/components/sections/PageHero";
 import { FitList } from "@/components/services/FitList";
 import { ServiceFeature } from "@/components/services/ServiceFeature";
 import { ButtonLink } from "@/components/ui/Button";
+import { DashboardMock, OptionsMock, PipelineDiagram, WorkflowDiagram } from "@/components/visuals";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { nextStep, servicePhotos } from "@/content/home";
+import { nextStep } from "@/content/home";
 import { services } from "@/content/services";
 import { fit, servicesPage, together } from "@/content/services-overview";
 import { pageMetadata } from "@/lib/seo/page";
@@ -20,6 +22,13 @@ export const metadata: Metadata = pageMetadata({
   description: servicesPage.metaDescription,
   path: "/services",
 });
+
+const serviceVisuals: Record<string, ReactNode> = {
+  "data-analytics": <DashboardMock />,
+  "data-infrastructure": <PipelineDiagram />,
+  "ai-automation": <WorkflowDiagram />,
+  "business-technology-consulting": <OptionsMock />,
+};
 
 export default function ServicesPage() {
   return (
@@ -44,7 +53,7 @@ export default function ServicesPage() {
         <ul className="grid gap-20 lg:gap-28">
           {services.map((service, i) => (
             <li key={service.slug}>
-              <ServiceFeature service={service} photo={servicePhotos[service.slug]!} index={i} />
+              <ServiceFeature service={service} visual={serviceVisuals[service.slug]} index={i} />
             </li>
           ))}
         </ul>

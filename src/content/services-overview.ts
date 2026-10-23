@@ -9,7 +9,7 @@ export const servicesPage = {
   eyebrow: "Services",
   heading: "Start with the problem. We’ll find the service.",
   lead: "Four connected service areas. Some organisations need one; many need a combination. Either way, we agree the scope with you before any work begins.",
-  photo: photos.teamCasual,
+  photo: photos.workshop,
   areas: {
     eyebrow: "What we do",
     heading: "Four service areas, built to work together.",
