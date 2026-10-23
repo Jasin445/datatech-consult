@@ -3,12 +3,12 @@ import { notFound } from "next/navigation";
 import { InsightCard } from "@/components/insights/InsightCard";
 import { NextStep } from "@/components/sections/NextStep";
 import { PageHero } from "@/components/sections/PageHero";
-import { DevNotice } from "@/components/ui/DevNotice";
+import { SampleNotice } from "@/components/ui/SampleNotice";
 import { Section } from "@/components/ui/Section";
 import { nextStep } from "@/content/home";
 import { insightsPage } from "@/content/insights/page";
 import { getPublishableInsights } from "@/lib/content/insights";
-import { DUMMY_MARKER, isIndexable } from "@/lib/content/status";
+import { isIndexable } from "@/lib/content/status";
 import { pageMetadata } from "@/lib/seo/page";
 
 export function generateMetadata(): Metadata {
@@ -41,7 +41,7 @@ export default function InsightsPage() {
         </h2>
         {hasUnapproved && (
           <div className="mb-6">
-            <DevNotice>{DUMMY_MARKER}. Unapproved articles are hidden in production.</DevNotice>
+            <SampleNotice>The articles on this page are fictional examples used to preview this section. Authors, dates and figures are illustrative.</SampleNotice>
           </div>
         )}
         <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">

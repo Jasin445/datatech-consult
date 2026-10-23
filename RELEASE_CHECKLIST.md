@@ -34,3 +34,5 @@ Development completion is not launch readiness. Tick only after verification.
 - [ ] Engagement shapes, scale lines and "How pricing works" (src/content/engagement.ts) confirmed by the business; to show a starting price, set `price: { from: "₦...", confirmed: true }` on a shape
 - [ ] Re-run Lighthouse on the deployed domain (expect SEO to pass once NEXT_PUBLIC_SITE_URL is set) and on a real mid-range phone
 - [ ] Remove or replace the items in src/content/dummy-data.ts once real, approved content exists (they never appear in production)
+- [ ] Set SHOW_SAMPLE_CONTENT_IN_PRODUCTION to false in src/lib/content/preview.ts before launch (sample case studies and articles are currently visible on the live site with a notice)
+- [ ] Set NEXT_PUBLIC_BOOKING_URL to the scheduling provider link (it currently points to the parent website)

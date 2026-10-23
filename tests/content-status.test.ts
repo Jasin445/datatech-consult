@@ -49,3 +49,18 @@ describe("primary navigation", () => {
     expect(labels).toContain("Insights");
   });
 });
+
+describe("sample content on the live site", () => {
+  it("never makes samples indexable", async () => {
+    const { isIndexable } = await import("@/lib/content/status");
+    expect(isIndexable("dummy")).toBe(false);
+  });
+
+  it("keeps samples out of the sitemap even when shown", async () => {
+    const { buildSitemap } = await import("@/lib/seo/discovery");
+    const { caseStudies } = await import("@/content/case-studies");
+    const { insights } = await import("@/content/insights");
+    const urls = buildSitemap("https://www.example.com", { caseStudies, insights, privacyApproved: false }).map((e) => e.url);
+    expect(urls.some((u) => u.includes("/case-studies") || u.includes("/insights"))).toBe(false);
+  });
+});

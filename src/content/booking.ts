@@ -49,5 +49,5 @@ export const bookingPage = {
     ],
     note: "You do not need a finished brief. Please do not share passwords or sensitive personal data before or during the call.",
   },
-  details: { duration: null, format: null } as BookingDetails,
+  details: { duration: "30 Minutes", format: "Video call" } as BookingDetails,
 } as const;

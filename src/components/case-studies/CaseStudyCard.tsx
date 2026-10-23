@@ -4,6 +4,7 @@ import { pillClass, statusPillClass } from "@/components/ui/styles";
 import { projectTypeLabels, type CaseStudy } from "@/content/case-studies/types";
 import type { ContentStatus } from "@/lib/content/status";
 import { CaseCover } from "./CaseCover";
+import { statusLabel } from "@/components/ui/SampleNotice";
 
 /** Case study card: typographic cover, project type (always visible), title, summary, action. */
 export function CaseStudyCard({ status, study, index }: { status: ContentStatus; study: CaseStudy; index: number }) {
@@ -14,7 +15,7 @@ export function CaseStudyCard({ status, study, index }: { status: ContentStatus;
       <div className="flex flex-1 flex-col p-8">
         <p className="mb-4 flex flex-wrap gap-2">
           <span className={pillClass}>{label}</span>
-          {status !== "approved" && <span className={statusPillClass}>{status === "dummy" ? "Dummy data" : "Draft"}</span>}
+          {status !== "approved" && <span className={statusPillClass}>{statusLabel(status)}</span>}
         </p>
         <h3 className="mb-3 text-3xl">{study.title}</h3>
         <p className="mb-8 text-muted">{study.summary}</p>

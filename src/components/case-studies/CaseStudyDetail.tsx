@@ -6,7 +6,7 @@ import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { ReportSection } from "@/components/sections/ReportSection";
 import { RelatedServices } from "@/components/services/RelatedServices";
 import { Container } from "@/components/ui/Container";
-import { DevNotice } from "@/components/ui/DevNotice";
+import { SampleNotice, statusLabel } from "@/components/ui/SampleNotice";
 import { Mark } from "@/components/ui/Mark";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -14,7 +14,7 @@ import { statusPillClass } from "@/components/ui/styles";
 import { projectTypeLabels, type CaseStudy } from "@/content/case-studies/types";
 import { nextStep } from "@/content/home";
 import { services } from "@/content/services";
-import { DUMMY_MARKER, type ContentStatus } from "@/lib/content/status";
+import type { ContentStatus } from "@/lib/content/status";
 import { CaseCover } from "./CaseCover";
 
 function Prose({ paragraphs }: { paragraphs: readonly string[] }) {
@@ -100,9 +100,9 @@ export function CaseStudyDetail({ status, study, index = 0 }: { status: ContentS
             {status !== "approved" && (
               <div className="grid gap-3">
                 <p className="mb-0">
-                  <span className={statusPillClass}>{status === "dummy" ? "Dummy data" : "Draft"}</span>
+                  <span className={statusPillClass}>{statusLabel(status)}</span>
                 </p>
-                <DevNotice>{DUMMY_MARKER}. This case study is hidden in production until it is approved.</DevNotice>
+                <SampleNotice>This case study is a fictional example used to preview the site. It does not describe a real client, project or result.</SampleNotice>
               </div>
             )}
           </div>

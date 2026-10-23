@@ -3,12 +3,12 @@ import { notFound } from "next/navigation";
 import { CaseStudyCard } from "@/components/case-studies/CaseStudyCard";
 import { NextStep } from "@/components/sections/NextStep";
 import { PageHero } from "@/components/sections/PageHero";
-import { DevNotice } from "@/components/ui/DevNotice";
+import { SampleNotice } from "@/components/ui/SampleNotice";
 import { Section } from "@/components/ui/Section";
 import { caseStudiesPage } from "@/content/case-studies/page";
 import { nextStep } from "@/content/home";
 import { getPublishableCaseStudies } from "@/lib/content/case-studies";
-import { DUMMY_MARKER, isIndexable } from "@/lib/content/status";
+import { isIndexable } from "@/lib/content/status";
 import { pageMetadata } from "@/lib/seo/page";
 
 export function generateMetadata(): Metadata {
@@ -41,7 +41,7 @@ export default function CaseStudiesPage() {
         </h2>
         {hasUnapproved && (
           <div className="mb-6">
-            <DevNotice>{DUMMY_MARKER}. Unapproved case studies are hidden in production.</DevNotice>
+            <SampleNotice>The case studies on this page are fictional examples used to preview this section. They do not describe real clients, projects or results.</SampleNotice>
           </div>
         )}
         <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">

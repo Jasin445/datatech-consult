@@ -34,12 +34,16 @@ const make = (
 describe("insight publishing rules", () => {
   it("hides dummy and draft articles in production", () => {
     const items = [make("dummy"), make("draft"), make("approved")];
-    expect(getPublishableInsights(items, true).map((i) => i.status)).toEqual(["approved"]);
+    expect(getPublishableInsights(items, true, false).map((i) => i.status)).toEqual(["approved"]);
   });
 
-  it("publishes nothing in production while only the dummy entry exists", () => {
-    expect(getPublishableInsights(insights, true)).toEqual([]);
-    expect(getInsightSlugs(insights, true)).toEqual([]);
+  it("publishes nothing in production while only dummy entries exist, when samples are switched off", () => {
+    expect(getPublishableInsights(insights, true, false)).toEqual([]);
+    expect(getInsightSlugs(insights, true, false)).toEqual([]);
+  });
+
+  it("shows dummy samples in production when samples are switched on", () => {
+    expect(getInsightSlugs(insights, true, true).length).toBe(insights.filter((i) => i.status === "dummy").length);
   });
 
   it("shows the dummy entry in development", () => {
@@ -47,7 +51,7 @@ describe("insight publishing rules", () => {
   });
 
   it("does not resolve unapproved slugs in production", () => {
-    expect(getInsightBySlug("sample-article", insights, true)).toBeUndefined();
+    expect(getInsightBySlug("sample-article", insights, true, false)).toBeUndefined();
     expect(getInsightBySlug("does-not-exist", insights, false)).toBeUndefined();
   });
 
@@ -126,7 +130,7 @@ describe("insights index copy", () => {
 describe("navigation flag", () => {
   it("hides the Insights link in production while nothing is approved", async () => {
     const { getPrimaryNav } = await import("@/lib/site");
-    const hidden = getPrimaryNav({ showCaseStudies: false, showInsights: getPublishableInsights(insights, true).length > 0 });
+    const hidden = getPrimaryNav({ showCaseStudies: false, showInsights: getPublishableInsights(insights, true, false).length > 0 });
     expect(hidden.some((n) => n.href === "/insights")).toBe(false);
     const shown = getPrimaryNav({ showCaseStudies: false, showInsights: getPublishableInsights(insights, false).length > 0 });
     expect(shown.some((n) => n.href === "/insights")).toBe(true);

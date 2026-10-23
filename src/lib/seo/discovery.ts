@@ -30,8 +30,9 @@ export type SitemapSources = {
  */
 export function buildSitemap(siteUrl: string | null, sources: SitemapSources): MetadataRoute.Sitemap {
   if (!siteUrl) return [];
-  const caseStudies = getPublishableCaseStudies(sources.caseStudies, true);
-  const insights = getPublishableInsights(sources.insights, true);
+  // Approved only: samples shown on the live site are never placed in the sitemap.
+  const caseStudies = getPublishableCaseStudies(sources.caseStudies, true, false);
+  const insights = getPublishableInsights(sources.insights, true, false);
 
   const entry = (path: string, lastModified?: string): MetadataRoute.Sitemap[number] => ({
     url: absoluteUrl(siteUrl, path),

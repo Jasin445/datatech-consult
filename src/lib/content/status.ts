@@ -24,16 +24,22 @@ export function isProduction(): boolean {
   return process.env.NODE_ENV === "production";
 }
 
-/** Production shows approved content only. Development also shows dummy/draft (with warnings). */
-export function isPublishable(status: ContentStatus, production: boolean = isProduction()): boolean {
-  return production ? status === "approved" : true;
+/**
+ * Production shows approved content only, unless `allowSample` is set, in which case "dummy" samples are shown too
+ * (with a visible notice; see src/lib/content/preview.ts). Drafts never appear in production.
+ * Development shows everything (with warnings).
+ */
+export function isPublishable(status: ContentStatus, production: boolean = isProduction(), allowSample = false): boolean {
+  if (!production) return true;
+  return status === "approved" || (allowSample && status === "dummy");
 }
 
 export function filterPublishable<T>(
   items: readonly ManagedContent<T>[],
   production: boolean = isProduction(),
+  allowSample = false,
 ): ManagedContent<T>[] {
-  return items.filter((item) => isPublishable(item.status, production));
+  return items.filter((item) => isPublishable(item.status, production, allowSample));
 }
 
 /** Items that must never be indexed or placed in the sitemap, in any environment. */

@@ -3,7 +3,7 @@ import { NextStep } from "@/components/sections/NextStep";
 import { PageHero } from "@/components/sections/PageHero";
 import { RelatedServices } from "@/components/services/RelatedServices";
 import { Container } from "@/components/ui/Container";
-import { DevNotice } from "@/components/ui/DevNotice";
+import { SampleNotice, statusLabel } from "@/components/ui/SampleNotice";
 import { Mark } from "@/components/ui/Mark";
 import { Panel } from "@/components/ui/Panel";
 import { Photo } from "@/components/ui/Photo";
@@ -13,7 +13,7 @@ import { statusPillClass } from "@/components/ui/styles";
 import { nextStep } from "@/content/home";
 import type { Insight } from "@/content/insights/types";
 import { formatPublishedDate, readingTimeMinutes } from "@/lib/content/insights";
-import { DUMMY_MARKER, type ContentStatus } from "@/lib/content/status";
+import type { ContentStatus } from "@/lib/content/status";
 
 /** Template for /insights/[slug]. Optional parts (author, cover, takeaways, bullets, related services) are omitted when empty. */
 export function InsightDetail({ status, insight }: { status: ContentStatus; insight: Insight }) {
@@ -44,11 +44,11 @@ export function InsightDetail({ status, insight }: { status: ContentStatus; insi
               <span>By {insight.author}</span>
             </>
           )}
-          {status !== "approved" && <span className={statusPillClass}>{status === "dummy" ? "Dummy data" : "Draft"}</span>}
+          {status !== "approved" && <span className={statusPillClass}>{statusLabel(status)}</span>}
         </div>
         {status !== "approved" && (
           <div className="mb-10">
-            <DevNotice>{DUMMY_MARKER}. This article is hidden in production until it is approved.</DevNotice>
+            <SampleNotice>This article is a fictional example used to preview the site. The author, date and content are illustrative.</SampleNotice>
           </div>
         )}
 

@@ -37,12 +37,18 @@ const make = (
 describe("case study publishing rules", () => {
   it("hides dummy and draft case studies in production", () => {
     const items = [make("dummy"), make("draft"), make("approved")];
-    expect(getPublishableCaseStudies(items, true).map((i) => i.status)).toEqual(["approved"]);
+    expect(getPublishableCaseStudies(items, true, false).map((i) => i.status)).toEqual(["approved"]);
   });
 
-  it("publishes nothing in production while only the dummy entry exists", () => {
-    expect(getPublishableCaseStudies(caseStudies, true)).toEqual([]);
-    expect(getCaseStudySlugs(caseStudies, true)).toEqual([]);
+  it("publishes nothing in production while only dummy entries exist, when samples are switched off", () => {
+    expect(getPublishableCaseStudies(caseStudies, true, false)).toEqual([]);
+    expect(getCaseStudySlugs(caseStudies, true, false)).toEqual([]);
+  });
+
+  it("shows dummy samples (never drafts) in production when samples are switched on", () => {
+    expect(getCaseStudySlugs(caseStudies, true, true).length).toBe(caseStudies.filter((c) => c.status === "dummy").length);
+    const draft = { ...caseStudies[0]!, status: "draft" as const, data: { ...caseStudies[0]!.data, slug: "a-draft" } };
+    expect(getCaseStudySlugs([draft], true, true)).toEqual([]);
   });
 
   it("shows the dummy entry in development", () => {
@@ -50,7 +56,7 @@ describe("case study publishing rules", () => {
   });
 
   it("does not resolve unapproved slugs in production", () => {
-    expect(getCaseStudyBySlug("sample-case-study", caseStudies, true)).toBeUndefined();
+    expect(getCaseStudyBySlug("sample-case-study", caseStudies, true, false)).toBeUndefined();
     expect(getCaseStudyBySlug("does-not-exist", caseStudies, false)).toBeUndefined();
   });
 
@@ -100,7 +106,7 @@ describe("case studies index copy", () => {
 describe("navigation flag", () => {
   it("hides the Case Studies link in production while nothing is approved", async () => {
     const { getPrimaryNav } = await import("@/lib/site");
-    const hidden = getPrimaryNav({ showCaseStudies: getPublishableCaseStudies(caseStudies, true).length > 0, showInsights: false });
+    const hidden = getPrimaryNav({ showCaseStudies: getPublishableCaseStudies(caseStudies, true, false).length > 0, showInsights: false });
     expect(hidden.some((n) => n.href === "/case-studies")).toBe(false);
     const shown = getPrimaryNav({ showCaseStudies: getPublishableCaseStudies(caseStudies, false).length > 0, showInsights: false });
     expect(shown.some((n) => n.href === "/case-studies")).toBe(true);

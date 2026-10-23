@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { ArrowRight } from "@/components/ui/Mark";
 import { InsightCard } from "@/components/insights/InsightCard";
-import { DevNotice } from "@/components/ui/DevNotice";
+import { SampleNotice } from "@/components/ui/SampleNotice";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { insightsPage } from "@/content/insights/page";
 import type { Insight } from "@/content/insights/types";
-import { DUMMY_MARKER, type ManagedContent } from "@/lib/content/status";
+import type { ManagedContent } from "@/lib/content/status";
 
 /** Homepage preview of the latest articles. Renders nothing when there is nothing publishable. */
 export function InsightsPreview({ items, tone = "surface" }: { items: readonly ManagedContent<Insight>[]; tone?: "default" | "surface" }) {
@@ -18,7 +18,7 @@ export function InsightsPreview({ items, tone = "surface" }: { items: readonly M
       <SectionHeading id="insights-heading" eyebrow={insightsPage.previewEyebrow} heading={insightsPage.previewHeading} lead={insightsPage.previewLead} />
       {hasUnapproved && (
         <div className="mb-6">
-          <DevNotice>{DUMMY_MARKER}. Unapproved articles are hidden in production.</DevNotice>
+          <SampleNotice>These articles are fictional examples used to preview this section.</SampleNotice>
         </div>
       )}
       <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">

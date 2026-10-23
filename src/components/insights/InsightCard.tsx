@@ -5,6 +5,7 @@ import { statusPillClass } from "@/components/ui/styles";
 import type { Insight } from "@/content/insights/types";
 import { formatPublishedDate, readingTimeMinutes } from "@/lib/content/insights";
 import type { ContentStatus } from "@/lib/content/status";
+import { statusLabel } from "@/components/ui/SampleNotice";
 
 /** Article card: optional cover photo (or a quiet typographic panel), date and reading time, serif title. Whole card clickable. */
 export function InsightCard({ status, insight }: { status: ContentStatus; insight: Insight }) {
@@ -24,7 +25,7 @@ export function InsightCard({ status, insight }: { status: ContentStatus; insigh
           <time dateTime={insight.publishedOn}>{formatPublishedDate(insight.publishedOn)}</time>
           <span aria-hidden="true" className="text-gold">·</span>
           <span>{readingTimeMinutes(insight)} min read</span>
-          {status !== "approved" && <span className={statusPillClass}>{status === "dummy" ? "Dummy data" : "Draft"}</span>}
+          {status !== "approved" && <span className={statusPillClass}>{statusLabel(status)}</span>}
         </p>
         <h3 className="mb-3 text-3xl">
           <Link href={`/insights/${insight.slug}`} className="text-charcoal no-underline after:absolute after:inset-0 group-hover:text-gold">

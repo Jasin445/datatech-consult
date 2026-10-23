@@ -8,6 +8,7 @@ import {
   type ContentViolation,
   type ManagedContent,
 } from "./status";
+import { SHOW_SAMPLE_CONTENT_IN_PRODUCTION } from "./preview";
 
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
@@ -58,23 +59,26 @@ export function validateCaseStudies(items: readonly ManagedContent<CaseStudy>[])
 export function getPublishableCaseStudies(
   items: readonly ManagedContent<CaseStudy>[] = caseStudies,
   production?: boolean,
+  allowSample: boolean = SHOW_SAMPLE_CONTENT_IN_PRODUCTION,
 ): ManagedContent<CaseStudy>[] {
   assertContentValid(validateCaseStudies(items));
-  return filterPublishable(items, production);
+  return filterPublishable(items, production, allowSample);
 }
 
 export function getCaseStudyBySlug(
   slug: string,
   items: readonly ManagedContent<CaseStudy>[] = caseStudies,
   production?: boolean,
+  allowSample: boolean = SHOW_SAMPLE_CONTENT_IN_PRODUCTION,
 ): ManagedContent<CaseStudy> | undefined {
-  return getPublishableCaseStudies(items, production).find((i) => i.data.slug === slug);
+  return getPublishableCaseStudies(items, production, allowSample).find((i) => i.data.slug === slug);
 }
 
 /** Slugs to pre-render. Never includes unapproved items in production. */
 export function getCaseStudySlugs(
   items: readonly ManagedContent<CaseStudy>[] = caseStudies,
   production?: boolean,
+  allowSample: boolean = SHOW_SAMPLE_CONTENT_IN_PRODUCTION,
 ): string[] {
-  return getPublishableCaseStudies(items, production).map((i) => i.data.slug);
+  return getPublishableCaseStudies(items, production, allowSample).map((i) => i.data.slug);
 }

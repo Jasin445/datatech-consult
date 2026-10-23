@@ -28,9 +28,11 @@ describe("booking link rules", () => {
 });
 
 describe("booking page content", () => {
-  it("does not promise a meeting length or format until confirmed", () => {
-    expect(bookingPage.details.duration).toBeNull();
-    expect(bookingPage.details.format).toBeNull();
+  it("shows meeting length and format only as confirmed, non-empty values (or not at all)", () => {
+    // Confirmed by the owner on 2026-10-24; null means "not confirmed" and is not rendered.
+    for (const v of [bookingPage.details.duration, bookingPage.details.format]) {
+      expect(v === null || (typeof v === "string" && v.trim().length > 0)).toBe(true);
+    }
   });
 
   it("does not claim availability or a booked meeting", () => {

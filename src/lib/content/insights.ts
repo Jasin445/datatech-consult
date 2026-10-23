@@ -8,6 +8,7 @@ import {
   type ContentViolation,
   type ManagedContent,
 } from "./status";
+import { SHOW_SAMPLE_CONTENT_IN_PRODUCTION } from "./preview";
 
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
@@ -69,9 +70,10 @@ export function validateInsights(items: readonly ManagedContent<Insight>[]): Con
 export function getPublishableInsights(
   items: readonly ManagedContent<Insight>[] = insights,
   production?: boolean,
+  allowSample: boolean = SHOW_SAMPLE_CONTENT_IN_PRODUCTION,
 ): ManagedContent<Insight>[] {
   assertContentValid(validateInsights(items));
-  return filterPublishable(items, production)
+  return filterPublishable(items, production, allowSample)
     .slice()
     .sort((a, b) => b.data.publishedOn.localeCompare(a.data.publishedOn));
 }
@@ -80,16 +82,18 @@ export function getInsightBySlug(
   slug: string,
   items: readonly ManagedContent<Insight>[] = insights,
   production?: boolean,
+  allowSample: boolean = SHOW_SAMPLE_CONTENT_IN_PRODUCTION,
 ): ManagedContent<Insight> | undefined {
-  return getPublishableInsights(items, production).find((i) => i.data.slug === slug);
+  return getPublishableInsights(items, production, allowSample).find((i) => i.data.slug === slug);
 }
 
 /** Slugs to pre-render. Never includes unapproved items in production. */
 export function getInsightSlugs(
   items: readonly ManagedContent<Insight>[] = insights,
   production?: boolean,
+  allowSample: boolean = SHOW_SAMPLE_CONTENT_IN_PRODUCTION,
 ): string[] {
-  return getPublishableInsights(items, production).map((i) => i.data.slug);
+  return getPublishableInsights(items, production, allowSample).map((i) => i.data.slug);
 }
 
 /** Human-readable date, fixed to UTC so the same string renders on server and client. */
