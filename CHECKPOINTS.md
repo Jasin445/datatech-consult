@@ -17,7 +17,7 @@
 | 11 | Contact and enquiry system | complete |
 | 12 | Consultation booking | complete |
 | 13 | Privacy | complete |
-| 14 | SEO and site discovery | not started |
+| 14 | SEO and site discovery | complete |
 | 15 | Final integration and QA | not started |
 
 ## Checkpoint 1: Global application foundation (complete)
@@ -105,3 +105,10 @@ Files: src/content/privacy.ts; src/lib/content/privacy.ts; src/app/privacy/page.
 Validation: typecheck, lint, vitest 100/100, build pass. Production: /privacy 200 with noindex and draft banner, no dev text; with email env set the contact form is withheld and the API returns 503 with the privacy reason logged. Dev: form shown, missing-facts notice shown. Marking the notice approved FAILED the build listing all six missing facts; restored. Chrome at 5 widths: no overflow, one h1.
 Remaining (business/legal): supply facts, legal review against the NDPA 2023 and any other applicable law, then approve.
 Commit: `checkpoint-13: implement privacy notice and collection gate`.
+
+## Checkpoint 14: SEO and site discovery (complete, 2026-10-23)
+Delivered: shared `pageMetadata()` (src/lib/seo/page.ts over pure buildPageMetadata in metadata.ts) on every route: title, description, absolute canonical, Open Graph (url, image, article type/date/verified authors), Twitter card. Indexing policy: indexable only with NEXT_PUBLIC_SITE_URL set AND approved/public content; otherwise noindex and no canonical. src/app/sitemap.ts and robots.ts over pure buildSitemap/buildRobots (src/lib/seo/discovery.ts): sitemap lists static public pages, approved case studies/insights (and their indexes) only, privacy only when approved, empty without a site URL; robots disallows everything without a site URL or outside production, otherwise allows / except /api/ and links the sitemap. Structured data: Organization (name, URL, official logo only) on the homepage, Article on approved insights; JsonLd escapes "<". Generated share image src/app/opengraph-image.tsx (official logo unchanged). Conditional index pages emit no canonical when they 404; 404s rely on Next's own single noindex.
+Files: src/lib/seo/{metadata,page,discovery,structured-data}.ts; src/components/seo/JsonLd.tsx; src/app/{sitemap,robots}.ts; src/app/opengraph-image.tsx; metadata in every page, layout.tsx, not-found.tsx; tests/seo.test.ts (12 tests).
+Validation: typecheck, lint, vitest 112/112, build pass. Production without site URL: all pages noindex, no canonical, robots.txt Disallow /, empty sitemap. Production with NEXT_PUBLIC_SITE_URL=https://www.example.com (build-time variable): canonicals and og:url absolute, og/twitter image 200 PNG 1200x630, Organization JSON-LD on /, privacy noindex (draft), robots allows / with sitemap link, sitemap = 9 static pages (no dummy, no draft privacy), /case-studies, unknown slugs and /nope 404 with a single noindex and no canonical.
+Note: NEXT_PUBLIC_SITE_URL must be set at BUILD time (static pages, robots and sitemap are prerendered).
+Commit: `checkpoint-14: implement seo metadata, sitemap and robots`.

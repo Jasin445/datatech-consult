@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/page";
 import Link from "next/link";
 import { ItemGrid } from "@/components/sections/ItemGrid";
 import { PageHeader } from "@/components/sections/PageHeader";
@@ -11,10 +12,11 @@ import { bookingPage } from "@/content/booking";
 import { bookingProviderHost } from "@/lib/booking";
 import { getBookingUrl, getPublicContactEmail } from "@/lib/env";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: bookingPage.title,
   description: bookingPage.metaDescription,
-};
+  path: "/book-consultation",
+});
 
 // Depends on runtime environment variables, so it must not be prerendered with stale configuration.
 export const dynamic = "force-dynamic";

@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
   },
+  twitter: { card: "summary_large_image" },
+  // Default for routes without pageMetadata (e.g. not-found): never index without a verified site URL.
+  ...(siteUrl ? {} : { robots: { index: false, follow: true } }),
 };
 
 export const viewport: Viewport = {

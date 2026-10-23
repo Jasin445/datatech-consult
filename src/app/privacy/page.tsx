@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/page";
 import Link from "next/link";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { DevNotice } from "@/components/ui/DevNotice";
@@ -10,12 +11,13 @@ import { siteConfig } from "@/lib/site";
 const notice = getPrivacyNotice();
 const approved = notice.status === "approved";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Privacy notice",
   description: `How the ${siteConfig.name} website handles the information you send us.`,
+  path: "/privacy",
   // A draft notice is not indexed.
-  ...(approved ? {} : { robots: { index: false, follow: true } }),
-};
+  noindex: !approved,
+});
 
 // Reads runtime environment variables (public contact email).
 export const dynamic = "force-dynamic";

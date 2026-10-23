@@ -3,7 +3,8 @@ import { ButtonLink, buttonRowClass } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { leadClass } from "@/components/ui/styles";
 
-export const metadata: Metadata = { title: "Page not found", robots: { index: false } };
+// Next.js adds noindex to every 404 response itself.
+export const metadata: Metadata = { title: "Page not found" };
 
 export default function NotFound() {
   return (

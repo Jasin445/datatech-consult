@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { InsightsPreview } from "@/components/insights/InsightsPreview";
 import { Hero } from "@/components/sections/Hero";
 import { ItemGrid } from "@/components/sections/ItemGrid";
@@ -19,15 +21,23 @@ import {
 import { services } from "@/content/services";
 import { getPublishableInsights } from "@/lib/content/insights";
 import { filterPublishable } from "@/lib/content/status";
+import { getSiteUrl } from "@/lib/env";
+import { siteConfig } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo/page";
+import { organizationJsonLd } from "@/lib/seo/structured-data";
+
+export const metadata: Metadata = pageMetadata({ description: siteConfig.description, path: "/" });
 
 export default function HomePage() {
   const evidence = filterPublishable(credibilityEvidence).map((e) => e.data);
   const credibility = evidence.length > 0 ? { ...credibilityFallback, items: evidence } : credibilityFallback;
 
   const latestInsights = getPublishableInsights().slice(0, 3);
+  const siteUrl = getSiteUrl();
 
   return (
     <>
+      {siteUrl ? <JsonLd data={organizationJsonLd(siteUrl)} /> : null}
       <Hero {...hero} />
 
       <Section tone="surface" labelledBy="challenges-heading">

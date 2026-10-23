@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/page";
 import { notFound } from "next/navigation";
 import { CaseStudyCard } from "@/components/case-studies/CaseStudyCard";
 import { CtaBand } from "@/components/sections/CtaBand";
@@ -7,12 +8,20 @@ import { DevNotice } from "@/components/ui/DevNotice";
 import { Section } from "@/components/ui/Section";
 import { caseStudiesPage } from "@/content/case-studies/page";
 import { getPublishableCaseStudies } from "@/lib/content/case-studies";
-import { DUMMY_MARKER } from "@/lib/content/status";
+import { DUMMY_MARKER, isIndexable } from "@/lib/content/status";
 
-export const metadata: Metadata = {
-  title: caseStudiesPage.title,
-  description: caseStudiesPage.metaDescription,
-};
+export function generateMetadata(): Metadata {
+  const items = getPublishableCaseStudies();
+  // The route 404s when nothing is publishable: no canonical or share URL for a missing page.
+  if (items.length === 0) return { title: caseStudiesPage.title };
+  return pageMetadata({
+    title: caseStudiesPage.title,
+    description: caseStudiesPage.metaDescription,
+    path: "/case-studies",
+    // Indexable only when at least one approved item is listed.
+    noindex: !items.some((i) => isIndexable(i.status)),
+  });
+}
 
 export default function CaseStudiesPage() {
   const items = getPublishableCaseStudies();

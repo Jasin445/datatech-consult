@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/page";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { CtaBand } from "@/components/sections/CtaBand";
@@ -11,10 +12,11 @@ import { process } from "@/content/home";
 import { services } from "@/content/services";
 import { engagement, fit, servicesPage, together } from "@/content/services-overview";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: servicesPage.title,
   description: servicesPage.metaDescription,
-};
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (

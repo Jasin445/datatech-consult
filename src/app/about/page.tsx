@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/page";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { ItemGrid } from "@/components/sections/ItemGrid";
 import { LeadershipGrid } from "@/components/sections/LeadershipGrid";
@@ -11,10 +12,11 @@ import { getParentBrandUrl } from "@/lib/env";
 import { getPublishableLeadership } from "@/lib/content/leadership";
 import { siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: aboutPage.title,
   description: aboutPage.metaDescription,
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   const leadership = getPublishableLeadership();

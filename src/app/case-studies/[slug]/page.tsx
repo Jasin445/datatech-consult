@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/page";
 import { notFound } from "next/navigation";
 import { CaseStudyDetail } from "@/components/case-studies/CaseStudyDetail";
 import { getCaseStudyBySlug, getCaseStudySlugs } from "@/lib/content/case-studies";
@@ -16,13 +17,14 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const item = getCaseStudyBySlug(slug);
-  if (!item) return { title: "Case study not found", robots: { index: false } };
-  return {
+  if (!item) return { title: "Case study not found" };
+  return pageMetadata({
     title: item.data.title,
     description: item.data.metaDescription,
+    path: `/case-studies/${item.data.slug}`,
     // Dummy and draft items are never indexable, in any environment.
-    ...(isIndexable(item.status) ? {} : { robots: { index: false, follow: false } }),
-  };
+    noindex: !isIndexable(item.status),
+  });
 }
 
 export default async function CaseStudyPage({ params }: Props) {

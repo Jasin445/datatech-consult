@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/page";
 import Link from "next/link";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { PageHeader } from "@/components/sections/PageHeader";
@@ -8,10 +9,11 @@ import { Section } from "@/components/ui/Section";
 import { getContactAvailability } from "@/lib/contact/availability";
 import { getPublicContactEmail } from "@/lib/env";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description: "Tell Datatechhub Consulting about the business challenge you are trying to solve and we will respond by email.",
-};
+  path: "/contact",
+});
 
 // Depends on runtime environment variables, so it must not be prerendered with stale configuration.
 export const dynamic = "force-dynamic";

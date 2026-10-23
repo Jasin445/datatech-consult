@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/page";
 import { notFound } from "next/navigation";
 import { InsightCard } from "@/components/insights/InsightCard";
 import { CtaBand } from "@/components/sections/CtaBand";
@@ -7,12 +8,20 @@ import { DevNotice } from "@/components/ui/DevNotice";
 import { Section } from "@/components/ui/Section";
 import { insightsPage } from "@/content/insights/page";
 import { getPublishableInsights } from "@/lib/content/insights";
-import { DUMMY_MARKER } from "@/lib/content/status";
+import { DUMMY_MARKER, isIndexable } from "@/lib/content/status";
 
-export const metadata: Metadata = {
-  title: insightsPage.title,
-  description: insightsPage.metaDescription,
-};
+export function generateMetadata(): Metadata {
+  const items = getPublishableInsights();
+  // The route 404s when nothing is publishable: no canonical or share URL for a missing page.
+  if (items.length === 0) return { title: insightsPage.title };
+  return pageMetadata({
+    title: insightsPage.title,
+    description: insightsPage.metaDescription,
+    path: "/insights",
+    // Indexable only when at least one approved item is listed.
+    noindex: !items.some((i) => isIndexable(i.status)),
+  });
+}
 
 export default function InsightsPage() {
   const items = getPublishableInsights();

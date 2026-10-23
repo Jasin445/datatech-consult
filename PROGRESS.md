@@ -1,4 +1,4 @@
-Current checkpoint: 14 (SEO and site discovery)
+Current checkpoint: 15 (Final integration and QA)
 Status: NOT STARTED
 
 Completed checkpoints:
@@ -6,9 +6,10 @@ Completed checkpoints:
 - Checkpoint 11: complete (verified 2026-10-23 on a networked machine)
 - Checkpoint 12: complete (booking page; validation in CHECKPOINTS.md)
 - Checkpoint 13: complete (privacy notice draft + production collection gate)
+- Checkpoint 14: complete (metadata, canonical, sitemap, robots, Open Graph, structured data)
 
 Current work:
-- Checkpoint 14: page metadata, canonical URLs from NEXT_PUBLIC_SITE_URL, sitemap.ts, robots.ts, Open Graph, approved-only discovery.
+- Checkpoint 15: full route/link crawl, keyboard/focus/contrast/reduced-motion checks, responsive QA on every route, final docs.
 
 Validation (last run, 2026-10-23, Checkpoint 11):
 - npm ci, typecheck, lint (0 problems), vitest 87/87, production build: pass.
@@ -28,11 +29,11 @@ Not verified:
 Outstanding issues:
 - Privacy notice is a draft: production contact form stays disabled until business facts are supplied, the notice is legally reviewed and approved.
 - Booking meeting length and format are unconfirmed (src/content/booking.ts).
-- No canonical URL, sitemap or robots yet (Checkpoint 14).
+- NEXT_PUBLIC_SITE_URL must be set at build time; without it the whole site is noindex by design.
 - All marketing copy is proposed and needs business review.
 
 Configuration blockers:
 - No email provider credentials, booking URL, site URL, public contact email or parent-brand URL configured.
 
 Next action:
-- Add src/lib/seo and src/app/sitemap.ts / robots.ts (Checkpoint 14).
+- Run the Checkpoint 15 QA script across every route.
