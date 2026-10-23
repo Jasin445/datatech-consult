@@ -52,10 +52,3 @@ export const together = {
     },
   ] satisfies Connection[],
 };
-
-export const engagement = {
-  eyebrow: "How it runs",
-  heading: "Same shape, whatever the service.",
-  lead: "The stages don’t change between services. The last two happen only where we agree them.",
-  photo: photos.planningWall,
-};

@@ -2,11 +2,12 @@ import { ArrowRight, Ornament } from "@/components/ui/Ornament";
 import { Panel } from "@/components/ui/Panel";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { engagement } from "@/content/engagement";
+import { engagement, STAGE_LABELS } from "@/content/engagement";
 
 /**
  * Engagement shapes as a connected track (diagnostic -> project -> support, start anywhere),
- * followed by how pricing works. Used on /services and every service page.
+ * each showing which of the five stages it covers, followed by how pricing works. Shown once, on /services
+ * (service pages link to it with EngagementLink).
  */
 export function EngagementShapes({ id = "engagement-heading", tone = "surface" }: { id?: string; tone?: "default" | "surface" }) {
   return (
@@ -19,7 +20,20 @@ export function EngagementShapes({ id = "engagement-heading", tone = "surface" }
               <p className="mb-3 font-display text-lg text-gold italic">{String(i + 1).padStart(2, "0")}</p>
               <h3 className="mb-3 text-3xl">{shape.name}</h3>
               <p className="mb-4 border-l-2 border-gold pl-3 text-sm font-semibold text-charcoal">Best when: {shape.bestWhen}</p>
-              <p className="mb-5 text-muted">{shape.text}</p>
+              <p className="mb-4 text-muted">{shape.text}</p>
+              <ul className="mb-5 flex flex-wrap gap-1.5" aria-label={`Stages covered by ${shape.name}`}>
+                {STAGE_LABELS.map((label, si) => (
+                  <li
+                    key={label}
+                    className={`rounded-full px-2.5 py-1 text-xs font-medium ${
+                      shape.stages.includes(si) ? "bg-primary text-white" : "border border-border text-muted line-through decoration-muted/50"
+                    }`}
+                  >
+                    <span className="sr-only">{shape.stages.includes(si) ? "Included: " : "Not included: "}</span>
+                    {label}
+                  </li>
+                ))}
+              </ul>
               <p className="mt-auto mb-0 border-t border-border pt-4 text-sm">
                 <span className="mb-1 block text-xs font-semibold tracking-[0.16em] text-gold uppercase">You get</span>
                 {shape.youGet}

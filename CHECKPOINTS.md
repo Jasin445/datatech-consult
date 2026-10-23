@@ -271,7 +271,7 @@ Owner decisions: Book a consultation is the primary action. Fix critique items 1
 | F1 | Primary action = Book a consultation (hero, service heroes, closing cards, footer duplicate CTA removed) | complete |
 | F2 | Homepage cut to ~7 sections (principles + commitments merged, audiences moved to About, challenges folded into the problem story) | complete |
 | F3 | Service pages: one specific "what we do" list, plain titles, mockup full width instead of cramped in the hero | complete |
-| F4 | One engagement model (shapes with their stages) on /services; service pages link to it instead of repeating it | not started |
+| F4 | One engagement model (shapes with their stages) on /services; service pages link to it instead of repeating it | complete |
 | F5 | Weak stock photos replaced (services hero; services rows use mockups) | not started |
 | F6 | Scale/cost signals (qualitative, optional price fields hidden until supplied) | not started |
 | F7 | Smaller items (mobile hero, sound-familiar strip) | not started |
@@ -285,3 +285,6 @@ Homepage is now seven sections: hero, problem story (common problems as tags; se
 
 ### F3 (complete, 2026-10-23)
 Capabilities rewritten in specific terms on all four service pages (six each); the AI page's separate "where it fits" list folded in (`useCases` removed from type and content). Capability cards use serif titles (`FolioCard titleStyle="serif"`) instead of condensed capitals. Hero is text-only; the service's mockup now sits full width (max 64rem) directly below it. Problem tags moved inside the problem story (separate strip removed). AI page 7,969px at 1440 (was 8,420) before F4 shortens the engagement block. Validation: typecheck, lint, vitest 161/161; screenshots reviewed. Commit: `fix(f3): one specific capability list and full-width service mockups`.
+
+### F4 (complete, 2026-10-23)
+One engagement model: each shape lists which of the five stages it covers (Diagnostic: understand, diagnose, design; Project: design, implement; Ongoing support: support and improve), highlighted chips with screen-reader "Included/Not included" text. Shown once, on /services as "How we work" (#how-we-work), replacing the separate process timeline and the previous duplicate block; service pages show a compact `EngagementLink` strip ("Three ways to start: Diagnostic, Project, Ongoing support" -> How we work and how pricing works). Removed unused services-overview engagement copy. Tests: tests/engagement.test.ts (stage labels match process order; every stage covered; no prices/durations in engagement copy). Heights at 1440: /services about 8,000px (was 8,800), service pages about 7,300px. Validation: typecheck, lint, vitest 164/164; screenshots reviewed. Commit: `fix(f4): one engagement model shown once`.

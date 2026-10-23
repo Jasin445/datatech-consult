@@ -4,16 +4,14 @@ import { FolioCard } from "@/components/cards/FolioCard";
 import { EngagementShapes } from "@/components/sections/EngagementShapes";
 import { NextStep } from "@/components/sections/NextStep";
 import { PageHero } from "@/components/sections/PageHero";
-import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { FitList } from "@/components/services/FitList";
 import { ServiceFeature } from "@/components/services/ServiceFeature";
 import { ButtonLink } from "@/components/ui/Button";
-import { Photo } from "@/components/ui/Photo";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { nextStep, process, servicePhotos } from "@/content/home";
+import { nextStep, servicePhotos } from "@/content/home";
 import { services } from "@/content/services";
-import { engagement, fit, servicesPage, together } from "@/content/services-overview";
+import { fit, servicesPage, together } from "@/content/services-overview";
 import { pageMetadata } from "@/lib/seo/page";
 import { ctas } from "@/lib/site";
 
@@ -79,19 +77,7 @@ export default function ServicesPage() {
         </ul>
       </Section>
 
-      <Section tone="surface" labelledBy="process-heading">
-        <div className="mb-14 grid items-end gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-6">
-            <SectionHeading id="process-heading" eyebrow={engagement.eyebrow} heading={engagement.heading} lead={engagement.lead} />
-          </div>
-          <div className="relative aspect-[16/9] overflow-hidden lg:col-span-6 lg:mb-14">
-            <Photo photo={engagement.photo} fill sizes="(min-width: 1024px) 50vw, 100vw" />
-          </div>
-        </div>
-        <ProcessSteps steps={process.steps} />
-      </Section>
-
-      <EngagementShapes tone="default" />
+      <EngagementShapes id="how-we-work" tone="surface" />
 
       <NextStep id="services-next-heading" eyebrow={nextStep.eyebrow} heading="Not sure which service you need?" lead="Describe the challenge and we’ll tell you honestly whether and how we can help." options={nextStep.options} />
     </>

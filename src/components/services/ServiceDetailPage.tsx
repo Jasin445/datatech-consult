@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FolioCard } from "@/components/cards/FolioCard";
 import { Breadcrumb } from "@/components/sections/Breadcrumb";
 import { ContentsList } from "@/components/sections/ContentsList";
-import { EngagementShapes } from "@/components/sections/EngagementShapes";
+import { EngagementLink } from "@/components/sections/EngagementLink";
 import { NextStep } from "@/components/sections/NextStep";
 import { PageHero } from "@/components/sections/PageHero";
 import { ProblemStory } from "@/components/sections/ProblemStory";
@@ -102,7 +102,7 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
         </ul>
       </Section>
 
-      <EngagementShapes id={`${p}-engagement`} />
+      <EngagementLink />
 
       <NextStep id={`${p}-cta`} eyebrow={nextStep.eyebrow} heading={detail.cta.heading} lead={detail.cta.body} options={nextStep.options} />
       <nav aria-label="Related services" className="bg-charcoal pb-16 text-footer-text">
