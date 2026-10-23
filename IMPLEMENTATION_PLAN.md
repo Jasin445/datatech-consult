@@ -60,3 +60,18 @@ V2-1 Design foundation · V2-2 Homepage · V2-3 Services overview + service deta
 
 ## V2 outcome
 Every page rebuilt with the field-report system. Copy guard (tests/copy.test.ts) and photo registry test (tests/photos.test.ts) protect the voice and image licensing. Case studies use typographic covers only. Placeholder favicon pending an official asset.
+
+---
+
+# Version 3: proof of work, focus and conversion (started 2026-10-23)
+
+## Brief (owner, after the V2 critique)
+Fix everything in the critique except item 1 (real people/credentials/case studies, which need owner input): consistent CTA labels; mocked product visuals (dashboards, charts, spreadsheets, diagrams) so the site shows the work; shorter, non-repetitive pages with less hedging; engagement and pricing signals; a less formulaic design; better navigation; launch-time conversion safeguards; technical gaps (performance measurement, images).
+
+## Rules
+- Mock visuals are coded (SVG/HTML), use generic labels and round illustrative numbers, and always carry a visible "Illustrative example, not client data" caption (enforced by a test). They never name a client or imply a result.
+- No invented prices, rates or durations. Engagement shapes and the quoting approach are described qualitatively and listed for owner confirmation.
+- One CTA vocabulary sitewide: "Send an enquiry" (/contact) and "Book a consultation" (/book-consultation).
+
+## V3 checkpoints
+V3-1 Data visual system (mock dashboard, charts, spreadsheet, pipeline/workflow/roadmap diagrams) · V3-2 CTA vocabulary + launch conversion safeguards · V3-3 Navigation (services menu, footer contact) · V3-4 Homepage rework (visuals over stock, no repetition, varied sections) · V3-5 Service pages shortened with per-service visuals and less hedging · V3-6 Engagement and pricing signals · V3-7 About/overview de-duplication and design de-formularising pass · V3-8 Performance measurement and image optimisation, final QA, docs.

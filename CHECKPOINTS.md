@@ -192,3 +192,25 @@ Commit: `v2-6: redesign case studies, insights, privacy and 404`.
 Delivered: 8 more Unsplash-License photos (licence verified on each photo page, registered with source/photographer/alt; 26 total). Reassigned images so no photo appears in more than two content files (the two-use cases are mostly a service's own photo on its card and its page, which is intentional). Mobile menu: SVG menu/close icon (replaces the ☰/✕ text glyphs), serif links with gold folio numbers and rules. Copy pass: scanned all visitor copy for filler and unsupported claims (none found beyond the parent tagline and our own "can’t guarantee" disclaimers) and added tests/copy.test.ts, which fails on banned filler phrases or any "guarantee" that is not a disclaimer; proven by planting "seamless" in a content file (test failed, naming the file and word), then restoring it.
 Validation: typecheck, lint, vitest 136/136 (13 files), production build. Built and served from a synced scratchpad copy because the owner's dev server was running in the project folder (see README note). qa:responsive on all 10 public routes (two consecutive clean runs) and qa:a11y (crawl, axe WCAG 2.2 AA, keyboard, reduced motion): pass. Governance: /case-studies, /insights, both sample detail pages and /nope return 404 in production. SEO without NEXT_PUBLIC_SITE_URL: noindex, robots Disallow /, empty sitemap; with an example site URL: canonical on every page, draft privacy noindex, sitemap 9 URLs. Mobile menu keyboard behaviour (Enter opens, Escape closes and returns focus) and screenshot reviewed.
 Commit: `v2-7: imagery and copy pass, mobile menu, final v2 qa`.
+
+---
+
+# Version 3 checkpoints (plan in IMPLEMENTATION_PLAN.md)
+
+| # | Title | Status |
+|---|-------|--------|
+| V3-1 | Data visual system | complete |
+| V3-2 | CTA vocabulary + launch conversion safeguards | in progress |
+| V3-3 | Navigation (services menu, footer contact) | not started |
+| V3-4 | Homepage rework | not started |
+| V3-5 | Service pages shortened, per-service visuals, less hedging | not started |
+| V3-6 | Engagement and pricing signals | not started |
+| V3-7 | About/overview de-duplication, de-formularising pass | not started |
+| V3-8 | Performance, images, final QA, docs | not started |
+
+## V3-1: Data visual system (complete, 2026-10-23)
+Delivered: src/components/visuals: `MockFrame` (app-window frame; one described image for assistive technology; visible "Illustrative example, not client data" caption), `charts.tsx` (LineChart with non-scaling strokes and HTML axis labels, HTML BarChart and HBars; theme colours only), `DashboardMock` (KPI tiles, revenue vs target, region bars, sales mix), `SpreadsheetMock` (messy "before" sheet: mixed dates, inconsistent spellings, duplicate row, missing value, #REF!), `PipelineDiagram` (sources to pipeline to one reporting store to outputs), `WorkflowDiagram` (invoice automation with an explicit human-review step), `OptionsMock` (advisory options appraisal with a recommendation). All responsive (diagrams go vertical on mobile). The logo's bright secondary blue now has a role in data visuals.
+Tests: tests/visuals.test.tsx renders every mock and checks the caption, the described image and that no organisation is named (vitest now includes .tsx tests).
+Review: rendered on a temporary preview route (deleted) at desktop and mobile; fixed a stretched line chart with oversized, clipped labels, and an options appraisal whose recommendation contradicted its own ratings.
+Validation: typecheck, lint, vitest 151/151. Production build deferred to the next build in the scratchpad copy (owner's dev server is running in the project folder).
+Commit: `v3-1: coded mock visuals (dashboard, spreadsheet, pipeline, workflow, options)`.
