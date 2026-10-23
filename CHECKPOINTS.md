@@ -7,7 +7,7 @@
 | 3 | Services overview | complete |
 | 4 | Data Analytics & Business Intelligence | complete |
 | 5 | Data Infrastructure & Engineering | complete |
-| 6 | AI & Automation | not started |
+| 6 | AI & Automation | complete |
 | 7 | Business & Technology Consulting | not started |
 | 8 | About | not started |
 | 9 | Case studies | not started |
@@ -47,3 +47,9 @@ Delivered: /services/data-infrastructure via the shared ServiceDetailPage: commo
 Validation: typecheck, lint, 22 tests, build, Chromium status/overflow/structure checks pass.
 Open: AI & Automation and Business & Technology Consulting pages 404 until Checkpoints 6-7; canonical deferred to Checkpoint 14.
 Commit: `checkpoint-05: implement data infrastructure service page` (see `git log`).
+
+## Checkpoint 6: AI & Automation (complete)
+Delivered: /services/ai-automation via ServiceDetailPage: problems, capabilities, where automation and AI tend to fit (new optional use-cases section), example deliverables, "feasibility, risk and human oversight" considerations (fit, feasibility, risk and accuracy, oversight, maintenance, impact on people), 4-step approach, value without guarantees, related services, CTA.
+Validation: typecheck, lint, 27 tests, build, Chromium status/overflow/structure/tone checks pass.
+Open: Business & Technology Consulting page 404 until Checkpoint 7; canonical deferred to Checkpoint 14.
+Commit: `checkpoint-06: implement ai and automation service page` (see `git log`).

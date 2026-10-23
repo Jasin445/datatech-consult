@@ -2,9 +2,10 @@ import { describe, expect, it } from "vitest";
 import { services } from "@/content/services";
 import { dataAnalytics } from "@/content/service-details/data-analytics";
 import { dataInfrastructure } from "@/content/service-details/data-infrastructure";
+import { aiAutomation } from "@/content/service-details/ai-automation";
 import type { ServiceDetail } from "@/content/service-details/types";
 
-const details: ServiceDetail[] = [dataAnalytics, dataInfrastructure];
+const details: ServiceDetail[] = [dataAnalytics, dataInfrastructure, aiAutomation];
 const slugs = new Set(services.map((s) => s.slug));
 
 describe.each(details)("service detail: $slug", (d) => {
@@ -28,8 +29,8 @@ describe.each(details)("service detail: $slug", (d) => {
   });
 
   it("does not promise guaranteed outcomes", () => {
-    const text = JSON.stringify(d).toLowerCase();
-    expect(text).not.toMatch(/guarantee[ds]?\b(?! specific)/);
+    const text = JSON.stringify(d).toLowerCase().replaceAll("can’t guarantee", "");
+    expect(text).not.toMatch(/guarantee|eliminate|risk-free|error-free results? (?:are|is) /);
     expect(d.value.lead.toLowerCase()).toContain("can’t guarantee");
   });
 });
@@ -46,5 +47,13 @@ describe("data infrastructure scope", () => {
     const c = dataInfrastructure.considerations.items.map((i) => i.text).join(" ");
     expect(c).toMatch(/worth considering only when/);
     expect(c).toMatch(/doing less/);
+  });
+});
+
+describe("AI & automation scope", () => {
+  const text = JSON.stringify(aiAutomation);
+  it("covers risk, maintenance and human oversight and does not claim AI is always right", () => {
+    for (const k of ["Human oversight", "Maintenance", "Risk and accuracy", "Fit with the problem"]) expect(text).toContain(k);
+    expect(text.toLowerCase()).not.toMatch(/always|replace (?:your )?(?:staff|workers|employees)|eliminate jobs/);
   });
 });

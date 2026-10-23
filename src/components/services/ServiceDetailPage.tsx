@@ -44,22 +44,29 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
         <ItemGrid items={detail.capabilities.items} columns={3} variant="card" />
       </Section>
 
-      <Section tone="surface" labelledBy={`${p}-deliverables`}>
+      {detail.useCases && (
+        <Section tone="surface" labelledBy={`${p}-use-cases`}>
+          <SectionHeading id={`${p}-use-cases`} heading={detail.useCases.heading} lead={detail.useCases.lead} />
+          <ItemGrid items={detail.useCases.items} columns={3} variant="plain" />
+        </Section>
+      )}
+
+      <Section tone={detail.useCases ? "default" : "surface"} labelledBy={`${p}-deliverables`}>
         <SectionHeading id={`${p}-deliverables`} heading={detail.deliverables.heading} lead={detail.deliverables.lead} />
         <ItemGrid items={detail.deliverables.items} columns={2} variant="plain" />
       </Section>
 
-      <Section labelledBy={`${p}-considerations`}>
+      <Section tone={detail.useCases ? "surface" : "default"} labelledBy={`${p}-considerations`}>
         <SectionHeading id={`${p}-considerations`} heading={detail.considerations.heading} lead={detail.considerations.lead} />
         <ItemGrid items={detail.considerations.items} columns={3} variant="card" />
       </Section>
 
-      <Section tone="surface" labelledBy={`${p}-approach`}>
+      <Section tone={detail.useCases ? "default" : "surface"} labelledBy={`${p}-approach`}>
         <SectionHeading id={`${p}-approach`} heading={detail.approach.heading} lead={detail.approach.lead} />
         <ProcessSteps steps={detail.approach.steps} />
       </Section>
 
-      <Section labelledBy={`${p}-value`}>
+      <Section tone={detail.useCases ? "surface" : "default"} labelledBy={`${p}-value`}>
         <SectionHeading id={`${p}-value`} heading={detail.value.heading} lead={detail.value.lead} />
         <ul className="value-list">
           {detail.value.items.map((item) => (
@@ -68,7 +75,7 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
         </ul>
       </Section>
 
-      <Section tone="surface" labelledBy={`${p}-related`}>
+      <Section tone={detail.useCases ? "default" : "surface"} labelledBy={`${p}-related`}>
         <SectionHeading id={`${p}-related`} heading="Related services" />
         <RelatedServices slugs={detail.related} />
       </Section>
