@@ -348,3 +348,6 @@ Commit: `v4-5: sentence-case labels, logo sizing, final v4 qa`.
 
 ### Owner adjustment after V4 (2026-10-23)
 Homepage hero headline restored to "Your numbers should settle arguments, not start them." (accent "not start them." keeps the V4 measurement bracket), and the hero "Send an enquiry" link restored to the italic serif style. Validation: typecheck, lint, vitest 167/167; production build; qa:responsive and qa:a11y on / pass. Commit: `adjust: restore original hero headline and italic enquiry link`.
+
+### Owner adjustment: closing section backdrop (2026-10-23)
+The charcoal "next step" section (closing cards on every page) now has `ChartBackdrop`: faint graph-paper grid, a rising trend line with a soft fill, dashed readout guides to one plotted point (the readout mark at full scale) and a soft blue glow behind the cards. Decorative (aria-hidden), low contrast. Validation: typecheck, lint, vitest 167/167; production build; qa:responsive and qa:a11y on 5 routes pass. Commit: `adjust: chart backdrop for the closing section`.
