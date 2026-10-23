@@ -274,7 +274,7 @@ Owner decisions: Book a consultation is the primary action. Fix critique items 1
 | F4 | One engagement model (shapes with their stages) on /services; service pages link to it instead of repeating it | complete |
 | F5 | Weak stock photos replaced (services hero; services rows use mockups) | complete |
 | F6 | Scale/cost signals (qualitative, optional price fields hidden until supplied) | complete |
-| F7 | Smaller items (mobile hero, sound-familiar strip) | not started |
+| F7 | Smaller items (mobile hero, sound-familiar strip) | complete |
 | F8 | QA, Lighthouse, docs | not started |
 
 ### F1 (complete, 2026-10-23)
@@ -294,3 +294,6 @@ Services hero photo replaced (casual "shorts and sandals" shot -> professional w
 
 ### F6 (complete, 2026-10-23)
 Each engagement shape now has a "Scale" line (Diagnostic: the smallest commitment, one problem, one written plan; Project: sized to one agreed deliverable, bigger work split into approved stages; Ongoing support: only what is agreed in advance) and an optional `price: { from, confirmed: true } | null` that renders "From ..." only when the business supplies a figure. All prices are null. Tests: every shape has a scale signal; prices may only appear through the confirmed field; no figures or durations elsewhere. Validation: typecheck, lint, vitest 165/165. Commit: `fix(f6): scale signals and optional confirmed prices`.
+
+### F7 (complete, 2026-10-23)
+"Sound familiar?" strip: already folded into the problem stories (F2, F3). Mobile hero tightened (top padding, gaps, heading/lead spacing, base-size lead below sm): dashboard top moved from 729px to 606px on 390x844 (about 240px visible above the fold, was 115px) and from 725px to 603px on 360x740 (about 140px, was 15px). Desktop unchanged. Screen reader: real screen-reader and real-device testing are not possible in this environment; as a proxy, the accessibility tree (Playwright aria snapshot) of / and /services/ai-automation was reviewed: one h1, logical h2/h3 outline, labelled regions and landmarks, every mockup exposed as a figure named by its illustrative caption containing a fully described image. Manual screen-reader and real-phone testing remain on the release checklist. Commit: `fix(f7): mobile hero shows the dashboard sooner`.

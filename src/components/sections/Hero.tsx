@@ -32,16 +32,16 @@ export function Hero({
   note: { label: string; text: string };
 }) {
   return (
-    <section aria-labelledby="page-heading" className="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
-      <Container className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
+    <section aria-labelledby="page-heading" className="relative overflow-hidden pt-6 pb-20 sm:pt-12 lg:pt-20 lg:pb-28">
+      <Container className="grid items-center gap-8 sm:gap-14 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-6">
           <div>
             <Eyebrow>{eyebrow}</Eyebrow>
           </div>
-          <h1 id="page-heading" className="mb-7 text-display">
+          <h1 id="page-heading" className="mb-5 text-display sm:mb-7">
             {headline} <em className="text-gold">{headlineAccent}</em>
           </h1>
-          <p className="mb-9 max-w-[52ch] text-lg text-muted">{body}</p>
+          <p className="mb-6 max-w-[52ch] text-muted sm:mb-9 sm:text-lg">{body}</p>
           <div className="flex animate-rise flex-wrap items-center gap-x-8 gap-y-4 [animation-delay:270ms]">
             <ButtonLink href={primary.href}>{primary.label}</ButtonLink>
             <Link href={secondary.href} className="group inline-flex min-h-11 items-center gap-2 font-display text-xl text-charcoal italic">
