@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { services } from "@/content/services";
-import { ArrowRight } from "@/components/ui/Ornament";
+import { ArrowRight } from "@/components/ui/Mark";
 
 type FitItem = { situation: string; slug: string };
 

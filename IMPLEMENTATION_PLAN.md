@@ -78,3 +78,21 @@ V3-1 Data visual system (mock dashboard, charts, spreadsheet, pipeline/workflow/
 
 ## V3 outcome
 The site now shows the work (coded, captioned mockups), uses one CTA vocabulary, never sends visitors in a circle when a contact path is unavailable, warns operators at startup when no contact path exists, has a services menu, shorter service pages with one disclaimer each, engagement shapes and a pricing approach (no figures), less repetition and fewer decorative tics, and measured performance (94-100). Guards: tests/visuals.test.tsx, tests/cta.test.ts, tests/copy.test.ts (extended), service hedging test.
+
+---
+
+# Version 4: distinctive, not generic (started 2026-10-23)
+
+## Brief (owner)
+Remove the generic "AI-made" tells (the long rule before labels read as an em dash; the four-point star is widely used); be creative but decent and specific to this project; add more photography alongside the charts and spreadsheets.
+
+## Decisions
+- Brand mark: the **readout mark** (a chart corner with one plotted point and faint guide lines to it: reading a value off a chart). Replaces the star everywhere (ornaments, bullets, cards, menu, favicon placeholder).
+- Section labels: no leading rule; the readout mark plus a sentence-case label.
+- Headline accent: the **measurement bracket** (a fine gold dimension line under the key words) replaces gold italic words.
+- Links: no italic-serif link style; sans semibold with an arrow.
+- Copy: no two-beat "X. Y." slogans, no "not X, Y" contrasts, no em dashes in visitor copy; "honest" used sparingly. Enforced by the copy guard where a rule can be expressed.
+- Photography: more licensed photos (registered, licence-checked); photo-plus-mockup compositions; a "where the work happens" strip with descriptive (not client) captions.
+
+## V4 checkpoints
+V4-1 Readout mark · V4-2 Motif pass (labels, accent, links) · V4-3 Copy pass and guard · V4-4 Imagery and compositions · V4-5 QA, Lighthouse, docs.

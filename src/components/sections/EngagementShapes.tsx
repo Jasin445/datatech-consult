@@ -1,4 +1,4 @@
-import { ArrowRight, Ornament } from "@/components/ui/Ornament";
+import { ArrowRight, Mark } from "@/components/ui/Mark";
 import { Panel } from "@/components/ui/Panel";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -58,7 +58,7 @@ export function EngagementShapes({ id = "engagement-heading", tone = "surface" }
           <ul className="grid gap-3 lg:col-span-8">
             {engagement.pricing.points.map((point) => (
               <li key={point} className="flex items-baseline gap-3">
-                <Ornament className="size-3 shrink-0 text-gold" />
+                <Mark variant="bullet" className="size-3 shrink-0 text-gold" />
                 {point}
               </li>
             ))}

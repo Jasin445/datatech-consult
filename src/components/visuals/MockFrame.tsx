@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Ornament } from "@/components/ui/Ornament";
+import { Mark } from "@/components/ui/Mark";
 
 /** Every mock visual carries this caption (tests/visuals.test.ts enforces it). */
 export const ILLUSTRATIVE_CAPTION = "Illustrative example, not client data";
@@ -36,7 +36,7 @@ export function MockFrame({
         </div>
       </div>
       <figcaption className="mt-3 flex items-center gap-2 text-xs text-muted">
-        <Ornament className="size-2.5 shrink-0 text-gold" />
+        <Mark variant="bullet" className="size-2.5 shrink-0 text-gold" />
         {ILLUSTRATIVE_CAPTION}
       </figcaption>
     </figure>

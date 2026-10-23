@@ -7,7 +7,7 @@ import { ReportSection } from "@/components/sections/ReportSection";
 import { RelatedServices } from "@/components/services/RelatedServices";
 import { Container } from "@/components/ui/Container";
 import { DevNotice } from "@/components/ui/DevNotice";
-import { Ornament } from "@/components/ui/Ornament";
+import { Mark } from "@/components/ui/Mark";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { statusPillClass } from "@/components/ui/styles";
@@ -32,7 +32,7 @@ function Bullets({ items }: { items: readonly string[] }) {
     <ul className="max-w-(--reading-max) border-t border-charcoal/15">
       {items.map((item) => (
         <li key={item} className="flex items-baseline gap-4 border-b border-charcoal/15 py-4 text-lg">
-          <Ornament className="size-3 shrink-0 text-gold" />
+          <Mark variant="bullet" className="size-3 shrink-0 text-gold" />
           {item}
         </li>
       ))}

@@ -1,5 +1,5 @@
 import { ButtonLink } from "@/components/ui/Button";
-import { ArrowRight } from "@/components/ui/Ornament";
+import { ArrowRight } from "@/components/ui/Mark";
 import { pillClass, statusPillClass } from "@/components/ui/styles";
 import { projectTypeLabels, type CaseStudy } from "@/content/case-studies/types";
 import type { ContentStatus } from "@/lib/content/status";

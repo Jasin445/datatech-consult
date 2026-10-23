@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { ArrowRight } from "@/components/ui/Ornament";
+import { ArrowRight } from "@/components/ui/Mark";
 
 export type ShowcaseItem = { kicker: string; title: string; text: string; href: string; linkLabel: string; visual: ReactNode };
 

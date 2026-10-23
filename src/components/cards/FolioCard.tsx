@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { ButtonLink } from "@/components/ui/Button";
-import { ArrowRight } from "@/components/ui/Ornament";
+import { ArrowRight } from "@/components/ui/Mark";
 
 /** Folded corner colours for each section tone: page colour above the diagonal, fold below it. */
 const foldClass = {

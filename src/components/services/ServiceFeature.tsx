@@ -1,7 +1,7 @@
 import type { Service } from "@/content/services";
 import type { ReactNode } from "react";
 import { ButtonLink } from "@/components/ui/Button";
-import { ArrowRight, Ornament } from "@/components/ui/Ornament";
+import { ArrowRight, Mark } from "@/components/ui/Mark";
 
 /** Editorial service row: the service's mockup on one side (alternating), serif title, summary, outcomes, action. */
 export function ServiceFeature({ service, visual, index }: { service: Service; visual: ReactNode; index: number }) {
@@ -20,7 +20,7 @@ export function ServiceFeature({ service, visual, index }: { service: Service; v
         <ul className="mb-8 grid gap-3" aria-label={`${service.title}: how we can help`}>
           {service.helpsWith.map((point) => (
             <li key={point} className="flex items-baseline gap-3">
-              <Ornament className="size-3 shrink-0 text-gold" />
+              <Mark variant="bullet" className="size-3 shrink-0 text-gold" />
               {point}
             </li>
           ))}

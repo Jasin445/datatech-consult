@@ -310,3 +310,18 @@ Commit: `fix(f8): final qa; services overview shortened on mobile`.
 Owner: header "too short and understyled; professional, decent but not flat". Delivered: slim charcoal `UtilityBar` (positioning line, public email when set, parent tagline; an `aside` landmark; scrolls away, hidden below md); taller sticky main bar (--header-height 5.25rem) with "How we work" added to the primary nav, a divider and a raised "Book a consultation" button with an arrow; `HeaderShell` adds a shadow and frosted background once scrolled (height constant, no layout shift); full-width Services mega-menu (line icons per service via `ServiceIcon`, summaries, "All services", charcoal "Not sure where to start?" card with the three ways to start and the booking button); mobile menu with service tiles and icons. Nav test updated for "How we work".
 Validation: typecheck, lint, vitest 164/164; production build: qa:responsive and qa:a11y on all 10 routes pass (axe "region" finding on the utility bar fixed by making it a labelled aside); nav fits without wrapping at 1024/1100/1180; mega-menu keyboard: Enter opens (10 links), Escape closes and returns focus. Note: the owner's dev server served a stale bundle during review; the production build shows the current menu.
 Commit: `fix(f9): sophisticated two-tier header and services mega-menu`.
+
+---
+
+# Version 4 checkpoints (plan in IMPLEMENTATION_PLAN.md)
+
+| # | Title | Status |
+|---|-------|--------|
+| V4-1 | Readout mark replaces the star | complete |
+| V4-2 | Motif pass: labels, headline accent, links | not started |
+| V4-3 | Copy pass and guard | not started |
+| V4-4 | Imagery and photo-plus-mockup compositions | not started |
+| V4-5 | QA, Lighthouse, docs | not started |
+
+## V4-1: Readout mark (complete, 2026-10-23)
+New project symbol `Mark` (src/components/ui/Mark.tsx): a chart corner with one plotted point and faint guide lines (reading a value off a chart); `variant="bullet"` (no guides, heavier strokes) for list sizes. Replaced the four-point star in 30 files; `Ornament` removed, `OrnamentCard` renamed `MarkCard`; star-specific rotate-on-hover removed. Placeholder favicon and touch icon now draw the readout mark. Validation: typecheck, lint, vitest 164/164; production build; card, bullet and icon screenshots reviewed. Commit: `v4-1: readout mark replaces the star`.

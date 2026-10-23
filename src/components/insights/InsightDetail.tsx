@@ -4,7 +4,7 @@ import { PageHero } from "@/components/sections/PageHero";
 import { RelatedServices } from "@/components/services/RelatedServices";
 import { Container } from "@/components/ui/Container";
 import { DevNotice } from "@/components/ui/DevNotice";
-import { Ornament } from "@/components/ui/Ornament";
+import { Mark } from "@/components/ui/Mark";
 import { Panel } from "@/components/ui/Panel";
 import { Photo } from "@/components/ui/Photo";
 import { Section } from "@/components/ui/Section";
@@ -78,7 +78,7 @@ export function InsightDetail({ status, insight }: { status: ContentStatus; insi
                   <ul className="mt-6 max-w-(--reading-max) border-t border-charcoal/15">
                     {section.bullets.map((item) => (
                       <li key={item} className="flex items-baseline gap-4 border-b border-charcoal/15 py-3 text-lg">
-                        <Ornament className="size-3 shrink-0 text-gold" />
+                        <Mark variant="bullet" className="size-3 shrink-0 text-gold" />
                         {item}
                       </li>
                     ))}
@@ -98,7 +98,7 @@ export function InsightDetail({ status, insight }: { status: ContentStatus; insi
                   <ul className="grid gap-4">
                     {insight.keyTakeaways.map((item) => (
                       <li key={item} className="flex items-baseline gap-3 font-display text-xl leading-snug text-charcoal">
-                        <Ornament className="size-3 shrink-0 text-gold" />
+                        <Mark variant="bullet" className="size-3 shrink-0 text-gold" />
                         {item}
                       </li>
                     ))}

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Photo as PhotoData } from "@/content/media/photos";
-import { ArrowRight } from "@/components/ui/Ornament";
+import { ArrowRight } from "@/components/ui/Mark";
 import { Photo } from "@/components/ui/Photo";
 
 /**

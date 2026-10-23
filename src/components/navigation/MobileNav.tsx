@@ -8,7 +8,7 @@ import { NavLink } from "./NavLink";
 import type { NavItem } from "@/lib/site";
 import type { MenuService } from "./ServicesMenu";
 import { ServiceIcon } from "@/components/ui/ServiceIcon";
-import { ArrowRight } from "@/components/ui/Ornament";
+import { ArrowRight } from "@/components/ui/Mark";
 
 /**
  * Disclosure-style mobile menu: a toggle button with aria-expanded controlling a link list.

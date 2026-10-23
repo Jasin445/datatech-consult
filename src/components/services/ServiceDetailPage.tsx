@@ -8,7 +8,7 @@ import { NextStep } from "@/components/sections/NextStep";
 import { PageHero } from "@/components/sections/PageHero";
 import { ProblemStory } from "@/components/sections/ProblemStory";
 import { ButtonLink } from "@/components/ui/Button";
-import { Ornament } from "@/components/ui/Ornament";
+import { Mark } from "@/components/ui/Mark";
 import { Photo } from "@/components/ui/Photo";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -93,7 +93,7 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
           {detail.considerations.items.map((item) => (
             <li key={item.title}>
               <h3 className="mb-2 flex items-center gap-3 text-2xl">
-                <Ornament className="size-4 shrink-0 text-gold" />
+                <Mark variant="bullet" className="size-4 shrink-0 text-gold" />
                 {item.title}
               </h3>
               <p className="mb-0 text-muted">{item.text}</p>

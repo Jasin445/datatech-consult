@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "@/components/ui/Ornament";
+import { ArrowRight } from "@/components/ui/Mark";
 import { engagement } from "@/content/engagement";
 
 /** Compact pointer to the engagement model on /services (instead of repeating the full block on every service page). */

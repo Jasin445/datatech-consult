@@ -2,7 +2,7 @@ import { Brand } from "./Brand";
 import { HeaderShell } from "./HeaderShell";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
-import { ArrowRight } from "@/components/ui/Ornament";
+import { ArrowRight } from "@/components/ui/Mark";
 import { NavLink } from "@/components/navigation/NavLink";
 import { MobileNav } from "@/components/navigation/MobileNav";
 import { ServicesMenu } from "@/components/navigation/ServicesMenu";

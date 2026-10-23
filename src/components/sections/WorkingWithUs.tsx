@@ -1,7 +1,7 @@
 import type { TitledItem } from "@/content/home";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Ornament } from "@/components/ui/Ornament";
+import { Mark } from "@/components/ui/Mark";
 
 /** Compact strip: heading on the left, four short commitments on the right. */
 export function WorkingWithUs({ eyebrow, heading, items }: { eyebrow: string; heading: string; items: readonly TitledItem[] }) {
@@ -18,7 +18,7 @@ export function WorkingWithUs({ eyebrow, heading, items }: { eyebrow: string; he
           {items.map((item) => (
             <li key={item.title} className="border-t border-charcoal/15 pt-5">
               <h3 className="mb-2 flex items-center gap-3 text-2xl">
-                <Ornament className="size-4 shrink-0 text-gold" />
+                <Mark variant="bullet" className="size-4 shrink-0 text-gold" />
                 {item.title}
               </h3>
               <p className="mb-0 text-muted">{item.text}</p>

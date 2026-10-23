@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "@/components/ui/Ornament";
+import { ArrowRight } from "@/components/ui/Mark";
 import { InsightCard } from "@/components/insights/InsightCard";
 import { DevNotice } from "@/components/ui/DevNotice";
 import { Section } from "@/components/ui/Section";

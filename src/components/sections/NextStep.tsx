@@ -1,4 +1,4 @@
-import { OrnamentCard } from "@/components/cards/OrnamentCard";
+import { MarkCard } from "@/components/cards/MarkCard";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -12,7 +12,7 @@ export function NextStep({ eyebrow, heading, lead, options, id = "next-step-head
       <ul className="mx-auto grid max-w-[60rem] gap-6 md:grid-cols-2 md:gap-10">
         {options.map((o) => (
           <li key={o.href}>
-            <OrnamentCard title={o.title} text={o.text} cta={o.cta} href={o.href} recommended={o.recommended} />
+            <MarkCard title={o.title} text={o.text} cta={o.cta} href={o.href} recommended={o.recommended} />
           </li>
         ))}
       </ul>

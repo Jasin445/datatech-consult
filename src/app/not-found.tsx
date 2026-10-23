@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ButtonLink, buttonRowClass } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { ArrowRight } from "@/components/ui/Ornament";
+import { ArrowRight } from "@/components/ui/Mark";
 
 // Next.js adds noindex to every 404 response itself.
 export const metadata: Metadata = { title: "Page not found" };

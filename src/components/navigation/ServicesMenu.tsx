@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState, type FocusEvent, type KeyboardEvent } from "react";
-import { ArrowRight, Ornament } from "@/components/ui/Ornament";
+import { ArrowRight, Mark } from "@/components/ui/Mark";
 import { ServiceIcon } from "@/components/ui/ServiceIcon";
 import { engagement } from "@/content/engagement";
 import { ctas } from "@/lib/site";
@@ -94,7 +94,7 @@ export function ServicesMenu({ services }: { services: readonly MenuService[] })
               </Link>
             </div>
             <div className="col-span-4 flex flex-col rounded-md bg-charcoal p-7 text-footer-text">
-              <Ornament className="mb-5 size-6 text-gold-soft" />
+              <Mark className="mb-5 size-6 text-gold-soft" />
               <p className="mb-2 font-display text-2xl leading-tight text-white">Not sure where to start?</p>
               <p className="mb-5 text-sm">Tell us the problem. We’ll point you to the right service, or tell you if you don’t need one.</p>
               <p className="mb-2 text-xs font-semibold tracking-[0.16em] text-gold-soft uppercase">Three ways to start</p>
@@ -102,7 +102,7 @@ export function ServicesMenu({ services }: { services: readonly MenuService[] })
                 {engagement.shapes.map((shape) => (
                   <li key={shape.name}>
                     <Link href="/services#how-we-work" onClick={() => setOpenPath(null)} className="flex items-center gap-2 text-white no-underline hover:text-gold-soft">
-                      <Ornament className="size-2.5 shrink-0 text-gold-soft" />
+                      <Mark variant="bullet" className="size-2.5 shrink-0 text-gold-soft" />
                       {shape.name}
                     </Link>
                   </li>

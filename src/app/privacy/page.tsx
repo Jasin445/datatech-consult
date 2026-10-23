@@ -4,7 +4,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/sections/PageHero";
 import { ReportSection } from "@/components/sections/ReportSection";
 import { Container } from "@/components/ui/Container";
-import { Ornament } from "@/components/ui/Ornament";
+import { Mark } from "@/components/ui/Mark";
 import { DevNotice } from "@/components/ui/DevNotice";
 import { getPublicContactEmail } from "@/lib/env";
 import { getPrivacyNotice, missingPrivacyFacts } from "@/lib/content/privacy";
@@ -86,7 +86,7 @@ export default function PrivacyPage() {
                 <ul className="mb-5 border-t border-charcoal/15">
                   {section.bullets.map((b) => (
                     <li key={b} className="flex items-baseline gap-4 border-b border-charcoal/15 py-3">
-                      <Ornament className="size-3 shrink-0 text-gold" />
+                      <Mark variant="bullet" className="size-3 shrink-0 text-gold" />
                       {b}
                     </li>
                   ))}

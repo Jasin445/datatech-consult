@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { OrnamentCard } from "@/components/cards/OrnamentCard";
+import { MarkCard } from "@/components/cards/MarkCard";
 import { ButtonLink, buttonRowClass } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { DevNotice } from "@/components/ui/DevNotice";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { ArrowRight, Ornament } from "@/components/ui/Ornament";
+import { ArrowRight, Mark } from "@/components/ui/Mark";
 import { Panel } from "@/components/ui/Panel";
 import { Photo } from "@/components/ui/Photo";
 import { Section } from "@/components/ui/Section";
@@ -127,7 +127,7 @@ export default function BookConsultationPage() {
         <ul className="grid gap-6 md:grid-cols-3">
           {bookingPage.purpose.items.map((item) => (
             <li key={item.title}>
-              <OrnamentCard title={item.title} text={item.text} />
+              <MarkCard title={item.title} text={item.text} />
             </li>
           ))}
         </ul>
@@ -141,7 +141,7 @@ export default function BookConsultationPage() {
           <ul className="grid content-start lg:col-span-7">
             {bookingPage.prepare.items.map((item) => (
               <li key={item} className="flex items-baseline gap-4 border-b border-charcoal/15 py-5 font-display text-[clamp(1.4rem,1.1rem+0.9vw,1.9rem)] leading-snug text-charcoal">
-                <Ornament className="size-4 shrink-0 text-gold" />
+                <Mark variant="bullet" className="size-4 shrink-0 text-gold" />
                 {item}
               </li>
             ))}

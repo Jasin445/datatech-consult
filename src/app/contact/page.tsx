@@ -5,7 +5,7 @@ import { ButtonLink, buttonRowClass } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { DevNotice } from "@/components/ui/DevNotice";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Ornament } from "@/components/ui/Ornament";
+import { Mark } from "@/components/ui/Mark";
 import { Panel } from "@/components/ui/Panel";
 import { Photo } from "@/components/ui/Photo";
 import { contactPage } from "@/content/contact";
@@ -109,7 +109,7 @@ export default function ContactPage() {
         <section aria-label="Book a consultation instead" className="bg-charcoal py-16 lg:py-20">
           <Container className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
             <p className="mb-0 flex items-center gap-4 font-display text-4xl text-white">
-              <Ornament className="size-8 shrink-0 text-gold-soft" />
+              <Mark className="size-8 shrink-0 text-gold-soft" />
               {contactPage.talk.text}
             </p>
             <Link href={ctas.consultation.href} className="font-display text-2xl text-white italic decoration-1 underline-offset-8 hover:text-gold-soft">

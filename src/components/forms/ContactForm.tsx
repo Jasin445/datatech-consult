@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRef, useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/Button";
-import { ArrowRight } from "@/components/ui/Ornament";
+import { ArrowRight } from "@/components/ui/Mark";
 import { fieldClass, fieldErrorClass, hintClass, labelClass } from "@/components/ui/styles";
 import {
   emptyEnquiry,
