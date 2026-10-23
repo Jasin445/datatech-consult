@@ -21,3 +21,5 @@ Development completion is not launch readiness. Tick only after verification.
 - [ ] Rate-limit/queue strategy documented for the chosen host
 - [ ] Homepage and service marketing copy reviewed and approved by the business
 - [ ] Hero imagery decision (keep decorative graphic or supply licensed photography)
+- [ ] Approved statement of relationship to Datatechhub confirmed; NEXT_PUBLIC_PARENT_BRAND_URL set (or link intentionally omitted)
+- [ ] Dummy leadership profile removed from src/content/leadership/profiles.ts once real approved profiles exist (it is already excluded from production output)

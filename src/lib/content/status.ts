@@ -56,3 +56,29 @@ export function findStatusViolations(registry: Record<string, unknown>): Content
   }
   return violations;
 }
+
+export type ValidatableItem = { id: string; status: unknown; text: string };
+
+/**
+ * Critical content checks, run wherever a registry is read (so also during `next build`):
+ *  - status missing or invalid
+ *  - an "approved" item that still contains the placeholder marker (an unapproved claim scheduled for public output)
+ */
+export function validateManagedItems(items: readonly ValidatableItem[]): ContentViolation[] {
+  const violations = findStatusViolations(Object.fromEntries(items.map((i) => [i.id, i.status])));
+  for (const item of items) {
+    if (item.status === "approved" && item.text.includes(DUMMY_MARKER)) {
+      violations.push({
+        id: item.id,
+        message: `Content item "${item.id}" is marked "approved" but still contains the placeholder "${DUMMY_MARKER}". Replace the placeholder text or change its status.`,
+      });
+    }
+  }
+  return violations;
+}
+
+/** Throws with actionable messages so a build cannot ship a critical content violation. */
+export function assertContentValid(violations: readonly ContentViolation[]): void {
+  if (violations.length === 0) return;
+  throw new Error(`Content validation failed:\n${violations.map((v) => `- ${v.message}`).join("\n")}`);
+}

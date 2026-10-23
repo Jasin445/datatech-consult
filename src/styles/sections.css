@@ -111,3 +111,13 @@
 .related-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
 @media (min-width: 768px) { .related-grid { grid-template-columns: repeat(2, 1fr); } }
 .related-grid .card { height: 100%; }
+
+/* Leadership / status badges */
+.leadership-grid { margin-top: var(--space-4); }
+.item-grid .status-badge {
+  display: inline-block; margin: 0 0 var(--space-3); padding: var(--space-1) var(--space-3);
+  border: 1px dashed var(--color-warning-text); border-radius: 999px;
+  background: var(--color-warning-bg); color: var(--color-warning-text); font-size: var(--text-sm); font-weight: 700;
+}
+.item-grid .leadership-role { font-weight: 600; color: var(--color-charcoal); margin-bottom: var(--space-2); }
+.parent-link { margin-top: var(--space-3); font-weight: 600; }

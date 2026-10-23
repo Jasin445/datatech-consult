@@ -9,7 +9,7 @@
 | 5 | Data Infrastructure & Engineering | complete |
 | 6 | AI & Automation | complete |
 | 7 | Business & Technology Consulting | complete |
-| 8 | About | not started |
+| 8 | About | complete |
 | 9 | Case studies | not started |
 | 10 | Insights | not started |
 | 11 | Contact and enquiry system | not started |
@@ -59,3 +59,9 @@ Delivered: /services/business-technology-consulting via ServiceDetailPage: probl
 Validation: typecheck, lint, 34 tests, build, Chromium status/overflow/structure checks, internal link crawl pass.
 Open: /about, /contact, /book-consultation, /privacy 404 until their checkpoints; canonical deferred to Checkpoint 14.
 Commit: `checkpoint-07: implement business and technology consulting page` (see `git log`).
+
+## Checkpoint 8: About (complete)
+Delivered: /about with company overview, relationship to Datatechhub, working principles, who we work with, CTA; leadership section driven by typed ManagedContent and omitted when nothing is approved; content-validation safeguards (invalid status or approved placeholder fails the build).
+Validation: typecheck, lint, 42 tests, build, production HTML grep (no dummy content), dev-mode check, build-failure demonstrations, Chromium status/overflow/structure checks pass.
+Open: real leadership and company details needed; /contact, /book-consultation, /privacy 404; canonical deferred to Checkpoint 14.
+Commit: `checkpoint-08: implement about page and content safeguards` (see `git log`).
