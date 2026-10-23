@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { AudienceMosaic } from "@/components/sections/AudienceMosaic";
 import { LeadershipGrid } from "@/components/sections/LeadershipGrid";
 import { NextStep } from "@/components/sections/NextStep";
 import { PageHero } from "@/components/sections/PageHero";
@@ -12,7 +13,7 @@ import { Photo } from "@/components/ui/Photo";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { aboutPage } from "@/content/about";
-import { nextStep } from "@/content/home";
+import { audiences, nextStep } from "@/content/home";
 import { getPublishableLeadership } from "@/lib/content/leadership";
 import { getParentBrandUrl } from "@/lib/env";
 import { pageMetadata } from "@/lib/seo/page";
@@ -96,8 +97,13 @@ export default function AboutPage() {
         </div>
       </Section>
 
+      <Section labelledBy="audiences-heading">
+        <SectionHeading id="audiences-heading" eyebrow={audiences.eyebrow} heading={audiences.heading} lead={audiences.lead} />
+        <AudienceMosaic items={audiences.items} />
+      </Section>
+
       {leadership.length > 0 ? (
-        <Section labelledBy="leadership-heading">
+        <Section tone="surface" labelledBy="leadership-heading">
           <SectionHeading id="leadership-heading" eyebrow={aboutPage.leadership.eyebrow} heading={aboutPage.leadership.heading} lead={aboutPage.leadership.lead} />
           <LeadershipGrid profiles={leadership} />
         </Section>

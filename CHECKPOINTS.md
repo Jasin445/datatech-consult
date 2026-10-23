@@ -269,7 +269,7 @@ Owner decisions: Book a consultation is the primary action. Fix critique items 1
 | # | Fix | Status |
 |---|-----|--------|
 | F1 | Primary action = Book a consultation (hero, service heroes, closing cards, footer duplicate CTA removed) | complete |
-| F2 | Homepage cut to ~7 sections (principles + commitments merged, audiences moved to About, challenges folded into the problem story) | not started |
+| F2 | Homepage cut to ~7 sections (principles + commitments merged, audiences moved to About, challenges folded into the problem story) | complete |
 | F3 | Service pages: one specific "what we do" list, plain titles, mockup full width instead of cramped in the hero | not started |
 | F4 | One engagement model (shapes with their stages) on /services; service pages link to it instead of repeating it | not started |
 | F5 | Weak stock photos replaced (services hero; services rows use mockups) | not started |
@@ -279,3 +279,6 @@ Owner decisions: Book a consultation is the primary action. Fix critique items 1
 
 ### F1 (complete, 2026-10-23)
 Homepage hero primary button is now "Book a consultation" (enquiry secondary); service, About and services-overview heroes put booking first; closing cards list "Talk it through" first with a gold ring and "Recommended first step" label (`OrnamentCard recommended`); the footer's duplicate booking link after the closing cards is removed (header CTA unchanged). Validation: typecheck, lint, vitest 161/161. Commit: `fix(f1): book a consultation is the primary action`.
+
+### F2 (complete, 2026-10-23)
+Homepage is now seven sections: hero, problem story (common problems as tags; separate strip removed), services, showcase, statement, "What working with us is like" (principles and commitments merged into four items in `workingWithUs`; approved credibility evidence still replaces it), closing (+ Insights preview only when articles are publishable). Audience mosaic moved to About (About reordered so backgrounds alternate with or without leadership). Removed: `principles`, `credibilityFallback` content and the `Commitments` component. Height at 1440px about 7,300px in production (was 9,500); 390px about 12,000px (was 16,300). Validation: typecheck, lint, vitest 161/161; screenshots reviewed. Commit: `fix(f2): homepage cut to seven sections`.

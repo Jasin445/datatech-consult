@@ -1,33 +1,17 @@
 import type { Metadata } from "next";
-import { FolioCard } from "@/components/cards/FolioCard";
 import { PhotoCard } from "@/components/cards/PhotoCard";
 import { InsightsPreview } from "@/components/insights/InsightsPreview";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { AudienceMosaic } from "@/components/sections/AudienceMosaic";
-import { Commitments } from "@/components/sections/Commitments";
 import { Hero } from "@/components/sections/Hero";
 import { NextStep } from "@/components/sections/NextStep";
 import { ProblemStory } from "@/components/sections/ProblemStory";
 import { StatementBand } from "@/components/sections/StatementBand";
+import { WorkingWithUs } from "@/components/sections/WorkingWithUs";
 import { WorkShowcase } from "@/components/sections/WorkShowcase";
-import { DashboardMock, OptionsMock, PipelineDiagram, SpreadsheetMock, WorkflowDiagram } from "@/components/visuals";
-import { Ornament } from "@/components/ui/Ornament";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import {
-  audiences,
-  challenges,
-  credibilityEvidence,
-  credibilityFallback,
-  hero,
-  nextStep,
-  principles,
-  problem,
-  servicePhotos,
-  showcase,
-  servicesIntro,
-  statement,
-} from "@/content/home";
+import { DashboardMock, OptionsMock, PipelineDiagram, SpreadsheetMock, WorkflowDiagram } from "@/components/visuals";
+import { challenges, credibilityEvidence, hero, nextStep, problem, servicePhotos, servicesIntro, showcase, statement, workingWithUs } from "@/content/home";
 import { services } from "@/content/services";
 import { getPublishableInsights } from "@/lib/content/insights";
 import { filterPublishable } from "@/lib/content/status";
@@ -44,9 +28,12 @@ const showcaseVisuals = {
   options: <OptionsMock />,
 } as const;
 
+/**
+ * Homepage (V3 fixes): seven sections. Hero, problem (with the common problems as tags), services,
+ * what the work looks like, statement, working with us (or approved evidence), closing.
+ */
 export default function HomePage() {
   const evidence = filterPublishable(credibilityEvidence).map((e) => e.data);
-  const credibility = evidence.length > 0 ? { ...credibilityFallback, items: evidence } : credibilityFallback;
   const latestInsights = getPublishableInsights().slice(0, 3);
   const siteUrl = getSiteUrl();
 
@@ -55,23 +42,7 @@ export default function HomePage() {
       {siteUrl ? <JsonLd data={organizationJsonLd(siteUrl)} /> : null}
       <Hero {...hero} visual={<DashboardMock />} />
 
-      <ProblemStory {...problem} visual={<SpreadsheetMock />} />
-
-      <section aria-labelledby="challenges-heading" className="border-y border-border bg-white py-10">
-        <div className="mx-auto flex w-full max-w-[calc(var(--container-max)+2*var(--gutter))] flex-col gap-5 px-(--gutter) lg:flex-row lg:items-center lg:gap-10">
-          <h2 id="challenges-heading" className="mb-0 shrink-0 text-2xl">
-            {challenges.heading}
-          </h2>
-          <ul className="flex flex-wrap gap-x-6 gap-y-3" aria-label="Common challenges">
-            {challenges.items.map((c) => (
-              <li key={c.title} className="flex items-center gap-2 text-charcoal">
-                <Ornament className="size-3 text-gold" />
-                {c.title}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <ProblemStory {...problem} visual={<SpreadsheetMock />} tags={challenges.items.map((c) => c.title)} />
 
       <Section id="services" labelledBy="services-heading">
         <SectionHeading id="services-heading" eyebrow={servicesIntro.eyebrow} heading={servicesIntro.heading} lead={servicesIntro.lead} />
@@ -91,23 +62,11 @@ export default function HomePage() {
 
       <StatementBand {...statement} />
 
-      <Section labelledBy="principles-heading">
-        <SectionHeading id="principles-heading" eyebrow={principles.eyebrow} heading={principles.heading} lead={principles.lead} />
-        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {principles.items.map((p, i) => (
-            <li key={p.title}>
-              <FolioCard folio={["i.", "ii.", "iii.", "iv."][i]} title={p.title} text={p.text} featured={i === 0} tone="white" />
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      <Section tone="surface" labelledBy="audiences-heading">
-        <SectionHeading id="audiences-heading" eyebrow={audiences.eyebrow} heading={audiences.heading} lead={audiences.lead} />
-        <AudienceMosaic items={audiences.items} />
-      </Section>
-
-      <Commitments eyebrow={credibility.eyebrow} heading={credibility.heading} lead={credibility.lead} items={credibility.items} photo={credibility.photo} />
+      <WorkingWithUs
+        eyebrow={workingWithUs.eyebrow}
+        heading={evidence.length > 0 ? "What we have done." : workingWithUs.heading}
+        items={evidence.length > 0 ? evidence : workingWithUs.items}
+      />
 
       {/* Renders only when publishable articles exist (production: approved only). */}
       <InsightsPreview items={latestInsights} tone="surface" />

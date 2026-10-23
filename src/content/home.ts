@@ -99,18 +99,6 @@ export const statement = {
   photo: photos.bridgeNight,
 };
 
-export const principles = {
-  eyebrow: "How we think",
-  heading: "Principles we won’t trade away.",
-  lead: "This is how we work on every engagement. They are commitments, not claims about past results.",
-  items: [
-    { title: "Problem first", text: "We start with the decision you need to make or the work you need to remove. The technology comes second." },
-    { title: "Built for your context", text: "Your people, systems, budget and connectivity shape the answer. No borrowed blueprints." },
-    { title: "Strategy that ships", text: "Every plan is written with delivery in mind, so it can be acted on by the team you have." },
-    { title: "Useful over impressive", text: "We judge the work by whether people use it, not by how much technology it contains." },
-  ] satisfies TitledItem[],
-};
-
 export const process = {
   eyebrow: "How we work",
   heading: "From first conversation to working system.",
@@ -133,16 +121,18 @@ export const process = {
 export type CredibilityEvidence = TitledItem;
 export const credibilityEvidence: ManagedContent<CredibilityEvidence>[] = [];
 
-export const credibilityFallback = {
+/**
+ * "What working with us is like": principles and commitments merged into one short set (V3 fixes).
+ * Shown when no approved credibility evidence exists; approved evidence replaces it.
+ */
+export const workingWithUs = {
   eyebrow: "Working with us",
-  heading: "What you can hold us to.",
-  lead: "However big or small the engagement.",
-  photo: photos.teamDiscussion,
+  heading: "What working with us is like.",
   items: [
-    { title: "Scope before work", text: "You know what’s included, what isn’t, and what we need from you." },
-    { title: "Honest advice", text: "If a tool, including AI, isn’t the right fit, we’ll tell you." },
-    { title: "Plain language", text: "Findings and options explained in terms decision-makers can act on." },
-    { title: "Work you can own", text: "We document what we build so your team can understand and run it." },
+    { title: "Problem first", text: "We start with the decision you need to make. The technology comes second." },
+    { title: "Honest advice", text: "If a tool, including AI, isn’t the right fit, we’ll say so. Sometimes the answer is to do less." },
+    { title: "Scope before work", text: "You see what’s included, what isn’t and what it costs before anything starts." },
+    { title: "Work you can own", text: "Documented and handed over, so your team can understand and run it." },
   ] satisfies TitledItem[],
 };
 

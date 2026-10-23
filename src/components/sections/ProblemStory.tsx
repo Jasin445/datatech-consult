@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import type { Photo as PhotoData } from "@/content/media/photos";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { Ornament } from "@/components/ui/Ornament";
 import { Photo } from "@/components/ui/Photo";
 
 /** Problem told as a short story beside a tall photograph, ending on a turn line in italic serif. */
@@ -13,6 +14,7 @@ export function ProblemStory({
   turn,
   photo,
   visual,
+  tags,
 }: {
   folio?: string;
   eyebrow: string;
@@ -22,6 +24,8 @@ export function ProblemStory({
   /** Photo, or (V3) a coded visual such as the messy spreadsheet. */
   photo?: PhotoData;
   visual?: ReactNode;
+  /** Short problem labels shown under the turn line. */
+  tags?: readonly string[];
 }) {
   return (
     <section aria-labelledby="problem-heading" className="bg-surface py-(--section-space)">
@@ -51,6 +55,16 @@ export function ProblemStory({
             ))}
           </div>
           <p className="mt-8 mb-0 border-l-2 border-gold pl-5 font-display text-3xl text-charcoal italic">{turn}</p>
+          {tags && tags.length > 0 && (
+            <ul className="mt-8 flex flex-wrap gap-2" aria-label="Common problems">
+              {tags.map((t) => (
+                <li key={t} className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-sm text-charcoal">
+                  <Ornament className="size-2.5 text-gold" />
+                  {t}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </Container>
     </section>
