@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import Link from "next/link";
-import { FolioCard } from "@/components/cards/FolioCard";
 import { EngagementShapes } from "@/components/sections/EngagementShapes";
 import { NextStep } from "@/components/sections/NextStep";
 import { PageHero } from "@/components/sections/PageHero";
@@ -13,7 +11,7 @@ import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { nextStep } from "@/content/home";
 import { services } from "@/content/services";
-import { fit, servicesPage, together } from "@/content/services-overview";
+import { fit, servicesPage } from "@/content/services-overview";
 import { pageMetadata } from "@/lib/seo/page";
 import { ctas } from "@/lib/site";
 
@@ -62,28 +60,6 @@ export default function ServicesPage() {
       <Section tone="surface" labelledBy="fit-heading">
         <SectionHeading id="fit-heading" eyebrow={fit.eyebrow} heading={fit.heading} lead={fit.lead} />
         <FitList items={fit.items} />
-      </Section>
-
-      <Section labelledBy="together-heading">
-        <SectionHeading id="together-heading" eyebrow={together.eyebrow} heading={together.heading} lead={together.lead} />
-        <ul className="grid gap-6 lg:grid-cols-3">
-          {together.items.map((item, i) => (
-            <li key={item.title}>
-              <FolioCard folio={["i.", "ii.", "iii."][i]} title={item.title} text={item.text} tone="white">
-                <p className="mt-auto mb-0 flex flex-wrap gap-x-4 gap-y-2 border-t border-border pt-5 text-sm">
-                  {item.slugs.map((slug) => {
-                    const s = services.find((x) => x.slug === slug)!;
-                    return (
-                      <Link key={slug} href={s.href} className="font-semibold">
-                        {s.title}
-                      </Link>
-                    );
-                  })}
-                </p>
-              </FolioCard>
-            </li>
-          ))}
-        </ul>
       </Section>
 
       <EngagementShapes id="how-we-work" tone="surface" />

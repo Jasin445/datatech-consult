@@ -102,3 +102,10 @@ Other tokens kept: font stack (Segoe UI system stack, no network fonts), type sc
 - Show the work: prefer a coded mockup (src/components/visuals) over a stock photo where the section is about what we deliver. Every mockup must keep its visible illustrative caption (MockFrame); never cover it with overlapping elements.
 - Grid columns that hold mockups need `min-w-0`.
 - Calls to action: only `ctas.enquiry` and `ctas.consultation` from src/lib/site.ts.
+
+## V3 fixes rules
+- Primary action is Book a consultation: it leads in heroes and closing cards ("Recommended first step"); enquiry is secondary.
+- Engagement model lives once, on /services (#how-we-work); other pages link to it with `EngagementLink`.
+- Service mockups sit full width below the hero, not squeezed into a half-width hero column.
+- Capability cards use `FolioCard titleStyle="serif"`; condensed capitals are reserved for short reference-style labels.
+- Measure page height when adding sections (homepage target: about 7 sections).

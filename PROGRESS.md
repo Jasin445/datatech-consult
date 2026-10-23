@@ -1,4 +1,4 @@
-Current phase: V3 FIXES (F1-F8, see CHECKPOINTS.md). V3 complete before it.
+Current phase: V3 FIXES COMPLETE (F1-F8, see CHECKPOINTS.md). V3 complete before it.
 Status: development complete. NOT LAUNCH-READY: business, legal and configuration inputs outstanding (RELEASE_CHECKLIST.md). Critique item 1 (real people, credentials, case studies) is PARKED by owner decision (2026-10-23): it will be the final piece of work, after everything else.
 
 Next action:
@@ -15,7 +15,7 @@ Development functionality completed:
 - Enquiry form with shared client/server validation, honeypot, rate limit, provider adapter (Resend), honest unavailable states. Booking page with HTTPS provider link or honest unconfigured state. Draft privacy notice describing actual behaviour, with a production gate on personal-data collection.
 
 Production build and tests completed (2026-10-23, this machine):
-- typecheck, lint (0 problems), vitest 161/161, production build: pass (last run at V3-8). Lighthouse (simulated mobile): performance 94-100, accessibility 100, best practices 100.
+- typecheck, lint (0 problems), vitest 164/164, production build: pass (last run at F8). Lighthouse (simulated mobile): performance 94-98, accessibility 100, best practices 100.
 - npm run qa:responsive and npm run qa:a11y against the production build: pass (0 axe violations, no overflow, all links resolve, focus visible, reduced motion respected). Development-only routes also checked.
 
 External integrations configured and tested:

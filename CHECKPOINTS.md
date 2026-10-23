@@ -275,7 +275,7 @@ Owner decisions: Book a consultation is the primary action. Fix critique items 1
 | F5 | Weak stock photos replaced (services hero; services rows use mockups) | complete |
 | F6 | Scale/cost signals (qualitative, optional price fields hidden until supplied) | complete |
 | F7 | Smaller items (mobile hero, sound-familiar strip) | complete |
-| F8 | QA, Lighthouse, docs | not started |
+| F8 | QA, Lighthouse, docs | complete |
 
 ### F1 (complete, 2026-10-23)
 Homepage hero primary button is now "Book a consultation" (enquiry secondary); service, About and services-overview heroes put booking first; closing cards list "Talk it through" first with a gold ring and "Recommended first step" label (`OrnamentCard recommended`); the footer's duplicate booking link after the closing cards is removed (header CTA unchanged). Validation: typecheck, lint, vitest 161/161. Commit: `fix(f1): book a consultation is the primary action`.
@@ -297,3 +297,10 @@ Each engagement shape now has a "Scale" line (Diagnostic: the smallest commitmen
 
 ### F7 (complete, 2026-10-23)
 "Sound familiar?" strip: already folded into the problem stories (F2, F3). Mobile hero tightened (top padding, gaps, heading/lead spacing, base-size lead below sm): dashboard top moved from 729px to 606px on 390x844 (about 240px visible above the fold, was 115px) and from 725px to 603px on 360x740 (about 140px, was 15px). Desktop unchanged. Screen reader: real screen-reader and real-device testing are not possible in this environment; as a proxy, the accessibility tree (Playwright aria snapshot) of / and /services/ai-automation was reviewed: one h1, logical h2/h3 outline, labelled regions and landmarks, every mockup exposed as a figure named by its illustrative caption containing a fully described image. Manual screen-reader and real-phone testing remain on the release checklist. Commit: `fix(f7): mobile hero shows the dashboard sooner`.
+
+### F8 (complete, 2026-10-23)
+Found during measurement: /services became longer on mobile after F5 (mockups are taller than the photos they replaced). Removed the abstract "Where one service leans on another" section (service pages already show related services) and its content/test.
+Page heights (production build, before fixes -> after): / desktop 9,530 -> 7,224, mobile 16,313 -> 12,351; /services 8,838 -> 7,323, mobile 12,817 -> 11,650; /services/ai-automation 8,420 -> 6,947, mobile 12,931 -> 9,982; /about 5,538 / 7,294 (now includes the audience mosaic).
+Lighthouse (simulated mobile): / 94, /services 98, /services/ai-automation 95; accessibility 100 and best practices 100; CLS 0.
+QA (fresh production build in the scratchpad copy): typecheck, lint, vitest 164/164 (16 files); qa:responsive on all 10 public routes (clean runs) and qa:a11y (32 links, axe, keyboard, reduced motion): pass; unapproved content and unknown routes 404.
+Commit: `fix(f8): final qa; services overview shortened on mobile`.
