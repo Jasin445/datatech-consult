@@ -28,8 +28,16 @@
   --color-footer-text: #dbe6ee;
   --color-footer-link-hover: #cfe9f9;
 
+  /* V2 brand accent: dark gold. 5.0:1 on white, 4.6:1 on surface (text-safe on light backgrounds).
+     Not for text on charcoal (2.9:1): use gold-soft there. */
+  --color-gold: #8c6a2f;
+  --color-gold-soft: color-mix(in srgb, var(--color-gold) 55%, white); /* on charcoal: ornaments, eyebrows */
+  --color-gold-tint: color-mix(in srgb, var(--color-gold) 12%, white); /* featured cards. Gold text on it is 4.3:1: use charcoal/muted text there */
+
   /* Typography (overrides Tailwind's text-sm/lg/xl/2xl/3xl; other sizes keep defaults) */
-  --font-sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  /* V2 brand fonts (next/font variables set on <html> in layout.tsx), with system fallbacks. */
+  --font-sans: var(--font-sans-face), "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-display-face), Georgia, "Times New Roman", serif;
   --text-sm: 0.875rem;
   --text-sm--line-height: 1.6;
   --text-base: 1rem;
@@ -41,11 +49,23 @@
   --text-2xl--line-height: 1.15;
   --text-3xl: clamp(2.125rem, 1.6rem + 2.6vw, 3.5rem);
   --text-3xl--line-height: 1.15;
+  /* V2 display sizes (serif headlines) */
+  --text-display: clamp(2.75rem, 1.6rem + 5vw, 5.75rem);
+  --text-display--line-height: 0.98;
+  --text-4xl: clamp(2.5rem, 1.8rem + 3.4vw, 4.25rem);
+  --text-4xl--line-height: 1.02;
 
   /* Shape and elevation */
   --radius-sm: 6px;
   --radius-md: 10px;
   --shadow-card: 0 1px 2px rgb(23 43 58 / 8%), 0 4px 12px rgb(23 43 58 / 6%);
+
+  /* V2 motion: one staggered entrance on page load (disabled by the reduced-motion rule below). */
+  --animate-rise: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: none; }
+  }
 }
 
 /*
@@ -95,14 +115,17 @@
   }
 
   h1, h2, h3, h4 {
-    line-height: 1.15;
+    line-height: 1.08;
     margin: 0 0 1rem;
     color: var(--color-charcoal);
     text-wrap: balance;
   }
-  h1 { font-size: var(--text-3xl); letter-spacing: -0.02em; font-weight: 700; }
-  h2 { font-size: var(--text-2xl); letter-spacing: -0.01em; font-weight: 700; }
-  h3 { font-size: var(--text-xl); font-weight: 700; }
+  /* Instrument Serif has a single (400) weight: headings get size and contrast, not bold. */
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.01em; }
+  h1 { font-size: var(--text-4xl); }
+  h2 { font-size: var(--text-3xl); }
+  h3 { font-size: var(--text-2xl); line-height: 1.1; }
+  h4 { font-size: var(--text-lg); font-weight: 600; }
   p { margin: 0 0 1rem; }
 
   /* Links are underlined so they never rely on colour alone (WCAG 1.4.1). Components that are

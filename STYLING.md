@@ -51,3 +51,42 @@ Other tokens kept: font stack (Segoe UI system stack, no network fonts), type sc
 - Mobile menu panel is now `absolute inset-x-0 top-full` under the sticky header (full width, scrolls inside `100dvh - header`). Before, it sat inside the header's flex child. Verify visually.
 - `h1-h4` base styles now live in `@layer base` and are explicitly `font-weight: 700` (Tailwind preflight resets headings to inherit).
 - Tailwind preflight now applies (it resets lists, margins, `img/svg {display:block}`).
+
+---
+
+# V2 design system ("field report"), added at V2-1
+
+## Fonts
+- **Instrument Serif** (`font-display`): h1-h3 (set in base styles, weight 400 only: hierarchy comes from size, never bold), card titles, italic accents (`<em>` inside headings renders gold italic), italic call-to-action links, folio numerals.
+- **Instrument Sans** (`font-sans`, default): body and UI. Has a width axis: `font-stretch-condensed` + uppercase + tracking for folio-card titles.
+- Both are loaded with `next/font/google` in `layout.tsx`: downloaded at build time and self-hosted (no runtime request to Google; the privacy notice stays accurate).
+- Sizes: `text-display` (hero/statements), `text-4xl` (h1), `text-3xl` (h2), `text-2xl` (h3).
+
+## Colour
+- Existing tokens unchanged. Added `gold` (#8c6a2f, the V2 brand accent) plus derived `gold-soft` (on charcoal) and `gold-tint` (featured card fill).
+- Blue (`primary`) stays the action colour: primary buttons and links. Gold is editorial: eyebrows, folio numbers, rules, ornaments, card buttons.
+- Contrast: `gold` text only on white/surface. On charcoal use `gold-soft`. On `gold-tint` use charcoal or muted text (gold is 4.3:1 there).
+
+## Motifs (use them, do not invent new ones per page)
+- **Eyebrow** (`ui/Eyebrow`): folio number + gold rule + uppercase label. Every major section opens with one via `SectionHeading` (`folio`, `eyebrow` props). Number sections 01, 02... in page order.
+- **Ornament** (`ui/Ornament`): four-point star. Bullets for short lists, top of ornament cards, footer CTA.
+- **Folded corner**: diagonal gradient square in the top-right corner; set `tone` to the section background.
+- **Offset gold frame** behind feature photos (hero).
+
+## Cards (src/components/cards)
+- `FolioCard`: report page (square, folded corner, folio, condensed uppercase title, gold outline button with arrow; `featured` = gold tint + solid gold button). For principles, options, lists of offerings.
+- `OrnamentCard`: rounded white card on a charcoal section, star, serif title, one line, italic serif CTA (whole card clickable). For two or three "ways to start" choices.
+- `PhotoCard`: tall photo, title over a charcoal gradient, short line and arrow below, whole card clickable. For services and anything with a photo.
+- Accessible names: repeated "Learn more" buttons carry an sr-only title suffix.
+
+## Photography
+- Only photos registered in `src/content/media/photos.ts` (licence, source, alt). Render with `ui/Photo` (next/image). Use `decorative` only when a caption already carries the meaning.
+- Text over photos always sits on a charcoal gradient (`bg-linear-to-t from-charcoal ...`) for contrast.
+
+## Sections
+- `Section tone`: `default` (white), `surface`, `charcoal`. In charcoal sections pass `onDark` to `SectionHeading`/`ProcessSteps`.
+- Alternate backgrounds; never put two charcoal sections next to each other.
+
+## Motion
+- One staggered entrance on the hero only (`animate-rise` + `[animation-delay:...]`), image zoom and arrow nudge on card hover, star rotation on hover. All disabled by `prefers-reduced-motion`.
+- QA note: `scripts/qa/a11y-crawl.mjs` waits for animations to finish before measuring contrast.

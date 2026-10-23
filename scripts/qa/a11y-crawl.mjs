@@ -41,6 +41,8 @@ for (const route of routes) {
   for (const width of [390, 1280]) {
     const page = await browser.newPage({ viewport: { width, height: 900 } });
     await page.goto(base + route, { waitUntil: "load" });
+    // Let entrance animations finish so contrast is measured on the settled page.
+    await page.evaluate(() => Promise.all(document.getAnimations().map((a) => a.finished.catch(() => {}))));
     await page.addScriptTag({ content: axeSource });
     const result = await page.evaluate(async () =>
       axe.run(document, { runOnly: { type: "tag", values: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"] } }),

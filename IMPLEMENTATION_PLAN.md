@@ -36,3 +36,24 @@ See sections 11 and 12 of the master prompt. Development completion is reported 
 
 ## Enquiry flow (Checkpoint 11)
 Validation is dependency-free (`src/lib/validation/enquiry.ts`) and shared by client and server. `/api/contact` -> `handleEnquiry` (`src/lib/contact/handle.ts`) -> `EmailProvider` adapter (`src/lib/email`, supported: `resend`). The form only renders when `getContactAvailability()` reports email as configured. Rate limiting is in-memory (5 per 10 minutes per client); on serverless or multi-instance hosting use host/edge limits or a shared store. No durable queue or retry exists; failures are shown to the visitor. Provider acknowledgement does not guarantee delivery.
+
+---
+
+# Version 2: visual redesign (started 2026-10-23)
+
+## Brief (from the business owner)
+V1 reads as old-fashioned and text-heavy. V2 remakes every page to be image-led and distinctive, with card styles taken from two supplied references (an "ornament" card: rounded light card on a dark field, star ornament, serif title, short line, italic serif CTA; and a "folio" card: square card with a folded corner, uppercase title, outline button with an arrow, a filled featured variant). Two branded fonts. Existing colour tokens unchanged; add one brand colour, a dark gold. Copy must be sharp, specific to our value proposition (problem-first statements), with no filler. Same governance rules as V1 (no invented facts, no fake functionality).
+
+## Direction: "field report"
+The site reads like a well-made consulting report: editorial serif headlines, documentary photography of real African workplaces and cities, dark gold rules and folio numbers (01, 02...) as the recurring motif, folded-corner "report page" cards. Charcoal sections give contrast for ornament cards. Blue stays the action colour (buttons, links); gold is the editorial accent.
+
+## Tokens added (existing tokens unchanged)
+- `--color-gold: #8c6a2f` (dark gold). 5.0:1 on white, 4.6:1 on surface: safe for text on light backgrounds.
+- Derived: `--color-gold-soft` (gold mixed with white, for text/ornaments on charcoal) and `--color-gold-tint` (pale gold for card folds and featured cards).
+- Fonts (self-hosted at build via next/font, no third-party requests at runtime): Instrument Serif (display: h1-h3, card titles, italic CTAs) and Instrument Sans (body and UI).
+
+## Photography
+Free-licence photographs (Unsplash License: free commercial use, no attribution required) downloaded into `public/images/photos/` and served from our own domain. Every photo is registered in `src/content/media/photos.ts` with source URL, photographer and licence; a test fails if a file is unregistered or a registered file is missing. Photos are illustrative: alt text describes the scene and never implies the people are Datatechhub staff or clients. Replace with commissioned photography when available.
+
+## V2 checkpoints
+V2-1 Design foundation · V2-2 Homepage · V2-3 Services overview + service detail template · V2-4 About · V2-5 Contact + Booking · V2-6 Case studies, Insights, Privacy, 404 · V2-7 Sitewide copy/imagery pass, QA, docs.

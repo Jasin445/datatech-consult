@@ -13,11 +13,11 @@ export function SiteHeader() {
   });
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-white/97">
+    <header className="sticky top-0 z-50 border-t-[3px] border-b border-t-gold border-b-border bg-white/95 backdrop-blur-sm">
       <Container className="flex min-h-(--header-height) items-center justify-between gap-4">
         <Brand />
         <nav className="ml-auto hidden lg:block" aria-label="Primary">
-          <ul className="flex items-center gap-6">
+          <ul className="flex items-center gap-8">
             {items.map((item) => (
               <li key={item.href}>
                 <NavLink href={item.href}>{item.label}</NavLink>

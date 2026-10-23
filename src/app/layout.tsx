@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 import "@/styles/globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -6,6 +7,10 @@ import { getSiteUrl } from "@/lib/env";
 import { siteConfig } from "@/lib/site";
 
 const siteUrl = getSiteUrl();
+
+// Brand fonts, downloaded at build time and self-hosted (no runtime requests to Google).
+const display = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-display-face", display: "swap" });
+const sans = Instrument_Sans({ subsets: ["latin"], axes: ["wdth"], variable: "--font-sans-face", display: "swap" });
 
 export const metadata: Metadata = {
   ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
@@ -34,7 +39,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body>
         <a className="absolute top-[-4rem] left-4 z-100 rounded-sm bg-charcoal px-4 py-3 text-white focus:top-3" href="#main">
           Skip to main content

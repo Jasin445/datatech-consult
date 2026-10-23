@@ -2,22 +2,23 @@ import type { CSSProperties } from "react";
 import type { TitledItem } from "@/content/home";
 
 /**
- * A genuine sequence, so an ordered list with visible step numbers is appropriate.
- * Desktop column count follows the number of steps via the --process-cols custom property.
+ * A genuine sequence, so an ordered list. V2: large italic serif numerals on a gold rule
+ * (horizontal on desktop, vertical on mobile). Column count follows the number of steps.
  */
-export function ProcessSteps({ steps }: { steps: readonly TitledItem[] }) {
+export function ProcessSteps({ steps, onDark = false }: { steps: readonly TitledItem[]; onDark?: boolean }) {
   return (
     <ol
-      className="grid gap-6 [counter-reset:step] lg:grid-cols-(--process-cols)"
+      className="relative grid gap-10 lg:grid-cols-(--process-cols) lg:gap-8"
       style={{ "--process-cols": `repeat(${steps.length}, minmax(0, 1fr))` } as CSSProperties}
     >
-      {steps.map((step) => (
-        <li
-          key={step.title}
-          className="relative pl-13 [counter-increment:step] before:absolute before:top-0 before:left-0 before:grid before:size-9 before:place-items-center before:rounded-full before:bg-primary before:font-bold before:text-white before:content-[counter(step)] lg:pt-13 lg:pl-0"
-        >
-          <h3 className="mb-1 text-lg leading-[1.15]">{step.title}</h3>
-          <p className="mb-0 text-muted">{step.text}</p>
+      {steps.map((step, i) => (
+        <li key={step.title} className={`relative border-l pl-6 lg:border-t lg:border-l-0 lg:pt-8 lg:pl-0 ${onDark ? "border-gold-soft/50" : "border-gold/40"}`}>
+          <span aria-hidden="true" className={`absolute top-0 -left-[5px] size-[9px] rotate-45 lg:-top-[5px] lg:left-0 ${onDark ? "bg-gold-soft" : "bg-gold"}`} />
+          <p aria-hidden="true" className={`mb-3 font-display text-5xl leading-none italic ${onDark ? "text-gold-soft" : "text-gold"}`}>
+            {String(i + 1).padStart(2, "0")}
+          </p>
+          <h3 className={`mb-2 text-2xl ${onDark ? "text-white" : ""}`}>{step.title}</h3>
+          <p className={`mb-0 ${onDark ? "text-footer-text" : "text-muted"}`}>{step.text}</p>
         </li>
       ))}
     </ol>

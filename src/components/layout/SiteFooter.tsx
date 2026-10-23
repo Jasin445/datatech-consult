@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { Ornament } from "@/components/ui/Ornament";
 import { getParentBrandUrl, getPublicContactEmail } from "@/lib/env";
-import { services, siteConfig } from "@/lib/site";
+import { primaryCta, services, siteConfig } from "@/lib/site";
 
 /** Only verified details appear here. Unset env values are omitted, never replaced with invented ones. */
 export function SiteFooter() {
@@ -9,12 +10,25 @@ export function SiteFooter() {
   const parentUrl = getParentBrandUrl();
 
   return (
-    <footer className="bg-charcoal pt-16 pb-8 text-footer-text [&_a]:text-white [&_a:hover]:text-footer-link-hover [&_li_a]:no-underline [&_li_a:hover]:underline">
+    <footer className="bg-charcoal text-footer-text [&_a]:text-white [&_a:hover]:text-gold-soft [&_li_a]:no-underline [&_li_a:hover]:underline">
       <Container>
-        <div className="grid gap-8 md:grid-cols-[1.5fr_1fr_1fr]">
+        <div className="flex flex-col gap-8 border-b border-white/15 py-16 lg:flex-row lg:items-end lg:justify-between lg:py-20">
+          <p className="mb-0 max-w-[16ch] font-display text-4xl text-white">
+            Empowering <span className="text-gold-soft italic">through data.</span>
+          </p>
+          <Link
+            href={primaryCta.href}
+            className="group inline-flex items-center gap-4 self-start font-display text-2xl italic no-underline lg:self-auto"
+          >
+            <Ornament className="size-6 text-gold-soft transition-transform duration-500 group-hover:rotate-45" />
+            <span className="underline decoration-1 underline-offset-8">{primaryCta.label}</span>
+          </Link>
+        </div>
+
+        <div className="grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <p className="mb-2 text-[1.25rem] font-bold text-white">{siteConfig.name}</p>
-            <p>{siteConfig.parentTagline}</p>
+            <p className="mb-2 font-semibold text-white">{siteConfig.name}</p>
+            <p className="max-w-[34ch]">Data, analytics, automation and technology consulting for organisations in Nigeria and across Africa.</p>
             {email && (
               <p>
                 <a href={`mailto:${email}`}>{email}</a>
@@ -22,8 +36,8 @@ export function SiteFooter() {
             )}
           </div>
           <nav aria-label="Services">
-            <h2 className="mb-3 text-base font-bold text-white">Services</h2>
-            <ul className="grid gap-2">
+            <h2 className="mb-4 font-sans text-sm font-semibold tracking-[0.18em] text-gold-soft uppercase">Services</h2>
+            <ul className="grid gap-3">
               {services.map((s) => (
                 <li key={s.href}>
                   <Link href={s.href}>{s.label}</Link>
@@ -32,8 +46,8 @@ export function SiteFooter() {
             </ul>
           </nav>
           <nav aria-label="Company">
-            <h2 className="mb-3 text-base font-bold text-white">Company</h2>
-            <ul className="grid gap-2">
+            <h2 className="mb-4 font-sans text-sm font-semibold tracking-[0.18em] text-gold-soft uppercase">Company</h2>
+            <ul className="grid gap-3">
               <li><Link href="/about">About</Link></li>
               <li><Link href="/contact">Contact</Link></li>
               <li><Link href="/book-consultation">Book a consultation</Link></li>
@@ -48,7 +62,7 @@ export function SiteFooter() {
             </ul>
           </nav>
         </div>
-        <p className="mt-12 mb-0 border-t border-white/18 pt-6 text-sm">
+        <p className="mb-0 border-t border-white/15 py-6 text-sm">
           © {new Date().getFullYear()} {siteConfig.name}, part of {siteConfig.parentBrand}.
         </p>
       </Container>
