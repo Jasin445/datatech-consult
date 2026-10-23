@@ -44,7 +44,7 @@ export function MarkCard({
       {href && cta && (
         <Link
           href={href}
-          className="mt-auto font-display text-2xl text-primary italic decoration-1 underline-offset-8 after:absolute after:inset-0 after:rounded-[1.25rem] hover:text-primary-hover"
+          className="mt-auto font-display text-2xl text-charcoal italic decoration-1 underline-offset-8 after:absolute after:inset-0 after:rounded-[1.25rem] hover:text-gold"
         >
           {cta}
         </Link>

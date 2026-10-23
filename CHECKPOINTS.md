@@ -383,3 +383,6 @@ Banner "Book a consultation" link is now soft gold and underlined (white on hove
 
 ### Owner adjustment: statement accent (2026-10-24)
 Homepage statement restored to "The best sign the work is done:" + "the meeting gets shorter." with the part after the colon in soft gold italic (as in V2). `StatementBand` accents use gold-soft italic again (also affects About: "Your context is the brief."). STYLING.md updated. Validation: typecheck, lint, vitest 167/167; production build; screenshot; qa:a11y on / and /about pass. Commit: `adjust: gold italic statement accent restored`.
+
+### Owner adjustment: card link colour reverted (2026-10-24)
+Closing-card links back to charcoal (same as the card text) with gold on hover, as before; nothing else changed. Commit: `adjust: card links back to charcoal with gold hover`.
