@@ -16,3 +16,11 @@ export const valueItemClass =
 
 /** Card surface. */
 export const cardClass = "flex flex-col rounded-md border border-border bg-white p-6 shadow-card";
+
+/** Neutral pill (e.g. project type). */
+export const pillClass =
+  "inline-block rounded-full border border-border bg-surface px-3 py-1 text-sm font-semibold text-charcoal";
+
+/** Development-only status pill for dummy/draft content. */
+export const statusPillClass =
+  "inline-block rounded-full border border-dashed border-warning-text bg-warning-bg px-3 py-1 text-sm font-bold text-warning-text";

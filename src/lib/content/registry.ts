@@ -1,15 +1,15 @@
+import { getPublishableCaseStudies } from "./case-studies";
 import { filterPublishable, type ManagedContent } from "./status";
 
 /**
- * Case studies and Insights are conditional sections.
- * Typed registries are added in Checkpoints 9 and 10. Until then they are empty,
- * so navigation links and homepage sections stay hidden.
+ * Case studies and Insights are conditional sections: navigation links and homepage sections
+ * appear only when something is publishable. Case studies are real (Checkpoint 9).
+ * The Insights registry is added in Checkpoint 10; until then it is empty.
  */
-const caseStudies: ManagedContent<{ slug: string }>[] = [];
 const insights: ManagedContent<{ slug: string }>[] = [];
 
 export function hasPublishableCaseStudies(): boolean {
-  return filterPublishable(caseStudies).length > 0;
+  return getPublishableCaseStudies().length > 0;
 }
 
 export function hasPublishableInsights(): boolean {

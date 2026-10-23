@@ -12,7 +12,7 @@
 | 6 | AI & Automation | complete |
 | 7 | Business & Technology Consulting | complete |
 | 8 | About | complete |
-| 9 | Case studies | not started |
+| 9 | Case studies | complete (unverified: see PROGRESS.md) |
 | 10 | Insights | not started |
 | 11 | Contact and enquiry system | not started |
 | 12 | Consultation booking | not started |
@@ -67,6 +67,11 @@ Delivered: /about with company overview, relationship to Datatechhub, working pr
 Validation: typecheck, lint, 42 tests, build, production HTML grep (no dummy content), dev-mode check, build-failure demonstrations, Chromium status/overflow/structure checks pass.
 Open: real leadership and company details needed; /contact, /book-consultation, /privacy 404; canonical deferred to Checkpoint 14.
 Commit: `checkpoint-08: implement about page and content safeguards` (see `git log`).
+
+## Checkpoint 9: Case studies (complete in code; install/build/test not yet run)
+Delivered: typed registry `src/content/case-studies` (ManagedContent + projectType: completed-work, prototype, internal-demonstration, ongoing); `src/lib/content/case-studies.ts` (validation: status, placeholder in approved, slug format/duplicates, project type, related-service slugs; getPublishableCaseStudies, getCaseStudyBySlug, getCaseStudySlugs); `/case-studies` index (404 in production when nothing is approved); `/case-studies/[slug]` (dynamicParams=false, generateStaticParams for publishable items only, noindex for non-approved); CaseStudyCard and CaseStudyDetail (challenge, objectives, contribution, approach, solution, deliverables, verified results, lessons, related services, CTA; empty sections omitted); nav link and registry now driven by the real registry. One fictional dummy entry (development only). All styling is Tailwind.
+Validation: static review only (no network). Tests added in tests/case-studies.test.ts.
+Open: no real case studies supplied; homepage has no case-study section yet (add only when approved items exist, in a later checkpoint or Checkpoint 14/15).
 
 ## Maintenance: Tailwind migration (after Checkpoint 8, not a numbered checkpoint)
 Delivered: every component and page converted from hand-written CSS (tokens.css, sections.css, globals.css classes) to Tailwind v4 utilities; colour system retained as `@theme` tokens; STYLING.md added. Checkpoint 9 NOT started.

@@ -1,5 +1,12 @@
-Current checkpoint: 8 (complete) + Tailwind migration (applied, UNVERIFIED, see below)
-Status: Awaiting verification of the Tailwind migration, then authorisation to start Checkpoint 9
+Current checkpoint: 9 (complete in code, UNVERIFIED) on top of the Tailwind migration (UNVERIFIED)
+Status: Awaiting `npm install` and full verification of the Tailwind migration AND Checkpoint 9, then authorisation to start Checkpoint 10
+
+## READ FIRST: Checkpoint 9 (Case studies) status
+Implemented after the Tailwind migration, in Tailwind only. Neither has been installed, type-checked, linted, tested, built or viewed (no network in the authoring environment). Verify in this order: `npm install`; `npm run typecheck && npm run lint && npm test && npm run build`; then check in dev (/case-studies and /case-studies/sample-case-study show the dummy entry with dev notice and "Dummy data" badge; "Case Studies" appears in nav) and in production (`npm run build && npm start`: /case-studies and /case-studies/sample-case-study return 404, nav has no Case Studies link, no "DUMMY" or "Sample case study" text in any page HTML). Then demonstrate the safeguard: temporarily mark the dummy entry "approved" and confirm the production build FAILS naming `case-studies/sample-case-study`; restore it.
+
+Files (Checkpoint 9): src/content/case-studies/{types,index,page}.ts; src/lib/content/case-studies.ts; src/lib/content/registry.ts (case studies now real; insights still empty); src/components/case-studies/{CaseStudyCard,CaseStudyDetail}.tsx; src/app/case-studies/page.tsx and [slug]/page.tsx; shared pillClass/statusPillClass in src/components/ui/styles.ts; tests/case-studies.test.ts.
+Behaviour: with no approved case studies, production hides the nav link and both routes 404 (index calls notFound(); [slug] has dynamicParams=false and no static params). Non-approved items are noindex in any environment.
+Next action: Checkpoint 10 (Insights) after verification. Mirror this pattern: typed registry, validation, conditional nav (insights array in registry.ts), noindex for non-approved, no homepage section until approved. Extend validation checks as in lib/content/case-studies.ts. Real case studies still need business-supplied, verified facts; never present prototypes or demos as client work.
 
 ## READ FIRST: Tailwind migration (done after Checkpoint 8, before Checkpoint 9)
 Project rule added: all styling uses Tailwind CSS v4 utilities (see STYLING.md, also referenced from README.md, IMPLEMENTATION_PLAN.md, CHECKPOINTS.md). No behaviour, content, routes, tests or logic were changed. Checkpoint 9 was NOT started.
