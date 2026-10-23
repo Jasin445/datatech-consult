@@ -118,3 +118,4 @@ Other tokens kept: font stack (Segoe UI system stack, no network fonts), type sc
 - Italics for real quotations, plus two owner-approved exceptions: statement-band accents (gold-soft italic), the hero secondary link ("Send an enquiry") and the closing-card (MarkCard) links, which are italic serif. Other links are sans semibold with an arrow.
 - Micro-labels are sentence case (no tracked uppercase), except inside mockups.
 - Photos with mockups: use `visuals/InContext`; captions on photo strips describe settings, never clients.
+- Hover states always transition (global base rule, 250ms). Do not add `transition-none` to interactive elements.

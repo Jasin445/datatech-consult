@@ -4,11 +4,11 @@ import type { ComponentProps, ReactNode } from "react";
 export type ButtonVariant = "primary" | "primary-pill" | "secondary" | "on-dark" | "outline-on-dark" | "gold" | "gold-outline";
 
 const base =
-  "inline-flex min-h-11 cursor-pointer items-center justify-center gap-3 px-6 font-semibold leading-tight no-underline transition-colors duration-150 aria-disabled:cursor-not-allowed aria-disabled:opacity-55 disabled:cursor-not-allowed disabled:opacity-55";
+  "inline-flex min-h-11 cursor-pointer items-center justify-center gap-3 px-6 font-semibold leading-tight no-underline transition-[color,background-color,border-color,background-position,box-shadow] duration-300 aria-disabled:cursor-not-allowed aria-disabled:opacity-55 disabled:cursor-not-allowed disabled:opacity-55";
 
 const variantClass: Record<ButtonVariant, string> = {
-  primary: "rounded-sm border-2 border-transparent bg-primary bg-(image:--btn-trace) bg-size-[auto_100%] bg-right bg-no-repeat text-white hover:bg-primary-hover hover:text-white",
-  "primary-pill": "rounded-full border-2 border-transparent bg-primary bg-(image:--btn-trace) bg-size-[auto_100%] bg-[position:right_0.9rem_center] bg-no-repeat text-white hover:bg-primary-hover hover:text-white",
+  primary: "rounded-sm border-2 border-transparent bg-primary bg-(image:--btn-trace) bg-size-[auto_100%] bg-[position:right_0_center] bg-no-repeat text-white hover:bg-[position:right_-0.6rem_center] hover:bg-primary-hover hover:text-white",
+  "primary-pill": "rounded-full border-2 border-transparent bg-primary bg-(image:--btn-trace) bg-size-[auto_100%] bg-[position:right_0.9rem_center] bg-no-repeat text-white hover:bg-[position:right_0.3rem_center] hover:bg-primary-hover hover:text-white",
   secondary: "rounded-sm border-2 border-primary bg-transparent text-primary hover:bg-surface hover:text-primary-hover",
   "on-dark": "rounded-sm border-2 border-transparent bg-white text-charcoal hover:bg-surface hover:text-charcoal",
   "outline-on-dark": "rounded-sm border-2 border-white bg-transparent text-white hover:bg-white/12 hover:text-white",
