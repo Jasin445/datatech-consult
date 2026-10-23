@@ -16,7 +16,6 @@ export const hero = {
   body: "We help organisations in Nigeria and across Africa turn scattered data and stubborn manual work into reporting people trust, systems that talk to each other, and automation that earns its place.",
   primary: ctas.enquiry,
   secondary: { label: "Explore our services", href: "/services" },
-  photo: photos.boardroom,
   note: {
     label: "Field note",
     text: "Most reporting problems aren’t technology problems. They start with a question nobody agreed on.",
@@ -28,13 +27,44 @@ export const problem = {
   eyebrow: "The problem",
   heading: "Monday’s report took all of Friday.",
   paragraphs: [
-    "The board wants one number. Finance has one, sales has another, and the spreadsheet that reconciles them lives on one person’s laptop. Every month the same people rebuild the same report by hand, and every month someone asks which version is right.",
-    "Meanwhile the pressure to “do something with AI” keeps growing, with no clear view of where it would actually help.",
+    "The board wants one number. Finance has one, sales has another, and the spreadsheet that reconciles them lives on one person’s laptop. Every month it gets rebuilt by hand, and every month someone asks which version is right.",
     "Most organisations don’t have a data team to untangle this. So it lands on someone who already has a full-time job.",
   ],
   turn: "There’s a calmer way to run on data.",
-  photo: photos.streetAerial,
 };
+
+/** "What the work looks like": each item is illustrated by a coded mockup (chosen in src/app/page.tsx). */
+export const showcase = {
+  eyebrow: "What the work looks like",
+  heading: "Less talk about data. More of this.",
+  lead: "A few examples of what we build and hand over. The figures are illustrative; the shapes of the work are real.",
+  items: [
+    {
+      key: "pipeline",
+      kicker: "Data infrastructure",
+      title: "Many sources. One version of the truth.",
+      text: "Your systems keep doing their jobs. We connect them, clean what comes out, and load one reporting store everyone reads from.",
+      href: "/services/data-infrastructure",
+      linkLabel: "Explore data infrastructure",
+    },
+    {
+      key: "workflow",
+      kicker: "AI & automation",
+      title: "Automation with a person in the loop.",
+      text: "Routine steps run on their own. Anything unusual stops for a named person to check, so nothing important is decided unseen.",
+      href: "/services/ai-automation",
+      linkLabel: "Explore AI and automation",
+    },
+    {
+      key: "options",
+      kicker: "Business & technology consulting",
+      title: "Options weighed before money is spent.",
+      text: "When a decision is expensive to reverse, we lay the routes side by side, rate them honestly and recommend one, including “fix what you have”.",
+      href: "/services/business-technology-consulting",
+      linkLabel: "Explore technology consulting",
+    },
+  ],
+} as const;
 
 export const challenges = {
   heading: "Sound familiar?",

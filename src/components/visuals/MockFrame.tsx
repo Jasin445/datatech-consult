@@ -23,7 +23,7 @@ export function MockFrame({
   bodyClassName?: string;
 }) {
   return (
-    <figure className={`m-0 ${className}`}>
+    <figure className={`m-0 min-w-0 ${className}`}>
       <div role="img" aria-label={label} className="overflow-hidden rounded-xl border border-border bg-white shadow-[0_30px_70px_-35px_rgb(23_43_58/45%)]">
         <div aria-hidden="true" className="flex items-center gap-1.5 border-b border-border bg-surface px-4 py-2.5">
           <span className="size-2.5 rounded-full bg-border" />

@@ -29,7 +29,7 @@ export function DashboardMock({ className = "" }: { className?: string }) {
       <div className="grid grid-cols-3 gap-2 sm:gap-3">
         {kpis.map((k) => (
           <div key={k.label} className="rounded-lg border border-border p-2.5 sm:p-3">
-            <p className="mb-1 truncate text-[10px] font-medium text-muted sm:text-[11px]">{k.label}</p>
+            <p className="mb-1 min-h-[2.4em] text-[10px] leading-tight font-medium text-muted sm:min-h-0 sm:text-[11px]">{k.label}</p>
             <p className="mb-0.5 font-display text-xl leading-none text-charcoal sm:text-2xl">{k.value}</p>
             <p className="mb-0 text-[10px] font-semibold text-primary">{k.delta}</p>
           </div>

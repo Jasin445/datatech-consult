@@ -15,7 +15,7 @@ export function InsightsPreview({ items, tone = "surface" }: { items: readonly M
 
   return (
     <Section tone={tone} labelledBy="insights-heading">
-      <SectionHeading id="insights-heading" folio="07" eyebrow={insightsPage.previewEyebrow} heading={insightsPage.previewHeading} lead={insightsPage.previewLead} />
+      <SectionHeading id="insights-heading" eyebrow={insightsPage.previewEyebrow} heading={insightsPage.previewHeading} lead={insightsPage.previewLead} />
       {hasUnapproved && (
         <div className="mb-6">
           <DevNotice>{DUMMY_MARKER}. Unapproved articles are hidden in production.</DevNotice>

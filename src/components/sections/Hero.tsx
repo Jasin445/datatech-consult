@@ -1,16 +1,15 @@
 import Link from "next/link";
-import type { Photo as PhotoData } from "@/content/media/photos";
+import type { ReactNode } from "react";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ArrowRight } from "@/components/ui/Ornament";
-import { Photo } from "@/components/ui/Photo";
 
 type Cta = { label: string; href: string };
 
 /**
- * V2 homepage hero: serif headline with an italic gold accent, a framed photograph with an offset
- * gold rule, and a folded "field note" card overlapping the photo. Text and actions come first on mobile.
+ * Homepage hero: serif headline with an italic gold accent, a main visual (a product mockup) with an offset
+ * gold rule, and a folded "field note" card overlapping it. Text and actions come first on mobile.
  */
 export function Hero({
   eyebrow,
@@ -19,7 +18,7 @@ export function Hero({
   body,
   primary,
   secondary,
-  photo,
+  visual,
   note,
 }: {
   eyebrow: string;
@@ -28,7 +27,8 @@ export function Hero({
   body: string;
   primary: Cta;
   secondary: Cta;
-  photo: PhotoData;
+  /** Main visual (V3: a coded product mockup). */
+  visual: ReactNode;
   note: { label: string; text: string };
 }) {
   return (
@@ -51,12 +51,10 @@ export function Hero({
           </div>
         </div>
 
-        <div className="relative animate-rise [animation-delay:200ms] lg:col-span-6 lg:pl-8">
-          <div aria-hidden="true" className="absolute top-6 -right-3 bottom-[-1.5rem] left-[calc(2rem+1.5rem)] border border-gold max-lg:left-6" />
-          <div className="relative aspect-[4/5] overflow-hidden bg-surface sm:aspect-[5/4] lg:aspect-[4/5]">
-            <Photo photo={photo} fill priority sizes="(min-width: 1024px) 45vw, 100vw" />
-          </div>
-          <figure className="relative -mt-16 ml-4 max-w-[22rem] border border-border bg-white p-6 shadow-[0_24px_50px_-24px_rgb(23_43_58/45%)] sm:ml-8 lg:absolute lg:bottom-10 lg:-left-10 lg:mt-0 lg:ml-0">
+        <div className="relative min-w-0 animate-rise [animation-delay:200ms] lg:col-span-6 lg:pl-8">
+          <div aria-hidden="true" className="absolute top-8 -right-3 -bottom-4 left-12 bg-gold-tint max-lg:left-6" />
+          <div className="relative">{visual}</div>
+          <figure className="relative mt-6 ml-4 max-w-[22rem] border border-border bg-white p-6 shadow-[0_24px_50px_-24px_rgb(23_43_58/45%)] sm:ml-8 lg:absolute lg:-right-6 lg:-bottom-28 lg:mt-0 lg:ml-0">
             <span aria-hidden="true" className="absolute -top-px -right-px size-10 bg-[linear-gradient(to_bottom_left,var(--color-bg)_50%,var(--color-border)_50%)]" />
             <figcaption className="mb-2 text-xs font-semibold tracking-[0.18em] text-gold uppercase">{note.label}</figcaption>
             <blockquote className="m-0 font-display text-xl leading-snug text-charcoal italic">{note.text}</blockquote>

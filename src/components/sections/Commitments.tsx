@@ -15,7 +15,7 @@ export function Commitments({
   photo,
 }: {
   eyebrow: string;
-  folio: string;
+  folio?: string;
   heading: string;
   lead: string;
   items: readonly TitledItem[];

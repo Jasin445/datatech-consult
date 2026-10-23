@@ -202,7 +202,7 @@ Commit: `v2-7: imagery and copy pass, mobile menu, final v2 qa`.
 | V3-1 | Data visual system | complete |
 | V3-2 | CTA vocabulary + launch conversion safeguards | complete |
 | V3-3 | Navigation (services menu, footer contact) | complete |
-| V3-4 | Homepage rework | not started |
+| V3-4 | Homepage rework | complete |
 | V3-5 | Service pages shortened, per-service visuals, less hedging | not started |
 | V3-6 | Engagement and pricing signals | not started |
 | V3-7 | About/overview de-duplication, de-formularising pass | not started |
@@ -225,3 +225,9 @@ Commit: `v3-2: single cta vocabulary and launch conversion safeguards`.
 Delivered: desktop `ServicesMenu` (client disclosure: button with aria-expanded/aria-controls; panel with the four services, one-line summaries and "All services and how they fit together"; Escape closes and returns focus; closes on outside click, focus leaving and navigation). Mobile menu lists the four services as an indented sub-list under Services. Footer already shows the public email when configured (build-time NEXT_PUBLIC_CONTACT_EMAIL, documented in V3-2).
 Validation: typecheck, lint, vitest 156/156; browser test on the owner's dev server: Enter opens (5 links), Tab enters the panel, Escape closes with focus returned, outside click closes, choosing a service navigates and closes; desktop panel and mobile sub-list screenshots reviewed.
 Commit: `v3-3: services menu in header and mobile nav`.
+
+## V3-4: Homepage rework (complete, 2026-10-23)
+Delivered: hero visual is now the dashboard mockup (boardroom photo removed) with the field note moved so it never covers the "illustrative" caption; problem story uses the messy spreadsheet mockup and is cut to two paragraphs; new "What the work looks like" showcase (`WorkShowcase`: pipeline, workflow with human review, options appraisal; each linked to its service); process timeline removed from the homepage (kept on /services); section eyebrows no longer carry folio numbers (gold italic accent kept to the hero and statement band); backgrounds re-sequenced. Hero and ProblemStory accept coded visuals.
+Fixes during review: field note hid the dashboard caption at desktop; 320px overflow from grid columns holding mockups (min-w-0 on mock containers and MockFrame); KPI labels truncated on small phones (now wrap).
+Validation: typecheck, lint, vitest 156/156; on the owner's dev server: qa:a11y on / passes; qa:responsive on / passes after the fix; desktop and 320px screenshots reviewed.
+Commit: `v3-4: homepage shows the work (dashboard, spreadsheet, showcase)`.
