@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site";
 export function UtilityBar() {
   const email = getPublicContactEmail();
   return (
-    <div className="hidden bg-charcoal text-footer-text md:block">
+    <aside aria-label="About Datatechhub Consulting" className="hidden bg-charcoal text-footer-text md:block">
       <Container className="flex min-h-9 items-center justify-between gap-6 text-xs tracking-[0.04em]">
         <p className="mb-0">Data, analytics, AI and technology consulting · Nigeria and across Africa</p>
         <p className="mb-0 flex items-center gap-5">
@@ -18,6 +18,6 @@ export function UtilityBar() {
           <span className="font-display text-sm text-gold-soft italic">{siteConfig.parentTagline}</span>
         </p>
       </Container>
-    </div>
+    </aside>
   );
 }
