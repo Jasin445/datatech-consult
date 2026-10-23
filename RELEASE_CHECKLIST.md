@@ -32,3 +32,4 @@ Development completion is not launch readiness. Tick only after verification.
 - [ ] Official favicon/touch icon supplied (current src/app/icon.tsx and apple-icon.tsx are typographic placeholders)
 - [ ] Production server start log shows no `[launch]` warnings (at minimum: a public contact email or booking link, so visitors can make contact before the form is enabled)
 - [ ] Engagement shapes and "How pricing works" (src/content/engagement.ts) confirmed by the business; add prices or durations only if the business wants them published
+- [ ] Re-run Lighthouse on the deployed domain (expect SEO to pass once NEXT_PUBLIC_SITE_URL is set) and on a real mid-range phone

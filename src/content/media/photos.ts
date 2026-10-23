@@ -31,7 +31,6 @@ const unsplash = (file: string, width: number, height: number, alt: string, sour
 });
 
 export const photos = {
-  boardroom: unsplash("boardroom", 1800, 1202, "A team meeting around a long boardroom table with laptops open", "https://unsplash.com/photos/group-of-people-sitting-beside-rectangular-wooden-table-with-laptops-faEfWCdOKIg", "Christina @ wocintechchat.com"),
   teamOffice: unsplash("team-office", 1800, 1202, "Colleagues working together at a table in a bright office", "https://unsplash.com/photos/photography-of-people-inside-room-during-daytime-rg1y72eKw6o", "Christina @ wocintechchat.com"),
   threeColleagues: unsplash("three-colleagues", 1800, 1202, "Three colleagues talking across a desk with laptops", "https://unsplash.com/photos/photography-of-three-women-sits-beside-table-inside-room-during-daytime-UcZcsHSp8o4", "Christina @ wocintechchat.com"),
   oneToOne: unsplash("one-to-one", 1800, 1202, "Two people in a quiet one-to-one working session beside tall windows", "https://unsplash.com/photos/two-women-sits-of-padded-chairs-while-using-laptop-computers-HocFQHhGjDE", "Christina @ wocintechchat.com"),

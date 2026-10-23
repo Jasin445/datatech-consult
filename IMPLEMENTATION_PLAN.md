@@ -73,5 +73,8 @@ Fix everything in the critique except item 1 (real people/credentials/case studi
 - No invented prices, rates or durations. Engagement shapes and the quoting approach are described qualitatively and listed for owner confirmation.
 - One CTA vocabulary sitewide: "Send an enquiry" (/contact) and "Book a consultation" (/book-consultation).
 
-## V3 checkpoints
+## V3 checkpoints (all complete, 2026-10-23)
 V3-1 Data visual system (mock dashboard, charts, spreadsheet, pipeline/workflow/roadmap diagrams) · V3-2 CTA vocabulary + launch conversion safeguards · V3-3 Navigation (services menu, footer contact) · V3-4 Homepage rework (visuals over stock, no repetition, varied sections) · V3-5 Service pages shortened with per-service visuals and less hedging · V3-6 Engagement and pricing signals · V3-7 About/overview de-duplication and design de-formularising pass · V3-8 Performance measurement and image optimisation, final QA, docs.
+
+## V3 outcome
+The site now shows the work (coded, captioned mockups), uses one CTA vocabulary, never sends visitors in a circle when a contact path is unavailable, warns operators at startup when no contact path exists, has a services menu, shorter service pages with one disclaimer each, engagement shapes and a pricing approach (no figures), less repetition and fewer decorative tics, and measured performance (94-100). Guards: tests/visuals.test.tsx, tests/cta.test.ts, tests/copy.test.ts (extended), service hedging test.

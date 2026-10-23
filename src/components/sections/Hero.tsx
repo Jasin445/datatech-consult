@@ -35,13 +35,13 @@ export function Hero({
     <section aria-labelledby="page-heading" className="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
       <Container className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-6">
-          <div className="animate-rise">
+          <div>
             <Eyebrow>{eyebrow}</Eyebrow>
           </div>
-          <h1 id="page-heading" className="mb-7 animate-rise text-display [animation-delay:90ms]">
+          <h1 id="page-heading" className="mb-7 text-display">
             {headline} <em className="text-gold">{headlineAccent}</em>
           </h1>
-          <p className="mb-9 max-w-[52ch] animate-rise text-lg text-muted [animation-delay:180ms]">{body}</p>
+          <p className="mb-9 max-w-[52ch] text-lg text-muted">{body}</p>
           <div className="flex animate-rise flex-wrap items-center gap-x-8 gap-y-4 [animation-delay:270ms]">
             <ButtonLink href={primary.href}>{primary.label}</ButtonLink>
             <Link href={secondary.href} className="group inline-flex min-h-11 items-center gap-2 font-display text-xl text-charcoal italic">

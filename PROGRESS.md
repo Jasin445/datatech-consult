@@ -1,9 +1,8 @@
-Current phase: VERSION 2 (visual redesign) COMPLETE. All V2 checkpoints (V2-1 to V2-7) done; homepage direction approved by owner at V2-2.
-Status: development complete for V1 and V2. NOT LAUNCH-READY: business, legal and configuration inputs outstanding (see RELEASE_CHECKLIST.md).
-V1: checkpoints 1-15 complete for development; not launch-ready (see below).
+Current phase: VERSION 3 COMPLETE (V3-1 to V3-8). V1 and V2 complete before it.
+Status: development complete. NOT LAUNCH-READY: business, legal and configuration inputs outstanding (RELEASE_CHECKLIST.md). Critique item 1 (real people, credentials, case studies) deliberately left for owner input.
 
-V2 next action:
-- Await owner review of the complete V2 site and any further instructions. Launch work: see RELEASE_CHECKLIST.md.
+Next action:
+- Owner review of V3; supply launch inputs (team/credentials, contact email or booking link, privacy facts, domain, email provider).
 
 Completed checkpoints:
 - Checkpoints 1-15: complete (deliverables, files and validation per checkpoint in CHECKPOINTS.md)
@@ -16,7 +15,7 @@ Development functionality completed:
 - Enquiry form with shared client/server validation, honeypot, rate limit, provider adapter (Resend), honest unavailable states. Booking page with HTTPS provider link or honest unconfigured state. Draft privacy notice describing actual behaviour, with a production gate on personal-data collection.
 
 Production build and tests completed (2026-10-23, this machine):
-- typecheck, lint (0 problems), vitest 136/136, production build: pass (last run at V2-7).
+- typecheck, lint (0 problems), vitest 161/161, production build: pass (last run at V3-8). Lighthouse (simulated mobile): performance 94-100, accessibility 100, best practices 100.
 - npm run qa:responsive and npm run qa:a11y against the production build: pass (0 axe violations, no overflow, all links resolve, focus visible, reduced motion respected). Development-only routes also checked.
 
 External integrations configured and tested:

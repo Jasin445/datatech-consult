@@ -33,13 +33,13 @@ export default function ContactPage() {
       <section aria-labelledby="page-heading" className="bg-surface py-12 lg:py-20">
         <Container className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <div className="animate-rise">
+            <div>
               <Eyebrow>{contactPage.eyebrow}</Eyebrow>
             </div>
-            <h1 id="page-heading" className="mb-6 animate-rise text-[clamp(2.6rem,1.6rem+3.6vw,4.5rem)] leading-[1] [animation-delay:90ms]">
+            <h1 id="page-heading" className="mb-6 text-[clamp(2.6rem,1.6rem+3.6vw,4.5rem)] leading-[1]">
               {contactPage.heading} <em className="text-gold">{contactPage.accent}</em>
             </h1>
-            <p className="mb-10 animate-rise text-lg text-muted [animation-delay:180ms]">{contactPage.lead}</p>
+            <p className="mb-10 text-lg text-muted">{contactPage.lead}</p>
 
             <h2 id="next-heading" className="mb-5 font-sans text-sm font-semibold tracking-[0.18em] text-gold uppercase">
               {contactPage.next.heading}

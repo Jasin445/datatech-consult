@@ -15,6 +15,7 @@ npm test
 npm run qa:responsive   # 10 routes x 320/390/820/1280/1680: overflow, one h1, console errors
 npm run qa:a11y         # internal link crawl, axe WCAG 2.2 AA, keyboard focus, reduced motion
 ```
+Performance was measured with Lighthouse (simulated mobile) at V3-8: 94-100. Keep headline and lead text out of entrance animations: faded-in text delays Largest Contentful Paint.
 Do not run `npm run build` while `npm run dev` is running in the same folder: both write to `.next` and can corrupt generated route types. Stop the dev server first, or build in a separate copy.
 
 ## Environment

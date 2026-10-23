@@ -35,10 +35,10 @@ export function PageHero({
         {above}
         <div className="mt-6 grid items-center gap-12 lg:mt-10 lg:grid-cols-12 lg:gap-12">
           <div className={visual ? "lg:col-span-6" : photo ? "lg:col-span-7" : "lg:col-span-10"}>
-            <div className="animate-rise">
+            <div>
               <Eyebrow>{eyebrow}</Eyebrow>
             </div>
-            <h1 id="page-heading" className="mb-6 animate-rise text-[clamp(2.6rem,1.6rem+4vw,5rem)] leading-[1] [animation-delay:90ms]">
+            <h1 id="page-heading" className="mb-6 text-[clamp(2.6rem,1.6rem+4vw,5rem)] leading-[1]">
               {heading}
               {accent && (
                 <>
@@ -47,7 +47,7 @@ export function PageHero({
                 </>
               )}
             </h1>
-            <p className="mb-0 max-w-[54ch] animate-rise text-lg text-muted [animation-delay:180ms]">{lead}</p>
+            <p className="mb-0 max-w-[54ch] text-lg text-muted">{lead}</p>
             {actions && <div className="mt-9 flex animate-rise flex-wrap items-center gap-x-8 gap-y-4 [animation-delay:270ms]">{actions}</div>}
           </div>
           {visual && (

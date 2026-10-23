@@ -206,7 +206,7 @@ Commit: `v2-7: imagery and copy pass, mobile menu, final v2 qa`.
 | V3-5 | Service pages shortened, per-service visuals, less hedging | complete |
 | V3-6 | Engagement and pricing signals | complete |
 | V3-7 | About/overview de-duplication, de-formularising pass | complete |
-| V3-8 | Performance, images, final QA, docs | not started |
+| V3-8 | Performance, images, final QA, docs | complete |
 
 ## V3-1: Data visual system (complete, 2026-10-23)
 Delivered: src/components/visuals: `MockFrame` (app-window frame; one described image for assistive technology; visible "Illustrative example, not client data" caption), `charts.tsx` (LineChart with non-scaling strokes and HTML axis labels, HTML BarChart and HBars; theme colours only), `DashboardMock` (KPI tiles, revenue vs target, region bars, sales mix), `SpreadsheetMock` (messy "before" sheet: mixed dates, inconsistent spellings, duplicate row, missing value, #REF!), `PipelineDiagram` (sources to pipeline to one reporting store to outputs), `WorkflowDiagram` (invoice automation with an explicit human-review step), `OptionsMock` (advisory options appraisal with a recommendation). All responsive (diagrams go vertical on mobile). The logo's bright secondary blue now has a role in data visuals.
@@ -248,3 +248,14 @@ Commit: `v3-6: engagement shapes and how pricing works`.
 Delivered: About no longer repeats the homepage (principles cards and audience mosaic removed; page is hero, who we are, relationship to Datatechhub, conditional leadership, statement, closing). Folio numbers removed from section eyebrows sitewide (kept only for genuinely numbered items: cards, steps, contents, case-study report sections). Gold italic heading accent kept only on the homepage hero, statement bands, contact and 404; services, about, booking, case studies and insights headings are now plain. Repetition summary after V3: process timeline only on /services; principles and audiences only on the homepage; engagement shapes on /services and service pages (by design).
 Validation: typecheck, lint, vitest 161/161; production build in the scratchpad copy: qa:responsive and qa:a11y on all 10 public routes pass; About screenshot reviewed (about 4,400px tall at 1440 wide).
 Commit: `v3-7: remove repeated sections, fewer folios and accents`.
+
+## V3-8: Performance, images, final QA, docs (complete, 2026-10-23)
+Performance (first Lighthouse measurement on the project; Lighthouse 12, simulated mobile, production build served locally):
+- Before: / perf 89 (LCP 3.4s, Speed Index 4.2s), /services/data-analytics 95, /contact 89 (TBT 310ms). LCP elements were small (logo, breadcrumb) because headlines and leads faded in from opacity 0 and did not count as painted.
+- Fix: headline, eyebrow and lead text on all hero/intro sections now render immediately; the entrance animation stays only on actions and visuals.
+- After: / perf 94 (3 stable runs; LCP 3.0s, SI 1.4s, TBT 10-20ms), /services/data-analytics 95 (SI 1.1s), /contact 96 (SI 0.8s), /about 100 (LCP 1.8s). Accessibility 100 and best practices 100 on all measured pages; CLS 0. SEO 66 only because the site is deliberately noindex without NEXT_PUBLIC_SITE_URL (the single failing audit is is-crawlable).
+- Tested and rejected: dropping the Instrument Sans width axis halves the largest font file (57KB to 30KB) but improved LCP by only 0.1s; kept, because the condensed folio-card titles depend on it. The remaining LCP (about 3s) is mostly Lighthouse's simulated slow-4G network plus the web-font swap of the lead paragraph.
+- One cold-start run scored 63 (TBT 990ms); three repeat runs were stable at 94. Treated as an outlier.
+Images: removed the one photo no longer used (boardroom, replaced by the dashboard mockup); 25 photos remain, all used; next/image serves resized modern formats.
+Final QA (fresh production build of the project in the scratchpad copy): typecheck, lint, vitest 161/161 (15 files); qa:responsive on all 10 public routes, two clean runs; qa:a11y (31 links, axe WCAG 2.2 AA, keyboard, reduced motion): pass; unapproved content and unknown routes 404; [launch] warnings logged as expected with nothing configured.
+Commit: `v3-8: measured performance, text no longer fades in, final v3 qa`.

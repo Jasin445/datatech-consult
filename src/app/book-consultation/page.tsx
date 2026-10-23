@@ -40,13 +40,13 @@ export default function BookConsultationPage() {
       <section aria-labelledby="page-heading" className="bg-surface py-12 lg:py-20">
         <Container className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
-            <div className="animate-rise">
+            <div>
               <Eyebrow>{bookingPage.eyebrow}</Eyebrow>
             </div>
-            <h1 id="page-heading" className="mb-6 animate-rise text-[clamp(2.6rem,1.6rem+3.6vw,4.5rem)] leading-[1] [animation-delay:90ms]">
+            <h1 id="page-heading" className="mb-6 text-[clamp(2.6rem,1.6rem+3.6vw,4.5rem)] leading-[1]">
               {bookingPage.heading}
             </h1>
-            <p className="mb-10 animate-rise text-lg text-muted [animation-delay:180ms]">{bookingPage.lead}</p>
+            <p className="mb-10 text-lg text-muted">{bookingPage.lead}</p>
             <div className="relative aspect-[4/3] overflow-hidden">
               <Photo photo={bookingPage.photo} fill priority sizes="(min-width: 1024px) 45vw, 100vw" />
             </div>
