@@ -12,6 +12,7 @@ export function MarkCard({
   cta,
   headingLevel = "h3",
   recommended = false,
+  tall = false,
 }: {
   title: string;
   text: string;
@@ -20,11 +21,15 @@ export function MarkCard({
   headingLevel?: "h2" | "h3";
   /** Marks the primary option (gold ring and a "Recommended first step" label). */
   recommended?: boolean;
+  /** Taller card with more breathing room (closing "next step" section). */
+  tall?: boolean;
 }) {
   const Heading = headingLevel;
   return (
     <article
-      className={`group relative flex h-full flex-col items-center rounded-[1.25rem] bg-white px-8 py-12 text-center text-charcoal transition-transform duration-300 hover:-translate-y-1 lg:px-12 lg:py-16 ${
+      className={`group relative flex h-full flex-col items-center rounded-[1.25rem] bg-white text-center text-charcoal transition-transform duration-300 hover:-translate-y-1 ${
+        tall ? "min-h-[28rem] px-8 py-16 lg:min-h-[34rem] lg:px-14 lg:py-20" : "px-8 py-12 lg:px-12 lg:py-16"
+      } ${
         recommended ? "ring-2 ring-gold-soft ring-offset-4 ring-offset-charcoal" : ""
       }`}
     >

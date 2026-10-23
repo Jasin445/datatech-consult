@@ -14,7 +14,7 @@ export function NextStep({ eyebrow, heading, lead, options, id = "next-step-head
       <ul className="mx-auto grid max-w-[60rem] gap-6 md:grid-cols-2 md:gap-10">
         {options.map((o) => (
           <li key={o.href}>
-            <MarkCard title={o.title} text={o.text} cta={o.cta} href={o.href} recommended={o.recommended} />
+            <MarkCard title={o.title} text={o.text} cta={o.cta} href={o.href} recommended={o.recommended} tall />
           </li>
         ))}
       </ul>

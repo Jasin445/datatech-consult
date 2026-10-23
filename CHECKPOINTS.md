@@ -371,3 +371,6 @@ Fixed numerals overlapping text in the contact "What happens next" list (fixed 2
 
 ### Owner adjustments: list alignment and card links (2026-10-24)
 Contact "What happens next": numerals now vertically centred on their text (baseline alignment had pushed the text low). Service deliverables (`ContentsList`): numerals top-aligned with each title. Closing-card links (`MarkCard`) restored to the italic serif style requested by the owner (V4 had made them sans with an arrow). Validation: typecheck, lint, vitest 167/167; production build; screenshots; qa:a11y and qa:responsive on 3 routes pass. Commit: `adjust: centre list numerals, restore italic card links`.
+
+### Owner adjustment: taller closing cards (2026-10-24)
+`MarkCard` gained a `tall` option (min height 28rem, 34rem on desktop; more padding; link anchored at the bottom), used only by the closing "next step" section; booking-page purpose cards unchanged. Validation: typecheck, lint, vitest 167/167; production build; qa:responsive and qa:a11y pass. Commit: `adjust: taller closing cards`.
