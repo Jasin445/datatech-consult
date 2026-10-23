@@ -25,7 +25,7 @@ export function SiteHeader() {
             ))}
           </ul>
         </nav>
-        <ButtonLink className="ml-3 hidden lg:inline-flex" href={primaryCta.href}>
+        <ButtonLink className="ml-3 max-lg:hidden" href={primaryCta.href}>
           {primaryCta.label}
         </ButtonLink>
         <MobileNav items={items} cta={primaryCta} />

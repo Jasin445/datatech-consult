@@ -45,8 +45,8 @@ export function MobileNav({ items, cta }: { items: NavItem[]; cta: NavItem }) {
         <span className="sr-only min-[360px]:not-sr-only">Menu</span>
       </button>
       {open && (
-        <nav id={menuId} className="absolute inset-x-0 top-full max-h-[calc(100dvh-var(--header-height))] overflow-y-auto border-t border-border bg-white" aria-label="Mobile">
-          <Container>
+        <nav id={menuId} className="absolute inset-x-0 top-full max-h-[calc(100dvh-var(--header-height))] overflow-y-auto border-y border-border bg-white shadow-card" aria-label="Mobile">
+          <Container className="pb-6">
             <ul className="pt-3 pb-6">
               {items.map((item) => (
                 <li key={item.href}>

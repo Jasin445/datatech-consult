@@ -12,6 +12,7 @@
 7. Mobile first. Breakpoints: default (<768), `md` 768, `lg` 1024, `min-[1440px]` wide. Check 320, 390, 820, 1280, 1680 for horizontal overflow.
 8. Keep accessibility behaviour: min touch target `min-h-11` (44px), `sr-only` for visually hidden text, `aria-current` styling via `aria-[current=page]:`, global `:focus-visible` outline (do not remove with `outline-none`).
 9. Layout variables (`--gutter`, `--section-space`, `--container-max`, `--reading-max`, `--header-height`) live in `:root` in `globals.css`, change per breakpoint, and are consumed with arbitrary-value utilities: `px-(--gutter)`, `py-(--section-space)`, `max-w-(--reading-max)`.
+10. To hide a component that already sets `display` in its base classes (e.g. `Button`/`ButtonLink` use `inline-flex`), use a variant such as `max-lg:hidden`, not `hidden lg:inline-flex`. Two unprefixed display utilities conflict and the later one in the generated CSS wins (this caused the desktop CTA to show on mobile).
 
 ## Colour system (unchanged from before the migration)
 | Token (utility suffix) | Value | Notes |
