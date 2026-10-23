@@ -1,12 +1,13 @@
-import { ButtonLink } from "@/components/ui/Button";
+import { ButtonLink, buttonRowClass } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { leadClass } from "@/components/ui/styles";
 
 type Cta = { label: string; href: string };
 
 /** Decorative graphic: scattered points resolving into ordered bars. Contains no real or implied data. */
 function HeroGraphic() {
   return (
-    <svg className="hero__graphic" viewBox="0 0 480 360" role="presentation" aria-hidden="true" focusable="false">
+    <svg className="h-auto w-full max-w-70 justify-self-center md:max-w-105 lg:max-w-120 lg:justify-self-end" viewBox="0 0 480 360" role="presentation" aria-hidden="true" focusable="false">
       <g fill="#15a8ea" opacity="0.55">
         {[
           [30, 60, 5], [70, 130, 4], [45, 200, 6], [95, 260, 4], [20, 310, 5], [110, 90, 3], [120, 190, 5], [75, 330, 3],
@@ -43,12 +44,12 @@ export function Hero({
   secondary: Cta;
 }) {
   return (
-    <section className="hero" aria-labelledby="hero-heading">
-      <Container className="hero__inner">
-        <div className="hero__text">
+    <section className="pt-12 pb-(--section-space) lg:pt-16" aria-labelledby="hero-heading">
+      <Container className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+        <div>
           <h1 id="hero-heading">{headline}</h1>
-          <p className="lead">{body}</p>
-          <div className="btn-row">
+          <p className={`${leadClass} mb-6`}>{body}</p>
+          <div className={buttonRowClass}>
             <ButtonLink href={primary.href}>{primary.label}</ButtonLink>
             <ButtonLink variant="secondary" href={secondary.href}>
               {secondary.label}

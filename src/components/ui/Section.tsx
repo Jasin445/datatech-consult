@@ -15,7 +15,7 @@ export function Section({
   className?: string;
   children: ReactNode;
 }) {
-  const classes = ["section", tone === "surface" ? "section--surface" : "", className].filter(Boolean).join(" ");
+  const classes = ["py-(--section-space)", tone === "surface" ? "bg-surface" : "", className].filter(Boolean).join(" ");
   return (
     <section id={id} aria-labelledby={labelledBy} className={classes}>
       <Container>{children}</Container>

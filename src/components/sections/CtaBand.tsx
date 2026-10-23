@@ -1,4 +1,4 @@
-import { ButtonLink } from "@/components/ui/Button";
+import { ButtonLink, buttonRowClass } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 
 export type CtaBandProps = {
@@ -18,11 +18,13 @@ export function CtaBand({
   secondary = { label: "Book a consultation", href: "/book-consultation" },
 }: CtaBandProps) {
   return (
-    <section className="section cta-band" aria-labelledby={id}>
+    <section className="bg-primary py-(--section-space) text-white" aria-labelledby={id}>
       <Container>
-        <h2 id={id}>{heading}</h2>
-        <p>{body}</p>
-        <div className="btn-row">
+        <h2 id={id} className="text-white">
+          {heading}
+        </h2>
+        <p className="max-w-[60ch]">{body}</p>
+        <div className={buttonRowClass}>
           <ButtonLink variant="on-dark" href={primary.href}>
             {primary.label}
           </ButtonLink>

@@ -26,7 +26,7 @@ export default function AboutPage() {
 
       <Section labelledBy="who-heading">
         <SectionHeading id="who-heading" heading={aboutPage.overview.heading} />
-        <div className="prose-intro">
+        <div className="max-w-(--reading-max) [&_p]:text-lg [&_p:last-child]:mb-0">
           {aboutPage.overview.paragraphs.map((p) => (
             <p key={p}>{p}</p>
           ))}
@@ -35,12 +35,12 @@ export default function AboutPage() {
 
       <Section tone="surface" labelledBy="parent-heading">
         <SectionHeading id="parent-heading" heading={aboutPage.parent.heading} />
-        <div className="prose-intro">
+        <div className="max-w-(--reading-max) [&_p]:text-lg [&_p:last-child]:mb-0">
           {aboutPage.parent.paragraphs.map((p) => (
             <p key={p}>{p}</p>
           ))}
           {parentUrl && (
-            <p className="parent-link">
+            <p className="mt-3 font-semibold">
               <a href={parentUrl} rel="noopener noreferrer">
                 Visit {siteConfig.parentBrand}
               </a>

@@ -33,7 +33,7 @@ export default function HomePage() {
 
       <Section id="services" labelledBy="services-heading">
         <SectionHeading id="services-heading" heading={servicesIntro.heading} lead={servicesIntro.lead} />
-        <div className="card-grid">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {services.map((service) => (
             <ServiceCard key={service.slug} service={service} />
           ))}

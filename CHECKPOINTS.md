@@ -1,5 +1,7 @@
 # Checkpoints
 
+**Global rule (added after Checkpoint 8): all styling must use Tailwind CSS v4 utilities. See `STYLING.md`. Applies to Checkpoints 9-15.**
+
 | # | Title | Status |
 |---|-------|--------|
 | 1 | Global application foundation | complete |
@@ -65,3 +67,7 @@ Delivered: /about with company overview, relationship to Datatechhub, working pr
 Validation: typecheck, lint, 42 tests, build, production HTML grep (no dummy content), dev-mode check, build-failure demonstrations, Chromium status/overflow/structure checks pass.
 Open: real leadership and company details needed; /contact, /book-consultation, /privacy 404; canonical deferred to Checkpoint 14.
 Commit: `checkpoint-08: implement about page and content safeguards` (see `git log`).
+
+## Maintenance: Tailwind migration (after Checkpoint 8, not a numbered checkpoint)
+Delivered: every component and page converted from hand-written CSS (tokens.css, sections.css, globals.css classes) to Tailwind v4 utilities; colour system retained as `@theme` tokens; STYLING.md added. Checkpoint 9 NOT started.
+Validation: see PROGRESS.md (install, typecheck, lint, test and build were NOT run in the authoring environment: no network).

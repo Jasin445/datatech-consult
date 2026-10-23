@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <a className="skip-link" href="#main">
+        <a className="absolute top-[-4rem] left-4 z-100 rounded-sm bg-charcoal px-4 py-3 text-white focus:top-3" href="#main">
           Skip to main content
         </a>
         <SiteHeader />

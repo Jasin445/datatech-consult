@@ -6,6 +6,7 @@ import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { RelatedServices } from "@/components/services/RelatedServices";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { valueItemClass } from "@/components/ui/styles";
 import { services } from "@/content/services";
 import type { ServiceDetail } from "@/content/service-details/types";
 
@@ -24,10 +25,10 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
       />
 
       <Section labelledBy={`${p}-intro`}>
-        <h2 id={`${p}-intro`} className="visually-hidden">
+        <h2 id={`${p}-intro`} className="sr-only">
           Overview
         </h2>
-        <div className="prose-intro">
+        <div className="max-w-(--reading-max) [&_p]:text-lg [&_p:last-child]:mb-0">
           {detail.intro.map((para) => (
             <p key={para}>{para}</p>
           ))}
@@ -68,9 +69,11 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
 
       <Section tone={detail.useCases ? "surface" : "default"} labelledBy={`${p}-value`}>
         <SectionHeading id={`${p}-value`} heading={detail.value.heading} lead={detail.value.lead} />
-        <ul className="value-list">
+        <ul className="mb-6 grid max-w-(--reading-max) gap-3">
           {detail.value.items.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item} className={valueItemClass}>
+              {item}
+            </li>
           ))}
         </ul>
       </Section>

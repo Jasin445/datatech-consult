@@ -1,16 +1,17 @@
 "use client";
 
-import { Button, ButtonLink } from "@/components/ui/Button";
+import { Button, ButtonLink, buttonRowClass } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { leadClass } from "@/components/ui/styles";
 
 /** Never renders error.message: internal details must not reach visitors. */
 export default function ErrorPage({ reset }: { error: Error & { digest?: string }; reset: () => void }) {
   return (
-    <Container className="state-page section">
-      <div className="reading" role="alert">
+    <Container className="grid min-h-[55vh] content-center py-(--section-space)">
+      <div className="max-w-(--reading-max)" role="alert">
         <h1>Something went wrong</h1>
-        <p className="lead">This page didn’t load. Try again, or return to the homepage.</p>
-        <div className="btn-row">
+        <p className={leadClass}>This page didn’t load. Try again, or return to the homepage.</p>
+        <div className={buttonRowClass}>
           <Button onClick={reset}>Try again</Button>
           <ButtonLink variant="secondary" href="/">
             Go to the homepage

@@ -13,11 +13,11 @@ export function SiteHeader() {
   });
 
   return (
-    <header className="site-header">
-      <Container className="site-header__inner">
+    <header className="sticky top-0 z-50 border-b border-border bg-white/97">
+      <Container className="flex min-h-(--header-height) items-center justify-between gap-4">
         <Brand />
-        <nav className="nav-desktop" aria-label="Primary">
-          <ul className="nav-list">
+        <nav className="ml-auto hidden lg:block" aria-label="Primary">
+          <ul className="flex items-center gap-6">
             {items.map((item) => (
               <li key={item.href}>
                 <NavLink href={item.href}>{item.label}</NavLink>
@@ -25,7 +25,7 @@ export function SiteHeader() {
             ))}
           </ul>
         </nav>
-        <ButtonLink className="header-cta" href={primaryCta.href}>
+        <ButtonLink className="ml-3 hidden lg:inline-flex" href={primaryCta.href}>
           {primaryCta.label}
         </ButtonLink>
         <MobileNav items={items} cta={primaryCta} />

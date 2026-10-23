@@ -1,5 +1,21 @@
-Current checkpoint: 8
-Status: COMPLETE (awaiting authorisation to start Checkpoint 9)
+Current checkpoint: 8 (complete) + Tailwind migration (applied, UNVERIFIED, see below)
+Status: Awaiting verification of the Tailwind migration, then authorisation to start Checkpoint 9
+
+## READ FIRST: Tailwind migration (done after Checkpoint 8, before Checkpoint 9)
+Project rule added: all styling uses Tailwind CSS v4 utilities (see STYLING.md, also referenced from README.md, IMPLEMENTATION_PLAN.md, CHECKPOINTS.md). No behaviour, content, routes, tests or logic were changed. Checkpoint 9 was NOT started.
+
+What changed:
+- Added devDependencies `tailwindcss` and `@tailwindcss/postcss` (^4.1.0) in package.json; added `postcss.config.mjs`.
+- Deleted `src/styles/tokens.css` and `src/styles/sections.css`. Rewrote `src/styles/globals.css`: `@import "tailwindcss"`, `@theme` (same colour values, type scale, radii, shadow), unchanged responsive layout variables (--gutter, --section-space, ...), `@layer base` (body, h1-h4, p, a, focus-visible), reduced-motion rule.
+- Converted every `.tsx` in src/components and src/app from custom classes to utilities. New shared helpers: `src/components/ui/styles.ts` (leadClass, cardClass, checkItemClass, valueItemClass), `buttonRowClass` exported from `ui/Button.tsx`. `navLinkClass` exported from `navigation/NavLink.tsx`.
+- Colour tokens retained exactly; `--color-text-muted` is now `--color-muted` (utility `text-muted`); footer hexes became `footer-text` and `footer-link-hover` tokens.
+- Files not touched: src/content, src/lib, tests, next.config.ts, eslint config.
+
+NOT verified (authoring environment had no network, no node_modules):
+- `npm install` has not been run, so package-lock.json is stale. FIRST ACTION: `npm install` (updates the lock file), then `npm run typecheck && npm run lint && npm test && npm run build`.
+- No visual check was done. Compare against the pre-migration site (git stash or checkout commit 0da3815) at 320, 390, 820, 1280, 1680px: header/logo/menu toggle, mobile menu panel (now absolute under header, see STYLING.md), hero, card grids, process steps (numbered circles, 5 columns on desktop), breadcrumb slashes, footer, CTA band, dev notice and badge (dev server), 404/error pages.
+- Likely failure points if something looks wrong: Tailwind version must be >= 4.1 (`not-first:` variant, `px-(--gutter)` syntax); heading sizes (preflight resets headings, restored in `@layer base`); `before:content-[...]` pseudo elements (checkmarks, step numbers, breadcrumb slash).
+- When all pass, commit as `chore: migrate styling to Tailwind CSS v4`, update this section to "verified", then continue with Checkpoint 9 using Tailwind only.
 
 Completed checkpoints:
 - Checkpoint 1: complete (foundation, official logo)

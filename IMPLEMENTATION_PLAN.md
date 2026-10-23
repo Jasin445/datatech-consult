@@ -3,20 +3,20 @@
 One Next.js application, one folder, one Git repository. Built in 15 checkpoints; stop after each.
 
 ## Stack
-Next.js 16 (App Router, Turbopack), React 19, TypeScript 5.9 strict, zod (validation), vitest (tests), ESLint (eslint-config-next). No database, CMS, auth, or admin. TypeScript 5.9 is used deliberately: a 7.x release exists but was not verified against Next 16 / eslint-config-next.
+Next.js 16 (App Router, Turbopack), React 19, TypeScript 5.9 strict, **Tailwind CSS v4 (all styling; see STYLING.md)**, zod (validation), vitest (tests), ESLint (eslint-config-next). No database, CMS, auth, or admin. TypeScript 5.9 is used deliberately: a 7.x release exists but was not verified against Next 16 / eslint-config-next.
 
 ## Routes (all required)
 `/`, `/services`, `/services/data-analytics`, `/services/data-infrastructure`, `/services/ai-automation`, `/services/business-technology-consulting`, `/about`, `/case-studies`, `/case-studies/[slug]`, `/insights`, `/insights/[slug]`, `/contact`, `/book-consultation`, `/privacy`, `/api/contact`, plus `sitemap.ts`, `robots.ts`, `not-found.tsx`.
 
 ## Architecture
 - Server Components by default; Client Components only for interactivity (`NavLink`, `MobileNav`, `error.tsx`, later the contact form).
-- `src/styles/tokens.css`: all colours, type, spacing, radii, shadows, motion. `globals.css`: base, layout primitives, buttons, header/footer.
-- `src/components/ui`: Button/ButtonLink, Container, Section, DevNotice. `layout`: Brand, SiteHeader, SiteFooter. `navigation`: NavLink, MobileNav. `sections`: CtaBand.
+- **Styling rule: Tailwind utilities only. Read `STYLING.md` before writing any UI.** `src/styles/globals.css` is the only stylesheet: `@import "tailwindcss"`, `@theme` tokens (colours, type, radii, shadow), responsive layout variables, minimal `@layer base`. `postcss.config.mjs` uses `@tailwindcss/postcss`. No `tailwind.config.js`, no per-component CSS files.
+- `src/components/ui`: Button/ButtonLink, Container, Section, SectionHeading, DevNotice, `styles.ts` (shared Tailwind class strings). `layout`: Brand, SiteHeader, SiteFooter. `navigation`: NavLink, MobileNav. `sections`: CtaBand.
 - `src/lib/site.ts`: site config, services list, nav builder. `src/lib/env.ts`: server-only, per-feature env validation (never at import time).
 - `src/lib/content/status.ts`: `ContentStatus` (dummy | draft | approved) and filtering. `registry.ts`: conditional Case Studies/Insights flags.
 - Fonts: system stack (no network font fetch at build).
 
-## Design tokens
+## Design tokens (defined in `@theme` in globals.css)
 Confirmed: primary `#1E64AB`, secondary `#15A8EA` (accents/graphics only, 2.7:1 on white), white background. Proposed (unverified): charcoal `#172B3A`, pale blue-gray `#F3F7FA`. Container 1200px, reading 760px, gutters 20/32/48/64px, section spacing 56/72/96/112px.
 
 ## Content governance

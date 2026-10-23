@@ -3,6 +3,7 @@
 import { useId, useRef, useState, type KeyboardEvent } from "react";
 import { usePathname } from "next/navigation";
 import { ButtonLink } from "@/components/ui/Button";
+import { Container } from "@/components/ui/Container";
 import { NavLink } from "./NavLink";
 import type { NavItem } from "@/lib/site";
 
@@ -31,34 +32,34 @@ export function MobileNav({ items, cta }: { items: NavItem[]; cta: NavItem }) {
   }
 
   return (
-    <div onKeyDown={onKeyDown}>
+    <div onKeyDown={onKeyDown} className="lg:hidden">
       <button
         ref={toggleRef}
         type="button"
-        className="menu-toggle"
+        className="inline-flex min-h-11 min-w-11 cursor-pointer items-center gap-2 rounded-sm border border-border bg-white px-3 font-semibold text-charcoal min-[480px]:px-4"
         aria-expanded={open}
         aria-controls={menuId}
         onClick={() => setOpenPath(open ? null : pathname)}
       >
         <span aria-hidden="true">{open ? "✕" : "☰"}</span>
-        <span className="menu-toggle__label">Menu</span>
+        <span className="sr-only min-[360px]:not-sr-only">Menu</span>
       </button>
       {open && (
-        <nav id={menuId} className="mobile-menu" aria-label="Mobile">
-          <div className="container">
-            <ul className="mobile-menu__list">
+        <nav id={menuId} className="absolute inset-x-0 top-full max-h-[calc(100dvh-var(--header-height))] overflow-y-auto border-t border-border bg-white" aria-label="Mobile">
+          <Container>
+            <ul className="pt-3 pb-6">
               {items.map((item) => (
                 <li key={item.href}>
-                  <NavLink href={item.href} onClick={() => close(false)}>
+                  <NavLink href={item.href} onClick={() => close(false)} className="w-full py-2 text-lg">
                     {item.label}
                   </NavLink>
                 </li>
               ))}
             </ul>
-            <ButtonLink href={cta.href} onClick={() => close(false)}>
+            <ButtonLink href={cta.href} className="mt-3 w-full" onClick={() => close(false)}>
               {cta.label}
             </ButtonLink>
-          </div>
+          </Container>
         </nav>
       )}
     </div>

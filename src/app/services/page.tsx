@@ -23,7 +23,7 @@ export default function ServicesPage() {
 
       <Section labelledBy="service-areas-heading">
         <SectionHeading id="service-areas-heading" heading="Our four service areas" />
-        <div className="card-grid">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {services.map((service) => (
             <ServiceCard key={service.slug} service={service} />
           ))}
@@ -43,7 +43,7 @@ export default function ServicesPage() {
       <Section tone="surface" labelledBy="engagement-heading">
         <SectionHeading id="engagement-heading" heading={engagement.heading} lead={engagement.lead} />
         <ProcessSteps steps={process.steps} />
-        <div className="engagement-notes">
+        <div className="mt-8 max-w-(--reading-max) [&_p:last-child]:mb-0">
           {engagement.notes.map((note) => (
             <p key={note}>{note}</p>
           ))}

@@ -5,7 +5,10 @@ import { isProduction } from "@/lib/content/status";
 export function DevNotice({ children }: { children: ReactNode }) {
   if (isProduction()) return null;
   return (
-    <p className="dev-notice" role="note">
+    <p
+      className="rounded-sm border-2 border-dashed border-warning-text bg-warning-bg px-4 py-3 text-sm font-semibold text-warning-text"
+      role="note"
+    >
       {children}
     </p>
   );
