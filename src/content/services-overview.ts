@@ -1,17 +1,26 @@
-/** /services overview copy. Subject to business review. No guarantees or invented outcomes. */
+/** /services overview copy (V2). Subject to business review. No guarantees or invented outcomes. */
 import type { TitledItem } from "./home";
+import { photos } from "./media/photos";
 
 export const servicesPage = {
   title: "Services",
   metaDescription:
     "Data analytics, data infrastructure, AI and automation, and business and technology consulting for organisations in Nigeria and across Africa.",
-  heading: "Services that start with your business problem",
-  lead: "We offer four connected service areas. Some organisations need one; many need a combination. We agree the scope with you before any work begins.",
+  eyebrow: "Services",
+  heading: "Start with the problem.",
+  accent: "We’ll find the service.",
+  lead: "Four connected service areas. Some organisations need one; many need a combination. Either way, we agree the scope with you before any work begins.",
+  photo: photos.teamCasual,
+  areas: {
+    eyebrow: "What we do",
+    heading: "Four service areas, built to work together.",
+  },
 };
 
 export const fit = {
-  heading: "Which service fits your situation?",
-  lead: "Start from the problem you recognise. If you’re not sure which applies, that’s fine: a first conversation usually clarifies it.",
+  eyebrow: "Find your starting point",
+  heading: "Which of these sounds like you?",
+  lead: "Start from the problem you recognise. Not sure? That’s normal. A first conversation usually sorts it out.",
   items: [
     { situation: "Reports take too long to produce, or nobody agrees on the numbers.", slug: "data-analytics" },
     { situation: "Our information is spread across systems that don’t connect.", slug: "data-infrastructure" },
@@ -23,8 +32,9 @@ export const fit = {
 export type Connection = TitledItem & { slugs: string[] };
 
 export const together = {
-  heading: "How the services work together",
-  lead: "The areas overlap in practice. Which ones apply depends on your engagement, and you can use any of them on its own.",
+  eyebrow: "Better together",
+  heading: "Where one service leans on another.",
+  lead: "In practice the areas overlap. You can use any of them on its own; these are the joins we see most often.",
   items: [
     {
       title: "Reporting depends on dependable data",
@@ -45,8 +55,10 @@ export const together = {
 };
 
 export const engagement = {
-  heading: "What an engagement looks like",
-  lead: "The stages are the same whichever services you use. Later stages apply where agreed.",
+  eyebrow: "How it runs",
+  heading: "Same shape, whatever the service.",
+  lead: "The stages don’t change between services. The last two happen only where we agree them.",
+  photo: photos.collaborationCouch,
   notes: [
     "Some engagements end with a diagnosis and a plan. Others continue into implementation and ongoing support. We agree which at the start.",
     "Scope, timing and cost depend on the problem and your organisation. We won’t recommend technology you don’t need.",

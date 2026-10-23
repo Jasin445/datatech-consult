@@ -14,6 +14,7 @@ export function PhotoCard({
   text,
   href,
   sizes = "(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw",
+  aspect = "tall",
 }: {
   photo: PhotoData;
   folio?: string;
@@ -21,10 +22,11 @@ export function PhotoCard({
   text: string;
   href: string;
   sizes?: string;
+  aspect?: "tall" | "wide";
 }) {
   return (
     <article className="group relative flex h-full flex-col">
-      <div className="relative aspect-[4/5] overflow-hidden bg-charcoal">
+      <div className={`relative overflow-hidden bg-charcoal ${aspect === "wide" ? "aspect-[16/10]" : "aspect-[4/5]"}`}>
         <Photo photo={photo} fill sizes={sizes} decorative className="transition-transform duration-700 ease-out group-hover:scale-[1.04]" />
         <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-charcoal via-charcoal/40 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 p-6">

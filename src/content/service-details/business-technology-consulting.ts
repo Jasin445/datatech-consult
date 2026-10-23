@@ -2,6 +2,7 @@
  * Business & Technology Consulting page copy. Subject to business review.
  * Advisory deliverables are kept distinct from implementation work. No claims about past clients or engagements.
  */
+import { photos } from "../media/photos";
 import type { ServiceDetail } from "./types";
 
 export const businessTechnologyConsulting: ServiceDetail = {
@@ -82,5 +83,18 @@ export const businessTechnologyConsulting: ServiceDetail = {
   cta: {
     heading: "Talk to us about a technology decision",
     body: "Tell us what you are trying to achieve and what is in the way. We’ll tell you honestly how we can help.",
+  },
+  v2: {
+    heroPhoto: photos.threeColleagues,
+    hook: {
+      heading: "Something has to change. Nobody agrees on what.",
+      paragraphs: [
+        "A vendor is pitching a new system. A board member has read about AI. Operations wants the old process fixed first. Every option has a cost, and none comes with a plan your team can actually deliver.",
+        "Decisions made in that fog tend to be expensive to reverse.",
+      ],
+      turn: "Get clear before you commit.",
+      photo: photos.executives,
+    },
+    deliverablesPhoto: photos.oneToOne,
   },
 };

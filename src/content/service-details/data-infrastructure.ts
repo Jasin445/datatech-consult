@@ -1,4 +1,5 @@
 /** Data Infrastructure & Engineering page copy. Subject to business review. No assumption that every client needs a complex platform. */
+import { photos } from "../media/photos";
 import type { ServiceDetail } from "./types";
 
 export const dataInfrastructure: ServiceDetail = {
@@ -79,5 +80,18 @@ export const dataInfrastructure: ServiceDetail = {
   cta: {
     heading: "Talk to us about your data foundations",
     body: "Tell us which systems hold your data and what isn’t working. We’ll tell you honestly what is worth doing, and what isn’t.",
+  },
+  v2: {
+    heroPhoto: photos.riverCity,
+    hook: {
+      heading: "Your systems don’t talk. Your people do the translating.",
+      paragraphs: [
+        "The accounting package, the CRM, the field app and a dozen spreadsheets each hold part of the truth. Joining them up means exports, copy and paste, and one person who knows which column means what.",
+        "When that person is on leave, the reports stop.",
+      ],
+      turn: "Dependable data is built, not hoped for. It doesn’t have to be complicated.",
+      photo: photos.streetAerial,
+    },
+    deliverablesPhoto: photos.bridgePylon,
   },
 };

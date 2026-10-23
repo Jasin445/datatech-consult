@@ -1,4 +1,5 @@
 /** Data Analytics & Business Intelligence page copy. Subject to business review. No invented client outcomes. */
+import { photos } from "../media/photos";
 import type { ServiceDetail } from "./types";
 
 export const dataAnalytics: ServiceDetail = {
@@ -78,5 +79,18 @@ export const dataAnalytics: ServiceDetail = {
   cta: {
     heading: "Talk to us about your reporting",
     body: "Tell us what you need to measure and where the data lives now. We’ll tell you honestly how we can help.",
+  },
+  v2: {
+    heroPhoto: photos.analystWindow,
+    hook: {
+      heading: "Everyone has a number. Nobody has the number.",
+      paragraphs: [
+        "Sales reports one figure, finance another, and the monthly pack takes three days to assemble because the data lives in five places. By the time it reaches the meeting, it describes last month.",
+        "Dashboards were supposed to fix this. Too often they just show the disagreement in colour.",
+      ],
+      turn: "Good reporting starts with agreeing the question.",
+      photo: photos.marketAerial,
+    },
+    deliverablesPhoto: photos.teamOffice,
   },
 };

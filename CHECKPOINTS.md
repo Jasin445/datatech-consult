@@ -137,8 +137,8 @@ Commit: `checkpoint-15: final integration and qa`.
 | # | Title | Status |
 |---|-------|--------|
 | V2-1 | Design foundation (fonts, gold token, photo registry, card family, header/footer) | complete |
-| V2-2 | Homepage | complete (awaiting owner review of direction) |
-| V2-3 | Services overview + service detail template | not started |
+| V2-2 | Homepage | complete (direction approved by owner) |
+| V2-3 | Services overview + service detail template | complete |
 | V2-4 | About | not started |
 | V2-5 | Contact + Booking | not started |
 | V2-6 | Case studies, Insights, Privacy, 404 | not started |
@@ -156,3 +156,11 @@ Validation: typecheck, lint, vitest 115/115, build; qa:responsive (/, /services,
 Fixes during review: service/mosaic titles overflowed narrow cards (sizes reduced); gold folio on the gold-tint featured card failed contrast at mobile size (charcoal there); a11y script now waits for entrance animations before measuring contrast.
 Not yet V2: all other pages still use V1 layouts with the new fonts (V2-3 onwards).
 Commit: `v2-2: redesign homepage`.
+
+## V2-3: Services overview + service detail template (complete, 2026-10-23)
+Owner approved the V2 homepage direction before this checkpoint.
+Delivered: reusable `PageHero` (breadcrumb, eyebrow, serif h1 with optional gold accent, lead, actions, framed photo) for all inner pages. /services: hero ("Start with the problem. We’ll find the service."), alternating editorial service rows with large photos (`ServiceFeature`), situation-to-service rows set as italic quotations (`FitList`), "better together" folio cards with service links, engagement timeline with photo and notes, closing ornament cards. Service detail template (all four pages): hero with photo and actions, problem-first hook story per service (new `v2.hook` content), problems strip, capabilities as folio cards, use cases on charcoal (AI page), deliverables as a report contents list (`ContentsList`) beside a sticky photo, considerations as ornament cards on charcoal, approach timeline, value list, related services as wide photo cards, closing ornament cards with each service’s CTA copy. Breadcrumb aligned and 44px targets. OrnamentCard CTA optional; FolioCard accepts children; PhotoCard `aspect="wide"`; NextStep `lead`.
+Content: `v2` block (hero photo, hook story, deliverables photo) added to each service detail; services overview copy refreshed. Existing structured content and its tests unchanged.
+Removed: ServiceCard, ConnectionList (unused).
+Validation: typecheck, lint, vitest 115/115, build; qa:responsive on the 5 services routes at 5 widths and qa:a11y (crawl, axe, keyboard, reduced motion): all pass. Desktop and mobile screenshots reviewed.
+Commit: `v2-3: redesign services overview and service pages`.

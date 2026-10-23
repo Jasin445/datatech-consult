@@ -1,4 +1,5 @@
 /** AI & Automation page copy. Subject to business review. AI is presented as one option, never the default answer. */
+import { photos } from "../media/photos";
 import type { ServiceDetail } from "./types";
 
 export const aiAutomation: ServiceDetail = {
@@ -94,5 +95,18 @@ export const aiAutomation: ServiceDetail = {
   cta: {
     heading: "Talk to us about a process you’d like to improve",
     body: "Describe the task and what you’re considering. We’ll tell you honestly whether automation or AI is likely to help.",
+  },
+  v2: {
+    heroPhoto: photos.codeLaptop,
+    hook: {
+      heading: "Everyone wants AI. Few can say what it should do.",
+      paragraphs: [
+        "Somewhere in your organisation, capable people spend hours re-typing invoices, chasing approvals and copying figures between systems. That is usually where automation helps first, and it rarely needs anything exotic.",
+        "Elsewhere, an AI tool is being trialled with no clear problem, no owner and no way to check its answers.",
+      ],
+      turn: "Start with the work, not the hype.",
+      photo: photos.smeDesk,
+    },
+    deliverablesPhoto: photos.laptopFocus,
   },
 };

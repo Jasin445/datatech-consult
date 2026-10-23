@@ -1,9 +1,9 @@
-Current phase: VERSION 2 (visual redesign). Current checkpoint: V2-3 (Services overview + service detail template)
-Status: V2-1 and V2-2 complete; paused for the owner to review the homepage direction before the remaining pages are rebuilt.
+Current phase: VERSION 2 (visual redesign). Current checkpoint: V2-4 (About)
+Status: V2-1, V2-2 (approved by owner) and V2-3 complete.
 V1: checkpoints 1-15 complete for development; not launch-ready (see below).
 
 V2 next action:
-- After the owner approves (or adjusts) the homepage direction: rebuild /services and the shared ServiceDetailPage with the V2 components (see STYLING.md "V2 design system").
+- Rebuild /about with PageHero, photo-led overview, parent-brand relationship, principles (folio cards), conditional leadership (V2 card), audiences mosaic and NextStep (see STYLING.md "V2 design system").
 
 Completed checkpoints:
 - Checkpoints 1-15: complete (deliverables, files and validation per checkpoint in CHECKPOINTS.md)

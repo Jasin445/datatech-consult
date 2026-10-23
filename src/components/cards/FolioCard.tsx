@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { ButtonLink } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/Ornament";
 
@@ -21,6 +22,7 @@ export function FolioCard({
   featured = false,
   tone = "surface",
   headingLevel = "h3",
+  children,
 }: {
   folio?: string;
   title: string;
@@ -30,6 +32,8 @@ export function FolioCard({
   featured?: boolean;
   tone?: keyof typeof foldClass;
   headingLevel?: "h2" | "h3";
+  /** Extra content after the text (e.g. related links). */
+  children?: ReactNode;
 }) {
   const Heading = headingLevel;
   return (
@@ -42,6 +46,7 @@ export function FolioCard({
       {folio && <p className={`mb-4 font-display text-xl italic ${featured ? "text-charcoal" : "text-gold"}`}>{folio}</p>}
       <Heading className="mb-4 font-sans text-2xl leading-tight font-medium tracking-[0.04em] uppercase font-stretch-condensed">{title}</Heading>
       <p className="mb-8 text-muted">{text}</p>
+      {children}
       {href && (
         <ButtonLink href={href} variant={featured ? "gold" : "gold-outline"} className="mt-auto w-full">
           {cta}
