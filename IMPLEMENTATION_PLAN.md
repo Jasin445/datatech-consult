@@ -30,3 +30,6 @@ Email: provider adapter behind `/api/contact` (Checkpoint 11); env `EMAIL_PROVID
 
 ## Acceptance
 See sections 11 and 12 of the master prompt. Development completion is reported separately from production readiness.
+
+## Enquiry flow (Checkpoint 11)
+Validation is dependency-free (`src/lib/validation/enquiry.ts`) and shared by client and server. `/api/contact` -> `handleEnquiry` (`src/lib/contact/handle.ts`) -> `EmailProvider` adapter (`src/lib/email`, supported: `resend`). The form only renders when `getContactAvailability()` reports email as configured. Rate limiting is in-memory (5 per 10 minutes per client); on serverless or multi-instance hosting use host/edge limits or a shared store. No durable queue or retry exists; failures are shown to the visitor. Provider acknowledgement does not guarantee delivery.

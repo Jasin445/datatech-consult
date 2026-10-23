@@ -24,3 +24,11 @@ export const pillClass =
 /** Development-only status pill for dummy/draft content. */
 export const statusPillClass =
   "inline-block rounded-full border border-dashed border-warning-text bg-warning-bg px-3 py-1 text-sm font-bold text-warning-text";
+
+/** Form control (input, select, textarea). Border uses `muted` (not the light `border` token) to meet 3:1 non-text contrast. */
+export const fieldClass =
+  "block min-h-11 w-full rounded-sm border-2 border-muted bg-white px-3 py-2 text-base text-charcoal aria-[invalid=true]:border-danger";
+
+export const labelClass = "mb-1 block font-semibold text-charcoal";
+export const hintClass = "mb-1 mt-0 text-sm text-muted";
+export const fieldErrorClass = "mt-1 mb-0 text-sm font-semibold text-danger";

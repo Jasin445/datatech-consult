@@ -18,7 +18,9 @@ Development completion is not launch readiness. Tick only after verification.
 - [ ] Accessibility QA (keyboard, focus, contrast, reduced motion) with real tooling
 - [ ] Responsive QA: mobile, tablet, desktop, wide
 - [ ] Production build, lint, type-check and tests pass on the release commit
-- [ ] Rate-limit/queue strategy documented for the chosen host
+- [ ] Rate-limit/queue strategy: current limiter is in-memory per instance and there is no queue/retry (documented in PROGRESS.md); confirm or upgrade for the chosen host
+- [ ] Checkpoint 11 verified on a networked machine (install, typecheck, lint, tests, build, /contact and /api/contact checks, real provider send)
+- [ ] Verify the sender domain with the email provider (Resend requires it) and confirm EMAIL_PROVIDER=resend
 - [ ] Homepage and service marketing copy reviewed and approved by the business
 - [ ] Hero imagery decision (keep decorative graphic or supply licensed photography)
 - [ ] Approved statement of relationship to Datatechhub confirmed; NEXT_PUBLIC_PARENT_BRAND_URL set (or link intentionally omitted)

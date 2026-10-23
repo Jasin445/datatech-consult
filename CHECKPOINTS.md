@@ -14,7 +14,7 @@
 | 8 | About | complete |
 | 9 | Case studies | complete |
 | 10 | Insights | complete |
-| 11 | Contact and enquiry system | not started |
+| 11 | Contact and enquiry system | in progress (code written; install/build/browser verification pending) |
 | 12 | Consultation booking | not started |
 | 13 | Privacy | not started |
 | 14 | SEO and site discovery | not started |
@@ -82,3 +82,11 @@ Commit: `checkpoint-10: implement insights registry and routes` (see `git log`).
 ## Maintenance: Tailwind migration (after Checkpoint 8, not a numbered checkpoint)
 Delivered: every component and page converted from hand-written CSS (tokens.css, sections.css, globals.css classes) to Tailwind v4 utilities; colour system retained as `@theme` tokens; STYLING.md added. Checkpoint 9 NOT started.
 Validation: install, typecheck, lint, tests and build now pass (run during Checkpoint 10). Visual/responsive QA still to do (see PROGRESS.md).
+
+## Checkpoint 11: Contact and enquiry system (in progress: written, partly verified)
+Delivered: /contact (force-dynamic; form when email configured, honest unavailable state otherwise, dev notice naming missing variables), POST /api/contact (503/415/413/429/400/502/200 pipeline, honeypot, in-memory rate limit, Retry-After, no-store, GET 405), dependency-free validation shared by client and server, email provider adapter + Resend adapter, plain-text composer, accessible ContactForm client component, tests/contact.test.ts (20 tests).
+Files: src/lib/validation/enquiry.ts; src/lib/rate-limit.ts; src/lib/email/{types,resend,index}.ts; src/lib/contact/{compose,handle,availability}.ts; src/app/api/contact/route.ts; src/app/contact/page.tsx; src/components/forms/ContactForm.tsx; field classes in src/components/ui/styles.ts; tests/contact.test.ts.
+Validation actually run: the 20 tests, via tsx and a temporary vitest shim: 20/20 pass (success, validation, header-injection stripping, honeypot, not-configured 503, provider failure 502 without leaking status, bad JSON/content-type/oversize, rate limiting, no PII in logs, Resend acknowledgement/rejection/network/timeout, unknown provider).
+NOT run: typecheck, lint, vitest itself, build, dev/production server, browser/a11y/visual checks, a real provider send (no network, no credentials).
+Remaining: run the verification listed at the top of PROGRESS.md and fix any defects, then commit-check and mark complete.
+Commit: `checkpoint-11: implement contact page and enquiry api (unverified build)` (see `git log`).
