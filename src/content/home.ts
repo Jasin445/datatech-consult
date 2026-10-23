@@ -11,8 +11,8 @@ export type TitledItem = { title: string; text: string };
 
 export const hero = {
   eyebrow: "Data, analytics, AI and technology consulting",
-  headline: "Your numbers should settle the",
-  headlineAccent: "argument.",
+  headline: "Your numbers should settle arguments,",
+  headlineAccent: "not start them.",
   body: "We help organisations in Nigeria and across Africa turn scattered data and stubborn manual work into reporting people trust, systems that talk to each other, and automation that earns its place.",
   primary: ctas.consultation,
   secondary: ctas.enquiry,
