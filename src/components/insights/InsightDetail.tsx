@@ -92,7 +92,7 @@ export function InsightDetail({ status, insight }: { status: ContentStatus; insi
             <aside aria-labelledby={`${p}-takeaways`} className="lg:col-span-4">
               <div className="lg:sticky lg:top-[calc(var(--header-height)+2rem)]">
                 <Panel tone="white" compact>
-                  <h2 id={`${p}-takeaways`} className="mb-5 font-sans text-sm font-semibold tracking-[0.18em] text-gold uppercase">
+                  <h2 id={`${p}-takeaways`} className="mb-5 font-sans text-sm font-semibold text-gold">
                     Key takeaways
                   </h2>
                   <ul className="grid gap-4">

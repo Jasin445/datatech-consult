@@ -87,12 +87,12 @@ export function CaseStudyDetail({ status, study, index = 0 }: { status: ContentS
           <div className="flex flex-col justify-center gap-6 lg:col-span-8">
             <dl className="grid gap-x-10 gap-y-5 sm:grid-cols-2">
               <div>
-                <dt className="mb-1 text-xs font-semibold tracking-[0.18em] text-gold uppercase">Project type</dt>
+                <dt className="mb-1 text-sm font-semibold text-gold">Project type</dt>
                 <dd className="m-0 font-display text-2xl text-charcoal">{label}</dd>
               </div>
               {relatedNames.length > 0 && (
                 <div>
-                  <dt className="mb-1 text-xs font-semibold tracking-[0.18em] text-gold uppercase">Services involved</dt>
+                  <dt className="mb-1 text-sm font-semibold text-gold">Services involved</dt>
                   <dd className="m-0 text-charcoal">{relatedNames.join(" · ")}</dd>
                 </div>
               )}

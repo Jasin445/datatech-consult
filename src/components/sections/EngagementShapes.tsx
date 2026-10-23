@@ -35,12 +35,12 @@ export function EngagementShapes({ id = "engagement-heading", tone = "surface" }
                 ))}
               </ul>
               <p className="mb-5 flex items-baseline gap-2 text-sm text-charcoal">
-                <span className="shrink-0 text-xs font-semibold tracking-[0.16em] text-gold uppercase">Scale</span>
+                <span className="shrink-0 text-sm font-semibold text-gold">Scale</span>
                 {shape.scale}
               </p>
               {shape.price && <p className="mb-5 font-display text-2xl text-charcoal">From {shape.price.from}</p>}
               <p className="mt-auto mb-0 border-t border-border pt-4 text-sm">
-                <span className="mb-1 block text-xs font-semibold tracking-[0.16em] text-gold uppercase">You get</span>
+                <span className="mb-1 block text-sm font-semibold text-gold">You get</span>
                 {shape.youGet}
               </p>
             </article>

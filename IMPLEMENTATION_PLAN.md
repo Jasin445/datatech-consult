@@ -94,5 +94,5 @@ Remove the generic "AI-made" tells (the long rule before labels read as an em da
 - Copy: no two-beat "X. Y." slogans, no "not X, Y" contrasts, no em dashes in visitor copy; "honest" used sparingly. Enforced by the copy guard where a rule can be expressed.
 - Photography: more licensed photos (registered, licence-checked); photo-plus-mockup compositions; a "where the work happens" strip with descriptive (not client) captions.
 
-## V4 checkpoints
+## V4 checkpoints (all complete, 2026-10-23)
 V4-1 Readout mark · V4-2 Motif pass (labels, accent, links) · V4-3 Copy pass and guard · V4-4 Imagery and compositions · V4-5 QA, Lighthouse, docs.

@@ -8,7 +8,7 @@ export function CaseCover({ number, label, className = "" }: { number: string; l
   return (
     <div aria-hidden="true" className={`relative flex flex-col justify-between overflow-hidden bg-charcoal p-6 text-gold-soft lg:p-8 ${className}`}>
       <div className="flex items-center justify-between">
-        <span className="text-xs font-semibold tracking-[0.18em] uppercase">{label}</span>
+        <span className="text-sm font-semibold">{label}</span>
         <Mark className="size-5" />
       </div>
       <span className="font-sans text-[clamp(5rem,4rem+4vw,8rem)] font-light leading-[0.8] tabular-nums">{number}</span>

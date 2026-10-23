@@ -97,7 +97,7 @@ export function ServicesMenu({ services }: { services: readonly MenuService[] })
               <Mark className="mb-5 size-6 text-gold-soft" />
               <p className="mb-2 font-display text-2xl leading-tight text-white">Not sure where to start?</p>
               <p className="mb-5 text-sm">Tell us the problem. We’ll point you to the right service, or tell you if you don’t need one.</p>
-              <p className="mb-2 text-xs font-semibold tracking-[0.16em] text-gold-soft uppercase">Three ways to start</p>
+              <p className="mb-2 text-sm font-semibold text-gold-soft">Three ways to start</p>
               <ul className="mb-6 grid gap-1.5 text-sm">
                 {engagement.shapes.map((shape) => (
                   <li key={shape.name}>

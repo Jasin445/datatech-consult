@@ -29,7 +29,7 @@ export function SiteFooter() {
             )}
           </div>
           <nav aria-label="Services">
-            <h2 className="mb-4 font-sans text-sm font-semibold tracking-[0.18em] text-gold-soft uppercase">Services</h2>
+            <h2 className="mb-4 font-sans text-sm font-semibold text-gold-soft">Services</h2>
             <ul className="grid gap-3">
               {services.map((s) => (
                 <li key={s.href}>
@@ -39,7 +39,7 @@ export function SiteFooter() {
             </ul>
           </nav>
           <nav aria-label="Company">
-            <h2 className="mb-4 font-sans text-sm font-semibold tracking-[0.18em] text-gold-soft uppercase">Company</h2>
+            <h2 className="mb-4 font-sans text-sm font-semibold text-gold-soft">Company</h2>
             <ul className="grid gap-3">
               <li><Link href="/about">About</Link></li>
               <li><Link href="/contact">Contact</Link></li>

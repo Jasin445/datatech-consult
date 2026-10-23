@@ -321,7 +321,7 @@ Commit: `fix(f9): sophisticated two-tier header and services mega-menu`.
 | V4-2 | Motif pass: labels, headline accent, links | complete |
 | V4-3 | Copy pass and guard | complete |
 | V4-4 | Imagery and photo-plus-mockup compositions | complete |
-| V4-5 | QA, Lighthouse, docs | not started |
+| V4-5 | QA, Lighthouse, docs | complete |
 
 ## V4-1: Readout mark (complete, 2026-10-23)
 New project symbol `Mark` (src/components/ui/Mark.tsx): a chart corner with one plotted point and faint guide lines (reading a value off a chart); `variant="bullet"` (no guides, heavier strokes) for list sizes. Replaced the four-point star in 30 files; `Ornament` removed, `OrnamentCard` renamed `MarkCard`; star-specific rotate-on-hover removed. Placeholder favicon and touch icon now draw the readout mark. Validation: typecheck, lint, vitest 164/164; production build; card, bullet and icon screenshots reviewed. Commit: `v4-1: readout mark replaces the star`.
@@ -340,3 +340,8 @@ Eight new Unsplash-License photos (licence verified on each photo page; register
 Fixes during review: KPI figures spilled out of tiles in the smaller hero dashboard (container queries on the dashboard); region bar labels overflowed at small widths (shrinkable labels); photo strip not keyboard-reachable on mobile (focusable, labelled).
 Validation: typecheck, lint, vitest 167/167; production build: qa:responsive all 10 routes pass; qa:a11y pass after the strip fix; desktop and 390px screenshots reviewed (homepage at 390px about 13,300px with the new strip).
 Commit: `v4-4: more photography, mockups in context, where-the-data-comes-from strip`.
+
+## V4-5: QA, Lighthouse, docs (complete, 2026-10-23)
+Micro-labels across the site (card kickers, footer and menu headings, form/booking/contact labels, case-study sheet) changed from tracked uppercase to sentence case (17 places); uppercase kept only inside mockups and the button styles. Logo image given a `sizes` hint (served at 8KB instead of 22KB).
+Validation (fresh production build in the scratchpad copy): typecheck, lint, vitest 167/167 (16 files); qa:responsive on all 10 public routes (two clean runs); qa:a11y (32 links, axe WCAG 2.2 AA, keyboard, reduced motion): pass; unapproved content and unknown routes 404. Lighthouse (simulated mobile): / 90-96 across runs (LCP 2.8-3.6s), /services/data-analytics 95, /about 94; accessibility 100 and best practices 100 on all; CLS 0. Homepage height at 1440: about 8,300px (photo strip added).
+Commit: `v4-5: sentence-case labels, logo sizing, final v4 qa`.

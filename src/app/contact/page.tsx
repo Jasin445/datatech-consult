@@ -42,7 +42,7 @@ export default function ContactPage() {
             </h1>
             <p className="mb-10 text-lg text-muted">{contactPage.lead}</p>
 
-            <h2 id="next-heading" className="mb-5 font-sans text-sm font-semibold tracking-[0.18em] text-gold uppercase">
+            <h2 id="next-heading" className="mb-5 font-sans text-sm font-semibold text-gold">
               {contactPage.next.heading}
             </h2>
             <ol aria-labelledby="next-heading" className="mb-10 border-t border-charcoal/15">

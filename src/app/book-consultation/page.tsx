@@ -66,7 +66,7 @@ export default function BookConsultationPage() {
                     <dl className="mb-6 grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 border-y border-border py-4">
                       {confirmedDetails.map((d) => (
                         <div key={d.label} className="contents">
-                          <dt className="text-sm font-semibold tracking-[0.14em] text-gold uppercase">{d.label}</dt>
+                          <dt className="text-sm font-semibold text-gold">{d.label}</dt>
                           <dd className="m-0 text-charcoal">{d.value}</dd>
                         </div>
                       ))}

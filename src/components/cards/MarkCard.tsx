@@ -29,7 +29,7 @@ export function MarkCard({
       }`}
     >
       {recommended && (
-        <p className="absolute -top-3.5 left-1/2 mb-0 -translate-x-1/2 rounded-full bg-gold px-4 py-1 text-xs font-semibold tracking-[0.14em] whitespace-nowrap text-white uppercase">
+        <p className="absolute -top-3.5 left-1/2 mb-0 -translate-x-1/2 rounded-full bg-gold px-4 py-1 text-sm font-semibold whitespace-nowrap text-white">
           Recommended first step
         </p>
       )}

@@ -55,7 +55,7 @@ export default function PrivacyPage() {
             </div>
           )}
           <nav aria-labelledby="contents-heading">
-            <h2 id="contents-heading" className="mb-5 font-sans text-sm font-semibold tracking-[0.18em] text-gold uppercase">
+            <h2 id="contents-heading" className="mb-5 font-sans text-sm font-semibold text-gold">
               Contents
             </h2>
             <ol className="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">

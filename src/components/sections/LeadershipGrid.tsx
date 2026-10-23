@@ -30,7 +30,7 @@ export function LeadershipGrid({ profiles }: { profiles: readonly ManagedContent
               {initials(data.name)}
             </span>
             <h3 className="mb-1 text-3xl">{data.name}</h3>
-            <p className="mb-4 text-sm font-semibold tracking-[0.14em] text-gold uppercase">{data.role}</p>
+            <p className="mb-4 text-sm font-semibold text-gold">{data.role}</p>
             <p className="mb-0 text-muted">{data.bio}</p>
           </li>
         ))}

@@ -15,6 +15,7 @@ export function Brand() {
         width={849}
         height={294}
         priority
+        sizes="(min-width: 768px) 162px, 128px"
         className="h-9 w-auto min-[480px]:h-11 md:h-14"
       />
       <span className="border-l-2 border-secondary pl-2 text-sm leading-[1.1] font-semibold text-charcoal min-[480px]:pl-3 min-[480px]:text-base">

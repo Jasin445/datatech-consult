@@ -110,7 +110,7 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
       <NextStep id={`${p}-cta`} eyebrow={nextStep.eyebrow} heading={detail.cta.heading} lead={detail.cta.body} options={nextStep.options} />
       <nav aria-label="Related services" className="bg-charcoal pb-16 text-footer-text">
         <div className="mx-auto flex w-full max-w-[calc(var(--container-max)+2*var(--gutter))] flex-wrap items-center justify-center gap-x-6 gap-y-2 border-t border-white/15 px-(--gutter) pt-8 text-sm">
-          <span className="font-semibold tracking-[0.18em] text-gold-soft uppercase">Works well with</span>
+          <span className="font-semibold text-gold-soft">Works well with</span>
           {related.map((s) => (
             <Link key={s.slug} href={s.href} className="text-white">
               {s.title}

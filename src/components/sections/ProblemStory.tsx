@@ -44,7 +44,7 @@ export function ProblemStory({
           {note && (
             <figure className="relative mt-6 ml-auto max-w-[20rem] border border-border bg-white p-5 shadow-[0_24px_50px_-24px_rgb(23_43_58/45%)] lg:absolute lg:-right-6 lg:-bottom-40 lg:mt-0">
               <span aria-hidden="true" className="absolute -top-px -right-px size-9 bg-[linear-gradient(to_bottom_left,var(--color-surface)_50%,var(--color-border)_50%)]" />
-              <figcaption className="mb-2 text-xs font-semibold tracking-[0.16em] text-gold uppercase">{note.label}</figcaption>
+              <figcaption className="mb-2 text-sm font-semibold text-gold">{note.label}</figcaption>
               <blockquote className="m-0 font-display text-lg leading-snug text-charcoal italic">{note.text}</blockquote>
             </figure>
           )}
