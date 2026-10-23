@@ -1,9 +1,9 @@
-Current phase: VERSION 2 (visual redesign). Current checkpoint: V2-6 (Case studies, Insights, Privacy, 404)
-Status: V2-1 to V2-5 complete (V2-2 direction approved by owner).
+Current phase: VERSION 2 (visual redesign). Current checkpoint: V2-7 (Sitewide copy/imagery pass, QA, docs)
+Status: V2-1 to V2-6 complete (V2-2 direction approved by owner).
 V1: checkpoints 1-15 complete for development; not launch-ready (see below).
 
 V2 next action:
-- Rebuild case study and insight index/detail templates (cards, detail layout), the privacy page and the 404 page with V2 components; keep all governance behaviour.
+- V2-7: sitewide copy and imagery consistency pass (repeated photos, hamburger icon, mobile menu styling), full QA on all routes, update README/IMPLEMENTATION_PLAN/STYLING/RELEASE_CHECKLIST.
 
 Completed checkpoints:
 - Checkpoints 1-15: complete (deliverables, files and validation per checkpoint in CHECKPOINTS.md)

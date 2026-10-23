@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo/page";
 import { notFound } from "next/navigation";
 import { CaseStudyDetail } from "@/components/case-studies/CaseStudyDetail";
-import { getCaseStudyBySlug, getCaseStudySlugs } from "@/lib/content/case-studies";
+import { getCaseStudyBySlug, getPublishableCaseStudies, getCaseStudySlugs } from "@/lib/content/case-studies";
 import { isIndexable } from "@/lib/content/status";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -31,5 +31,6 @@ export default async function CaseStudyPage({ params }: Props) {
   const { slug } = await params;
   const item = getCaseStudyBySlug(slug);
   if (!item) notFound();
-  return <CaseStudyDetail status={item.status} study={item.data} />;
+  const index = getPublishableCaseStudies().findIndex((c) => c.data.slug === item.data.slug);
+  return <CaseStudyDetail status={item.status} study={item.data} index={Math.max(index, 0)} />;
 }

@@ -1,3 +1,4 @@
+import { photos } from "@/content/media/photos";
 import { DUMMY_MARKER, type ManagedContent } from "@/lib/content/status";
 import type { Insight } from "./types";
 
@@ -30,6 +31,7 @@ export const insights: ManagedContent<Insight>[] = [
         },
       ],
       relatedServices: ["data-analytics", "business-technology-consulting"],
+      cover: photos.marketAerial,
     },
   },
 ];

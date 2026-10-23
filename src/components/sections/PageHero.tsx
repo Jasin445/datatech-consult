@@ -6,7 +6,7 @@ import { Photo } from "@/components/ui/Photo";
 
 /**
  * V2 inner-page opening: breadcrumb, eyebrow, serif h1 (optional gold italic accent), lead,
- * optional actions, and a framed photograph with the offset gold rule. Text first on mobile.
+ * optional actions, and an optional framed photograph with the offset gold rule. Text first on mobile.
  */
 export function PageHero({
   eyebrow,
@@ -21,7 +21,8 @@ export function PageHero({
   heading: string;
   accent?: string;
   lead: string;
-  photo: PhotoData;
+  /** Omit for text-only openings (index pages, legal pages, case studies). */
+  photo?: PhotoData;
   above?: ReactNode;
   actions?: ReactNode;
 }) {
@@ -30,7 +31,7 @@ export function PageHero({
       <Container>
         {above}
         <div className="mt-6 grid items-center gap-12 lg:mt-10 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-7">
+          <div className={photo ? "lg:col-span-7" : "lg:col-span-10"}>
             <div className="animate-rise">
               <Eyebrow>{eyebrow}</Eyebrow>
             </div>
@@ -46,12 +47,14 @@ export function PageHero({
             <p className="mb-0 max-w-[54ch] animate-rise text-lg text-muted [animation-delay:180ms]">{lead}</p>
             {actions && <div className="mt-9 flex animate-rise flex-wrap items-center gap-x-8 gap-y-4 [animation-delay:270ms]">{actions}</div>}
           </div>
-          <div className="relative animate-rise [animation-delay:200ms] lg:col-span-5">
-            <div aria-hidden="true" className="absolute top-5 -right-3 -bottom-5 left-5 border border-gold" />
-            <div className="relative aspect-[4/3] overflow-hidden bg-surface lg:aspect-[4/5]">
-              <Photo photo={photo} fill priority sizes="(min-width: 1024px) 38vw, 100vw" />
+          {photo && (
+            <div className="relative animate-rise [animation-delay:200ms] lg:col-span-5">
+              <div aria-hidden="true" className="absolute top-5 -right-3 -bottom-5 left-5 border border-gold" />
+              <div className="relative aspect-[4/3] overflow-hidden bg-surface lg:aspect-[4/5]">
+                <Photo photo={photo} fill priority sizes="(min-width: 1024px) 38vw, 100vw" />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </Container>
     </section>

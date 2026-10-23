@@ -90,3 +90,8 @@ Other tokens kept: font stack (Segoe UI system stack, no network fonts), type sc
 ## Motion
 - One staggered entrance on the hero only (`animate-rise` + `[animation-delay:...]`), image zoom and arrow nudge on card hover, star rotation on hover. All disabled by `prefers-reduced-motion`.
 - QA note: `scripts/qa/a11y-crawl.mjs` waits for animations to finish before measuring contrast.
+
+## Added in V2-3 to V2-6
+- `PageHero` (inner-page opening; photo optional), `Panel` (white folded-corner panel for forms/booking/takeaways; `compact`), `ReportSection` (sticky label column + content; long-form pages), `ContentsList` (report contents rows), `ServiceFeature` (alternating photo rows).
+- Case studies never use stock photography: use `CaseCover` (typographic). Insights may use an optional registered `cover` photo.
+- Placeholder favicon in `src/app/icon.tsx` / `apple-icon.tsx` until an official one is supplied.

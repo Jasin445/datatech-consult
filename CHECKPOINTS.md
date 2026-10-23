@@ -141,7 +141,7 @@ Commit: `checkpoint-15: final integration and qa`.
 | V2-3 | Services overview + service detail template | complete |
 | V2-4 | About | complete |
 | V2-5 | Contact + Booking | complete |
-| V2-6 | Case studies, Insights, Privacy, 404 | not started |
+| V2-6 | Case studies, Insights, Privacy, 404 | complete |
 | V2-7 | Sitewide copy/imagery pass, QA, docs | not started |
 
 ## V2-1: Design foundation (complete, 2026-10-23)
@@ -178,3 +178,12 @@ Behaviour unchanged: availability check, privacy gate, validation, error summary
 Removed: sections/ItemGrid (unused).
 Validation: typecheck, lint, vitest 115/115, build. Production (no env): qa:responsive and qa:a11y on /contact and /book-consultation pass. A disposable copy of the project in the scratchpad running `next dev` with dummy email config and a booking URL: form and configured booking render; qa:responsive and qa:a11y pass; browser form test passes (empty submit focuses error summary with 3 invalid fields; real Resend rejects the dummy key and the visitor sees the honest error with input preserved).
 Commit: `v2-5: redesign contact and booking pages`.
+
+## V2-6: Case studies, Insights, Privacy, 404 (complete, 2026-10-23)
+Delivered: `PageHero` photo now optional (text-only openings). Case studies: deliberately NO stock photography (could imply the real client/project); typographic `CaseCover` (charcoal, italic folio numeral, project-type label); `CaseStudyCard` with cover, visible project-type pill, gold action; detail page laid out as a report: hero, "at a glance" sheet (cover, project type, services involved, dev-only status), numbered `ReportSection`s with sticky labels (approach full width, verified results in a gold-tint panel), related services as photo cards, closing ornament cards. Insights: optional licensed `cover` (registry photo) on the Insight type (dummy article uses one in development); `InsightCard` with cover or ornament panel, whole card clickable; article template with reading column, gold drop cap, ornament bullets, sticky folded "Key takeaways" panel, related services, closing cards; index and homepage preview restyled. Privacy: text-only hero, draft banner, numbered two/three-column contents, each section as a `ReportSection`; all governance logic unchanged. 404: large italic "404", copy, homepage button, ruled links to Services/About/Contact. Error page: eyebrow and V2 heading. `RelatedServices` now wide photo cards; `Panel` gained `compact`.
+Defect found and fixed: the site had no favicon, so every browser requested /favicon.ico and got a 404 (found through an intermittent QA failure on the first page of each run). Added PLACEHOLDER typographic `icon.tsx` and `apple-icon.tsx`; official favicon added to the release checklist. qa:responsive now also reports failing resource URLs.
+Removed: PageHeader, CtaBand, and unused class strings (cardClass, checkItemClass, valueItemClass).
+Governance unchanged: production /case-studies, /case-studies/sample-case-study, /insights, /insights/sample-article and /nope all return 404.
+Validation: typecheck, lint, vitest 115/115, build. Production: qa:responsive on all 10 public routes (3 consecutive clean runs after the favicon fix), qa:a11y on all 10 plus /privacy and /nope (only the expected 404 skip-link self-reference), 404 overflow check at 320-1280. Development (owner’s dev server on :3000): qa:responsive and qa:a11y on case study and insight index/detail pages and the homepage preview: pass. Screenshots reviewed.
+Note: running `next build` while a `next dev` server runs in the same folder once corrupted a generated file (.next/dev/types/routes.d.ts); the dev server regenerated it. See README QA note.
+Commit: `v2-6: redesign case studies, insights, privacy and 404`.

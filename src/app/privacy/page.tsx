@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo/page";
 import Link from "next/link";
-import { PageHeader } from "@/components/sections/PageHeader";
+import { PageHero } from "@/components/sections/PageHero";
+import { ReportSection } from "@/components/sections/ReportSection";
+import { Container } from "@/components/ui/Container";
+import { Ornament } from "@/components/ui/Ornament";
 import { DevNotice } from "@/components/ui/DevNotice";
-import { Section } from "@/components/ui/Section";
 import { getPublicContactEmail } from "@/lib/env";
 import { getPrivacyNotice, missingPrivacyFacts } from "@/lib/content/privacy";
 import { siteConfig } from "@/lib/site";
@@ -33,89 +35,94 @@ export default function PrivacyPage() {
   const missing = missingPrivacyFacts(facts);
   const requestEmail = facts.privacyContactEmail ?? getPublicContactEmail();
   const tocItems = [...sections.map((s) => ({ id: s.id, heading: s.heading })), { id: "contact-us", heading: "Who we are and how to contact us" }];
+  const num = (i: number) => String(i + 1).padStart(2, "0");
 
   return (
     <>
-      <PageHeader
-        heading="Privacy notice"
-        lead={`How the ${siteConfig.name} website handles the information you send us.`}
-      />
+      <PageHero eyebrow="Privacy" heading="Privacy notice" lead={`How the ${siteConfig.name} website handles the information you send us.`} />
 
-      <Section labelledBy="contents-heading">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.4fr)]">
-          <nav aria-labelledby="contents-heading" className="lg:sticky lg:top-[calc(var(--header-height)+2rem)] lg:self-start">
-            <h2 id="contents-heading" className="text-lg">
+      <section aria-labelledby="contents-heading" className="bg-surface py-12 lg:py-16">
+        <Container>
+          {!approved && (
+            <p role="note" className="mb-8 max-w-(--reading-max) border-l-4 border-gold bg-white p-5">
+              <strong>This notice is a draft and is being reviewed.</strong> It describes how this website currently handles information. Some details
+              below will be added once review is complete.
+            </p>
+          )}
+          {missing.length > 0 && (
+            <div className="mb-8">
+              <DevNotice>Privacy facts still to be supplied in src/content/privacy.ts: {missing.join(", ")}.</DevNotice>
+            </div>
+          )}
+          <nav aria-labelledby="contents-heading">
+            <h2 id="contents-heading" className="mb-5 font-sans text-sm font-semibold tracking-[0.18em] text-gold uppercase">
               Contents
             </h2>
-            <ol className="m-0 list-none p-0 text-sm [&_li]:mb-2">
-              {tocItems.map((item) => (
-                <li key={item.id}>
-                  <a href={`#${item.id}`}>{item.heading}</a>
+            <ol className="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
+              {tocItems.map((item, i) => (
+                <li key={item.id} className="border-t border-charcoal/15">
+                  <a href={`#${item.id}`} className="flex min-h-11 items-baseline gap-3 py-2 text-charcoal no-underline hover:text-gold">
+                    <span aria-hidden="true" className="font-display text-lg text-gold italic">
+                      {num(i)}
+                    </span>
+                    <span className="underline decoration-1 underline-offset-4">{item.heading}</span>
+                  </a>
                 </li>
               ))}
             </ol>
           </nav>
+          {facts.effectiveDate && <p className="mt-8 mb-0 text-sm text-muted">Effective from {formatDate(facts.effectiveDate)}.</p>}
+        </Container>
+      </section>
 
-          <div className="max-w-(--reading-max)">
-            {!approved && (
-              <p role="note" className="rounded-md border-2 border-border bg-surface p-4">
-                <strong>This notice is a draft and is being reviewed.</strong> It describes how this website currently
-                handles information. Some details below will be added once review is complete.
-              </p>
-            )}
-            {missing.length > 0 && (
-              <DevNotice>Privacy facts still to be supplied in src/content/privacy.ts: {missing.join(", ")}.</DevNotice>
-            )}
-            {facts.effectiveDate && <p className="text-sm text-muted">Effective from {formatDate(facts.effectiveDate)}.</p>}
-
-            {sections.map((section) => (
-              <section key={section.id} aria-labelledby={section.id} className="mt-10 first-of-type:mt-6">
-                <h2 id={section.id} className="text-2xl">
-                  {section.heading}
-                </h2>
-                {section.paragraphs.map((p) => (
-                  <p key={p}>{p}</p>
-                ))}
-                {section.bullets && (
-                  <ul className="list-disc pl-6 [&_li]:mb-1">
-                    {section.bullets.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
-                  </ul>
-                )}
-                {section.id === "technical" && facts.hostingProvider && <p>Our hosting provider is {facts.hostingProvider}.</p>}
-                {section.id === "retention" && facts.enquiryRetention && <p>We keep enquiry emails {facts.enquiryRetention}, then delete them.</p>}
-              </section>
-            ))}
-
-            <section aria-labelledby="contact-us" className="mt-10">
-              <h2 id="contact-us" className="text-2xl">
-                Who we are and how to contact us
-              </h2>
-              {facts.controllerName ? (
-                <p>
-                  {facts.controllerName} is responsible for the information collected through this website.
-                  {facts.postalAddress ? ` Our address is ${facts.postalAddress}.` : null}
-                </p>
-              ) : (
-                <p>{siteConfig.name} is responsible for the information collected through this website.</p>
+      <Container className="pb-(--section-space)">
+        {sections.map((section, i) => (
+          <ReportSection key={section.id} id={section.id} folio={num(i)} heading={section.heading}>
+            <div className="max-w-(--reading-max) text-lg [&_p]:mb-5 [&_p:last-child]:mb-0">
+              {section.paragraphs.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+              {section.bullets && (
+                <ul className="mb-5 border-t border-charcoal/15">
+                  {section.bullets.map((b) => (
+                    <li key={b} className="flex items-baseline gap-4 border-b border-charcoal/15 py-3">
+                      <Ornament className="size-3 shrink-0 text-gold" />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
               )}
-              <p className="mb-0">
-                To ask about your information or exercise your rights,{" "}
-                {requestEmail ? (
-                  <>
-                    email <a href={`mailto:${requestEmail}`}>{requestEmail}</a>.
-                  </>
-                ) : (
-                  <>
-                    contact us through our <Link href="/contact">contact page</Link>.
-                  </>
-                )}
+              {section.id === "technical" && facts.hostingProvider && <p>Our hosting provider is {facts.hostingProvider}.</p>}
+              {section.id === "retention" && facts.enquiryRetention && <p>We keep enquiry emails {facts.enquiryRetention}, then delete them.</p>}
+            </div>
+          </ReportSection>
+        ))}
+
+        <ReportSection id="contact-us" folio={num(sections.length)} heading="Who we are and how to contact us">
+          <div className="max-w-(--reading-max) text-lg [&_p]:mb-5 [&_p:last-child]:mb-0">
+            {facts.controllerName ? (
+              <p>
+                {facts.controllerName} is responsible for the information collected through this website.
+                {facts.postalAddress ? ` Our address is ${facts.postalAddress}.` : null}
               </p>
-            </section>
+            ) : (
+              <p>{siteConfig.name} is responsible for the information collected through this website.</p>
+            )}
+            <p>
+              To ask about your information or exercise your rights,{" "}
+              {requestEmail ? (
+                <>
+                  email <a href={`mailto:${requestEmail}`}>{requestEmail}</a>.
+                </>
+              ) : (
+                <>
+                  contact us through our <Link href="/contact">contact page</Link>.
+                </>
+              )}
+            </p>
           </div>
-        </div>
-      </Section>
+        </ReportSection>
+      </Container>
     </>
   );
 }

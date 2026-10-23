@@ -1,0 +1,16 @@
+import { ImageResponse } from "next/og";
+
+// PLACEHOLDER touch icon (typographic monogram), not an official brand asset. See src/app/icon.tsx.
+export const size = { width: 180, height: 180 };
+export const contentType = "image/png";
+
+export default function AppleIcon() {
+  return new ImageResponse(
+    (
+      <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", background: "#172b3a" }}>
+        <span style={{ fontSize: 130, fontStyle: "italic", fontFamily: "serif", color: "#c4b08c", lineHeight: 1 }}>D</span>
+      </div>
+    ),
+    size,
+  );
+}

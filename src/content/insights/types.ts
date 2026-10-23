@@ -1,3 +1,5 @@
+import type { Photo } from "../media/photos";
+
 /** One headed section of an article body. Bullets are optional and render after the paragraphs. */
 export type InsightSection = {
   heading: string;
@@ -22,4 +24,6 @@ export type Insight = {
   sections: InsightSection[];
   /** Slugs from src/content/services.ts */
   relatedServices: string[];
+  /** Optional licensed cover image from src/content/media/photos.ts (illustrative only). */
+  cover?: Photo;
 };

@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo/page";
 import { notFound } from "next/navigation";
 import { CaseStudyCard } from "@/components/case-studies/CaseStudyCard";
-import { CtaBand } from "@/components/sections/CtaBand";
-import { PageHeader } from "@/components/sections/PageHeader";
+import { NextStep } from "@/components/sections/NextStep";
+import { PageHero } from "@/components/sections/PageHero";
 import { DevNotice } from "@/components/ui/DevNotice";
 import { Section } from "@/components/ui/Section";
 import { caseStudiesPage } from "@/content/case-studies/page";
+import { nextStep } from "@/content/home";
 import { getPublishableCaseStudies } from "@/lib/content/case-studies";
 import { DUMMY_MARKER, isIndexable } from "@/lib/content/status";
+import { pageMetadata } from "@/lib/seo/page";
 
 export function generateMetadata(): Metadata {
   const items = getPublishableCaseStudies();
@@ -32,9 +33,9 @@ export default function CaseStudiesPage() {
 
   return (
     <>
-      <PageHeader heading={caseStudiesPage.heading} lead={caseStudiesPage.lead} />
+      <PageHero eyebrow={caseStudiesPage.eyebrow} heading={caseStudiesPage.heading} accent={caseStudiesPage.accent} lead={caseStudiesPage.lead} />
 
-      <Section labelledBy="case-studies-list">
+      <Section tone="surface" labelledBy="case-studies-list">
         <h2 id="case-studies-list" className="sr-only">
           All case studies
         </h2>
@@ -43,14 +44,16 @@ export default function CaseStudiesPage() {
             <DevNotice>{DUMMY_MARKER}. Unapproved case studies are hidden in production.</DevNotice>
           </div>
         )}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {items.map(({ status, data }) => (
-            <CaseStudyCard key={data.slug} status={status} study={data} />
+        <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          {items.map(({ status, data }, i) => (
+            <li key={data.slug}>
+              <CaseStudyCard status={status} study={data} index={i} />
+            </li>
           ))}
-        </div>
+        </ul>
       </Section>
 
-      <CtaBand />
+      <NextStep id="case-studies-next-heading" {...nextStep} />
     </>
   );
 }

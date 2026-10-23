@@ -16,6 +16,7 @@ for (const route of routes) {
     const errors = [];
     page.on("pageerror", (e) => errors.push(e.message));
     page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
+    page.on("response", (r) => r.status() >= 400 && r.url() !== base + route && errors.push(`${r.status()} ${r.url()}`));
     const res = await page.goto(base + route, { waitUntil: "load" });
     const info = await page.evaluate(() => {
       const doc = document.documentElement;

@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo/page";
 import { notFound } from "next/navigation";
 import { InsightCard } from "@/components/insights/InsightCard";
-import { CtaBand } from "@/components/sections/CtaBand";
-import { PageHeader } from "@/components/sections/PageHeader";
+import { NextStep } from "@/components/sections/NextStep";
+import { PageHero } from "@/components/sections/PageHero";
 import { DevNotice } from "@/components/ui/DevNotice";
 import { Section } from "@/components/ui/Section";
+import { nextStep } from "@/content/home";
 import { insightsPage } from "@/content/insights/page";
 import { getPublishableInsights } from "@/lib/content/insights";
 import { DUMMY_MARKER, isIndexable } from "@/lib/content/status";
+import { pageMetadata } from "@/lib/seo/page";
 
 export function generateMetadata(): Metadata {
   const items = getPublishableInsights();
@@ -32,7 +33,7 @@ export default function InsightsPage() {
 
   return (
     <>
-      <PageHeader heading={insightsPage.heading} lead={insightsPage.lead} />
+      <PageHero eyebrow={insightsPage.eyebrow} heading={insightsPage.heading} accent={insightsPage.accent} lead={insightsPage.lead} />
 
       <Section labelledBy="insights-list">
         <h2 id="insights-list" className="sr-only">
@@ -43,7 +44,7 @@ export default function InsightsPage() {
             <DevNotice>{DUMMY_MARKER}. Unapproved articles are hidden in production.</DevNotice>
           </div>
         )}
-        <ul className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
           {items.map(({ status, data }) => (
             <li key={data.slug}>
               <InsightCard status={status} insight={data} />
@@ -52,7 +53,7 @@ export default function InsightsPage() {
         </ul>
       </Section>
 
-      <CtaBand />
+      <NextStep id="insights-next-heading" {...nextStep} />
     </>
   );
 }

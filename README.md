@@ -15,6 +15,7 @@ npm test
 npm run qa:responsive   # 10 routes x 320/390/820/1280/1680: overflow, one h1, console errors
 npm run qa:a11y         # internal link crawl, axe WCAG 2.2 AA, keyboard focus, reduced motion
 ```
+Do not run `npm run build` while `npm run dev` is running in the same folder: both write to `.next` and can corrupt generated route types. Stop the dev server first, or build in a separate copy.
 
 ## Environment
 Copy `.env.example` to `.env.local`. Every variable is optional until the feature that needs it is used; unconfigured integrations must degrade honestly (no fake success). Never commit `.env.local`.
