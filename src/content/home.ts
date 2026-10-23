@@ -6,6 +6,7 @@
 import type { ManagedContent } from "@/lib/content/status";
 import { photos, type Photo } from "@/content/media/photos";
 import { ctas } from "@/lib/site";
+import { dummyCredibilityEvidence } from "./dummy-data";
 
 export type TitledItem = { title: string; text: string };
 
@@ -133,7 +134,7 @@ export const process = {
  * commitments fallback below. Never add unverified items with status "approved".
  */
 export type CredibilityEvidence = TitledItem;
-export const credibilityEvidence: ManagedContent<CredibilityEvidence>[] = [];
+export const credibilityEvidence: ManagedContent<CredibilityEvidence>[] = [...dummyCredibilityEvidence];
 
 /**
  * "What working with us is like": principles and commitments merged into one short set (V3 fixes).

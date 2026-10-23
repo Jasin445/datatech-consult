@@ -95,8 +95,8 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
         <ul className="grid gap-x-10 gap-y-8 border-t border-charcoal/15 pt-8 md:grid-cols-2 lg:grid-cols-3">
           {detail.considerations.items.map((item) => (
             <li key={item.title}>
-              <h3 className="mb-2 flex items-center gap-3 text-2xl">
-                <Mark variant="bullet" className="size-4 shrink-0 text-gold" />
+              <h3 className="mb-2 flex items-start gap-3 text-2xl">
+                <Mark variant="bullet" className="mt-[0.3em] size-4 shrink-0 text-gold" />
                 {item.title}
               </h3>
               <p className="mb-0 text-muted">{item.text}</p>

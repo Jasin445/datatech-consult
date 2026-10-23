@@ -29,7 +29,8 @@ Development completion is not launch readiness. Tick only after verification.
 - [ ] Dummy leadership profile removed from src/content/leadership/profiles.ts once real approved profiles exist (it is already excluded from production output)
 - [ ] V2 photography: stock photos (Unsplash License, registered in src/content/media/photos.ts) approved by the business, or replaced with commissioned photography
 - [ ] V2 copy: homepage and remaining page copy approved by the business (all V2 statements are proposals)
-- [ ] Official favicon/touch icon supplied (current src/app/icon.tsx and apple-icon.tsx are typographic placeholders)
+- [x] Favicon/touch icon from the supplied Hub mark (src/app/icon.png, apple-icon.png)
 - [ ] Production server start log shows no `[launch]` warnings (at minimum: a public contact email or booking link, so visitors can make contact before the form is enabled)
 - [ ] Engagement shapes, scale lines and "How pricing works" (src/content/engagement.ts) confirmed by the business; to show a starting price, set `price: { from: "₦...", confirmed: true }` on a shape
 - [ ] Re-run Lighthouse on the deployed domain (expect SEO to pass once NEXT_PUBLIC_SITE_URL is set) and on a real mid-range phone
+- [ ] Remove or replace the items in src/content/dummy-data.ts once real, approved content exists (they never appear in production)

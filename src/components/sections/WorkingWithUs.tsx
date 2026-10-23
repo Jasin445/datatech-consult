@@ -17,8 +17,8 @@ export function WorkingWithUs({ eyebrow, heading, items }: { eyebrow: string; he
         <ul className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:col-span-8">
           {items.map((item) => (
             <li key={item.title} className="border-t border-charcoal/15 pt-5">
-              <h3 className="mb-2 flex items-center gap-3 text-2xl">
-                <Mark variant="bullet" className="size-4 shrink-0 text-gold" />
+              <h3 className="mb-2 flex items-start gap-3 text-2xl">
+                <Mark variant="bullet" className="mt-[0.3em] size-4 shrink-0 text-gold" />
                 {item.title}
               </h3>
               <p className="mb-0 text-muted">{item.text}</p>
