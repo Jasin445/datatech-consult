@@ -19,7 +19,17 @@ export type MenuService = { slug: string; title: string; summary: string; href: 
 export function ServicesMenu({ services, buttonClassName = "" }: { services: readonly MenuService[]; buttonClassName?: string }) {
   const pathname = usePathname();
   const [openPath, setOpenPath] = useState<string | null>(null);
+  // True while the panel plays its exit animation after closing; it unmounts when the animation ends.
+  const [closing, setClosing] = useState(false);
   const open = openPath === pathname;
+  function openMenu() {
+    setClosing(false);
+    setOpenPath(pathname);
+  }
+  function closeMenu() {
+    if (openPath === pathname) setClosing(true);
+    setOpenPath(null);
+  }
   const id = useId();
   const root = useRef<HTMLDivElement>(null);
   const button = useRef<HTMLButtonElement>(null);
@@ -32,11 +42,11 @@ export function ServicesMenu({ services, buttonClassName = "" }: { services: rea
   function onPointerEnter(e: PointerEvent<HTMLDivElement>) {
     if (e.pointerType !== "mouse") return;
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    setOpenPath(pathname);
+    openMenu();
   }
   function onPointerLeave(e: PointerEvent<HTMLDivElement>) {
     if (e.pointerType !== "mouse") return;
-    closeTimer.current = setTimeout(() => setOpenPath(null), 250);
+    closeTimer.current = setTimeout(closeMenu, 250);
   }
   useEffect(() => () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -45,22 +55,37 @@ export function ServicesMenu({ services, buttonClassName = "" }: { services: rea
   useEffect(() => {
     if (!open) return;
     const onDown = (e: MouseEvent) => {
-      if (!root.current?.contains(e.target as Node)) setOpenPath(null);
+      // The effect only runs while open, so close with the exit animation directly.
+      if (!root.current?.contains(e.target as Node)) {
+        setClosing(true);
+        setOpenPath(null);
+      }
+    };
+    // Escape closes the menu even when it was opened by hover (focus not inside it).
+    const onEsc = (e: globalThis.KeyboardEvent) => {
+      if (e.key === "Escape" && !root.current?.contains(document.activeElement)) {
+        setClosing(true);
+        setOpenPath(null);
+      }
     };
     document.addEventListener("mousedown", onDown);
-    return () => document.removeEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onEsc);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onEsc);
+    };
   }, [open]);
 
   function onKeyDown(e: KeyboardEvent<HTMLDivElement>) {
     if (e.key === "Escape" && open) {
       e.stopPropagation();
-      setOpenPath(null);
+      closeMenu();
       button.current?.focus();
     }
   }
 
   function onBlur(e: FocusEvent<HTMLDivElement>) {
-    if (open && !root.current?.contains(e.relatedTarget as Node | null)) setOpenPath(null);
+    if (open && !root.current?.contains(e.relatedTarget as Node | null)) closeMenu();
   }
 
   return (
@@ -76,8 +101,9 @@ export function ServicesMenu({ services, buttonClassName = "" }: { services: rea
         }}
         onClick={(e) => {
           // A mouse click after hovering keeps the menu open; keyboard (detail 0) and touch toggle it.
-          if (e.detail > 0 && lastPointer.current === "mouse") setOpenPath(pathname);
-          else setOpenPath(open ? null : pathname);
+          if (e.detail > 0 && lastPointer.current === "mouse") openMenu();
+          else if (open) closeMenu();
+          else openMenu();
         }}
         className={`${navLinkClass} cursor-pointer gap-1.5 bg-transparent ${buttonClassName}`}
       >
@@ -86,8 +112,15 @@ export function ServicesMenu({ services, buttonClassName = "" }: { services: rea
           <path d="M4 6l4 4 4-4" />
         </svg>
       </button>
-      {open && (
-        <div id={id} className="absolute inset-x-0 top-full z-50 animate-menu-in border-t border-border bg-white shadow-[0_40px_60px_-40px_rgb(23_43_58/45%)]">
+      {(open || closing) && (
+        <div
+          id={id}
+          aria-hidden={open ? undefined : true}
+          onAnimationEnd={() => {
+            if (!open) setClosing(false);
+          }}
+          className={`absolute inset-x-0 top-full z-50 border-t ${open ? "animate-menu-in" : "pointer-events-none animate-menu-out"} border-border bg-white shadow-[0_40px_60px_-40px_rgb(23_43_58/45%)]`}
+        >
           <div className="mx-auto grid w-full max-w-[calc(var(--container-max)+2*var(--gutter))] grid-cols-12 gap-10 px-(--gutter) py-10">
             <div className="col-span-8">
               <p className="mb-5 flex items-center gap-2.5 text-[0.95rem] font-semibold text-gold">
@@ -97,7 +130,7 @@ export function ServicesMenu({ services, buttonClassName = "" }: { services: rea
               <ul className="grid grid-cols-2 gap-2">
                 {services.map((s) => (
                   <li key={s.href}>
-                    <Link href={s.href} onClick={() => setOpenPath(null)} className="group flex h-full gap-4 rounded-md p-4 no-underline transition-colors hover:bg-surface">
+                    <Link href={s.href} onClick={closeMenu} className="group flex h-full gap-4 rounded-md p-4 no-underline transition-colors hover:bg-surface">
                       <span className="grid size-11 shrink-0 place-items-center rounded-md border border-border bg-white text-primary transition-colors group-hover:border-gold group-hover:text-gold">
                         <ServiceIcon slug={s.slug} className="size-5" />
                       </span>
@@ -112,7 +145,7 @@ export function ServicesMenu({ services, buttonClassName = "" }: { services: rea
                   </li>
                 ))}
               </ul>
-              <Link href="/services" onClick={() => setOpenPath(null)} className="mt-4 ml-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold">
+              <Link href="/services" onClick={closeMenu} className="mt-4 ml-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold">
                 All services
                 <ArrowRight />
               </Link>
@@ -125,7 +158,7 @@ export function ServicesMenu({ services, buttonClassName = "" }: { services: rea
               <ul className="mb-6 grid gap-1.5 text-sm">
                 {engagement.shapes.map((shape) => (
                   <li key={shape.name}>
-                    <Link href="/services#how-we-work" onClick={() => setOpenPath(null)} className="flex items-center gap-2 text-white no-underline hover:text-gold-soft">
+                    <Link href="/services#how-we-work" onClick={closeMenu} className="flex items-center gap-2 text-white no-underline hover:text-gold-soft">
                       <Mark variant="bullet" className="size-2.5 shrink-0 text-gold-soft" />
                       {shape.name}
                     </Link>
@@ -134,13 +167,13 @@ export function ServicesMenu({ services, buttonClassName = "" }: { services: rea
               </ul>
               <Link
                 href={ctas.consultation.href}
-                onClick={() => setOpenPath(null)}
+                onClick={closeMenu}
                 className="mt-auto inline-flex min-h-11 items-center justify-center gap-2 rounded-sm bg-white px-5 font-semibold text-charcoal no-underline hover:bg-surface hover:text-charcoal"
               >
                 {ctas.consultation.label}
                 <ArrowRight />
               </Link>
-              <Link href="/services#fit-heading" onClick={() => setOpenPath(null)} className="mt-3 text-center text-sm text-white">
+              <Link href="/services#fit-heading" onClick={closeMenu} className="mt-3 text-center text-sm text-white">
                 Find your starting point
               </Link>
             </div>

@@ -374,3 +374,6 @@ Contact "What happens next": numerals now vertically centred on their text (base
 
 ### Owner adjustment: taller closing cards (2026-10-24)
 `MarkCard` gained a `tall` option (min height 28rem, 34rem on desktop; more padding; link anchored at the bottom), used only by the closing "next step" section; booking-page purpose cards unchanged. Validation: typecheck, lint, vitest 167/167; production build; qa:responsive and qa:a11y pass. Commit: `adjust: taller closing cards`.
+
+### Owner adjustment: animated menu exit (2026-10-24)
+Services mega-menu now animates out (0.3s fade and lift, `animate-menu-out`) on every close path: mouse leave, Escape, outside click, link click, toggle. The panel stays mounted (aria-hidden, no pointer events) until the exit animation ends; re-opening mid-exit restarts the entrance. Escape now also closes a hover-opened menu (document listener while open). Reduced motion shortens the exit like other animations. Validation: typecheck, lint, vitest 167/167; production build; Chrome test of open, mid-exit, unmount, Escape, re-open-during-exit, plus the earlier hover/click/keyboard checks; qa:responsive and qa:a11y on 4 routes pass. Commit: `adjust: animated services menu exit`.
