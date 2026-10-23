@@ -19,7 +19,7 @@ export function UtilityBar() {
             Planning a dashboard, an automation or a new system?
             <span className="max-lg:hidden"> Talk it through before you commit budget.</span>
           </span>
-          <Link href={ctas.consultation.href} className="group inline-flex shrink-0 items-center gap-1.5 font-semibold text-white no-underline hover:text-gold-soft">
+          <Link href={ctas.consultation.href} className="group inline-flex shrink-0 items-center gap-1.5 font-semibold text-gold-soft underline decoration-1 underline-offset-4 hover:text-white">
             {ctas.consultation.label}
             <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
           </Link>
