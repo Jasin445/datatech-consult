@@ -26,4 +26,4 @@ Tailwind CSS v4 utilities only. Rules, colour tokens and class mapping are in `S
 Content lives in code with a status of `dummy`, `draft` or `approved` (`src/lib/content/status.ts`). Production shows `approved` only. Never mark content approved without business verification.
 
 ## Resuming work
-Read `PROGRESS.md`, `STYLING.md`, then `CHECKPOINTS.md` and `IMPLEMENTATION_PLAN.md`. Check `git status` and `git log`, run `npm run typecheck && npm test`, then continue from the first incomplete checkpoint. If the records and files disagree, trust the files and update the records.
+Read `PROGRESS.md`, `STYLING.md`, then `CHECKPOINTS.md` and `IMPLEMENTATION_PLAN.md`. The original project brief is in `MASTER_PROMPT.md`. Check `git status` and `git log`, run `npm run typecheck && npm test`, then continue from the first incomplete checkpoint. If the records and files disagree, trust the files and update the records.

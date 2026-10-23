@@ -1,6 +1,6 @@
 # Implementation plan: Datatechhub Consulting website
 
-One Next.js application, one folder, one Git repository. Built in 15 checkpoints; stop after each.
+One Next.js application, one folder, one Git repository. Built in 15 checkpoints; stop after each. The full source brief is in `MASTER_PROMPT.md`.
 
 ## Stack
 Next.js 16 (App Router, Turbopack), React 19, TypeScript 5.9 strict, **Tailwind CSS v4 (all styling; see STYLING.md)**, zod (validation), vitest (tests), ESLint (eslint-config-next). No database, CMS, auth, or admin. TypeScript 5.9 is used deliberately: a 7.x release exists but was not verified against Next 16 / eslint-config-next.
