@@ -39,8 +39,8 @@ export default function AboutPage() {
         photo={aboutPage.photo}
         actions={
           <>
-            <ButtonLink href={ctas.consultation.href}>{ctas.consultation.label}</ButtonLink>
-            <ButtonLink href="/services" variant="secondary">
+            <ButtonLink size="lg" href={ctas.consultation.href}>{ctas.consultation.label}</ButtonLink>
+            <ButtonLink size="lg" href="/services" variant="secondary">
               Explore our services
             </ButtonLink>
           </>

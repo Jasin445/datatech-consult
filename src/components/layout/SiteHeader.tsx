@@ -47,7 +47,7 @@ export function SiteHeader() {
               ))}
             </ul>
           </nav>
-          <ButtonLink variant="primary-pill" className="ml-2 min-h-12 px-7 shadow-[0_10px_24px_-12px_rgb(30_100_171/70%)] max-lg:hidden" href={primaryCta.href}>
+          <ButtonLink variant="primary-pill" size="nav" className="ml-2 shadow-[0_10px_24px_-12px_rgb(30_100_171/70%)] max-lg:hidden" href={primaryCta.href}>
             {primaryCta.label}
             <ArrowRight />
           </ButtonLink>

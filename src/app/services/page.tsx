@@ -38,8 +38,8 @@ export default function ServicesPage() {
         photo={servicesPage.photo}
         actions={
           <>
-            <ButtonLink href={ctas.consultation.href}>{ctas.consultation.label}</ButtonLink>
-            <ButtonLink href="#fit-heading" variant="secondary">
+            <ButtonLink size="lg" href={ctas.consultation.href}>{ctas.consultation.label}</ButtonLink>
+            <ButtonLink size="lg" href="#fit-heading" variant="secondary">
               Find your starting point
             </ButtonLink>
           </>

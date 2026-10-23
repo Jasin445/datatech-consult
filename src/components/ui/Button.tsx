@@ -4,11 +4,11 @@ import type { ComponentProps, ReactNode } from "react";
 export type ButtonVariant = "primary" | "primary-pill" | "secondary" | "on-dark" | "outline-on-dark" | "gold" | "gold-outline";
 
 const base =
-  "inline-flex min-h-11 cursor-pointer items-center justify-center gap-3 px-6 font-semibold leading-tight no-underline transition-[color,background-color,border-color,background-position,box-shadow] duration-300 aria-disabled:cursor-not-allowed aria-disabled:opacity-55 disabled:cursor-not-allowed disabled:opacity-55";
+  "inline-flex cursor-pointer items-center justify-center gap-3 font-semibold leading-tight no-underline transition-[color,background-color,border-color,background-position,box-shadow] duration-300 aria-disabled:cursor-not-allowed aria-disabled:opacity-55 disabled:cursor-not-allowed disabled:opacity-55";
 
 const variantClass: Record<ButtonVariant, string> = {
-  primary: "rounded-sm border-2 border-transparent bg-primary bg-(image:--btn-trace) bg-size-[auto_100%] bg-[position:right_0_center] bg-no-repeat text-white hover:bg-[position:right_-0.6rem_center] hover:bg-primary-hover hover:text-white",
-  "primary-pill": "rounded-full border-2 border-transparent bg-primary bg-(image:--btn-trace) bg-size-[auto_100%] bg-[position:right_0.9rem_center] bg-no-repeat text-white hover:bg-[position:right_0.3rem_center] hover:bg-primary-hover hover:text-white",
+  primary: "rounded-sm border-2 border-transparent bg-primary bg-(image:--btn-trace) bg-size-[auto_60%,auto_60%,100%_100%] bg-[position:left_0.55rem_bottom,right_0.55rem_bottom,center] bg-no-repeat text-white hover:bg-[position:left_0.85rem_bottom,right_0.85rem_bottom,center] hover:bg-primary-hover hover:text-white",
+  "primary-pill": "rounded-full border-2 border-transparent bg-primary bg-(image:--btn-trace) bg-size-[auto_60%,auto_60%,100%_100%] bg-[position:left_0.55rem_bottom,right_0.55rem_bottom,center] bg-no-repeat text-white hover:bg-[position:left_0.85rem_bottom,right_0.85rem_bottom,center] hover:bg-primary-hover hover:text-white",
   secondary: "rounded-sm border-2 border-primary bg-transparent text-primary hover:bg-surface hover:text-primary-hover",
   "on-dark": "rounded-sm border-2 border-transparent bg-white text-charcoal hover:bg-surface hover:text-charcoal",
   "outline-on-dark": "rounded-sm border-2 border-white bg-transparent text-white hover:bg-white/12 hover:text-white",
@@ -17,17 +17,20 @@ const variantClass: Record<ButtonVariant, string> = {
   "gold-outline": "border border-gold bg-transparent text-gold tracking-[0.14em] uppercase text-sm hover:bg-gold hover:text-white",
 };
 
-type CommonProps = { variant?: ButtonVariant; className?: string; children: ReactNode };
+type ButtonSize = "md" | "nav" | "lg";
+const sizeClass: Record<ButtonSize, string> = { md: "min-h-11 px-6", nav: "min-h-12 px-7", lg: "min-h-14 px-8 text-[1.05rem]" };
+
+type CommonProps = { variant?: ButtonVariant; size?: ButtonSize; className?: string; children: ReactNode };
 
 type ButtonLinkProps = CommonProps & { href: string } & Omit<ComponentProps<typeof Link>, "href" | "className" | "children">;
 
-function buttonClasses(variant: ButtonVariant, className?: string) {
-  return [base, variantClass[variant], className].filter(Boolean).join(" ");
+function buttonClasses(variant: ButtonVariant, size: ButtonSize, className?: string) {
+  return [base, sizeClass[size], variantClass[variant], className].filter(Boolean).join(" ");
 }
 
 /** Link styled as a button. Internal hrefs use next/link; external hrefs open normally. */
-export function ButtonLink({ variant = "primary", className, href, children, ...rest }: ButtonLinkProps) {
-  const classes = buttonClasses(variant, className);
+export function ButtonLink({ variant = "primary", size = "md", className, href, children, ...rest }: ButtonLinkProps) {
+  const classes = buttonClasses(variant, size, className);
   if (/^https?:\/\//.test(href)) {
     return (
       <a className={classes} href={href} rel="noopener noreferrer">
@@ -44,9 +47,9 @@ export function ButtonLink({ variant = "primary", className, href, children, ...
 
 type ButtonProps = CommonProps & Omit<ComponentProps<"button">, "className" | "children">;
 
-export function Button({ variant = "primary", className, children, type = "button", ...rest }: ButtonProps) {
+export function Button({ variant = "primary", size = "md", className, children, type = "button", ...rest }: ButtonProps) {
   return (
-    <button className={buttonClasses(variant, className)} type={type} {...rest}>
+    <button className={buttonClasses(variant, size, className)} type={type} {...rest}>
       {children}
     </button>
   );

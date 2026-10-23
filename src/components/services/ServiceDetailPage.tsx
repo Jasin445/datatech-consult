@@ -47,8 +47,8 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
         lead={detail.lead}
         actions={
           <>
-            <ButtonLink href={ctas.consultation.href}>{ctas.consultation.label}</ButtonLink>
-            <ButtonLink href={ctas.enquiry.href} variant="secondary">
+            <ButtonLink size="lg" href={ctas.consultation.href}>{ctas.consultation.label}</ButtonLink>
+            <ButtonLink size="lg" href={ctas.enquiry.href} variant="secondary">
               {ctas.enquiry.label}
             </ButtonLink>
           </>
