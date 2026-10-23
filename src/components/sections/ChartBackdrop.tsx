@@ -1,30 +1,59 @@
 /**
- * Decorative backdrop for charcoal sections: faint graph-paper grid, a rising trend line with a soft fill,
- * and dashed readout guides to one plotted point (the readout mark at full scale). Low contrast by design.
+ * Decorative backdrop for the closing section: scattered data points drift in from the left and gradually
+ * settle onto one smooth line that ends at a single plotted point with its readout guides. Scattered data
+ * becoming one clear line, which is what the work does. Deterministic (no randomness at render), low contrast.
  */
+
+// The line the points settle onto, in a 1440x800 plot.
+const curveY = (x: number) => 640 - 470 / (1 + Math.exp(-(x - 760) / 210));
+
+// Deterministic pseudo-random sequence so server and client render identically.
+function seeded(n: number) {
+  let s = 7;
+  return Array.from({ length: n }, () => {
+    s = (s * 9301 + 49297) % 233280;
+    return s / 233280;
+  });
+}
+
+const POINTS = (() => {
+  const r = seeded(480);
+  const pts: { x: number; y: number; r: number; o: number }[] = [];
+  for (let i = 0; i < 150; i++) {
+    const t = i / 149; // 0 = far left (scattered), 1 = right (settled)
+    const x = 20 + t ** 0.8 * 1120 + (r[i * 3]! - 0.5) * 50;
+    const spread = (1 - t) ** 1.4 * 340; // vertical scatter shrinks to zero
+    const y = curveY(x) + (r[i * 3 + 1]! - 0.5) * 2 * spread;
+    pts.push({ x, y, r: 2.2 + r[i * 3 + 2]! * 2.6, o: 0.3 + t * 0.4 });
+  }
+  return pts;
+})();
+
+const LINE = Array.from({ length: 41 }, (_, i) => {
+  const x = 520 + i * 24;
+  return `${i === 0 ? "M" : "L"}${x.toFixed(0)} ${curveY(x).toFixed(1)}`;
+}).join(" ");
+
+const END = { x: 1480 - 320, y: curveY(1160) };
+
 export function ChartBackdrop() {
-  // Trend line in a 1440x800 plot; the readout point sits on it at (1150, 250).
-  const line = "M-20 690 C 160 660, 260 700, 400 610 S 640 560, 760 500 S 980 430, 1080 300 S 1300 220, 1460 150";
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
       <div className="absolute top-1/2 left-1/2 h-[42rem] w-[60rem] -translate-x-1/2 -translate-y-[40%] rounded-full bg-[radial-gradient(closest-side,rgb(30_100_171/22%),transparent)]" />
       <svg className="absolute inset-0 h-full w-full text-gold-soft" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" fill="none">
         <defs>
-          <pattern id="chart-grid" width="80" height="80" patternUnits="userSpaceOnUse">
-            <path d="M80 0H0V80" stroke="currentColor" strokeOpacity="0.07" strokeWidth="1" />
-          </pattern>
-          <linearGradient id="chart-fill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="currentColor" stopOpacity="0.10" />
-            <stop offset="1" stopColor="currentColor" stopOpacity="0" />
+          <linearGradient id="settle-line" x1="520" y1="0" x2="1160" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stopColor="currentColor" stopOpacity="0" />
+            <stop offset="1" stopColor="currentColor" stopOpacity="0.65" />
           </linearGradient>
         </defs>
-        <rect width="1440" height="800" fill="url(#chart-grid)" />
-        <path d="M60 40V740H1440" stroke="currentColor" strokeOpacity="0.22" strokeWidth="1.5" />
-        <path d={`${line} L1460 800 L-20 800 Z`} fill="url(#chart-fill)" />
-        <path d={line} stroke="currentColor" strokeOpacity="0.35" strokeWidth="2" />
-        <path d="M60 250H1150M1150 250V740" stroke="currentColor" strokeOpacity="0.3" strokeWidth="1" strokeDasharray="3 6" />
-        <circle cx="1150" cy="250" r="22" fill="currentColor" fillOpacity="0.08" />
-        <circle cx="1150" cy="250" r="7" fill="currentColor" fillOpacity="0.55" />
+        {POINTS.map((p, i) => (
+          <circle key={i} cx={p.x.toFixed(1)} cy={p.y.toFixed(1)} r={p.r.toFixed(1)} fill="currentColor" fillOpacity={p.o.toFixed(2)} />
+        ))}
+        <path d={LINE} stroke="url(#settle-line)" strokeWidth="2" strokeLinecap="round" />
+        <path d={`M${END.x} ${END.y.toFixed(1)}V800M${END.x} ${END.y.toFixed(1)}H1440`} stroke="currentColor" strokeOpacity="0.3" strokeWidth="1" strokeDasharray="3 6" />
+        <circle cx={END.x} cy={END.y.toFixed(1)} r="22" fill="currentColor" fillOpacity="0.08" />
+        <circle cx={END.x} cy={END.y.toFixed(1)} r="7" fill="currentColor" fillOpacity="0.6" />
       </svg>
     </div>
   );

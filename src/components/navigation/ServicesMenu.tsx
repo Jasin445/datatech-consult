@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useRef, useState, type FocusEvent, type KeyboardEvent } from "react";
+import { useEffect, useId, useRef, useState, type FocusEvent, type KeyboardEvent, type PointerEvent } from "react";
 import { ArrowRight, Mark } from "@/components/ui/Mark";
 import { ServiceIcon } from "@/components/ui/ServiceIcon";
 import { engagement } from "@/content/engagement";
@@ -16,7 +16,7 @@ export type MenuService = { slug: string; title: string; summary: string; href: 
  * (the root is not positioned, so the panel is placed against the sticky header). Escape closes and returns
  * focus; closes on outside click, when focus leaves, and on navigation.
  */
-export function ServicesMenu({ services }: { services: readonly MenuService[] }) {
+export function ServicesMenu({ services, buttonClassName = "" }: { services: readonly MenuService[]; buttonClassName?: string }) {
   const pathname = usePathname();
   const [openPath, setOpenPath] = useState<string | null>(null);
   const open = openPath === pathname;
@@ -24,6 +24,23 @@ export function ServicesMenu({ services }: { services: readonly MenuService[] })
   const root = useRef<HTMLDivElement>(null);
   const button = useRef<HTMLButtonElement>(null);
   const current = pathname === "/services" || pathname.startsWith("/services/");
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastPointer = useRef<string>("");
+
+  // Mouse hover opens the menu; leaving closes it after a short grace period so the pointer can travel
+  // into the panel. Touch and pen keep the click/tap behaviour; keyboard uses Enter/Space.
+  function onPointerEnter(e: PointerEvent<HTMLDivElement>) {
+    if (e.pointerType !== "mouse") return;
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpenPath(pathname);
+  }
+  function onPointerLeave(e: PointerEvent<HTMLDivElement>) {
+    if (e.pointerType !== "mouse") return;
+    closeTimer.current = setTimeout(() => setOpenPath(null), 250);
+  }
+  useEffect(() => () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -47,15 +64,22 @@ export function ServicesMenu({ services }: { services: readonly MenuService[] })
   }
 
   return (
-    <div ref={root} onKeyDown={onKeyDown} onBlur={onBlur}>
+    <div ref={root} onKeyDown={onKeyDown} onBlur={onBlur} onPointerEnter={onPointerEnter} onPointerLeave={onPointerLeave}>
       <button
         ref={button}
         type="button"
         aria-expanded={open}
         aria-controls={id}
         aria-current={current ? "page" : undefined}
-        onClick={() => setOpenPath(open ? null : pathname)}
-        className={`${navLinkClass} cursor-pointer gap-1.5 bg-transparent`}
+        onPointerDown={(e) => {
+          lastPointer.current = e.pointerType;
+        }}
+        onClick={(e) => {
+          // A mouse click after hovering keeps the menu open; keyboard (detail 0) and touch toggle it.
+          if (e.detail > 0 && lastPointer.current === "mouse") setOpenPath(pathname);
+          else setOpenPath(open ? null : pathname);
+        }}
+        className={`${navLinkClass} cursor-pointer gap-1.5 bg-transparent ${buttonClassName}`}
       >
         Services
         <svg aria-hidden="true" viewBox="0 0 16 16" className={`size-3.5 transition-transform ${open ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth="1.6">

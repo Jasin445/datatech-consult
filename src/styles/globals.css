@@ -78,18 +78,22 @@
   --reading-max: 760px;
   --gutter: 1.25rem; /* mobile 20px */
   --section-space: 3.5rem; /* mobile 56px */
-  --header-height: 5.25rem; /* main (sticky) header bar; the utility bar above it scrolls away */
+  --nav-height: 5.25rem; /* main navigation bar */
+  --utility-height: 0rem; /* top banner (shown from md) */
+  --header-height: calc(var(--nav-height) + var(--utility-height)); /* whole sticky header: offsets, scroll padding */
 }
 @media (min-width: 768px) {
   :root {
     --gutter: 2rem;
     --section-space: 4.5rem;
+    --utility-height: 2.25rem;
   }
 }
 @media (min-width: 1024px) {
   :root {
     --gutter: 3rem;
     --section-space: 6rem;
+    --nav-height: 6.25rem;
   }
 }
 @media (min-width: 1440px) {

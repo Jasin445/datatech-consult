@@ -7,7 +7,7 @@ export function UtilityBar() {
   const email = getPublicContactEmail();
   return (
     <aside aria-label="About Datatechhub Consulting" className="hidden bg-charcoal text-footer-text md:block">
-      <Container className="flex min-h-9 items-center justify-between gap-6 text-xs tracking-[0.04em]">
+      <Container className="flex min-h-(--utility-height) items-center justify-between gap-6 text-xs tracking-[0.04em]">
         <p className="mb-0">Data, analytics, AI and technology consulting · Nigeria and across Africa</p>
         <p className="mb-0 flex items-center gap-5">
           {email && (

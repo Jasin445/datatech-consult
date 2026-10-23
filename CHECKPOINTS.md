@@ -351,3 +351,10 @@ Homepage hero headline restored to "Your numbers should settle arguments, not st
 
 ### Owner adjustment: closing section backdrop (2026-10-23)
 The charcoal "next step" section (closing cards on every page) now has `ChartBackdrop`: faint graph-paper grid, a rising trend line with a soft fill, dashed readout guides to one plotted point (the readout mark at full scale) and a soft blue glow behind the cards. Decorative (aria-hidden), low contrast. Validation: typecheck, lint, vitest 167/167; production build; qa:responsive and qa:a11y on 5 routes pass. Commit: `adjust: chart backdrop for the closing section`.
+
+### Owner adjustments: header and closing backdrop (2026-10-23)
+- Closing-section backdrop: gridlines removed. New design: scattered data points drift in from the left and settle onto one smooth line ending at a plotted point with readout guides (deterministic layout, decorative, low contrast).
+- Services menu opens on mouse hover (250ms close grace so the pointer can reach the panel); a click after hovering keeps it open; keyboard (Enter/Escape) and touch unchanged.
+- Header: the top banner is now inside the sticky header (both stay pinned); main bar taller (--nav-height 6.25rem on desktop; --header-height = banner + bar, used for sticky offsets and scroll padding); navigation moved into its own rounded tray separated from the brand, current page shown as a raised white tab; pill-shaped primary button (new `primary-pill` variant).
+Validation: typecheck, lint, vitest 167/167; production build; nav behaviour tested in Chrome (hover opens, click keeps open, moving into the panel keeps open, leaving closes, Enter opens, Escape closes, banner and bar both at top after scrolling); qa:responsive and qa:a11y on all 10 routes pass.
+Commit: `adjust: sticky banner, tray navigation, hover services menu, settling-points backdrop`.
