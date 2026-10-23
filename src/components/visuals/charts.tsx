@@ -55,14 +55,14 @@ export function LineChart({ series, labels, max }: { series: readonly Series[]; 
 
 export function BarChart({ bars, max, highlight }: { bars: readonly { label: string; value: number }[]; max: number; highlight?: number }) {
   return (
-    <div className="flex h-32 items-end gap-2 sm:h-36">
+    <div className="flex h-32 items-end gap-1.5 sm:h-36 @[30rem]:gap-2">
       {bars.map((b, i) => (
-        <div key={b.label} className="flex h-full flex-1 flex-col items-center justify-end gap-1.5">
+        <div key={b.label} className="flex h-full min-w-0 flex-1 flex-col items-center justify-end gap-1.5">
           <span
             className={`block h-(--h) w-full max-w-10 rounded-t ${i === highlight ? "bg-gold" : "bg-primary"}`}
             style={{ "--h": `${(b.value / max) * 82}%` } as CSSProperties}
           />
-          <span className="text-[10px] text-muted">{b.label}</span>
+          <span className="max-w-full truncate text-[9px] text-muted @[30rem]:text-[10px]">{b.label}</span>
         </div>
       ))}
     </div>

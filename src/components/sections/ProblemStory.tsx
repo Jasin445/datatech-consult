@@ -15,6 +15,7 @@ export function ProblemStory({
   photo,
   visual,
   tags,
+  note,
 }: {
   folio?: string;
   eyebrow: string;
@@ -26,6 +27,8 @@ export function ProblemStory({
   visual?: ReactNode;
   /** Short problem labels shown under the turn line. */
   tags?: readonly string[];
+  /** Optional folded "field note" card overlapping the visual (bottom-right, clear of its caption). */
+  note?: { label: string; text: string };
 }) {
   return (
     <section aria-labelledby="problem-heading" className="bg-surface py-(--section-space)">
@@ -37,6 +40,13 @@ export function ProblemStory({
                 <Photo photo={photo} fill sizes="(min-width: 1024px) 40vw, 100vw" />
               </div>
             )
+          )}
+          {note && (
+            <figure className="relative mt-6 ml-auto max-w-[20rem] border border-border bg-white p-5 shadow-[0_24px_50px_-24px_rgb(23_43_58/45%)] lg:absolute lg:-right-6 lg:-bottom-40 lg:mt-0">
+              <span aria-hidden="true" className="absolute -top-px -right-px size-9 bg-[linear-gradient(to_bottom_left,var(--color-surface)_50%,var(--color-border)_50%)]" />
+              <figcaption className="mb-2 text-xs font-semibold tracking-[0.16em] text-gold uppercase">{note.label}</figcaption>
+              <blockquote className="m-0 font-display text-lg leading-snug text-charcoal italic">{note.text}</blockquote>
+            </figure>
           )}
           {folio && !visual && (
             <p aria-hidden="true" className="absolute -bottom-6 left-6 mb-0 font-sans text-[7rem] font-light leading-none text-gold/25 tabular-nums select-none lg:-left-6">

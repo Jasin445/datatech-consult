@@ -11,7 +11,10 @@ import { WorkShowcase } from "@/components/sections/WorkShowcase";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { DashboardMock, OptionsMock, PipelineDiagram, SpreadsheetMock, WorkflowDiagram } from "@/components/visuals";
-import { challenges, credibilityEvidence, hero, nextStep, problem, servicePhotos, servicesIntro, showcase, statement, workingWithUs } from "@/content/home";
+import { InContext } from "@/components/visuals/InContext";
+import { WhereDataLives } from "@/components/sections/WhereDataLives";
+import { photos } from "@/content/media/photos";
+import { challenges, credibilityEvidence, dataPlaces, hero, nextStep, problem, servicePhotos, servicesIntro, showcase, statement, workingWithUs } from "@/content/home";
 import { services } from "@/content/services";
 import { getPublishableInsights } from "@/lib/content/insights";
 import { filterPublishable } from "@/lib/content/status";
@@ -29,8 +32,8 @@ const showcaseVisuals = {
 } as const;
 
 /**
- * Homepage (V3 fixes): seven sections. Hero, problem (with the common problems as tags), services,
- * what the work looks like, statement, working with us (or approved evidence), closing.
+ * Homepage (V4): hero (dashboard in its setting), problem (spreadsheet, tags, field note), where the data
+ * comes from (photo strip), services, what the work looks like, statement, working with us, closing.
  */
 export default function HomePage() {
   const evidence = filterPublishable(credibilityEvidence).map((e) => e.data);
@@ -40,9 +43,18 @@ export default function HomePage() {
   return (
     <>
       {siteUrl ? <JsonLd data={organizationJsonLd(siteUrl)} /> : null}
-      <Hero {...hero} visual={<DashboardMock />} />
+      <Hero
+        {...hero}
+        visual={
+          <InContext photo={photos.colleaguesLaptop} priority>
+            <DashboardMock />
+          </InContext>
+        }
+      />
 
-      <ProblemStory {...problem} visual={<SpreadsheetMock />} tags={challenges.items.map((c) => c.title)} />
+      <ProblemStory {...problem} visual={<SpreadsheetMock />} tags={challenges.items.map((c) => c.title)} note={hero.note} />
+
+      <WhereDataLives {...dataPlaces} />
 
       <Section id="services" labelledBy="services-heading">
         <SectionHeading id="services-heading" eyebrow={servicesIntro.eyebrow} heading={servicesIntro.heading} lead={servicesIntro.lead} />

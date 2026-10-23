@@ -26,14 +26,16 @@ export function DashboardMock({ className = "" }: { className?: string }) {
       label="Illustrative management dashboard showing three headline figures, a monthly revenue trend against target, revenue by region and sales mix by product line."
       className={className}
     >
-      <div className="grid grid-cols-3 gap-2 sm:gap-3">
+      <div className="@container">
+      <div className="grid grid-cols-3 gap-2 @[30rem]:gap-3">
         {kpis.map((k) => (
           <div key={k.label} className="rounded-lg border border-border p-2.5 sm:p-3">
-            <p className="mb-1 min-h-[2.4em] text-[10px] leading-tight font-medium text-muted sm:min-h-0 sm:text-[11px]">{k.label}</p>
-            <p className="mb-0.5 font-display text-xl leading-none text-charcoal sm:text-2xl">{k.value}</p>
+            <p className="mb-1 min-h-[2.4em] text-[10px] leading-tight font-medium text-muted @[30rem]:min-h-0 @[30rem]:text-[11px]">{k.label}</p>
+            <p className="mb-0.5 font-display text-lg leading-none text-charcoal @[30rem]:text-2xl">{k.value}</p>
             <p className="mb-0 text-[10px] font-semibold text-primary">{k.delta}</p>
           </div>
         ))}
+      </div>
       </div>
       <div className="mt-3 rounded-lg border border-border p-3">
         <div className="mb-2 flex items-center justify-between text-[11px]">

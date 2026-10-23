@@ -53,6 +53,14 @@ export const photos = {
   whiteboardLaptop: unsplash("whiteboard-laptop", 1800, 1200, "A man holding a laptop beside a whiteboard covered in notes", "https://unsplash.com/photos/man-wearing-gray-polo-shirt-beside-dry-erase-board-3V8xo5Gbusk", "Kaleidico"),
   skylineWide: unsplash("city-skyline-two", 1800, 1200, "A city skyline of tall buildings under a pale sky", "https://unsplash.com/photos/a-city-skyline-with-tall-buildings-in-the-background-MYtooZT15SA", "Tedd_"),
   focusedWork: unsplash("focused-work", 1800, 1200, "A man working on a laptop at a table by a window", "https://unsplash.com/photos/a-man-sitting-at-a-table-using-a-laptop-computer-xXY14yB1JWA", "Sweet Life"),
+  shopPhone: unsplash("shop-phone", 1800, 1200, "A shopkeeper in an apron checking his phone behind the counter", "https://unsplash.com/photos/a-man-in-an-apron-looking-at-a-cell-phone-uk3ey_vhDKA", "Ali Mkumbwa"),
+  stallRecords: unsplash("stall-records", 1800, 1286, "A stallholder with her phone beside a board of handwritten figures", "https://unsplash.com/photos/a-woman-standing-in-front-of-a-fruit-stand-holding-a-cell-phone-5dFuO02OHh0", "Ali Mkumbwa"),
+  storeCounter: unsplash("store-counter", 1800, 1200, "A woman at the counter of a well-stocked shop", "https://unsplash.com/photos/a-woman-sitting-at-a-counter-in-a-store-EOkN2pRjFsg", "Ali Mkumbwa"),
+  fieldPhone: unsplash("field-phone", 1200, 1800, "A man crouching in a field, entering something on his phone", "https://unsplash.com/photos/man-crouching-in-grass-looking-at-phone-CdqIYbGcAJI", "Oswald Elsaboath"),
+  farmCrops: unsplash("farm-crops", 1800, 1202, "A farmer checking his crops in a green field", "https://unsplash.com/photos/a-farmer-tends-to-his-crops-in-a-green-field-1AoGjqdyDLU", "Richard Nyoni"),
+  colleaguesLaptop: unsplash("two-colleagues-laptop", 1800, 1200, "Two women working through something on a laptop in a bright office", "https://unsplash.com/photos/two-women-sitting-at-a-table-with-a-laptop-P67JZsh6wr0", "Ninthgrid"),
+  laptopReview: unsplash("laptop-review", 1800, 1200, "A man and a woman reviewing something together on a laptop", "https://unsplash.com/photos/a-man-and-a-woman-are-looking-at-a-laptop-KljeL88lgkk", "Ninthgrid"),
+  tabletProfessional: unsplash("tablet-professional", 1350, 1800, "A smiling woman in a headscarf working on a tablet at a desk", "https://unsplash.com/photos/a-woman-sitting-at-a-table-with-a-tablet-jLKDfxikHzM", "Francis Odeyemi"),
 } as const satisfies Record<string, Photo>;
 
 export type PhotoId = keyof typeof photos;

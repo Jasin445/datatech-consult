@@ -11,8 +11,8 @@ export type TitledItem = { title: string; text: string };
 
 export const hero = {
   eyebrow: "Data, analytics, AI and technology consulting",
-  headline: "Your numbers should",
-  headlineAccent: "settle the argument.",
+  headline: "Your numbers should settle the",
+  headlineAccent: "argument.",
   body: "We help organisations in Nigeria and across Africa turn scattered data and stubborn manual work into reporting people trust, systems that talk to each other, and automation that earns its place.",
   primary: ctas.consultation,
   secondary: ctas.enquiry,
@@ -31,6 +31,20 @@ export const problem = {
     "Most organisations don’t have a data team to untangle this. So it lands on someone who already has a full-time job.",
   ],
   turn: "There’s a calmer way to run on data.",
+};
+
+/** Photo strip: where data actually starts. Captions describe settings, not clients. */
+export const dataPlaces = {
+  eyebrow: "Where the data comes from",
+  heading: "Most data starts a long way from a dashboard.",
+  lead: "In shops, fields, stores and offices, recorded however people can manage. Our work starts there, with the records you already keep.",
+  places: [
+    { caption: "Daily sales, still totted up on a board", photo: photos.stallRecords },
+    { caption: "Field records captured on a phone", photo: photos.fieldPhone },
+    { caption: "Stock and takings across many outlets", photo: photos.storeCounter },
+    { caption: "Inputs, yields and payments to keep track of", photo: photos.farmCrops },
+    { caption: "And the monthly report someone has to assemble", photo: photos.tabletProfessional },
+  ],
 };
 
 /** "What the work looks like": each item is illustrated by a coded mockup (chosen in src/app/page.tsx). */

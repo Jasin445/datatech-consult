@@ -320,7 +320,7 @@ Commit: `fix(f9): sophisticated two-tier header and services mega-menu`.
 | V4-1 | Readout mark replaces the star | complete |
 | V4-2 | Motif pass: labels, headline accent, links | complete |
 | V4-3 | Copy pass and guard | complete |
-| V4-4 | Imagery and photo-plus-mockup compositions | not started |
+| V4-4 | Imagery and photo-plus-mockup compositions | complete |
 | V4-5 | QA, Lighthouse, docs | not started |
 
 ## V4-1: Readout mark (complete, 2026-10-23)
@@ -334,3 +334,9 @@ Commit: `v4-2: measurement bracket, readout numerals, mark labels`.
 ## V4-3: Copy pass and guard (complete, 2026-10-23)
 Rewrote formulaic headings: two-beat slogans (e.g. "Four ways in. One joined-up approach." -> "Four services that hand work to each other."; "Bring us the problem. We’ll bring the plan." -> "Start with a conversation about the problem."; "Three ways to start. One honest quote." -> "Three ways to work with us, each quoted up front.") and "not X, Y" contrasts (e.g. "Start with the work, not the hype." -> "Start with the task that eats the most hours."; "Context isn’t a detail. It’s the brief." -> "Your context is the brief."; "We’re not here to sell you a platform." -> "The technology comes second here."). Hero headline: "Your numbers should settle the argument." "Honest/honestly" removed from visitor copy (was ~10 uses). Copy guard (tests/copy.test.ts) now also fails on em dashes in visitor copy, short two-sentence slogan headings and "not X, Y" contrast headings; it caught one more ("Dependable foundations, not necessarily complex ones" -> "Foundations sized to the problem").
 Validation: typecheck, lint, vitest 167/167. Commit: `v4-3: copy without formula headlines; guard extended`.
+
+## V4-4: Imagery and compositions (complete, 2026-10-23)
+Eight new Unsplash-License photos (licence verified on each photo page; registered with scene-only alt text): shopkeeper with phone, stallholder beside a handwritten figures board, shop counter, field worker entering data on a phone, farmer in crops, two colleagues at a laptop, two people reviewing a laptop, professional with a tablet. New `InContext` composition (mockup overlapping a photo): homepage hero is now the dashboard in a real office setting. New `WhereDataLives` photo strip on the homepage ("Most data starts a long way from a dashboard"): five staggered photos with setting captions (never clients), keyboard-scrollable swipe row on small screens. Service mockup bands now float over each service's photo with a charcoal scrim. The field note moved from the hero to the problem story (positioned clear of the spreadsheet's issue tags and caption). Hero accent shortened to "argument." so the bracket never spans two lines.
+Fixes during review: KPI figures spilled out of tiles in the smaller hero dashboard (container queries on the dashboard); region bar labels overflowed at small widths (shrinkable labels); photo strip not keyboard-reachable on mobile (focusable, labelled).
+Validation: typecheck, lint, vitest 167/167; production build: qa:responsive all 10 routes pass; qa:a11y pass after the strip fix; desktop and 390px screenshots reviewed (homepage at 390px about 13,300px with the new strip).
+Commit: `v4-4: more photography, mockups in context, where-the-data-comes-from strip`.

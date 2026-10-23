@@ -56,8 +56,11 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
       />
 
       {/* The service's mockup, full width (it was cramped at half width in the hero). */}
-      <section aria-label={`What ${service?.shortName ?? "the work"} looks like`} className="pb-(--section-space)">
-        <div className="mx-auto w-full max-w-[calc(64rem+2*var(--gutter))] px-(--gutter)">{heroVisuals[detail.slug]}</div>
+      <section aria-label={`What ${service?.shortName ?? "the work"} looks like`} className="relative isolate overflow-hidden py-14 lg:py-20">
+        {/* Photo backdrop (decorative) so the mockup sits in a real setting. */}
+        <Photo photo={detail.v2.heroPhoto} fill decorative sizes="100vw" className="-z-10" />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-charcoal/75" />
+        <div className="mx-auto w-full max-w-[calc(64rem+2*var(--gutter))] px-(--gutter) [&_figcaption]:text-footer-text">{heroVisuals[detail.slug]}</div>
       </section>
 
       <ProblemStory eyebrow="Sound familiar?" {...detail.v2.hook} tags={detail.problems.items.map((i) => i.title)} />
