@@ -40,7 +40,7 @@ describe("content status", () => {
 describe("primary navigation", () => {
   it("hides Case Studies and Insights when there is no approved content", () => {
     const labels = getPrimaryNav({ showCaseStudies: false, showInsights: false }).map((i) => i.label);
-    expect(labels).toEqual(["Services", "About", "Contact"]);
+    expect(labels).toEqual(["Services", "How we work", "About", "Contact"]);
   });
 
   it("shows them when enabled", () => {

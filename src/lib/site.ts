@@ -17,6 +17,7 @@ export type NavOptions = { showCaseStudies: boolean; showInsights: boolean };
 export function getPrimaryNav({ showCaseStudies, showInsights }: NavOptions): NavItem[] {
   return [
     { label: "Services", href: "/services" },
+    { label: "How we work", href: "/services#how-we-work" },
     { label: "About", href: "/about" },
     ...(showCaseStudies ? [{ label: "Case Studies", href: "/case-studies" }] : []),
     ...(showInsights ? [{ label: "Insights", href: "/insights" }] : []),

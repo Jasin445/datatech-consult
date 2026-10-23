@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 import "@/styles/globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { UtilityBar } from "@/components/layout/UtilityBar";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { getSiteUrl } from "@/lib/env";
 import { siteConfig } from "@/lib/site";
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a className="absolute top-[-4rem] left-4 z-100 rounded-sm bg-charcoal px-4 py-3 text-white focus:top-3" href="#main">
           Skip to main content
         </a>
+        <UtilityBar />
         <SiteHeader />
         <main id="main" tabIndex={-1}>
           {children}

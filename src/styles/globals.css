@@ -78,7 +78,7 @@
   --reading-max: 760px;
   --gutter: 1.25rem; /* mobile 20px */
   --section-space: 3.5rem; /* mobile 56px */
-  --header-height: 4.5rem;
+  --header-height: 5.25rem; /* main (sticky) header bar; the utility bar above it scrolls away */
 }
 @media (min-width: 768px) {
   :root {
