@@ -12,8 +12,8 @@
 | 6 | AI & Automation | complete |
 | 7 | Business & Technology Consulting | complete |
 | 8 | About | complete |
-| 9 | Case studies | complete (unverified: see PROGRESS.md) |
-| 10 | Insights | not started |
+| 9 | Case studies | complete |
+| 10 | Insights | complete |
 | 11 | Contact and enquiry system | not started |
 | 12 | Consultation booking | not started |
 | 13 | Privacy | not started |
@@ -68,11 +68,17 @@ Validation: typecheck, lint, 42 tests, build, production HTML grep (no dummy con
 Open: real leadership and company details needed; /contact, /book-consultation, /privacy 404; canonical deferred to Checkpoint 14.
 Commit: `checkpoint-08: implement about page and content safeguards` (see `git log`).
 
-## Checkpoint 9: Case studies (complete in code; install/build/test not yet run)
+## Checkpoint 9: Case studies (complete)
 Delivered: typed registry `src/content/case-studies` (ManagedContent + projectType: completed-work, prototype, internal-demonstration, ongoing); `src/lib/content/case-studies.ts` (validation: status, placeholder in approved, slug format/duplicates, project type, related-service slugs; getPublishableCaseStudies, getCaseStudyBySlug, getCaseStudySlugs); `/case-studies` index (404 in production when nothing is approved); `/case-studies/[slug]` (dynamicParams=false, generateStaticParams for publishable items only, noindex for non-approved); CaseStudyCard and CaseStudyDetail (challenge, objectives, contribution, approach, solution, deliverables, verified results, lessons, related services, CTA; empty sections omitted); nav link and registry now driven by the real registry. One fictional dummy entry (development only). All styling is Tailwind.
-Validation: static review only (no network). Tests added in tests/case-studies.test.ts.
+Validation: typecheck, lint, 53 tests, production build, production/dev route checks and the approved-dummy build-failure demonstration all pass (run during Checkpoint 10). Browser/visual QA not yet run. Tests in tests/case-studies.test.ts.
 Open: no real case studies supplied; homepage has no case-study section yet (add only when approved items exist, in a later checkpoint or Checkpoint 14/15).
+
+## Checkpoint 10: Insights (complete)
+Delivered: typed registry `src/content/insights` (ManagedContent + publishedOn, optional author, key takeaways, headed sections with optional bullets, related services); `src/lib/content/insights.ts` (validation: status, placeholder in approved, slug format/duplicates, real calendar date, non-empty body, related-service slugs; newest-first publishable list); `/insights` index (404 in production when nothing is approved); `/insights/[slug]` (dynamicParams=false, generateStaticParams for publishable items only, noindex for non-approved); InsightCard, InsightDetail and a conditional homepage InsightsPreview (renders nothing when nothing is publishable); nav link driven by the real registry. One fictional dummy article (development only). All styling is Tailwind.
+Validation: typecheck, lint, 67 tests, production build, production check (Insights and case-study routes 404, no nav link, no dummy text in page HTML), dev check (routes 200, badges, notice, noindex, homepage preview), and the approved-dummy build-failure demonstration all pass. Browser/visual QA not yet run (no browser available).
+Open: no real articles supplied; Insights sitemap/canonical handled in Checkpoint 14.
+Commit: `checkpoint-10: implement insights registry and routes` (see `git log`).
 
 ## Maintenance: Tailwind migration (after Checkpoint 8, not a numbered checkpoint)
 Delivered: every component and page converted from hand-written CSS (tokens.css, sections.css, globals.css classes) to Tailwind v4 utilities; colour system retained as `@theme` tokens; STYLING.md added. Checkpoint 9 NOT started.
-Validation: see PROGRESS.md (install, typecheck, lint, test and build were NOT run in the authoring environment: no network).
+Validation: install, typecheck, lint, tests and build now pass (run during Checkpoint 10). Visual/responsive QA still to do (see PROGRESS.md).

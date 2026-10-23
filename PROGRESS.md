@@ -1,28 +1,19 @@
-Current checkpoint: 9 (complete in code, UNVERIFIED) on top of the Tailwind migration (UNVERIFIED)
-Status: Awaiting `npm install` and full verification of the Tailwind migration AND Checkpoint 9, then authorisation to start Checkpoint 10
+Current checkpoint: 10 (complete, code-level verified) on top of Checkpoint 9 and the Tailwind migration (both code-level verified)
+Status: Awaiting browser/visual QA and authorisation to start Checkpoint 11
 
-## READ FIRST: Checkpoint 9 (Case studies) status
-Implemented after the Tailwind migration, in Tailwind only. Neither has been installed, type-checked, linted, tested, built or viewed (no network in the authoring environment). Verify in this order: `npm install`; `npm run typecheck && npm run lint && npm test && npm run build`; then check in dev (/case-studies and /case-studies/sample-case-study show the dummy entry with dev notice and "Dummy data" badge; "Case Studies" appears in nav) and in production (`npm run build && npm start`: /case-studies and /case-studies/sample-case-study return 404, nav has no Case Studies link, no "DUMMY" or "Sample case study" text in any page HTML). Then demonstrate the safeguard: temporarily mark the dummy entry "approved" and confirm the production build FAILS naming `case-studies/sample-case-study`; restore it.
+## READ FIRST: Checkpoint 10 (Insights) status
+Implemented in Tailwind only, mirroring Checkpoint 9.
 
-Files (Checkpoint 9): src/content/case-studies/{types,index,page}.ts; src/lib/content/case-studies.ts; src/lib/content/registry.ts (case studies now real; insights still empty); src/components/case-studies/{CaseStudyCard,CaseStudyDetail}.tsx; src/app/case-studies/page.tsx and [slug]/page.tsx; shared pillClass/statusPillClass in src/components/ui/styles.ts; tests/case-studies.test.ts.
-Behaviour: with no approved case studies, production hides the nav link and both routes 404 (index calls notFound(); [slug] has dynamicParams=false and no static params). Non-approved items are noindex in any environment.
-Next action: Checkpoint 10 (Insights) after verification. Mirror this pattern: typed registry, validation, conditional nav (insights array in registry.ts), noindex for non-approved, no homepage section until approved. Extend validation checks as in lib/content/case-studies.ts. Real case studies still need business-supplied, verified facts; never present prototypes or demos as client work.
+Verified (actually run, after `npm install`): typecheck, lint pass; tests 67/67 pass (53 before + 14 in tests/insights.test.ts); production build passes. Production (`next start`): /insights, /insights/sample-article and /insights/nope return 404; /case-studies and /case-studies/sample-case-study return 404; nav has no Insights or Case Studies link; no "DUMMY" or "Sample article" text in /, /about, /services, /services/data-analytics HTML (count 0). Development (`next dev`): /insights and /insights/sample-article return 200 with dev notice, "Dummy data" badge, noindex on the detail page, one h1, breadcrumb, key takeaways, related services; nav shows Insights; homepage shows the "Latest insights" preview. Safeguard demonstrated: marking the dummy article "approved" FAILED the production build naming `insights/sample-article`; file restored and build passes. All new Tailwind utilities were confirmed present in the built CSS.
 
-## READ FIRST: Tailwind migration (done after Checkpoint 8, before Checkpoint 9)
-Project rule added: all styling uses Tailwind CSS v4 utilities (see STYLING.md, also referenced from README.md, IMPLEMENTATION_PLAN.md, CHECKPOINTS.md). No behaviour, content, routes, tests or logic were changed. Checkpoint 9 was NOT started.
+NOT verified: no browser was available, so NO visual or responsive check has been done for the Tailwind migration, Checkpoint 9 or Checkpoint 10. Do this next at 320, 390, 820, 1280, 1680px (dev server shows the dummy content): horizontal overflow, header/logo/mobile menu panel (now absolute under the header, see STYLING.md), hero, card grids, process steps, breadcrumb slashes, checkmark lists, footer, CTA band, insight card/detail layout, homepage Insights preview (3-column on lg). Also still unrun: contrast tooling, touch behaviour, focus review. `package-lock.json` was refreshed by `npm install` (committed separately).
 
-What changed:
-- Added devDependencies `tailwindcss` and `@tailwindcss/postcss` (^4.1.0) in package.json; added `postcss.config.mjs`.
-- Deleted `src/styles/tokens.css` and `src/styles/sections.css`. Rewrote `src/styles/globals.css`: `@import "tailwindcss"`, `@theme` (same colour values, type scale, radii, shadow), unchanged responsive layout variables (--gutter, --section-space, ...), `@layer base` (body, h1-h4, p, a, focus-visible), reduced-motion rule.
-- Converted every `.tsx` in src/components and src/app from custom classes to utilities. New shared helpers: `src/components/ui/styles.ts` (leadClass, cardClass, checkItemClass, valueItemClass), `buttonRowClass` exported from `ui/Button.tsx`. `navLinkClass` exported from `navigation/NavLink.tsx`.
-- Colour tokens retained exactly; `--color-text-muted` is now `--color-muted` (utility `text-muted`); footer hexes became `footer-text` and `footer-link-hover` tokens.
-- Files not touched: src/content, src/lib, tests, next.config.ts, eslint config.
+Files (Checkpoint 10): src/content/insights/{types,index,page}.ts; src/lib/content/insights.ts (validation: status, placeholder in approved, slug format/duplicates, real calendar date, non-empty body, related-service slugs; getPublishableInsights newest first, getInsightBySlug, getInsightSlugs, formatPublishedDate (UTC), readingTimeMinutes); src/lib/content/registry.ts (Insights now real; the temporary empty array is gone); src/components/insights/{InsightCard,InsightDetail,InsightsPreview}.tsx; src/app/insights/page.tsx and [slug]/page.tsx; conditional homepage preview in src/app/page.tsx; tests/insights.test.ts.
+Behaviour: with no approved articles, production hides the nav link and the homepage preview and both routes 404 (index calls notFound(); [slug] has dynamicParams=false and no static params). Non-approved items are noindex in any environment. One fictional dummy article (development only). Author is optional and must be a real approved name; publishedOn must be the real publication date.
+Next action: Checkpoint 11 (Contact and enquiry system): /contact, /api/contact with a provider adapter, zod validation, honest degradation when email env vars are unset (no fake success), the first interactive Client Component form (Tailwind only). Read `.env.example` and `src/lib/env.ts` first. Real articles and case studies still need business-supplied, verified facts.
 
-NOT verified (authoring environment had no network, no node_modules):
-- `npm install` has not been run, so package-lock.json is stale. FIRST ACTION: `npm install` (updates the lock file), then `npm run typecheck && npm run lint && npm test && npm run build`.
-- No visual check was done. Compare against the pre-migration site (git stash or checkout commit 0da3815) at 320, 390, 820, 1280, 1680px: header/logo/menu toggle, mobile menu panel (now absolute under header, see STYLING.md), hero, card grids, process steps (numbered circles, 5 columns on desktop), breadcrumb slashes, footer, CTA band, dev notice and badge (dev server), 404/error pages.
-- Likely failure points if something looks wrong: Tailwind version must be >= 4.1 (`not-first:` variant, `px-(--gutter)` syntax); heading sizes (preflight resets headings, restored in `@layer base`); `before:content-[...]` pseudo elements (checkmarks, step numbers, breadcrumb slash).
-- When all pass, commit as `chore: migrate styling to Tailwind CSS v4`, update this section to "verified", then continue with Checkpoint 9 using Tailwind only.
+## Checkpoint 9 (Case studies) and Tailwind migration: now code-level verified
+Both were first written without network access. They are now installed, type-checked, linted, tested and built (see above), and production/dev route behaviour was checked. Only visual QA remains (see NOT verified above). Case study files: src/content/case-studies/{types,index,page}.ts; src/lib/content/case-studies.ts; src/components/case-studies/{CaseStudyCard,CaseStudyDetail}.tsx; src/app/case-studies; shared pillClass/statusPillClass in src/components/ui/styles.ts; tests/case-studies.test.ts. Tailwind migration details are in STYLING.md. The untested Tailwind failure points listed earlier (Tailwind >= 4.1, heading sizes, `before:content-[...]` pseudo elements) built without error, but still need the visual check.
 
 Completed checkpoints:
 - Checkpoint 1: complete (foundation, official logo)
@@ -33,9 +24,11 @@ Completed checkpoints:
 - Checkpoint 6: complete (AI & Automation page)
 - Checkpoint 7: complete (Business & Technology Consulting page; all four service pages and the overview now done)
 - Checkpoint 8: complete (About page, leadership registry, content validation safeguards)
+- Checkpoint 9: complete (case studies registry and routes)
+- Checkpoint 10: complete (Insights registry, routes, homepage preview)
 
 Current work:
-- None in progress. Next: Checkpoint 9, Case studies.
+- None in progress. Next: Checkpoint 11, Contact and enquiry system.
 
 Files completed (Checkpoint 8):
 - src/app/about/page.tsx; src/content/about.ts (no founding year, legal status, history, credentials, mission or partnerships)
@@ -61,10 +54,10 @@ Outstanding issues:
 - No canonical URL (Checkpoint 14). All copy is proposed and needs business review.
 - The About page uses the homepage principles and audiences copy; if the business wants distinct About copy, revise src/content/about.ts.
 - Real leadership details, legal/company information and an approved relationship statement with Datatechhub are still needed before launch.
-- Content validation currently covers leadership only. Extend assertContentValid to case studies (Checkpoint 9), articles (Checkpoint 10) and credibility evidence, and add a build-wide check in Checkpoints 14-15.
+- Content validation now covers leadership, case studies and Insights. Still to extend: credibility evidence, plus a build-wide check in Checkpoints 14-15.
 
 Configuration blockers:
 - No email, booking, site URL, contact email or parent-brand URL configured
 
 Next action:
-- Checkpoint 9: build /case-studies and /case-studies/[slug]: typed registry using ManagedContent with status plus a project-type field (completed work, prototype, internal demonstration, ongoing), conditional index and nav (already driven by src/lib/content/registry.ts), reusable CaseStudyCard, detail template (challenge, objectives, actual contribution, approach, solution, deliverables, verified results, lessons, related services, CTA), slug validation with notFound(), generateStaticParams for publishable items only, and validation via assertContentValid. With no approved case studies the index must not expose fake projects (production returns 404 for the index route or an honest hidden state) and nav/home sections stay hidden. Use clearly labelled dummy data in development only.
+- See "Next action" under Checkpoint 10 above.

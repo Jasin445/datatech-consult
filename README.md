@@ -17,7 +17,7 @@ npm test
 Copy `.env.example` to `.env.local`. Every variable is optional until the feature that needs it is used; unconfigured integrations must degrade honestly (no fake success). Never commit `.env.local`.
 
 ## Structure
-`src/app` routes · `src/components/{ui,layout,navigation,sections}` · `src/styles/globals.css` (Tailwind import, `@theme` tokens, base) · `src/lib` site config, env validation, content governance · `src/content` typed content (added per checkpoint) · `tests` vitest.
+`src/app` routes · `src/components/{ui,layout,navigation,sections}` · `src/styles/globals.css` (Tailwind import, `@theme` tokens, base) · `src/lib` site config, env validation, content governance · `src/content` typed content (home, services, about, leadership, case studies, insights) · `tests` vitest.
 
 ## Styling
 Tailwind CSS v4 utilities only. Rules, colour tokens and class mapping are in `STYLING.md`. Read it before touching UI.

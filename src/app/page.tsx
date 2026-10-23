@@ -1,3 +1,4 @@
+import { InsightsPreview } from "@/components/insights/InsightsPreview";
 import { Hero } from "@/components/sections/Hero";
 import { ItemGrid } from "@/components/sections/ItemGrid";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
@@ -16,11 +17,14 @@ import {
   servicesIntro,
 } from "@/content/home";
 import { services } from "@/content/services";
+import { getPublishableInsights } from "@/lib/content/insights";
 import { filterPublishable } from "@/lib/content/status";
 
 export default function HomePage() {
   const evidence = filterPublishable(credibilityEvidence).map((e) => e.data);
   const credibility = evidence.length > 0 ? { ...credibilityFallback, items: evidence } : credibilityFallback;
+
+  const latestInsights = getPublishableInsights().slice(0, 3);
 
   return (
     <>
@@ -60,7 +64,8 @@ export default function HomePage() {
         <ItemGrid items={audiences.items} columns={4} variant="card" />
       </Section>
 
-      {/* Insights preview renders only when approved articles exist. Implemented in Checkpoint 10. */}
+      {/* Renders only when publishable articles exist (production: approved only). */}
+      <InsightsPreview items={latestInsights} tone="surface" />
 
       <CtaBand />
     </>
