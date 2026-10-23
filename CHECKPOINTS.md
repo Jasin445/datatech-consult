@@ -8,7 +8,7 @@
 | 4 | Data Analytics & Business Intelligence | complete |
 | 5 | Data Infrastructure & Engineering | complete |
 | 6 | AI & Automation | complete |
-| 7 | Business & Technology Consulting | not started |
+| 7 | Business & Technology Consulting | complete |
 | 8 | About | not started |
 | 9 | Case studies | not started |
 | 10 | Insights | not started |
@@ -53,3 +53,9 @@ Delivered: /services/ai-automation via ServiceDetailPage: problems, capabilities
 Validation: typecheck, lint, 27 tests, build, Chromium status/overflow/structure/tone checks pass.
 Open: Business & Technology Consulting page 404 until Checkpoint 7; canonical deferred to Checkpoint 14.
 Commit: `checkpoint-06: implement ai and automation service page` (see `git log`).
+
+## Checkpoint 7: Business & Technology Consulting (complete)
+Delivered: /services/business-technology-consulting via ServiceDetailPage: problems, capabilities, example advisory deliverables, "advice and implementation are different work" considerations, 4-step approach, value without guarantees, related services, CTA. All four service pages plus overview complete; service links verified by crawl.
+Validation: typecheck, lint, 34 tests, build, Chromium status/overflow/structure checks, internal link crawl pass.
+Open: /about, /contact, /book-consultation, /privacy 404 until their checkpoints; canonical deferred to Checkpoint 14.
+Commit: `checkpoint-07: implement business and technology consulting page` (see `git log`).

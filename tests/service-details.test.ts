@@ -3,9 +3,10 @@ import { services } from "@/content/services";
 import { dataAnalytics } from "@/content/service-details/data-analytics";
 import { dataInfrastructure } from "@/content/service-details/data-infrastructure";
 import { aiAutomation } from "@/content/service-details/ai-automation";
+import { businessTechnologyConsulting } from "@/content/service-details/business-technology-consulting";
 import type { ServiceDetail } from "@/content/service-details/types";
 
-const details: ServiceDetail[] = [dataAnalytics, dataInfrastructure, aiAutomation];
+const details: ServiceDetail[] = [dataAnalytics, dataInfrastructure, aiAutomation, businessTechnologyConsulting];
 const slugs = new Set(services.map((s) => s.slug));
 
 describe.each(details)("service detail: $slug", (d) => {
@@ -55,5 +56,25 @@ describe("AI & automation scope", () => {
   it("covers risk, maintenance and human oversight and does not claim AI is always right", () => {
     for (const k of ["Human oversight", "Maintenance", "Risk and accuracy", "Fit with the problem"]) expect(text).toContain(k);
     expect(text.toLowerCase()).not.toMatch(/always|replace (?:your )?(?:staff|workers|employees)|eliminate jobs/);
+  });
+});
+
+describe("Business & Technology Consulting scope", () => {
+  const c = businessTechnologyConsulting;
+  it("separates advisory deliverables from implementation", () => {
+    expect(c.deliverables.heading.toLowerCase()).toContain("advisory");
+    const titles = c.considerations.items.map((i) => i.title);
+    expect(titles).toEqual(["Advisory work", "Implementation work", "Agreeing the boundary"]);
+  });
+
+  it("makes no claims about past clients or engagements", () => {
+    const text = JSON.stringify(c).toLowerCase();
+    expect(text).not.toMatch(/our clients|we have (?:helped|worked|delivered)|years of experience|proven/);
+  });
+});
+
+describe("all four confirmed services have a detail page", () => {
+  it("covers every service slug exactly once", () => {
+    expect(details.map((d) => d.slug).sort()).toEqual(services.map((s) => s.slug).sort());
   });
 });
