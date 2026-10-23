@@ -78,7 +78,7 @@ export const dataInfrastructure: ServiceDetail = {
   },
   related: ["data-analytics", "business-technology-consulting"],
   cta: {
-    heading: "Talk to us about your data foundations",
+    heading: "Show us where your data lives today.",
     body: "Tell us which systems hold your data and what isn’t working. We’ll tell you honestly what is worth doing, and what isn’t.",
   },
   v2: {

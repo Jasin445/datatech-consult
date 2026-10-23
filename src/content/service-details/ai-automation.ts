@@ -93,7 +93,7 @@ export const aiAutomation: ServiceDetail = {
   },
   related: ["business-technology-consulting", "data-infrastructure"],
   cta: {
-    heading: "Talk to us about a process you’d like to improve",
+    heading: "Tell us which task eats the most hours.",
     body: "Describe the task and what you’re considering. We’ll tell you honestly whether automation or AI is likely to help.",
   },
   v2: {

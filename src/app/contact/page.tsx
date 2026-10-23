@@ -10,8 +10,9 @@ import { Panel } from "@/components/ui/Panel";
 import { Photo } from "@/components/ui/Photo";
 import { contactPage } from "@/content/contact";
 import { getContactAvailability } from "@/lib/contact/availability";
-import { getPublicContactEmail } from "@/lib/env";
+import { getConversionPaths } from "@/lib/conversion-server";
 import { pageMetadata } from "@/lib/seo/page";
+import { ctas } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: contactPage.title,
@@ -24,7 +25,8 @@ export const dynamic = "force-dynamic";
 
 export default function ContactPage() {
   const availability = getContactAvailability();
-  const publicEmail = getPublicContactEmail();
+  const paths = getConversionPaths();
+  const publicEmail = paths.email;
 
   return (
     <>
@@ -72,23 +74,29 @@ export default function ContactPage() {
                   </DevNotice>
                   <div role="status" className="border-l-4 border-gold bg-surface p-6">
                     <h3 className="text-2xl">Our online enquiry form is not available right now</h3>
-                    <p>
+                    {/* Fallbacks point only at paths that work (never at another unavailable page). */}
+                    <p className={paths.booking ? "" : "mb-0"}>
                       {publicEmail ? (
                         <>
-                          Please email us at <a href={`mailto:${publicEmail}`}>{publicEmail}</a>, or book a consultation instead.
+                          Please email us at <a href={`mailto:${publicEmail}`}>{publicEmail}</a>
+                          {paths.booking ? ", or book a consultation instead." : "."}
                         </>
+                      ) : paths.booking ? (
+                        <>Please book a consultation instead.</>
                       ) : (
-                        <>Please try again later, or book a consultation instead.</>
+                        <>Please check back soon.</>
                       )}
                     </p>
-                    <div className={buttonRowClass}>
-                      <ButtonLink href="/book-consultation">Book a consultation</ButtonLink>
-                    </div>
+                    {paths.booking && (
+                      <div className={buttonRowClass}>
+                        <ButtonLink href={ctas.consultation.href}>{ctas.consultation.label}</ButtonLink>
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
             </Panel>
-            {publicEmail ? (
+            {publicEmail && availability.available ? (
               <p className="mt-6 mb-0 text-sm text-muted">
                 Or email <a href={`mailto:${publicEmail}`}>{publicEmail}</a>.
               </p>
@@ -97,17 +105,19 @@ export default function ContactPage() {
         </Container>
       </section>
 
-      <section aria-label="Book a consultation instead" className="bg-charcoal py-16 lg:py-20">
-        <Container className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
-          <p className="mb-0 flex items-center gap-4 font-display text-4xl text-white">
-            <Ornament className="size-8 shrink-0 text-gold-soft" />
-            {contactPage.talk.text}
-          </p>
-          <Link href="/book-consultation" className="font-display text-2xl text-white italic decoration-1 underline-offset-8 hover:text-gold-soft">
-            {contactPage.talk.cta}
-          </Link>
-        </Container>
-      </section>
+      {paths.booking && (
+        <section aria-label="Book a consultation instead" className="bg-charcoal py-16 lg:py-20">
+          <Container className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+            <p className="mb-0 flex items-center gap-4 font-display text-4xl text-white">
+              <Ornament className="size-8 shrink-0 text-gold-soft" />
+              {contactPage.talk.text}
+            </p>
+            <Link href={ctas.consultation.href} className="font-display text-2xl text-white italic decoration-1 underline-offset-8 hover:text-gold-soft">
+              {ctas.consultation.label}
+            </Link>
+          </Container>
+        </section>
+      )}
     </>
   );
 }

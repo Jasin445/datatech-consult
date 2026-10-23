@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Ornament } from "@/components/ui/Ornament";
 import { getParentBrandUrl, getPublicContactEmail } from "@/lib/env";
-import { primaryCta, services, siteConfig } from "@/lib/site";
+import { ctas, primaryCta, services, siteConfig } from "@/lib/site";
 
 /** Only verified details appear here. Unset env values are omitted, never replaced with invented ones. */
 export function SiteFooter() {
@@ -50,7 +50,7 @@ export function SiteFooter() {
             <ul className="grid gap-3">
               <li><Link href="/about">About</Link></li>
               <li><Link href="/contact">Contact</Link></li>
-              <li><Link href="/book-consultation">Book a consultation</Link></li>
+              <li><Link href={ctas.consultation.href}>{ctas.consultation.label}</Link></li>
               <li><Link href="/privacy">Privacy</Link></li>
               {parentUrl && (
                 <li>

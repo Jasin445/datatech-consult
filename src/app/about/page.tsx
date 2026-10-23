@@ -18,7 +18,7 @@ import { audiences, nextStep, principles } from "@/content/home";
 import { getPublishableLeadership } from "@/lib/content/leadership";
 import { getParentBrandUrl } from "@/lib/env";
 import { pageMetadata } from "@/lib/seo/page";
-import { siteConfig } from "@/lib/site";
+import { ctas, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: aboutPage.title,
@@ -43,7 +43,7 @@ export default function AboutPage() {
         photo={aboutPage.photo}
         actions={
           <>
-            <ButtonLink href="/contact">Discuss a business challenge</ButtonLink>
+            <ButtonLink href={ctas.enquiry.href}>{ctas.enquiry.label}</ButtonLink>
             <ButtonLink href="/services" variant="secondary">
               Explore our services
             </ButtonLink>

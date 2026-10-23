@@ -12,8 +12,10 @@ import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { bookingPage } from "@/content/booking";
 import { bookingProviderHost } from "@/lib/booking";
-import { getBookingUrl, getPublicContactEmail } from "@/lib/env";
+import { getConversionPaths } from "@/lib/conversion-server";
+import { getBookingUrl } from "@/lib/env";
 import { pageMetadata } from "@/lib/seo/page";
+import { ctas } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: bookingPage.title,
@@ -26,7 +28,8 @@ export const dynamic = "force-dynamic";
 
 export default function BookConsultationPage() {
   const bookingUrl = getBookingUrl();
-  const publicEmail = getPublicContactEmail();
+  const paths = getConversionPaths();
+  const publicEmail = paths.email;
   const { duration, format } = bookingPage.details;
   const confirmedDetails = [duration && { label: "Length", value: duration }, format && { label: "Format", value: format }].filter(
     (d): d is { label: string; value: string } => Boolean(d),
@@ -89,25 +92,32 @@ export default function BookConsultationPage() {
                   <DevNotice>Booking is not configured. Set NEXT_PUBLIC_BOOKING_URL to an HTTPS scheduling-provider link (see .env.example).</DevNotice>
                   <div role="status" className="border-l-4 border-gold bg-surface p-6">
                     <h3 className="text-2xl">Online booking is not available right now</h3>
-                    <p>
-                      Send us an enquiry describing the challenge and we will reply by email to arrange a time.
+                    {/* Fallbacks point only at paths that work (never at another unavailable page). */}
+                    <p className={paths.form ? "" : "mb-0"}>
+                      {paths.form ? "Send us an enquiry describing the challenge and we will reply by email to arrange a time." : null}
                       {publicEmail ? (
                         <>
-                          {" "}
-                          You can also email <a href={`mailto:${publicEmail}`}>{publicEmail}</a>.
+                          {paths.form ? " You can also email " : "Please email "}
+                          <a href={`mailto:${publicEmail}`}>{publicEmail}</a>
+                          {paths.form ? "." : " to arrange a time."}
                         </>
                       ) : null}
+                      {!paths.form && !publicEmail ? "Please check back soon." : null}
                     </p>
-                    <div className={buttonRowClass}>
-                      <ButtonLink href="/contact">Send an enquiry</ButtonLink>
-                    </div>
+                    {paths.form && (
+                      <div className={buttonRowClass}>
+                        <ButtonLink href={ctas.enquiry.href}>{ctas.enquiry.label}</ButtonLink>
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
             </Panel>
-            <p className="mt-6 mb-0 text-sm text-muted">
-              Prefer to write first? <Link href="/contact">Send an enquiry</Link>.
-            </p>
+            {paths.form && (
+              <p className="mt-6 mb-0 text-sm text-muted">
+                Prefer to write first? <Link href={ctas.enquiry.href}>{ctas.enquiry.label}</Link>.
+              </p>
+            )}
           </div>
         </Container>
       </section>

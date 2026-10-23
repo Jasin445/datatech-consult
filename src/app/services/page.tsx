@@ -14,6 +14,7 @@ import { nextStep, process, servicePhotos } from "@/content/home";
 import { services } from "@/content/services";
 import { engagement, fit, servicesPage, together } from "@/content/services-overview";
 import { pageMetadata } from "@/lib/seo/page";
+import { ctas } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: servicesPage.title,
@@ -33,8 +34,8 @@ export default function ServicesPage() {
         actions={
           <>
             <ButtonLink href="#fit-heading">Find your starting point</ButtonLink>
-            <ButtonLink href="/book-consultation" variant="secondary">
-              Book a consultation
+            <ButtonLink href={ctas.consultation.href} variant="secondary">
+              {ctas.consultation.label}
             </ButtonLink>
           </>
         }

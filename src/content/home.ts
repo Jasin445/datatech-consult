@@ -5,6 +5,7 @@
  */
 import type { ManagedContent } from "@/lib/content/status";
 import { photos, type Photo } from "@/content/media/photos";
+import { ctas } from "@/lib/site";
 
 export type TitledItem = { title: string; text: string };
 
@@ -13,7 +14,7 @@ export const hero = {
   headline: "Your numbers should settle arguments,",
   headlineAccent: "not start them.",
   body: "We help organisations in Nigeria and across Africa turn scattered data and stubborn manual work into reporting people trust, systems that talk to each other, and automation that earns its place.",
-  primary: { label: "Discuss a business challenge", href: "/contact" },
+  primary: ctas.enquiry,
   secondary: { label: "Explore our services", href: "/services" },
   photo: photos.boardroom,
   note: {
@@ -135,16 +136,16 @@ export const nextStep = {
   heading: "Bring us the problem. We’ll bring the plan.",
   options: [
     {
-      title: "Send an enquiry",
+      title: "Write to us",
       text: "Describe the challenge in your own words. We reply by email with questions or a suggested next step.",
-      cta: "Start in writing",
-      href: "/contact",
+      cta: ctas.enquiry.label,
+      href: ctas.enquiry.href,
     },
     {
-      title: "Book a consultation",
+      title: "Talk it through",
       text: "An initial conversation to understand the situation and whether we’re the right people to help.",
-      cta: "Pick a time",
-      href: "/book-consultation",
+      cta: ctas.consultation.label,
+      href: ctas.consultation.href,
     },
   ],
 };

@@ -20,6 +20,5 @@ export const contactPage = {
   photo: photos.conversation,
   talk: {
     text: "Prefer to talk first?",
-    cta: "Book a consultation",
   },
 };

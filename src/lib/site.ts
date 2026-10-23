@@ -24,4 +24,13 @@ export function getPrimaryNav({ showCaseStudies, showInsights }: NavOptions): Na
   ];
 }
 
-export const primaryCta: NavItem = { label: "Book a consultation", href: "/book-consultation" };
+/**
+ * The only two call-to-action labels used sitewide (tests/cta.test.ts enforces this).
+ * Every link to /contact that invites action says "Send an enquiry"; every link to /book-consultation says "Book a consultation".
+ */
+export const ctas = {
+  enquiry: { label: "Send an enquiry", href: "/contact" },
+  consultation: { label: "Book a consultation", href: "/book-consultation" },
+} as const satisfies Record<string, NavItem>;
+
+export const primaryCta: NavItem = ctas.consultation;

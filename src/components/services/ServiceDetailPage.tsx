@@ -15,6 +15,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { nextStep, servicePhotos } from "@/content/home";
 import { services } from "@/content/services";
 import type { ServiceDetail } from "@/content/service-details/types";
+import { ctas } from "@/lib/site";
 
 /** Shared V2 template for the four dedicated service pages. Content comes from src/content/service-details. */
 export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
@@ -37,9 +38,9 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
         photo={detail.v2.heroPhoto}
         actions={
           <>
-            <ButtonLink href="/contact">Discuss a business challenge</ButtonLink>
-            <ButtonLink href="/book-consultation" variant="secondary">
-              Book a consultation
+            <ButtonLink href={ctas.enquiry.href}>{ctas.enquiry.label}</ButtonLink>
+            <ButtonLink href={ctas.consultation.href} variant="secondary">
+              {ctas.consultation.label}
             </ButtonLink>
           </>
         }

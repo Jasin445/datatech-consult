@@ -81,7 +81,7 @@ export const businessTechnologyConsulting: ServiceDetail = {
   },
   related: ["data-infrastructure", "ai-automation"],
   cta: {
-    heading: "Talk to us about a technology decision",
+    heading: "Bring us the decision you’re stuck on.",
     body: "Tell us what you are trying to achieve and what is in the way. We’ll tell you honestly how we can help.",
   },
   v2: {

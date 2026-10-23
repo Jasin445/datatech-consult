@@ -200,7 +200,7 @@ Commit: `v2-7: imagery and copy pass, mobile menu, final v2 qa`.
 | # | Title | Status |
 |---|-------|--------|
 | V3-1 | Data visual system | complete |
-| V3-2 | CTA vocabulary + launch conversion safeguards | in progress |
+| V3-2 | CTA vocabulary + launch conversion safeguards | complete |
 | V3-3 | Navigation (services menu, footer contact) | not started |
 | V3-4 | Homepage rework | not started |
 | V3-5 | Service pages shortened, per-service visuals, less hedging | not started |
@@ -214,3 +214,9 @@ Tests: tests/visuals.test.tsx renders every mock and checks the caption, the des
 Review: rendered on a temporary preview route (deleted) at desktop and mobile; fixed a stretched line chart with oversized, clipped labels, and an options appraisal whose recommendation contradicted its own ratings.
 Validation: typecheck, lint, vitest 151/151. Production build deferred to the next build in the scratchpad copy (owner's dev server is running in the project folder).
 Commit: `v3-1: coded mock visuals (dashboard, spreadsheet, pipeline, workflow, options)`.
+
+## V3-2: CTA vocabulary + launch conversion safeguards (complete, 2026-10-23)
+Delivered: `ctas` in src/lib/site.ts is the single source of the two action labels ("Send an enquiry" -> /contact, "Book a consultation" -> /book-consultation); all pages, content and the footer use it. Closing ornament cards now titled "Write to us" / "Talk it through" with the standard labels as their actions. Service closing headings rewritten (the "Talk to us about..." variants were a third phrasing, caught by the new test). `src/lib/conversion.ts` (pure) + `conversion-server.ts`: which contact paths work (form, booking, public email); contact and booking unavailable states now only point at working paths (no circular dead ends), and the "prefer to talk/write first" links appear only when the other path works. `src/instrumentation.ts` logs `[launch]` warnings at production server start, including a LAUNCH BLOCKER line when visitors have no way to make contact. .env.example notes that NEXT_PUBLIC_* values are build-time and recommends a public email for launch.
+Tests: tests/cta.test.ts (exact two actions; no alternative labels anywhere in src; conversion path and warning logic).
+Validation: typecheck, lint, vitest 156/156; production build in the scratchpad copy: nothing configured -> 4 [launch] warnings incl. LAUNCH BLOCKER, contact and booking say "check back soon" with no circular links; with only a public email -> both pages direct visitors to the email (duplicate email line on /contact found and fixed).
+Commit: `v3-2: single cta vocabulary and launch conversion safeguards`.

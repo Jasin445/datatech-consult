@@ -77,7 +77,7 @@ export const dataAnalytics: ServiceDetail = {
   },
   related: ["data-infrastructure", "ai-automation"],
   cta: {
-    heading: "Talk to us about your reporting",
+    heading: "Bring us the report everyone argues about.",
     body: "Tell us what you need to measure and where the data lives now. We’ll tell you honestly how we can help.",
   },
   v2: {
