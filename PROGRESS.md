@@ -1,12 +1,13 @@
-Current checkpoint: 12 (Consultation booking)
+Current checkpoint: 13 (Privacy)
 Status: NOT STARTED
 
 Completed checkpoints:
 - Checkpoints 1-10: complete (see CHECKPOINTS.md for deliverables and validation)
 - Checkpoint 11: complete (verified 2026-10-23 on a networked machine)
+- Checkpoint 12: complete (booking page; validation in CHECKPOINTS.md)
 
 Current work:
-- Checkpoint 12: /book-consultation using NEXT_PUBLIC_BOOKING_URL (getBookingUrl in src/lib/env.ts), honest unconfigured state with a link to /contact.
+- Checkpoint 13: /privacy, describing only practices the site actually has.
 
 Validation (last run, 2026-10-23, Checkpoint 11):
 - npm ci, typecheck, lint (0 problems), vitest 87/87, production build: pass.
@@ -24,7 +25,8 @@ Not verified:
 - Contrast with a dedicated tool; touch-device behaviour; screen-reader pass.
 
 Outstanding issues:
-- /book-consultation and /privacy return 404 until Checkpoints 12-13 (linked from header, footer, CTAs and the contact form).
+- /privacy returns 404 until Checkpoint 13 (linked from the footer and the contact form).
+- Booking meeting length and format are unconfirmed (src/content/booking.ts).
 - No canonical URL, sitemap or robots yet (Checkpoint 14).
 - All marketing copy is proposed and needs business review.
 
@@ -32,4 +34,4 @@ Configuration blockers:
 - No email provider credentials, booking URL, site URL, public contact email or parent-brand URL configured.
 
 Next action:
-- Build src/app/book-consultation/page.tsx (Checkpoint 12).
+- Build src/app/privacy/page.tsx (Checkpoint 13).

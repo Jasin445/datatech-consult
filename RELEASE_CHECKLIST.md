@@ -9,7 +9,7 @@ Development completion is not launch readiness. Tick only after verification.
 - [ ] Articles approved (or section stays hidden)
 - [ ] All dummy/draft content removed or excluded; build validation passes
 - [ ] Email provider chosen; EMAIL_PROVIDER, EMAIL_API_KEY, CONTACT_RECIPIENT_EMAIL, CONTACT_SENDER_EMAIL set and delivery tested
-- [ ] Scheduling provider chosen; NEXT_PUBLIC_BOOKING_URL set and tested; meeting duration/format confirmed
+- [ ] Scheduling provider chosen; NEXT_PUBLIC_BOOKING_URL (HTTPS) set and tested; meeting duration/format confirmed and set in src/content/booking.ts; decide link vs provider embed
 - [ ] Privacy notice reviewed against applicable law (incl. Nigerian data-protection requirements)
 - [ ] Domain and hosting configured; NEXT_PUBLIC_SITE_URL set
 - [ ] Verified contact email and parent-brand URL set (or intentionally omitted)

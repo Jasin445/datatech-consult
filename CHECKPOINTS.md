@@ -15,7 +15,7 @@
 | 9 | Case studies | complete |
 | 10 | Insights | complete |
 | 11 | Contact and enquiry system | complete |
-| 12 | Consultation booking | not started |
+| 12 | Consultation booking | complete |
 | 13 | Privacy | not started |
 | 14 | SEO and site discovery | not started |
 | 15 | Final integration and QA | not started |
@@ -90,3 +90,10 @@ Validation: npm ci, typecheck, lint, vitest 87/87, build pass. Production server
 Fixes during verification: header desktop CTA visible on mobile (overflow at 320px), mobile menu panel padding/edge, unused lint directive.
 Not verified: a successful real send (no credentials).
 Commits: `checkpoint-11: implement contact page and enquiry api (unverified build)`, `checkpoint-11: verify enquiry flow and fix mobile header`.
+
+## Checkpoint 12: Consultation booking (complete, 2026-10-23)
+Delivered: /book-consultation (force-dynamic). Configured: explanation, provider-handled scheduling (time zones, confirmation; reschedule/cancel only "where the provider supports it"), button to the provider link in a new tab with the provider host announced. Unconfigured: honest "online booking is not available" status, enquiry CTA, optional public email, dev notice. Purpose cards, preparation checklist, fallback enquiry link. Meeting length/format are null until confirmed and only rendered when set (dev notice otherwise).
+Decision: a provider link, not an iframe embed. No provider is chosen yet, and embeds need provider-specific scripts/CSP. Add an embed later only for the chosen provider.
+Files: src/app/book-consultation/page.tsx; src/content/booking.ts; src/lib/booking.ts (HTTPS-only link parsing, provider host); src/lib/env.ts (getBookingUrl uses parseBookingUrl); tests/booking.test.ts (6 tests).
+Validation: typecheck, lint, vitest 93/93, build pass. Production server: unset URL -> unconfigured state; HTTPS URL -> link with rel="noopener noreferrer"; http:// URL rejected (unconfigured state). Chrome at 320/390/820/1280/1680: no overflow, one h1, no console errors.
+Commit: `checkpoint-12: implement consultation booking page`.

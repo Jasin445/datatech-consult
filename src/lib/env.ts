@@ -1,5 +1,6 @@
 import "server-only";
 import { z } from "zod";
+import { parseBookingUrl } from "@/lib/booking";
 
 /**
  * Environment strategy: validate at the boundary where a feature is used, never at import time.
@@ -51,8 +52,9 @@ export function getSiteUrl(): string | null {
   return cleanUrl(process.env.NEXT_PUBLIC_SITE_URL);
 }
 
+/** HTTPS scheduling-provider link, or null when unset or invalid (the page then shows its unconfigured state). */
 export function getBookingUrl(): string | null {
-  return cleanUrl(process.env.NEXT_PUBLIC_BOOKING_URL);
+  return parseBookingUrl(process.env.NEXT_PUBLIC_BOOKING_URL);
 }
 
 export function getParentBrandUrl(): string | null {
