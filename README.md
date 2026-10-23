@@ -28,6 +28,7 @@ Copy `.env.example` to `.env.local`. Every variable is optional until the featur
 Tailwind CSS v4 utilities only. Rules, colour tokens and class mapping are in `STYLING.md`. Read it before touching UI.
 
 ## Content management
+Visitor copy lives in `src/content`. `tests/copy.test.ts` fails on generic filler phrases and on any "guarantee" that is not a disclaimer. Photos must be registered in `src/content/media/photos.ts` (licence, source, alt); `tests/photos.test.ts` enforces it.
 Content lives in code with a status of `dummy`, `draft` or `approved` (`src/lib/content/status.ts`). Production shows `approved` only. Never mark content approved without business verification.
 
 ## Privacy gate

@@ -41,16 +41,21 @@ export function MobileNav({ items, cta }: { items: NavItem[]; cta: NavItem }) {
         aria-controls={menuId}
         onClick={() => setOpenPath(open ? null : pathname)}
       >
-        <span aria-hidden="true">{open ? "✕" : "☰"}</span>
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+          {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h10" />}
+        </svg>
         <span className="sr-only min-[360px]:not-sr-only">Menu</span>
       </button>
       {open && (
         <nav id={menuId} className="absolute inset-x-0 top-full max-h-[calc(100dvh-var(--header-height))] overflow-y-auto border-y border-border bg-white shadow-card" aria-label="Mobile">
           <Container className="pb-6">
-            <ul className="pt-3 pb-6">
-              {items.map((item) => (
-                <li key={item.href}>
-                  <NavLink href={item.href} onClick={() => close(false)} className="w-full py-2 text-lg">
+            <ul className="pt-4 pb-6">
+              {items.map((item, i) => (
+                <li key={item.href} className="border-b border-border">
+                  <NavLink href={item.href} onClick={() => close(false)} className="w-full gap-4 py-3 font-display text-3xl">
+                    <span aria-hidden="true" className="font-display text-base text-gold italic">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     {item.label}
                   </NavLink>
                 </li>

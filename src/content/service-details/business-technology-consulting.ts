@@ -95,6 +95,6 @@ export const businessTechnologyConsulting: ServiceDetail = {
       turn: "Get clear before you commit.",
       photo: photos.executives,
     },
-    deliverablesPhoto: photos.oneToOne,
+    deliverablesPhoto: photos.whiteboardLaptop,
   },
 };

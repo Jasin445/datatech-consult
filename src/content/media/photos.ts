@@ -49,6 +49,14 @@ export const photos = {
   skyline: unsplash("lagos-skyline", 1012, 1800, "A city skyline and highway beside the water under a blue sky", "https://unsplash.com/photos/city-skyline-under-blue-sky-during-daytime-9ySEZ-ugtJA", "Nupo Deyon Daniel"),
   marketAerial: unsplash("market-aerial", 1200, 1800, "A busy street market with colourful umbrellas, seen from above", "https://unsplash.com/photos/aerial-view-of-a-bustling-street-market-with-colorful-umbrellas-IWMQ5P9HxYM", "Fahd Aminu"),
   streetAerial: unsplash("street-aerial", 1200, 1800, "A crowded city street full of traffic and people, seen from above", "https://unsplash.com/photos/bustling-city-street-with-dense-traffic-and-pedestrians-from-above-et46vZKo6HQ", "Fahd Aminu"),
+  workshop: unsplash("workshop", 1800, 1200, "A man talking a small team through something at a meeting table with laptops", "https://unsplash.com/photos/a-group-of-people-sitting-around-a-table-with-laptops-YDEiseFR_Q8", "UK Black Tech"),
+  teamDiscussion: unsplash("team-discussion", 1800, 1199, "A team in discussion around a white meeting table", "https://unsplash.com/photos/a-group-of-people-sitting-around-a-white-table-dGfIJdxvTLY", "UK Black Tech"),
+  pairWorking: unsplash("pair-working", 1800, 1200, "Two colleagues working through something together at a table", "https://unsplash.com/photos/a-man-and-a-woman-sitting-at-a-table-R5_hobznBfY", "The Jopwell Collection"),
+  roundtable: unsplash("roundtable", 1800, 1200, "Five people talking around a meeting table", "https://unsplash.com/photos/five-people-sitting-at-table-and-talking-jzonFmreWok", "Christina @ wocintechchat.com"),
+  whiteboardLaptop: unsplash("whiteboard-laptop", 1800, 1200, "A man holding a laptop beside a whiteboard covered in notes", "https://unsplash.com/photos/man-wearing-gray-polo-shirt-beside-dry-erase-board-3V8xo5Gbusk", "Kaleidico"),
+  planningWall: unsplash("planning-wall", 1800, 1200, "Two people planning a project with sticky notes on a glass wall", "https://unsplash.com/photos/people-collaborating-on-project-plan-v89zhr0iBFY", "airfocus"),
+  skylineWide: unsplash("city-skyline-two", 1800, 1200, "A city skyline of tall buildings under a pale sky", "https://unsplash.com/photos/a-city-skyline-with-tall-buildings-in-the-background-MYtooZT15SA", "Tedd_"),
+  focusedWork: unsplash("focused-work", 1800, 1200, "A man working on a laptop at a table by a window", "https://unsplash.com/photos/a-man-sitting-at-a-table-using-a-laptop-computer-xXY14yB1JWA", "Sweet Life"),
 } as const satisfies Record<string, Photo>;
 
 export type PhotoId = keyof typeof photos;

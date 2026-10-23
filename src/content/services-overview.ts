@@ -58,7 +58,7 @@ export const engagement = {
   eyebrow: "How it runs",
   heading: "Same shape, whatever the service.",
   lead: "The stages don’t change between services. The last two happen only where we agree them.",
-  photo: photos.collaborationCouch,
+  photo: photos.planningWall,
   notes: [
     "Some engagements end with a diagnosis and a plan. Others continue into implementation and ongoing support. We agree which at the start.",
     "Scope, timing and cost depend on the problem and your organisation. We won’t recommend technology you don’t need.",

@@ -1,9 +1,9 @@
-Current phase: VERSION 2 (visual redesign). Current checkpoint: V2-7 (Sitewide copy/imagery pass, QA, docs)
-Status: V2-1 to V2-6 complete (V2-2 direction approved by owner).
+Current phase: VERSION 2 (visual redesign) COMPLETE. All V2 checkpoints (V2-1 to V2-7) done; homepage direction approved by owner at V2-2.
+Status: development complete for V1 and V2. NOT LAUNCH-READY: business, legal and configuration inputs outstanding (see RELEASE_CHECKLIST.md).
 V1: checkpoints 1-15 complete for development; not launch-ready (see below).
 
 V2 next action:
-- V2-7: sitewide copy and imagery consistency pass (repeated photos, hamburger icon, mobile menu styling), full QA on all routes, update README/IMPLEMENTATION_PLAN/STYLING/RELEASE_CHECKLIST.
+- Await owner review of the complete V2 site and any further instructions. Launch work: see RELEASE_CHECKLIST.md.
 
 Completed checkpoints:
 - Checkpoints 1-15: complete (deliverables, files and validation per checkpoint in CHECKPOINTS.md)
@@ -16,7 +16,7 @@ Development functionality completed:
 - Enquiry form with shared client/server validation, honeypot, rate limit, provider adapter (Resend), honest unavailable states. Booking page with HTTPS provider link or honest unconfigured state. Draft privacy notice describing actual behaviour, with a production gate on personal-data collection.
 
 Production build and tests completed (2026-10-23, this machine):
-- typecheck, lint (0 problems), vitest 111/111, production build: pass.
+- typecheck, lint (0 problems), vitest 136/136, production build: pass (last run at V2-7).
 - npm run qa:responsive and npm run qa:a11y against the production build: pass (0 axe violations, no overflow, all links resolve, focus visible, reduced motion respected). Development-only routes also checked.
 
 External integrations configured and tested:

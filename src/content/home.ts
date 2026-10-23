@@ -84,7 +84,7 @@ export const process = {
   eyebrow: "How we work",
   heading: "From first conversation to working system.",
   lead: "Every engagement is scoped to the problem. The last two stages happen only where we agree them.",
-  photo: photos.oneToOne,
+  photo: photos.workshop,
   steps: [
     { title: "Understand", text: "Your goals, your constraints, and the challenge in your own words." },
     { title: "Diagnose", text: "We look at the data, systems and processes to find what is really causing it." },
@@ -106,7 +106,7 @@ export const credibilityFallback = {
   eyebrow: "Working with us",
   heading: "What you can hold us to.",
   lead: "However big or small the engagement.",
-  photo: photos.conversation,
+  photo: photos.teamDiscussion,
   items: [
     { title: "Scope before work", text: "You know what’s included, what isn’t, and what we need from you." },
     { title: "Honest advice", text: "If a tool, including AI, isn’t the right fit, we’ll tell you." },

@@ -105,7 +105,7 @@ export const aiAutomation: ServiceDetail = {
         "Elsewhere, an AI tool is being trialled with no clear problem, no owner and no way to check its answers.",
       ],
       turn: "Start with the work, not the hype.",
-      photo: photos.smeDesk,
+      photo: photos.focusedWork,
     },
     deliverablesPhoto: photos.laptopFocus,
   },

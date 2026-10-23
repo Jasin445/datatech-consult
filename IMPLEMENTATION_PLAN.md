@@ -55,5 +55,8 @@ The site reads like a well-made consulting report: editorial serif headlines, do
 ## Photography
 Free-licence photographs (Unsplash License: free commercial use, no attribution required) downloaded into `public/images/photos/` and served from our own domain. Every photo is registered in `src/content/media/photos.ts` with source URL, photographer and licence; a test fails if a file is unregistered or a registered file is missing. Photos are illustrative: alt text describes the scene and never implies the people are Datatechhub staff or clients. Replace with commissioned photography when available.
 
-## V2 checkpoints
+## V2 checkpoints (all complete, 2026-10-23)
 V2-1 Design foundation · V2-2 Homepage · V2-3 Services overview + service detail template · V2-4 About · V2-5 Contact + Booking · V2-6 Case studies, Insights, Privacy, 404 · V2-7 Sitewide copy/imagery pass, QA, docs.
+
+## V2 outcome
+Every page rebuilt with the field-report system. Copy guard (tests/copy.test.ts) and photo registry test (tests/photos.test.ts) protect the voice and image licensing. Case studies use typographic covers only. Placeholder favicon pending an official asset.

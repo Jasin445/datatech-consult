@@ -22,7 +22,7 @@ export const aboutPage = {
       "We work with organisations in Nigeria and across Africa that want to solve a business problem using data and technology, without taking on more complexity than they need.",
       "Our work spans analytics and reporting, data foundations, AI and automation, and technology consulting. We treat these as connected: the right answer often involves more than one, and sometimes it is simpler than expected.",
     ],
-    photos: [photos.marketAerial, photos.conversation],
+    photos: [photos.roundtable, photos.pairWorking],
   },
   parent: {
     eyebrow: "Part of Datatechhub",
@@ -43,7 +43,7 @@ export const aboutPage = {
   statement: {
     text: "Context isn’t a detail.",
     accent: "It’s the brief.",
-    photo: photos.riverCity,
+    photo: photos.skylineWide,
   },
   audiences: {
     eyebrow: "Who we work with",
