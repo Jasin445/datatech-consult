@@ -129,3 +129,30 @@ Defects found and fixed:
 Added: scripts/qa/{responsive,a11y-crawl}.mjs with npm scripts qa:responsive and qa:a11y (devDependencies playwright-core, axe-core).
 Not run / not possible here: screen-reader testing, real touch devices, a successful real email send, a real scheduling provider, deployment on the target host, Lighthouse/performance budget.
 Commit: `checkpoint-15: final integration and qa`.
+
+---
+
+# Version 2 checkpoints (visual redesign; plan in IMPLEMENTATION_PLAN.md)
+
+| # | Title | Status |
+|---|-------|--------|
+| V2-1 | Design foundation (fonts, gold token, photo registry, card family, header/footer) | complete |
+| V2-2 | Homepage | complete (awaiting owner review of direction) |
+| V2-3 | Services overview + service detail template | not started |
+| V2-4 | About | not started |
+| V2-5 | Contact + Booking | not started |
+| V2-6 | Case studies, Insights, Privacy, 404 | not started |
+| V2-7 | Sitewide copy/imagery pass, QA, docs | not started |
+
+## V2-1: Design foundation (complete, 2026-10-23)
+Delivered: Instrument Serif + Instrument Sans via next/font (self-hosted); `gold` token (#8c6a2f) with derived `gold-soft`/`gold-tint`, existing tokens unchanged; display type scale; `rise` entrance animation; 18 Unsplash-License photos in public/images/photos with a typed registry (licence, source URL, photographer, scene-only alt) and tests/photos.test.ts (file/registry sync, licence, alt, no staff/client implication); ui/Eyebrow, ui/Ornament (+ArrowRight), ui/Photo; cards/FolioCard, OrnamentCard, PhotoCard; gold button variants (button shape moved into variants to avoid utility conflicts); Section `charcoal` tone; SectionHeading eyebrow/folio/onDark/align; ProcessSteps timeline restyle; header gold top rule and animated gold underline nav; footer statement band. STYLING.md "V2 design system" section.
+Validation: typecheck, lint, vitest 115/115 (staged snapshot verified in an isolated copy), build pass.
+Commit: `v2-1: design foundation (brand fonts, gold accent, photo registry, card family)`.
+
+## V2-2: Homepage (complete, 2026-10-23; direction awaiting owner review)
+Delivered: new homepage copy (problem-first, no stats/claims) and layout: hero (display headline with gold italic accent, framed photo, folded "field note"); 01 problem story beside a photo, ending on a turn line; challenges strip; 02 services as photo cards; full-bleed statement over a night photograph; 03 principles as folio cards (first featured); 04 process timeline with photo; 05 audience photo mosaic; 06 commitments with photo (approved evidence replaces it automatically when it exists); conditional Insights preview; closing charcoal "next step" ornament cards (enquiry, consultation).
+Files: src/content/home.ts; src/app/page.tsx; src/components/sections/{Hero,ProblemStory,StatementBand,AudienceMosaic,Commitments,NextStep}.tsx.
+Validation: typecheck, lint, vitest 115/115, build; qa:responsive (/, /services, /about, /contact at 5 widths) pass; qa:a11y on 6 routes: 0 violations after fixes; desktop and mobile screenshots reviewed section by section.
+Fixes during review: service/mosaic titles overflowed narrow cards (sizes reduced); gold folio on the gold-tint featured card failed contrast at mobile size (charcoal there); a11y script now waits for entrance animations before measuring contrast.
+Not yet V2: all other pages still use V1 layouts with the new fonts (V2-3 onwards).
+Commit: `v2-2: redesign homepage`.

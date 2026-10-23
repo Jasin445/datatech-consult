@@ -1,62 +1,67 @@
-import { ButtonLink, buttonRowClass } from "@/components/ui/Button";
+import Link from "next/link";
+import type { Photo as PhotoData } from "@/content/media/photos";
+import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { leadClass } from "@/components/ui/styles";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { ArrowRight } from "@/components/ui/Ornament";
+import { Photo } from "@/components/ui/Photo";
 
 type Cta = { label: string; href: string };
 
-/** Decorative graphic: scattered points resolving into ordered bars. Contains no real or implied data. */
-function HeroGraphic() {
-  return (
-    <svg className="h-auto w-full max-w-70 justify-self-center md:max-w-105 lg:max-w-120 lg:justify-self-end" viewBox="0 0 480 360" role="presentation" aria-hidden="true" focusable="false">
-      <g fill="#15a8ea" opacity="0.55">
-        {[
-          [30, 60, 5], [70, 130, 4], [45, 200, 6], [95, 260, 4], [20, 310, 5], [110, 90, 3], [120, 190, 5], [75, 330, 3],
-        ].map(([cx, cy, r]) => (
-          <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r={r} />
-        ))}
-      </g>
-      <g stroke="#15a8ea" strokeWidth="1.5" fill="none" opacity="0.6">
-        <path d="M115 90 C 190 90, 200 180, 255 180" />
-        <path d="M125 190 C 190 190, 200 190, 255 190" />
-        <path d="M100 260 C 190 260, 200 200, 255 200" />
-      </g>
-      <rect x="250" y="40" width="210" height="280" rx="10" fill="#f3f7fa" />
-      <g fill="#1e64ab">
-        <rect x="280" y="240" width="32" height="50" rx="4" />
-        <rect x="328" y="200" width="32" height="90" rx="4" />
-        <rect x="376" y="150" width="32" height="140" rx="4" />
-        <rect x="424" y="100" width="20" height="190" rx="4" opacity="0.35" />
-      </g>
-      <path d="M270 296 H 450" stroke="#172b3a" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  );
-}
-
+/**
+ * V2 homepage hero: serif headline with an italic gold accent, a framed photograph with an offset
+ * gold rule, and a folded "field note" card overlapping the photo. Text and actions come first on mobile.
+ */
 export function Hero({
+  eyebrow,
   headline,
+  headlineAccent,
   body,
   primary,
   secondary,
+  photo,
+  note,
 }: {
+  eyebrow: string;
   headline: string;
+  headlineAccent: string;
   body: string;
   primary: Cta;
   secondary: Cta;
+  photo: PhotoData;
+  note: { label: string; text: string };
 }) {
   return (
-    <section className="pt-12 pb-(--section-space) lg:pt-16" aria-labelledby="hero-heading">
-      <Container className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
-        <div>
-          <h1 id="hero-heading">{headline}</h1>
-          <p className={`${leadClass} mb-6`}>{body}</p>
-          <div className={buttonRowClass}>
+    <section aria-labelledby="page-heading" className="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
+      <Container className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
+        <div className="lg:col-span-6">
+          <div className="animate-rise">
+            <Eyebrow>{eyebrow}</Eyebrow>
+          </div>
+          <h1 id="page-heading" className="mb-7 animate-rise text-display [animation-delay:90ms]">
+            {headline} <em className="text-gold">{headlineAccent}</em>
+          </h1>
+          <p className="mb-9 max-w-[52ch] animate-rise text-lg text-muted [animation-delay:180ms]">{body}</p>
+          <div className="flex animate-rise flex-wrap items-center gap-x-8 gap-y-4 [animation-delay:270ms]">
             <ButtonLink href={primary.href}>{primary.label}</ButtonLink>
-            <ButtonLink variant="secondary" href={secondary.href}>
+            <Link href={secondary.href} className="group inline-flex min-h-11 items-center gap-2 font-display text-xl text-charcoal italic">
               {secondary.label}
-            </ButtonLink>
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
         </div>
-        <HeroGraphic />
+
+        <div className="relative animate-rise [animation-delay:200ms] lg:col-span-6 lg:pl-8">
+          <div aria-hidden="true" className="absolute top-6 -right-3 bottom-[-1.5rem] left-[calc(2rem+1.5rem)] border border-gold max-lg:left-6" />
+          <div className="relative aspect-[4/5] overflow-hidden bg-surface sm:aspect-[5/4] lg:aspect-[4/5]">
+            <Photo photo={photo} fill priority sizes="(min-width: 1024px) 45vw, 100vw" />
+          </div>
+          <figure className="relative -mt-16 ml-4 max-w-[22rem] border border-border bg-white p-6 shadow-[0_24px_50px_-24px_rgb(23_43_58/45%)] sm:ml-8 lg:absolute lg:bottom-10 lg:-left-10 lg:mt-0 lg:ml-0">
+            <span aria-hidden="true" className="absolute -top-px -right-px size-10 bg-[linear-gradient(to_bottom_left,var(--color-bg)_50%,var(--color-border)_50%)]" />
+            <figcaption className="mb-2 text-xs font-semibold tracking-[0.18em] text-gold uppercase">{note.label}</figcaption>
+            <blockquote className="m-0 font-display text-xl leading-snug text-charcoal italic">{note.text}</blockquote>
+          </figure>
+        </div>
       </Container>
     </section>
   );

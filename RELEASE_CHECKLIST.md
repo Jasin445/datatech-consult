@@ -27,3 +27,5 @@ Development completion is not launch readiness. Tick only after verification.
 - [ ] Hero imagery decision (keep decorative graphic or supply licensed photography)
 - [ ] Approved statement of relationship to Datatechhub confirmed; NEXT_PUBLIC_PARENT_BRAND_URL set (or link intentionally omitted)
 - [ ] Dummy leadership profile removed from src/content/leadership/profiles.ts once real approved profiles exist (it is already excluded from production output)
+- [ ] V2 photography: stock photos (Unsplash License, registered in src/content/media/photos.ts) approved by the business, or replaced with commissioned photography
+- [ ] V2 copy: homepage and remaining page copy approved by the business (all V2 statements are proposals)

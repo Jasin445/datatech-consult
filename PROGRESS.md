@@ -1,11 +1,14 @@
-Current checkpoint: 15 of 15 (Final integration and QA)
-Status: ALL CHECKPOINTS COMPLETE FOR DEVELOPMENT. NOT LAUNCH-READY (business, legal and configuration inputs outstanding).
+Current phase: VERSION 2 (visual redesign). Current checkpoint: V2-3 (Services overview + service detail template)
+Status: V2-1 and V2-2 complete; paused for the owner to review the homepage direction before the remaining pages are rebuilt.
+V1: checkpoints 1-15 complete for development; not launch-ready (see below).
+
+V2 next action:
+- After the owner approves (or adjusts) the homepage direction: rebuild /services and the shared ServiceDetailPage with the V2 components (see STYLING.md "V2 design system").
 
 Completed checkpoints:
 - Checkpoints 1-15: complete (deliverables, files and validation per checkpoint in CHECKPOINTS.md)
 
-Next phase:
-- Version 2 adjustments (instructions to come from the business owner). Build on the existing design system, content model and QA scripts; keep the records below current.
+V2 plan and checkpoint table: IMPLEMENTATION_PLAN.md ("Version 2") and CHECKPOINTS.md.
 
 ## Report by area (master prompt section 11, production acceptance)
 Development functionality completed:
