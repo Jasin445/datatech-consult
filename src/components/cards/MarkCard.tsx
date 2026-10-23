@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { Mark } from "@/components/ui/Mark";
+import { ArrowRight, Mark } from "@/components/ui/Mark";
 
 /**
  * Centred editorial card for dark (charcoal) sections: star ornament, large serif title,
- * one short sentence and an optional italic serif call to action (the whole card becomes clickable).
+ * one short sentence and an optional call to action (the whole card becomes clickable).
  */
 export function MarkCard({
   title,
@@ -39,9 +39,10 @@ export function MarkCard({
       {href && cta && (
         <Link
           href={href}
-          className="mt-auto font-display text-2xl text-charcoal italic decoration-1 underline-offset-8 after:absolute after:inset-0 after:rounded-[1.25rem] hover:text-gold"
+          className="mt-auto inline-flex min-h-11 items-center gap-2 text-lg font-semibold underline-offset-[6px] after:absolute after:inset-0 after:rounded-[1.25rem]"
         >
           {cta}
+          <ArrowRight />
         </Link>
       )}
     </article>

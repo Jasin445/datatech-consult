@@ -9,7 +9,7 @@ export function ServiceFeature({ service, visual, index }: { service: Service; v
   return (
     <article className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
       <div className={`relative min-w-0 lg:col-span-6 ${flip ? "lg:order-2" : ""}`}>
-        <p aria-hidden="true" className="mb-3 font-display text-5xl leading-none text-gold italic">
+        <p aria-hidden="true" className="mb-3 font-sans text-5xl font-light leading-none text-gold tabular-nums">
           {String(index + 1).padStart(2, "0")}
         </p>
         {visual}

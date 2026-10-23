@@ -29,7 +29,7 @@ export function InsightsPreview({ items, tone = "surface" }: { items: readonly M
         ))}
       </ul>
       <p className="mt-8 mb-0">
-        <Link className="group inline-flex min-h-11 items-center gap-2 font-display text-xl text-charcoal italic" href="/insights">
+        <Link className="group inline-flex min-h-11 items-center gap-2 font-semibold" href="/insights">
           View all insights
           <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
         </Link>

@@ -56,7 +56,7 @@ export function MobileNav({ items, cta, services = [] }: { items: NavItem[]; cta
               {items.map((item, i) => (
                 <li key={item.href} className="border-b border-border">
                   <NavLink href={item.href} onClick={() => close(false)} className="w-full gap-4 py-3 font-display text-3xl">
-                    <span aria-hidden="true" className="font-display text-base text-gold italic">
+                    <span aria-hidden="true" className="text-xs font-semibold tracking-[0.16em] text-gold tabular-nums">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     {item.label}

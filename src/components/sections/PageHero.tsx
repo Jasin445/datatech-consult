@@ -3,6 +3,7 @@ import type { Photo as PhotoData } from "@/content/media/photos";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Photo } from "@/components/ui/Photo";
+import { Accent } from "@/components/ui/Accent";
 
 /**
  * V2 inner-page opening: breadcrumb, eyebrow, serif h1 (optional gold italic accent), lead,
@@ -43,7 +44,7 @@ export function PageHero({
               {accent && (
                 <>
                   {" "}
-                  <em className="text-gold">{accent}</em>
+                  <Accent>{accent}</Accent>
                 </>
               )}
             </h1>

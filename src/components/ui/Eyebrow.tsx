@@ -1,14 +1,14 @@
+import { Mark } from "./Mark";
+
 /**
- * Editorial label above a heading: optional folio number, a short gold rule and a label.
- * `onDark` switches to gold-soft for charcoal backgrounds (gold itself is too dark there).
+ * Section label: the readout mark followed by a short sentence-case label (and an optional number).
+ * Replaces the earlier gold rule + uppercase label. `onDark` switches to gold-soft for charcoal backgrounds.
  */
 export function Eyebrow({ folio, children, onDark = false, className = "" }: { folio?: string; children: string; onDark?: boolean; className?: string }) {
   return (
-    <p
-      className={`mb-5 flex items-center gap-3 text-sm font-semibold tracking-[0.18em] uppercase ${onDark ? "text-gold-soft" : "text-gold"} ${className}`}
-    >
-      {folio && <span className="font-display text-lg tracking-normal normal-case italic">{folio}</span>}
-      <span aria-hidden="true" className="h-px w-10 bg-current" />
+    <p className={`mb-5 flex items-center gap-2.5 text-[0.95rem] font-semibold ${onDark ? "text-gold-soft" : "text-gold"} ${className}`}>
+      <Mark variant="bullet" className="size-4 shrink-0" />
+      {folio && <span className="tabular-nums">{folio}</span>}
       <span>{children}</span>
     </p>
   );

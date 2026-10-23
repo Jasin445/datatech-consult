@@ -62,7 +62,7 @@ export default function PrivacyPage() {
               {tocItems.map((item, i) => (
                 <li key={item.id} className="border-t border-charcoal/15">
                   <a href={`#${item.id}`} className="flex min-h-11 items-baseline gap-3 py-2 text-charcoal no-underline hover:text-gold">
-                    <span aria-hidden="true" className="font-display text-lg text-gold italic">
+                    <span aria-hidden="true" className="text-xs font-semibold tracking-[0.16em] text-gold tabular-nums">
                       {num(i)}
                     </span>
                     <span className="underline decoration-1 underline-offset-4">{item.heading}</span>

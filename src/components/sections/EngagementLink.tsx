@@ -11,7 +11,7 @@ export function EngagementLink() {
           Three ways to start:{" "}
           {engagement.shapes.map((s, i) => (
             <span key={s.name}>
-              <em className="text-gold">{s.name}</em>
+              <span className="text-gold">{s.name}</span>
               {i < engagement.shapes.length - 1 ? ", " : "."}
             </span>
           ))}

@@ -11,7 +11,7 @@ export function CaseCover({ number, label, className = "" }: { number: string; l
         <span className="text-xs font-semibold tracking-[0.18em] uppercase">{label}</span>
         <Mark className="size-5" />
       </div>
-      <span className="font-display text-[clamp(5rem,4rem+4vw,8rem)] leading-[0.8] italic">{number}</span>
+      <span className="font-sans text-[clamp(5rem,4rem+4vw,8rem)] font-light leading-[0.8] tabular-nums">{number}</span>
       <span aria-hidden="true" className="absolute -right-10 -bottom-10 size-40 rounded-full border border-gold-soft/25" />
       <span aria-hidden="true" className="absolute -right-4 -bottom-4 size-24 rounded-full border border-gold-soft/25" />
     </div>

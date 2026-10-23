@@ -4,6 +4,7 @@ import { ButtonLink, buttonRowClass } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ArrowRight } from "@/components/ui/Mark";
+import { Accent } from "@/components/ui/Accent";
 
 // Next.js adds noindex to every 404 response itself.
 export const metadata: Metadata = { title: "Page not found" };
@@ -18,13 +19,13 @@ export default function NotFound() {
   return (
     <section aria-labelledby="page-heading" className="py-(--section-space)">
       <Container className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-        <p aria-hidden="true" className="mb-0 font-display text-[clamp(8rem,5rem+14vw,16rem)] leading-[0.8] text-gold italic lg:col-span-5">
+        <p aria-hidden="true" className="mb-0 font-sans text-[clamp(8rem,5rem+14vw,16rem)] font-light leading-[0.8] tracking-tight text-gold tabular-nums lg:col-span-5">
           404
         </p>
         <div className="lg:col-span-7">
           <Eyebrow>Page not found</Eyebrow>
           <h1 id="page-heading" className="mb-5">
-            This page isn’t in the report. <em className="text-gold">Let’s find the one you need.</em>
+            This page isn’t in the report. <Accent>Let’s find it.</Accent>
           </h1>
           <p className="mb-8 max-w-[52ch] text-lg text-muted">The link may be out of date, or the page may have moved.</p>
           <div className={buttonRowClass}>

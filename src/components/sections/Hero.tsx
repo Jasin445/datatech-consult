@@ -4,6 +4,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ArrowRight } from "@/components/ui/Mark";
+import { Accent } from "@/components/ui/Accent";
 
 type Cta = { label: string; href: string };
 
@@ -39,12 +40,12 @@ export function Hero({
             <Eyebrow>{eyebrow}</Eyebrow>
           </div>
           <h1 id="page-heading" className="mb-5 text-display sm:mb-7">
-            {headline} <em className="text-gold">{headlineAccent}</em>
+            {headline} <Accent>{headlineAccent}</Accent>
           </h1>
           <p className="mb-6 max-w-[52ch] text-muted sm:mb-9 sm:text-lg">{body}</p>
           <div className="flex animate-rise flex-wrap items-center gap-x-8 gap-y-4 [animation-delay:270ms]">
             <ButtonLink href={primary.href}>{primary.label}</ButtonLink>
-            <Link href={secondary.href} className="group inline-flex min-h-11 items-center gap-2 font-display text-xl text-charcoal italic">
+            <Link href={secondary.href} className="group inline-flex min-h-11 items-center gap-2 font-semibold">
               {secondary.label}
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>

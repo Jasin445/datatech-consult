@@ -15,7 +15,7 @@ export function UtilityBar() {
               {email}
             </a>
           )}
-          <span className="font-display text-sm text-gold-soft italic">{siteConfig.parentTagline}</span>
+          <span className="font-display text-sm text-gold-soft">{siteConfig.parentTagline}</span>
         </p>
       </Container>
     </aside>

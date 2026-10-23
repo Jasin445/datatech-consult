@@ -9,7 +9,7 @@ export function ReportSection({ id, folio, heading, lead, children }: { id: stri
     <section aria-labelledby={id} className="grid gap-6 border-t border-charcoal/15 py-12 lg:grid-cols-12 lg:gap-12 lg:py-16">
       <div className="lg:col-span-4">
         <div className="lg:sticky lg:top-[calc(var(--header-height)+2rem)]">
-          {folio && <p aria-hidden="true" className="mb-3 font-display text-4xl leading-none text-gold italic">{folio}</p>}
+          {folio && <p aria-hidden="true" className="mb-3 font-sans text-4xl font-light leading-none text-gold tabular-nums">{folio}</p>}
           <h2 id={id} className="mb-3 text-3xl">
             {heading}
           </h2>

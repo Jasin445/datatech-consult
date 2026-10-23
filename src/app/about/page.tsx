@@ -54,7 +54,7 @@ export default function AboutPage() {
             <h2 id="who-heading" className="mb-4 text-4xl">
               {overview.heading}
             </h2>
-            <p className="mb-8 font-display text-3xl leading-snug text-gold italic">{overview.statement}</p>
+            <p className="mb-8 font-display text-3xl leading-snug text-gold">{overview.statement}</p>
             <div className="max-w-[58ch] text-lg [&_p]:mb-5 [&_p:last-child]:mb-0">
               {overview.paragraphs.map((p) => (
                 <p key={p}>{p}</p>
@@ -78,7 +78,7 @@ export default function AboutPage() {
             <span aria-hidden="true" className="absolute -top-px -right-px size-16 bg-[linear-gradient(to_bottom_left,var(--color-surface)_50%,var(--color-border)_50%)]" />
             {/* Official logo, unchanged. */}
             <Image src="/logos/datatechhub-logo.png" alt="Datatechhub logo" width={849} height={294} className="h-auto w-full max-w-[18rem]" />
-            <p className="mb-0 text-center font-display text-2xl text-gold italic">{siteConfig.parentTagline}</p>
+            <p className="mb-0 text-center font-display text-2xl text-gold">{siteConfig.parentTagline}</p>
           </div>
           <div className="lg:col-span-7">
             <SectionHeading id="parent-heading" eyebrow={parent.eyebrow} heading={parent.heading} />
@@ -88,7 +88,7 @@ export default function AboutPage() {
               ))}
             </div>
             {parentUrl && (
-              <a href={parentUrl} rel="noopener noreferrer" className="inline-flex items-center gap-2 font-display text-xl italic">
+              <a href={parentUrl} rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 font-semibold">
                 Visit {siteConfig.parentBrand}
                 <ArrowRight />
               </a>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { getParentBrandUrl, getPublicContactEmail } from "@/lib/env";
 import { ctas, services, siteConfig } from "@/lib/site";
+import { Accent } from "@/components/ui/Accent";
 
 /** Only verified details appear here. Unset env values are omitted, never replaced with invented ones. */
 export function SiteFooter() {
@@ -13,7 +14,7 @@ export function SiteFooter() {
       <Container>
         <div className="flex flex-col gap-8 border-b border-white/15 py-16 lg:flex-row lg:items-end lg:justify-between lg:py-20">
           <p className="mb-0 max-w-[16ch] font-display text-4xl text-white">
-            Empowering <span className="text-gold-soft italic">through data.</span>
+            Empowering <Accent onDark>through data.</Accent>
           </p>
         </div>
 

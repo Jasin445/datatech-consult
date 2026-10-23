@@ -318,10 +318,15 @@ Commit: `fix(f9): sophisticated two-tier header and services mega-menu`.
 | # | Title | Status |
 |---|-------|--------|
 | V4-1 | Readout mark replaces the star | complete |
-| V4-2 | Motif pass: labels, headline accent, links | not started |
+| V4-2 | Motif pass: labels, headline accent, links | complete |
 | V4-3 | Copy pass and guard | not started |
 | V4-4 | Imagery and photo-plus-mockup compositions | not started |
 | V4-5 | QA, Lighthouse, docs | not started |
 
 ## V4-1: Readout mark (complete, 2026-10-23)
 New project symbol `Mark` (src/components/ui/Mark.tsx): a chart corner with one plotted point and faint guide lines (reading a value off a chart); `variant="bullet"` (no guides, heavier strokes) for list sizes. Replaced the four-point star in 30 files; `Ornament` removed, `OrnamentCard` renamed `MarkCard`; star-specific rotate-on-hover removed. Placeholder favicon and touch icon now draw the readout mark. Validation: typecheck, lint, vitest 164/164; production build; card, bullet and icon screenshots reviewed. Commit: `v4-1: readout mark replaces the star`.
+
+## V4-2: Motif pass (complete, 2026-10-23)
+Section labels: gold rule + uppercase tracking replaced by the readout mark + sentence-case label (Eyebrow, mega-menu). Headline accents: gold italic words replaced by the measurement bracket (`Accent`: upright words with a fine gold dimension line ticked at both ends) in the hero, page heroes, statement bands, contact, 404, error and footer slogan. Numerals: italic serif replaced by light tabular sans "readout" figures (large) or small semibold tabular counters (labels) across process steps, contents lists, report sections, cards, mosaic, menus, case covers, 404. Links: italic serif links replaced by sans semibold with an arrow (hero, closing cards, insights preview, contact band, about). Italics now only for genuine quotations (field note, problem quotes). Process markers: rotated diamonds replaced by plotted points.
+Validation: typecheck, lint, vitest 164/164; production build; qa:a11y on 5 routes passes; hero screenshot reviewed.
+Commit: `v4-2: measurement bracket, readout numerals, mark labels`.

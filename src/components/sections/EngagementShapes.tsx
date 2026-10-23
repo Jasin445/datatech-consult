@@ -17,7 +17,7 @@ export function EngagementShapes({ id = "engagement-heading", tone = "surface" }
         {engagement.shapes.map((shape, i) => (
           <li key={shape.name} className="relative flex">
             <article className={`flex flex-1 flex-col border border-border bg-white p-7 lg:p-8 ${i > 0 ? "lg:border-l-0" : ""}`}>
-              <p className="mb-3 font-display text-lg text-gold italic">{String(i + 1).padStart(2, "0")}</p>
+              <p className="mb-3 text-xs font-semibold tracking-[0.16em] text-gold tabular-nums">{String(i + 1).padStart(2, "0")}</p>
               <h3 className="mb-3 text-3xl">{shape.name}</h3>
               <p className="mb-4 border-l-2 border-gold pl-3 text-sm font-semibold text-charcoal">Best when: {shape.bestWhen}</p>
               <p className="mb-4 text-muted">{shape.text}</p>

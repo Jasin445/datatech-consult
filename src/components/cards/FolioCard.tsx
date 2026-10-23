@@ -46,7 +46,7 @@ export function FolioCard({
       }`}
     >
       <span aria-hidden="true" className={`pointer-events-none absolute -top-px -right-px size-14 lg:size-18 ${foldClass[tone]}`} />
-      {folio && <p className={`mb-4 font-display text-xl italic ${featured ? "text-charcoal" : "text-gold"}`}>{folio}</p>}
+      {folio && <p className={`mb-4 text-xs font-semibold tracking-[0.16em] tabular-nums ${featured ? "text-charcoal" : "text-gold"}`}>{folio}</p>}
       <Heading
         className={
           titleStyle === "serif" ? "mb-3 text-3xl leading-tight" : "mb-4 font-sans text-2xl leading-tight font-medium tracking-[0.04em] uppercase font-stretch-condensed"

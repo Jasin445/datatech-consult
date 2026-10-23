@@ -109,3 +109,10 @@ Other tokens kept: font stack (Segoe UI system stack, no network fonts), type sc
 - Service mockups sit full width below the hero, not squeezed into a half-width hero column.
 - Capability cards use `FolioCard titleStyle="serif"`; condensed capitals are reserved for short reference-style labels.
 - Measure page height when adding sections (homepage target: about 7 sections).
+
+## V4 rules (supersede earlier guidance where they differ)
+- Symbol: the readout mark (`ui/Mark`). Never the four-point star. `variant="bullet"` at list sizes.
+- Section labels: `Eyebrow` (mark + sentence-case label). No leading rules, no uppercase tracking on section labels.
+- Accent words: `Accent` (measurement bracket). No gold italic accent words. Keep accents short (it wraps as one unit).
+- Numbers: light tabular sans (big) or small semibold tabular (labels). No italic serif numerals.
+- Italics only for real quotations. Links are sans semibold with an arrow, never italic serif.

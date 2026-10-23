@@ -5,7 +5,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Mark } from "@/components/ui/Mark";
 import { Photo } from "@/components/ui/Photo";
 
-/** Problem told as a short story beside a tall photograph, ending on a turn line in italic serif. */
+/** Problem told as a short story beside a tall photograph, ending on a turn line. */
 export function ProblemStory({
   folio,
   eyebrow,
@@ -39,7 +39,7 @@ export function ProblemStory({
             )
           )}
           {folio && !visual && (
-            <p aria-hidden="true" className="absolute -bottom-6 left-6 mb-0 font-display text-[7rem] leading-none text-gold/25 italic select-none lg:-left-6">
+            <p aria-hidden="true" className="absolute -bottom-6 left-6 mb-0 font-sans text-[7rem] font-light leading-none text-gold/25 tabular-nums select-none lg:-left-6">
               {folio}
             </p>
           )}
@@ -54,7 +54,7 @@ export function ProblemStory({
               <p key={p}>{p}</p>
             ))}
           </div>
-          <p className="mt-8 mb-0 border-l-2 border-gold pl-5 font-display text-3xl text-charcoal italic">{turn}</p>
+          <p className="mt-8 mb-0 border-l-2 border-gold pl-5 font-display text-3xl text-charcoal">{turn}</p>
           {tags && tags.length > 0 && (
             <ul className="mt-8 flex flex-wrap gap-2" aria-label="Common problems">
               {tags.map((t) => (

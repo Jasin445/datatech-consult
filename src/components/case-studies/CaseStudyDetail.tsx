@@ -113,7 +113,7 @@ export function CaseStudyDetail({ status, study, index = 0 }: { status: ContentS
         {blocks.map((block, i) =>
           block.wide ? (
             <section key={block.key} aria-labelledby={`${p}-${block.key}`} className="border-t border-charcoal/15 py-12 lg:py-16">
-              <p aria-hidden="true" className="mb-3 font-display text-4xl leading-none text-gold italic">
+              <p aria-hidden="true" className="mb-3 font-sans text-4xl font-light leading-none text-gold tabular-nums">
                 {String(i + 1).padStart(2, "0")}
               </p>
               <h2 id={`${p}-${block.key}`} className="mb-10 text-3xl">

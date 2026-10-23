@@ -13,6 +13,7 @@ import { getContactAvailability } from "@/lib/contact/availability";
 import { getConversionPaths } from "@/lib/conversion-server";
 import { pageMetadata } from "@/lib/seo/page";
 import { ctas } from "@/lib/site";
+import { Accent } from "@/components/ui/Accent";
 
 export const metadata: Metadata = pageMetadata({
   title: contactPage.title,
@@ -37,7 +38,7 @@ export default function ContactPage() {
               <Eyebrow>{contactPage.eyebrow}</Eyebrow>
             </div>
             <h1 id="page-heading" className="mb-6 text-[clamp(2.6rem,1.6rem+3.6vw,4.5rem)] leading-[1]">
-              {contactPage.heading} <em className="text-gold">{contactPage.accent}</em>
+              {contactPage.heading} <Accent>{contactPage.accent}</Accent>
             </h1>
             <p className="mb-10 text-lg text-muted">{contactPage.lead}</p>
 
@@ -47,7 +48,7 @@ export default function ContactPage() {
             <ol aria-labelledby="next-heading" className="mb-10 border-t border-charcoal/15">
               {contactPage.next.steps.map((step, i) => (
                 <li key={step} className="grid grid-cols-[2.75rem_1fr] gap-x-3 border-b border-charcoal/15 py-4">
-                  <span aria-hidden="true" className="font-display text-3xl leading-none text-gold italic">
+                  <span aria-hidden="true" className="font-sans text-3xl font-light leading-none text-gold tabular-nums">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span>{step}</span>
@@ -112,7 +113,7 @@ export default function ContactPage() {
               <Mark className="size-8 shrink-0 text-gold-soft" />
               {contactPage.talk.text}
             </p>
-            <Link href={ctas.consultation.href} className="font-display text-2xl text-white italic decoration-1 underline-offset-8 hover:text-gold-soft">
+            <Link href={ctas.consultation.href} className="inline-flex min-h-11 items-center text-lg font-semibold text-white underline-offset-[6px] hover:text-gold-soft">
               {ctas.consultation.label}
             </Link>
           </Container>
