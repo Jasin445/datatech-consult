@@ -12,7 +12,7 @@ import type { NavItem } from "@/lib/site";
  * Escape closes it and returns focus to the toggle. The menu closes on navigation because
  * open state is tied to the pathname it was opened on.
  */
-export function MobileNav({ items, cta }: { items: NavItem[]; cta: NavItem }) {
+export function MobileNav({ items, cta, services = [] }: { items: NavItem[]; cta: NavItem; services?: NavItem[] }) {
   const pathname = usePathname();
   const [openPath, setOpenPath] = useState<string | null>(null);
   const open = openPath === pathname;
@@ -58,6 +58,17 @@ export function MobileNav({ items, cta }: { items: NavItem[]; cta: NavItem }) {
                     </span>
                     {item.label}
                   </NavLink>
+                  {item.href === "/services" && services.length > 0 && (
+                    <ul className="mb-3 ml-9 grid gap-0.5 border-l border-gold/40 pl-4">
+                      {services.map((s) => (
+                        <li key={s.href}>
+                          <NavLink href={s.href} onClick={() => close(false)} className="w-full py-1 text-base">
+                            {s.label}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
               ))}
             </ul>

@@ -201,7 +201,7 @@ Commit: `v2-7: imagery and copy pass, mobile menu, final v2 qa`.
 |---|-------|--------|
 | V3-1 | Data visual system | complete |
 | V3-2 | CTA vocabulary + launch conversion safeguards | complete |
-| V3-3 | Navigation (services menu, footer contact) | not started |
+| V3-3 | Navigation (services menu, footer contact) | complete |
 | V3-4 | Homepage rework | not started |
 | V3-5 | Service pages shortened, per-service visuals, less hedging | not started |
 | V3-6 | Engagement and pricing signals | not started |
@@ -220,3 +220,8 @@ Delivered: `ctas` in src/lib/site.ts is the single source of the two action labe
 Tests: tests/cta.test.ts (exact two actions; no alternative labels anywhere in src; conversion path and warning logic).
 Validation: typecheck, lint, vitest 156/156; production build in the scratchpad copy: nothing configured -> 4 [launch] warnings incl. LAUNCH BLOCKER, contact and booking say "check back soon" with no circular links; with only a public email -> both pages direct visitors to the email (duplicate email line on /contact found and fixed).
 Commit: `v3-2: single cta vocabulary and launch conversion safeguards`.
+
+## V3-3: Navigation (complete, 2026-10-23)
+Delivered: desktop `ServicesMenu` (client disclosure: button with aria-expanded/aria-controls; panel with the four services, one-line summaries and "All services and how they fit together"; Escape closes and returns focus; closes on outside click, focus leaving and navigation). Mobile menu lists the four services as an indented sub-list under Services. Footer already shows the public email when configured (build-time NEXT_PUBLIC_CONTACT_EMAIL, documented in V3-2).
+Validation: typecheck, lint, vitest 156/156; browser test on the owner's dev server: Enter opens (5 links), Tab enters the panel, Escape closes with focus returned, outside click closes, choosing a service navigates and closes; desktop panel and mobile sub-list screenshots reviewed.
+Commit: `v3-3: services menu in header and mobile nav`.
