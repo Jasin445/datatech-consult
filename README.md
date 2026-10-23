@@ -25,5 +25,8 @@ Tailwind CSS v4 utilities only. Rules, colour tokens and class mapping are in `S
 ## Content management
 Content lives in code with a status of `dummy`, `draft` or `approved` (`src/lib/content/status.ts`). Production shows `approved` only. Never mark content approved without business verification.
 
+## Privacy gate
+In production the contact form is disabled until `src/content/privacy.ts` has status `"approved"`. Approving it requires every business fact in that file; otherwise the build fails with the missing names. Development always shows the form so it can be tested.
+
 ## Resuming work
 Read `PROGRESS.md`, `STYLING.md`, then `CHECKPOINTS.md` and `IMPLEMENTATION_PLAN.md`. The original project brief is in `MASTER_PROMPT.md`. Check `git status` and `git log`, run `npm run typecheck && npm test`, then continue from the first incomplete checkpoint. If the records and files disagree, trust the files and update the records.

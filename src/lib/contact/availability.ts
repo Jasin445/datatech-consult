@@ -1,5 +1,6 @@
 import "server-only";
 import { getEmailConfig } from "@/lib/env";
+import { mayCollectPersonalData } from "@/lib/content/privacy";
 import { createEmailProvider, SUPPORTED_EMAIL_PROVIDERS, type EmailProvider } from "@/lib/email";
 
 export type ContactAvailability =
@@ -8,6 +9,9 @@ export type ContactAvailability =
 
 /** Single source of truth for whether the enquiry form can honestly accept submissions. */
 export function getContactAvailability(): ContactAvailability {
+  // Production must not collect personal data under an unreviewed privacy notice (src/content/privacy.ts).
+  if (!mayCollectPersonalData())
+    return { available: false, devDetail: "The privacy notice in src/content/privacy.ts is not approved, so production keeps the form disabled." };
   const result = getEmailConfig();
   if (!result.configured) return { available: false, devDetail: `Missing or invalid: ${result.missing.join(", ")}.` };
   const { EMAIL_PROVIDER, EMAIL_API_KEY, CONTACT_SENDER_EMAIL, CONTACT_RECIPIENT_EMAIL } = result.config;

@@ -1,13 +1,14 @@
-Current checkpoint: 13 (Privacy)
+Current checkpoint: 14 (SEO and site discovery)
 Status: NOT STARTED
 
 Completed checkpoints:
 - Checkpoints 1-10: complete (see CHECKPOINTS.md for deliverables and validation)
 - Checkpoint 11: complete (verified 2026-10-23 on a networked machine)
 - Checkpoint 12: complete (booking page; validation in CHECKPOINTS.md)
+- Checkpoint 13: complete (privacy notice draft + production collection gate)
 
 Current work:
-- Checkpoint 13: /privacy, describing only practices the site actually has.
+- Checkpoint 14: page metadata, canonical URLs from NEXT_PUBLIC_SITE_URL, sitemap.ts, robots.ts, Open Graph, approved-only discovery.
 
 Validation (last run, 2026-10-23, Checkpoint 11):
 - npm ci, typecheck, lint (0 problems), vitest 87/87, production build: pass.
@@ -25,7 +26,7 @@ Not verified:
 - Contrast with a dedicated tool; touch-device behaviour; screen-reader pass.
 
 Outstanding issues:
-- /privacy returns 404 until Checkpoint 13 (linked from the footer and the contact form).
+- Privacy notice is a draft: production contact form stays disabled until business facts are supplied, the notice is legally reviewed and approved.
 - Booking meeting length and format are unconfirmed (src/content/booking.ts).
 - No canonical URL, sitemap or robots yet (Checkpoint 14).
 - All marketing copy is proposed and needs business review.
@@ -34,4 +35,4 @@ Configuration blockers:
 - No email provider credentials, booking URL, site URL, public contact email or parent-brand URL configured.
 
 Next action:
-- Build src/app/privacy/page.tsx (Checkpoint 13).
+- Add src/lib/seo and src/app/sitemap.ts / robots.ts (Checkpoint 14).

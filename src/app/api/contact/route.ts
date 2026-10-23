@@ -16,7 +16,8 @@ function clientKey(request: Request): string {
 
 export async function POST(request: Request) {
   const availability = getContactAvailability();
-  if (!availability.available && process.env.NODE_ENV !== "production") console.warn(`[contact] ${availability.devDetail}`);
+  // Operator-facing reason (variable names or the privacy gate only, never values or visitor data).
+  if (!availability.available) console.warn(`[contact] unavailable: ${availability.devDetail}`);
 
   // Cap the body before reading it fully when the client declares a length.
   const declared = Number(request.headers.get("content-length") ?? "0");

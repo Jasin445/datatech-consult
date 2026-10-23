@@ -16,7 +16,7 @@
 | 10 | Insights | complete |
 | 11 | Contact and enquiry system | complete |
 | 12 | Consultation booking | complete |
-| 13 | Privacy | not started |
+| 13 | Privacy | complete |
 | 14 | SEO and site discovery | not started |
 | 15 | Final integration and QA | not started |
 
@@ -97,3 +97,11 @@ Decision: a provider link, not an iframe embed. No provider is chosen yet, and e
 Files: src/app/book-consultation/page.tsx; src/content/booking.ts; src/lib/booking.ts (HTTPS-only link parsing, provider host); src/lib/env.ts (getBookingUrl uses parseBookingUrl); tests/booking.test.ts (6 tests).
 Validation: typecheck, lint, vitest 93/93, build pass. Production server: unset URL -> unconfigured state; HTTPS URL -> link with rel="noopener noreferrer"; http:// URL rejected (unconfigured state). Chrome at 320/390/820/1280/1680: no overflow, one h1, no console errors.
 Commit: `checkpoint-12: implement consultation booking page`.
+
+## Checkpoint 13: Privacy (complete, 2026-10-23)
+Delivered: /privacy (force-dynamic) rendering a typed, status-managed notice written from the site's actual behaviour: form fields, in-memory IP for rate limiting (10 min, never logged), PII-free logs, hosting-provider logs, use, basis, processors (Resend, scheduling provider), no cookies/analytics/third-party assets, no database, security, rights (NDPA 2023 / NDPC, to be legally checked), contact. Contents sidebar with anchor links. Draft banner shown in all environments while unapproved; noindex while draft; dev notice lists missing facts.
+Safeguards: business facts (controller name, address, privacy contact, retention, hosting provider, effective date) are null, never invented; approving with any missing fact or a bad date fails the build naming them; production keeps the enquiry form disabled until the notice is approved (mayCollectPersonalData in src/lib/content/privacy.ts, used by src/lib/contact/availability.ts); the API logs the reason for operators.
+Files: src/content/privacy.ts; src/lib/content/privacy.ts; src/app/privacy/page.tsx; src/lib/contact/availability.ts; src/app/api/contact/route.ts (operator log); tests/privacy.test.ts (7 tests); .env.example, README.md.
+Validation: typecheck, lint, vitest 100/100, build pass. Production: /privacy 200 with noindex and draft banner, no dev text; with email env set the contact form is withheld and the API returns 503 with the privacy reason logged. Dev: form shown, missing-facts notice shown. Marking the notice approved FAILED the build listing all six missing facts; restored. Chrome at 5 widths: no overflow, one h1.
+Remaining (business/legal): supply facts, legal review against the NDPA 2023 and any other applicable law, then approve.
+Commit: `checkpoint-13: implement privacy notice and collection gate`.
