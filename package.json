@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run",
+    "test": "vitest run", 
     "qa:responsive": "node scripts/qa/responsive.mjs http://localhost:3000 \"/,/services,/services/data-analytics,/services/data-infrastructure,/services/ai-automation,/services/business-technology-consulting,/about,/contact,/book-consultation,/privacy\"",
     "qa:a11y": "node scripts/qa/a11y-crawl.mjs http://localhost:3000 \"/,/services,/services/data-analytics,/services/data-infrastructure,/services/ai-automation,/services/business-technology-consulting,/about,/contact,/book-consultation,/privacy\""
   },
