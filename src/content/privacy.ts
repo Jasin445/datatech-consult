@@ -98,7 +98,7 @@ export const privacyNotice: ManagedContent<PrivacyNotice> = {
         heading: "Service providers who handle your information",
         paragraphs: [
           "Enquiries are delivered by email using Resend, an email delivery service, to the Datatechhub Consulting inbox. Resend processes the enquiry on our behalf to deliver it. Its servers may be located outside Nigeria.",
-          "If you book a consultation, you do so on our scheduling provider's website, not on this site. The information you enter there is handled by that provider under its own privacy notice, and is shared with us so we can hold the meeting.",
+          "Consultations are booked through our scheduling provider, Google Calendar. The booking calendar may appear inside our booking page or open on Google's own site. Either way, the details you enter are collected by Google under its own privacy policy and shared with us so we can hold the meeting.",
           "We do not sell your information or share it for advertising.",
         ],
       },
@@ -106,7 +106,8 @@ export const privacyNotice: ManagedContent<PrivacyNotice> = {
         id: "cookies",
         heading: "Cookies and analytics",
         paragraphs: [
-          "This website does not set cookies and does not use analytics, advertising or tracking tools. It does not load fonts or scripts from third-party services. If this changes, we will update this notice first.",
+          "This website does not set cookies and does not use analytics, advertising or tracking tools. Apart from the booking calendar described below, it does not load fonts or scripts from third-party services. If this changes, we will update this notice first.",
+          "The booking calendar on our booking page is provided by Google. When it loads, Google may set its own cookies and receive technical information such as your IP address, under Google's privacy policy.",
         ],
       },
       {

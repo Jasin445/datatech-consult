@@ -11,9 +11,10 @@ import { Photo } from "@/components/ui/Photo";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { bookingPage } from "@/content/booking";
-import { bookingProviderHost } from "@/lib/booking";
+import { bookingEmbed, bookingProviderHost } from "@/lib/booking";
+import { BookingEmbed } from "@/components/forms/BookingEmbed";
 import { getConversionPaths } from "@/lib/conversion-server";
-import { getBookingUrl } from "@/lib/env";
+import { getBookingUrl, getSiteUrl } from "@/lib/env";
 import { pageMetadata } from "@/lib/seo/page";
 import { ctas } from "@/lib/site";
 
@@ -28,6 +29,9 @@ export const dynamic = "force-dynamic";
 
 export default function BookConsultationPage() {
   const bookingUrl = getBookingUrl();
+  const siteHost = getSiteUrl() ? new URL(getSiteUrl()!).hostname : undefined;
+  const embed = bookingEmbed(bookingUrl, siteHost);
+  const isGoogleShortLink = bookingUrl ? new URL(bookingUrl).hostname === "calendar.app.google" : false;
   const paths = getConversionPaths();
   const publicEmail = paths.email;
   const { duration, format } = bookingPage.details;
@@ -76,16 +80,33 @@ export default function BookConsultationPage() {
                     Bookings are handled by our scheduling provider, which shows available times in your time zone and sends the confirmation. Where the provider
                     supports it, the confirmation explains how to reschedule or cancel.
                   </p>
-                  <div className={buttonRowClass}>
-                    <ButtonLink href={bookingUrl} target="_blank" rel="noopener noreferrer">
-                      Open the booking page
-                      <span className="sr-only"> (opens {bookingProviderHost(bookingUrl)} in a new tab)</span>
-                      <ArrowRight />
-                    </ButtonLink>
-                  </div>
-                  <p className="mt-3 mb-0 text-sm text-muted" aria-hidden="true">
-                    Opens {bookingProviderHost(bookingUrl)} in a new tab.
-                  </p>
+                  {embed ? (
+                    <div className={buttonRowClass}>
+                      <ButtonLink href="#pick-a-time" size="lg">
+                        Choose a time
+                        <ArrowRight />
+                      </ButtonLink>
+                    </div>
+                  ) : (
+                    <>
+                      {isGoogleShortLink && (
+                        <DevNotice>
+                          This Google short link cannot be embedded. In Google Calendar open the appointment schedule, choose Share, then Website embed, and use the
+                          address inside the iframe code (calendar.google.com/calendar/appointments/schedules/...) as NEXT_PUBLIC_BOOKING_URL.
+                        </DevNotice>
+                      )}
+                      <div className={buttonRowClass}>
+                        <ButtonLink href={bookingUrl} target="_blank" rel="noopener noreferrer">
+                          Open the booking page
+                          <span className="sr-only"> (opens {bookingProviderHost(bookingUrl)} in a new tab)</span>
+                          <ArrowRight />
+                        </ButtonLink>
+                      </div>
+                      <p className="mt-3 mb-0 text-sm text-muted" aria-hidden="true">
+                        Opens {bookingProviderHost(bookingUrl)} in a new tab.
+                      </p>
+                    </>
+                  )}
                 </>
               ) : (
                 <div className="flex flex-col gap-4">
@@ -121,6 +142,15 @@ export default function BookConsultationPage() {
           </div>
         </Container>
       </section>
+
+      {embed && bookingUrl && (
+        <section id="pick-a-time" aria-labelledby="pick-heading" className="scroll-mt-[calc(var(--header-height)+1rem)] py-(--section-space)">
+          <div className="mx-auto w-full max-w-[calc(64rem+2*var(--gutter))] px-(--gutter)">
+            <SectionHeading id="pick-heading" eyebrow="Book online" heading="Choose a time that suits you" lead="Times are shown in your own time zone. You will get a confirmation by email." />
+            <BookingEmbed embed={embed} bookingUrl={bookingUrl} />
+          </div>
+        </section>
+      )}
 
       <Section tone="charcoal" labelledBy="purpose-heading">
         <SectionHeading id="purpose-heading" eyebrow={bookingPage.purpose.eyebrow} heading={bookingPage.purpose.heading} onDark align="center" />
