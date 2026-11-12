@@ -17,7 +17,7 @@ export function WorkShowcase({ items }: { items: readonly ShowcaseItem[] }) {
           <div className="lg:col-span-5">
             <p className="mb-3 text-sm font-semibold text-gold">{item.kicker}</p>
             <h3 className="mb-4 text-4xl">{item.title}</h3>
-            <p className="mb-6 text-lg text-muted">{item.text}</p>
+            <p className="mobile-detail mb-6 text-lg text-muted">{item.text}</p>
             <Link href={item.href} className="group inline-flex min-h-11 items-center gap-2 font-semibold">
               {item.linkLabel}
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />

@@ -23,8 +23,27 @@ export function Photo({
 }) {
   const alt = decorative ? "" : photo.alt;
   return fill ? (
-    <Image src={photo.src} alt={alt} fill sizes={sizes} priority={priority} className={`object-cover ${className}`} />
+    <Image
+      src={photo.src}
+      alt={alt}
+      fill
+      sizes={sizes}
+      preload={priority}
+      loading={priority ? undefined : "lazy"}
+      decoding="async"
+      className={`object-cover ${className}`}
+    />
   ) : (
-    <Image src={photo.src} alt={alt} width={photo.width} height={photo.height} sizes={sizes} priority={priority} className={`h-auto w-full object-cover ${className}`} />
+    <Image
+      src={photo.src}
+      alt={alt}
+      width={photo.width}
+      height={photo.height}
+      sizes={sizes}
+      preload={priority}
+      loading={priority ? undefined : "lazy"}
+      decoding="async"
+      className={`h-auto w-full object-cover ${className}`}
+    />
   );
 }

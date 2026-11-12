@@ -21,7 +21,7 @@ export function WorkingWithUs({ eyebrow, heading, items }: { eyebrow: string; he
                 <Mark variant="bullet" className="mt-[0.3em] size-4 shrink-0 text-gold" />
                 {item.title}
               </h3>
-              <p className="mb-0 text-muted">{item.text}</p>
+              <p className="mobile-detail mb-0 text-muted">{item.text}</p>
             </li>
           ))}
         </ul>

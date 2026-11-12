@@ -32,7 +32,7 @@ export function InsightCard({ status, insight }: { status: ContentStatus; insigh
             {insight.title}
           </Link>
         </h3>
-        <p className="mb-0 text-muted">{insight.summary}</p>
+        <p className="mobile-detail mb-0 text-muted">{insight.summary}</p>
       </div>
     </article>
   );

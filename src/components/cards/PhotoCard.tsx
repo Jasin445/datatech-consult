@@ -39,7 +39,7 @@ export function PhotoCard({
         </div>
       </div>
       <div className="flex flex-1 items-start justify-between gap-4 border-b border-charcoal/15 py-5">
-        <p className="mb-0 text-muted">{text}</p>
+        <p className="mobile-detail mb-0 text-muted">{text}</p>
         <ArrowRight className="mt-1 size-5 shrink-0 text-gold transition-transform duration-300 group-hover:translate-x-1" />
       </div>
     </article>

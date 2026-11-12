@@ -59,16 +59,16 @@ export function ProblemStory({
           <h2 id="problem-heading" className="mb-8 text-4xl">
             {heading}
           </h2>
-          <div className="max-w-[60ch] text-lg [&_p]:mb-5">
-            {paragraphs.map((p) => (
-              <p key={p}>{p}</p>
+          <div className="max-w-[60ch] text-base sm:text-lg [&_p]:mb-4 sm:[&_p]:mb-5">
+            {paragraphs.map((p, index) => (
+              <p key={p} className={index > 0 ? "mobile-detail" : undefined}>{p}</p>
             ))}
           </div>
-          <p className="mt-8 mb-0 border-l-2 border-gold pl-5 font-display text-3xl text-charcoal">{turn}</p>
+          <p className="mt-6 mb-0 border-l-2 border-gold pl-4 font-display text-2xl text-charcoal sm:mt-8 sm:pl-5 sm:text-3xl">{turn}</p>
           {tags && tags.length > 0 && (
             <ul className="mt-8 flex flex-wrap gap-2" aria-label="Common problems">
-              {tags.map((t) => (
-                <li key={t} className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-sm text-charcoal">
+              {tags.map((t, index) => (
+                <li key={t} className={`inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-sm text-charcoal ${index > 2 ? "mobile-detail" : ""}`}>
                   <Mark variant="bullet" className="size-2.5 text-gold" />
                   {t}
                 </li>

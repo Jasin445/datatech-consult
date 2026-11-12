@@ -61,16 +61,9 @@
   --shadow-card: 0 1px 2px rgb(23 43 58 / 8%), 0 4px 12px rgb(23 43 58 / 6%);
 
   /* V2 motion: one staggered entrance on page load (disabled by the reduced-motion rule below). */
-  --animate-rise: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-rise: rise 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   @keyframes rise {
-    from { opacity: 0; transform: translateY(18px); }
-    to { opacity: 1; transform: none; }
-  }
-
-  /* Page entrance: brief slide up. Never starts fully transparent, so text still counts as painted (LCP). */
-  --animate-page-in: page-in 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) backwards; /* no transform left behind (keeps sticky/fixed children normal) */
-  @keyframes page-in {
-    from { opacity: 0.4; transform: translateY(14px); }
+    from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: none; }
   }
 
@@ -85,6 +78,36 @@
     from { opacity: 1; transform: none; }
     to { opacity: 0; transform: translateY(-10px); }
   }
+}
+
+/* Soft upward reveals for sections entering the viewport. Content stays visible
+   without JavaScript and when reduced motion is requested. */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 560ms cubic-bezier(0.2, 0.7, 0.2, 1), transform 640ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: opacity, transform;
+}
+.section-reveal.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+  will-change: auto;
+}
+
+/* Route content lifts in gently while the shared header and footer remain still. */
+::view-transition { pointer-events: none; }
+::view-transition-old(.page-exit) {
+  animation: page-leave 150ms ease-in both;
+}
+::view-transition-new(.page-enter) {
+  animation: page-arrive 380ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes page-arrive {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes page-leave {
+  to { opacity: 0; transform: translateY(-6px); }
 }
 
 /*
@@ -103,6 +126,14 @@
   --nav-height: 5.25rem; /* main navigation bar */
   --utility-height: 0rem; /* top banner (shown from md) */
   --header-height: calc(var(--nav-height) + var(--utility-height)); /* whole sticky header: offsets, scroll padding */
+}
+
+/* Small-screen reading defaults: keep long marketing details for larger layouts,
+   while preserving every heading, action, and primary explanation on phones. */
+.mobile-detail { display: none; }
+@media (min-width: 640px) {
+  .mobile-detail { display: block; }
+  .mobile-detail.inline-flex { display: inline-flex; }
 }
 @media (min-width: 768px) {
   :root {
@@ -140,6 +171,11 @@
     background: var(--color-bg);
   }
 
+  ::selection { background: color-mix(in srgb, var(--color-secondary) 24%, white); color: var(--color-charcoal); }
+
+  /* Prevent media and embedded widgets from widening pages. */
+  img, video, iframe { max-width: 100%; }
+
   h1, h2, h3, h4 {
     line-height: 1.08;
     margin: 0 0 1rem;
@@ -171,6 +207,28 @@
     outline-offset: 3px;
     border-radius: 2px;
   }
+
+  input, select, textarea {
+    max-width: 100%;
+    border-radius: var(--radius-sm);
+  }
+  input:not([type="checkbox"]):not([type="radio"]), select, textarea { font: inherit; }
+  textarea { resize: vertical; }
+}
+
+@media (max-width: 639px) {
+  :root {
+    --gutter: 1.125rem;
+    --section-space: 2.75rem;
+  }
+  body { line-height: 1.55; }
+  h1 { line-height: 1.02; }
+  h2 { line-height: 1.06; }
+  .text-lg { font-size: 1.0625rem; line-height: 1.55; }
+}
+
+@media (hover: none) {
+  a:hover, button:hover { text-decoration-thickness: 1px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -180,4 +238,6 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+  .section-reveal, .section-reveal.section-visible { opacity: 1; transform: none; transition: none; }
+  ::view-transition-old(.page-exit), ::view-transition-new(.page-enter) { animation-duration: 0s !important; }
 }

@@ -39,7 +39,7 @@ export function PageHero({
             <div>
               <Eyebrow>{eyebrow}</Eyebrow>
             </div>
-            <h1 id="page-heading" className="mb-6 text-[clamp(2.6rem,1.6rem+4vw,5rem)] leading-[1]">
+            <h1 id="page-heading" className="mb-5 text-display sm:mb-6">
               {heading}
               {accent && (
                 <>

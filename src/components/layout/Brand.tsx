@@ -14,7 +14,7 @@ export function Brand() {
         alt=""
         width={849}
         height={294}
-        priority
+        preload
         sizes="(min-width: 768px) 162px, 128px"
         className="h-9 w-auto min-[480px]:h-11 md:h-14"
       />
