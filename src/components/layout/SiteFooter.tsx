@@ -10,10 +10,10 @@ export function SiteFooter() {
   const parentUrl = getParentBrandUrl();
 
   return (
-    <footer className="bg-charcoal text-footer-text [&_a]:text-white [&_a:hover]:text-gold-soft [&_li_a]:no-underline [&_li_a:hover]:underline">
+    <footer className="border-t-2 border-t-gold bg-ink text-footer-text [&_a]:text-white [&_a:hover]:text-gold-soft [&_li_a]:no-underline [&_li_a:hover]:underline">
       <Container>
         <div className="flex flex-col gap-8 border-b border-white/15 py-16 lg:flex-row lg:items-end lg:justify-between lg:py-20">
-          <p className="mb-0 max-w-[16ch] font-display text-4xl text-white">
+          <p className="mb-0 max-w-[18ch] font-display text-display text-white">
             Empowering <Accent onDark>through data.</Accent>
           </p>
         </div>

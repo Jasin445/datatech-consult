@@ -1,6 +1,8 @@
 Current phase: VERSION 4 COMPLETE (V4-1 to V4-5). V3 and its fixes (F1-F9) complete before it.
 Status: development complete. NOT LAUNCH-READY: business, legal and configuration inputs outstanding (RELEASE_CHECKLIST.md). Critique item 1 (real people, credentials, case studies) is PARKED by owner decision (2026-10-23): it will be the final piece of work, after everything else.
 
+Redesign note (2026-11-16, uncommitted, style only — no copy, content status, or business facts changed): deep-ink hero and statement panels, warm mist alternating sections, larger display type and section rhythm, rounded photo/mockup/card frames with soft lift shadows, gold-rule section headings, pill kickers, and card hover lift across homepage, services, about, contact and booking. New @theme tokens: ink, mist, gold-deep, shadow-lift, shadow-hero. Verified 2026-11-16: typecheck pass, lint pass, vitest 176/176, production build pass; responsive/overflow check (10 routes × 320/390/820/1280/1680, Playwright Chromium — official qa scripts need Google Chrome, not installed here) all passed with no page overflow, 1 h1 per page, no console errors; axe re-run clean on /, /services, /about, /contact, /book-consultation, /privacy at 390 and 1280 (one flaky first-run contrast hit on /book-consultation and /privacy at 390 only, clean on re-run).
+
 Next action:
 - Owner review of V3; supply launch inputs (team/credentials, contact email or booking link, privacy facts, domain, email provider).
 

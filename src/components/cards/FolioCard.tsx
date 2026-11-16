@@ -41,7 +41,7 @@ export function FolioCard({
   const Heading = headingLevel;
   return (
     <article
-      className={`relative flex h-full flex-col border p-5 transition-shadow duration-200 hover:shadow-[0_18px_40px_-18px_rgb(23_43_58/35%)] sm:p-8 lg:p-10 ${
+      className={`relative flex h-full flex-col rounded-[1.25rem] border p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lift sm:p-8 lg:p-10 ${
         featured ? "border-gold/30 bg-gold-tint" : "border-border bg-white"
       }`}
     >

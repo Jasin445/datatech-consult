@@ -42,7 +42,7 @@ export function ProblemStory({
             )
           )}
           {note && (
-            <figure className="relative mt-6 ml-auto max-w-[20rem] border border-border bg-white p-5 shadow-[0_24px_50px_-24px_rgb(23_43_58/45%)] lg:absolute lg:-right-6 lg:-bottom-40 lg:mt-0">
+            <figure className="relative mt-6 ml-auto max-w-[20rem] rounded-[1.25rem] border border-border bg-white p-6 shadow-lift lg:absolute lg:-right-6 lg:-bottom-40 lg:mt-0">
               <span aria-hidden="true" className="absolute -top-px -right-px size-9 bg-[linear-gradient(to_bottom_left,var(--color-surface)_50%,var(--color-border)_50%)]" />
               <figcaption className="mb-2 text-sm font-semibold text-gold">{note.label}</figcaption>
               <blockquote className="m-0 font-display text-lg leading-snug text-charcoal italic">{note.text}</blockquote>
@@ -64,7 +64,7 @@ export function ProblemStory({
               <p key={p} className={index > 0 ? "mobile-detail" : undefined}>{p}</p>
             ))}
           </div>
-          <p className="mt-6 mb-0 border-l-2 border-gold pl-4 font-display text-2xl text-charcoal sm:mt-8 sm:pl-5 sm:text-3xl">{turn}</p>
+          <p className="mt-6 mb-0 rounded-r-[1rem] border-l-2 border-gold bg-white/70 py-3 pl-4 font-display text-2xl text-charcoal sm:mt-8 sm:pl-5 sm:text-3xl">{turn}</p>
           {tags && tags.length > 0 && (
             <ul className="mt-8 flex flex-wrap gap-2" aria-label="Common problems">
               {tags.map((t, index) => (

@@ -14,7 +14,10 @@
 
   /* PROPOSED supporting colours (not verified official brand colours) */
   --color-charcoal: #172b3a;
+  --color-ink: #0e1f2d; /* deeper charcoal for hero / statement panels */
   --color-surface: #f3f7fa;
+  --color-mist: #e9f1f6; /* warm blue-grey tint for alternating sections */
+  --color-gold-deep: #7a5c28;
 
   /* Derived */
   --color-primary-hover: #17508a;
@@ -58,7 +61,11 @@
   /* Shape and elevation */
   --radius-sm: 6px;
   --radius-md: 10px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
   --shadow-card: 0 1px 2px rgb(23 43 58 / 8%), 0 4px 12px rgb(23 43 58 / 6%);
+  --shadow-lift: 0 2px 4px rgb(23 43 58 / 8%), 0 18px 40px -18px rgb(23 43 58 / 35%);
+  --shadow-hero: 0 2px 6px rgb(14 31 45 / 20%), 0 32px 70px -28px rgb(14 31 45 / 55%);
 
   /* V2 motion: one staggered entrance on page load (disabled by the reduced-motion rule below). */
   --animate-rise: rise 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) both;
@@ -119,7 +126,7 @@
   /* Faint mini-dashboard on blue buttons, three layers so it balances at any width: a bar cluster pinned to each
      end (mirrored) and a soft trend line stretched between them (white, 6-24% opacity; never competes with the label). */
   --btn-trace: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 42 48' fill='none'%3E%3Cg fill='white' fill-opacity='0.12'%3E%3Crect x='2' y='34' width='6' height='12' rx='1.5'/%3E%3Crect x='12' y='29' width='6' height='17' rx='1.5'/%3E%3Crect x='22' y='24' width='6' height='22' rx='1.5'/%3E%3Crect x='32' y='18' width='6' height='28' rx='1.5'/%3E%3C/g%3E%3Ccircle cx='35' cy='12' r='2' fill='white' fill-opacity='0.24'/%3E%3Cpath d='M35 14V46' stroke='white' stroke-opacity='0.12' stroke-dasharray='2 3'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 42 48' fill='none'%3E%3Cg fill='white' fill-opacity='0.12'%3E%3Crect x='34' y='34' width='6' height='12' rx='1.5'/%3E%3Crect x='24' y='29' width='6' height='17' rx='1.5'/%3E%3Crect x='14' y='24' width='6' height='22' rx='1.5'/%3E%3Crect x='4' y='18' width='6' height='28' rx='1.5'/%3E%3C/g%3E%3Ccircle cx='7' cy='12' r='2' fill='white' fill-opacity='0.24'/%3E%3Cpath d='M7 14V46' stroke='white' stroke-opacity='0.12' stroke-dasharray='2 3'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 48' preserveAspectRatio='none' fill='none'%3E%3Cpath d='M0 46.5H100' stroke='white' stroke-opacity='0.12' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M0 40 C 15 38, 25 41, 38 37 S 62 35, 74 33 S 92 31, 100 29 V48 H0 Z' fill='white' fill-opacity='0.06'/%3E%3Cpath d='M0 40 C 15 38, 25 41, 38 37 S 62 35, 74 33 S 92 31, 100 29' stroke='white' stroke-opacity='0.16' stroke-width='1.2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
-  --container-max: 1200px;
+  --container-max: 1240px;
   --reading-max: 760px;
   --gutter: 1.25rem; /* mobile 20px */
   --section-space: 3.5rem; /* mobile 56px */
@@ -145,14 +152,14 @@
 @media (min-width: 1024px) {
   :root {
     --gutter: 3rem;
-    --section-space: 6rem;
+    --section-space: 7rem;
     --nav-height: 6.25rem;
   }
 }
 @media (min-width: 1440px) {
   :root {
     --gutter: 4rem;
-    --section-space: 7rem;
+    --section-space: 8rem;
   }
 }
 

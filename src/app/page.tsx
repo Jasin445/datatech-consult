@@ -58,7 +58,7 @@ export default function HomePage() {
 
       <Section id="services" labelledBy="services-heading">
         <SectionHeading id="services-heading" eyebrow={servicesIntro.eyebrow} heading={servicesIntro.heading} lead={servicesIntro.lead} />
-        <ul className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {services.map((s, i) => (
             <li key={s.slug}>
               <PhotoCard photo={servicePhotos[s.slug]!} folio={String(i + 1).padStart(2, "0")} title={s.title} text={s.summary} href={s.href} />
@@ -67,7 +67,7 @@ export default function HomePage() {
         </ul>
       </Section>
 
-      <Section tone="surface" labelledBy="showcase-heading">
+      <Section tone="mist" labelledBy="showcase-heading">
         <SectionHeading id="showcase-heading" eyebrow={showcase.eyebrow} heading={showcase.heading} lead={showcase.lead} />
         <WorkShowcase items={showcase.items.map((item) => ({ ...item, visual: showcaseVisuals[item.key] }))} />
       </Section>

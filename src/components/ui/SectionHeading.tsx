@@ -23,15 +23,16 @@ export function SectionHeading({
 }) {
   const center = align === "center";
   return (
-    <div className={`mb-10 max-w-(--reading-max) lg:mb-14 ${center ? "mx-auto text-center [&>p:first-child]:justify-center" : ""}`}>
+    <div className={`mb-12 max-w-(--reading-max) lg:mb-16 ${center ? "mx-auto text-center [&>p:first-child]:justify-center" : ""}`}>
       {eyebrow && (
         <Eyebrow folio={folio} onDark={onDark}>
           {eyebrow}
         </Eyebrow>
       )}
-      <h2 id={id} className={`mb-4 ${onDark ? "text-white" : ""}`}>
+      <h2 id={id} className={`mb-5 ${onDark ? "text-white" : ""}`}>
         {heading}
       </h2>
+      <div aria-hidden="true" className={`mb-6 h-px w-16 bg-gold ${center ? "mx-auto" : ""}`} />
       {lead && <p className={`mb-0 max-w-[58ch] text-lg ${center ? "mx-auto" : ""} ${onDark ? "text-footer-text" : "text-muted"}`}>{lead}</p>}
     </div>
   );

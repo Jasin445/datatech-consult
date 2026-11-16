@@ -14,13 +14,11 @@ export function WorkingWithUs({ eyebrow, heading, items }: { eyebrow: string; he
             {heading}
           </h2>
         </div>
-        <ul className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:col-span-8">
+        <ul className="grid gap-6 sm:grid-cols-2 lg:col-span-8">
           {items.map((item) => (
-            <li key={item.title} className="border-t border-charcoal/15 pt-5">
-              <h3 className="mb-2 flex items-start gap-3 text-2xl">
-                <Mark variant="bullet" className="mt-[0.3em] size-4 shrink-0 text-gold" />
-                {item.title}
-              </h3>
+            <li key={item.title} className="rounded-[1.25rem] border border-border bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lift sm:p-7">
+              <Mark variant="bullet" className="mb-4 size-5 text-gold" />
+              <h3 className="mb-2 text-2xl">{item.title}</h3>
               <p className="mobile-detail mb-0 text-muted">{item.text}</p>
             </li>
           ))}

@@ -31,7 +31,7 @@ export function PageHero({
   actions?: ReactNode;
 }) {
   return (
-    <section aria-labelledby="page-heading" className={`relative overflow-hidden pt-8 lg:pt-12 ${photo || visual ? "border-b border-border pb-16 lg:pb-24" : "pb-12 lg:pb-16"}`}>
+    <section aria-labelledby="page-heading" className={`relative overflow-hidden bg-surface pt-8 lg:pt-12 ${photo || visual ? "border-b border-border pb-16 lg:pb-24" : "pb-12 lg:pb-16"}`}>
       <Container>
         {above}
         <div className="mt-6 grid items-center gap-12 lg:mt-10 lg:grid-cols-12 lg:gap-12">
@@ -59,8 +59,8 @@ export function PageHero({
           )}
           {!visual && photo && (
             <div className="relative animate-rise [animation-delay:200ms] lg:col-span-5">
-              <div aria-hidden="true" className="absolute top-5 -right-3 -bottom-5 left-5 border border-gold" />
-              <div className="relative aspect-[4/3] overflow-hidden bg-surface lg:aspect-[4/5]">
+              <div aria-hidden="true" className="absolute top-5 -right-3 -bottom-5 left-5 rounded-[1.5rem] border border-gold" />
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-surface shadow-lift lg:aspect-[4/5]">
                 <Photo photo={photo} fill priority sizes="(min-width: 1024px) 38vw, 100vw" />
               </div>
             </div>

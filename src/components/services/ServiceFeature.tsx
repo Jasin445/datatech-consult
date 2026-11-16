@@ -19,7 +19,7 @@ export function ServiceFeature({ service, visual, index }: { service: Service; v
         <p className="mb-6 max-w-[48ch] text-lg text-muted">{service.summary}</p>
         <ul className="mb-8 grid gap-3" aria-label={`${service.title}: how we can help`}>
           {service.helpsWith.map((point) => (
-            <li key={point} className="flex items-baseline gap-3">
+            <li key={point} className="flex items-baseline gap-3 rounded-[0.75rem] border border-border bg-white px-4 py-3 shadow-card">
               <Mark variant="bullet" className="size-3 shrink-0 text-gold" />
               {point}
             </li>

@@ -6,7 +6,7 @@ import { Mark } from "@/components/ui/Mark";
  */
 export function CaseCover({ number, label, className = "" }: { number: string; label: string; className?: string }) {
   return (
-    <div aria-hidden="true" className={`relative flex flex-col justify-between overflow-hidden bg-charcoal p-6 text-gold-soft lg:p-8 ${className}`}>
+    <div aria-hidden="true" className={`relative flex flex-col justify-between overflow-hidden rounded-[1.25rem] bg-ink p-6 text-gold-soft shadow-card lg:p-8 ${className}`}>
       <div className="flex items-center justify-between">
         <span className="text-sm font-semibold">{label}</span>
         <Mark className="size-5" />

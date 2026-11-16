@@ -10,8 +10,8 @@ import { statusLabel } from "@/components/ui/SampleNotice";
 /** Article card: optional cover photo (or a quiet typographic panel), date and reading time, serif title. Whole card clickable. */
 export function InsightCard({ status, insight }: { status: ContentStatus; insight: Insight }) {
   return (
-    <article className="group relative flex h-full flex-col">
-      <div className="relative aspect-[3/2] overflow-hidden bg-gold-tint">
+    <article className="group relative flex h-full flex-col rounded-[1.25rem] bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+      <div className="relative aspect-[3/2] overflow-hidden rounded-t-[1.25rem] bg-gold-tint">
         {insight.cover ? (
           <Photo photo={insight.cover} fill decorative sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="transition-transform duration-700 group-hover:scale-[1.04]" />
         ) : (
@@ -20,7 +20,7 @@ export function InsightCard({ status, insight }: { status: ContentStatus; insigh
           </div>
         )}
       </div>
-      <div className="flex flex-1 flex-col border-b border-charcoal/15 py-6">
+      <div className="flex flex-1 flex-col p-6">
         <p className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted">
           <time dateTime={insight.publishedOn}>{formatPublishedDate(insight.publishedOn)}</time>
           <span aria-hidden="true" className="text-gold">·</span>

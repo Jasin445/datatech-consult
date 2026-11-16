@@ -62,10 +62,10 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="relative min-h-[28rem] lg:col-span-6 lg:min-h-[36rem]">
-            <div className="absolute top-0 right-0 aspect-[3/4] w-[68%] overflow-hidden">
+            <div className="absolute top-0 right-0 aspect-[3/4] w-[68%] overflow-hidden rounded-[1.5rem] shadow-lift">
               <Photo photo={overview.photos[0]!} fill sizes="(min-width: 1024px) 30vw, 65vw" />
             </div>
-            <div className="absolute bottom-0 left-0 aspect-[4/3] w-[58%] overflow-hidden border-8 border-white shadow-[0_24px_50px_-24px_rgb(23_43_58/45%)]">
+            <div className="absolute bottom-0 left-0 aspect-[4/3] w-[58%] overflow-hidden rounded-[1.25rem] border-8 border-white shadow-hero">
               <Photo photo={overview.photos[1]!} fill sizes="(min-width: 1024px) 28vw, 55vw" />
             </div>
           </div>
@@ -74,7 +74,7 @@ export default function AboutPage() {
 
       <Section tone="surface" labelledBy="parent-heading">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="relative flex aspect-[4/3] flex-col items-center justify-center gap-6 border border-border bg-white p-10 lg:col-span-5">
+          <div className="relative flex aspect-[4/3] flex-col items-center justify-center gap-6 rounded-[1.5rem] border border-border bg-white p-10 shadow-lift lg:col-span-5">
             <span aria-hidden="true" className="absolute -top-px -right-px size-16 bg-[linear-gradient(to_bottom_left,var(--color-surface)_50%,var(--color-border)_50%)]" />
             {/* Official logo, unchanged. */}
             <Image src="/logos/datatechhub-logo.png" alt="Datatechhub logo" width={849} height={294} className="h-auto w-full max-w-[18rem]" />

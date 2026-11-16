@@ -11,11 +11,11 @@ export function Section({
 }: {
   id?: string;
   labelledBy?: string;
-  tone?: "default" | "surface" | "charcoal";
+  tone?: "default" | "surface" | "mist" | "charcoal";
   className?: string;
   children: ReactNode;
 }) {
-  const toneClass = { default: "", surface: "bg-surface", charcoal: "bg-charcoal text-footer-text" }[tone];
+  const toneClass = { default: "", surface: "bg-surface", mist: "bg-mist", charcoal: "bg-charcoal text-footer-text" }[tone];
   const classes = ["py-(--section-space)", toneClass, className].filter(Boolean).join(" ");
   return (
     <section id={id} aria-labelledby={labelledBy} className={classes}>

@@ -57,7 +57,7 @@ export default function ServicesPage() {
         </ul>
       </Section>
 
-      <Section tone="surface" labelledBy="fit-heading">
+      <Section tone="mist" labelledBy="fit-heading">
         <SectionHeading id="fit-heading" eyebrow={fit.eyebrow} heading={fit.heading} lead={fit.lead} />
         <FitList items={fit.items} />
       </Section>

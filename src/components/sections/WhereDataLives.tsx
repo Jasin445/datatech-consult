@@ -29,8 +29,8 @@ export function WhereDataLives({ eyebrow, heading, lead, places }: { eyebrow: st
           aria-label="Photos: where the data comes from (scrolls sideways on small screens)"
           className="-mx-(--gutter) flex snap-x snap-mandatory gap-4 overflow-x-auto px-(--gutter) pb-4 lg:mx-0 lg:grid lg:grid-cols-5 lg:items-start lg:overflow-visible lg:px-0 lg:pb-0">
           {places.map((place, i) => (
-            <li key={place.caption} className={`relative h-[22rem] w-[72%] shrink-0 snap-start overflow-hidden rounded-xl sm:w-[40%] lg:w-auto ${tileHeight[i % tileHeight.length]}`}>
-              <Photo photo={place.photo} fill sizes="(min-width: 1024px) 20vw, (min-width: 640px) 40vw, 72vw" />
+            <li key={place.caption} className={`group relative h-[22rem] w-[72%] shrink-0 snap-start overflow-hidden rounded-[1.25rem] shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lift sm:w-[40%] lg:w-auto ${tileHeight[i % tileHeight.length]}`}>
+              <Photo photo={place.photo} fill sizes="(min-width: 1024px) 20vw, (min-width: 640px) 40vw, 72vw" className="transition-transform duration-700 ease-out group-hover:scale-[1.05]" />
               <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-charcoal/85 via-charcoal/10 to-transparent" />
               <p className="absolute inset-x-0 bottom-0 mb-0 p-5 text-[0.95rem] leading-snug font-medium text-white">{place.caption}</p>
             </li>
