@@ -2,18 +2,36 @@ import { MockFrame } from "./MockFrame";
 
 const sources = ["Accounting system", "CRM", "Field data app", "Spreadsheets"];
 const steps = ["Extract", "Clean & validate", "Join & model"];
+const checks = ["Duplicates", "Formats", "Missing values"];
+const outputs = ["Dashboards", "Monthly reports", "Analysis"];
 
-function Arrow() {
+function Arrow({ vertical = false }: { vertical?: boolean }) {
   return (
     <div className="flex items-center justify-center text-secondary" aria-hidden="true">
-      <svg viewBox="0 0 24 24" className="size-5 rotate-90 md:rotate-0" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        viewBox="0 0 24 24"
+        className={`size-5 ${vertical ? "rotate-90" : ""}`}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M4 12h15M14 6l6 6-6 6" />
       </svg>
     </div>
   );
 }
 
-/** Data pipeline diagram: scattered sources, a cleaning layer, one reporting store, dashboards. Vertical on mobile. */
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="size-3.5 shrink-0 text-primary" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M4 12.5l5 5L20 6.5" />
+    </svg>
+  );
+}
+
+/** Data pipeline diagram: scattered sources flow through cleaning into one reporting store, then out to dashboards. */
 export function PipelineDiagram({ className = "" }: { className?: string }) {
   return (
     <MockFrame
@@ -21,43 +39,91 @@ export function PipelineDiagram({ className = "" }: { className?: string }) {
       label="Illustrative data pipeline: an accounting system, a CRM, a field data app and spreadsheets feed an extract, clean and model step, which loads one reporting store that powers dashboards and reports."
       className={className}
     >
-      <div className="grid items-center gap-3 md:grid-cols-[1fr_auto_1.1fr_auto_0.9fr_auto_0.9fr]">
-        <ul className="grid gap-2">
-          {sources.map((s) => (
-            <li key={s} className="rounded-md border border-border bg-surface px-3 py-2 text-[11px] font-medium text-charcoal">
-              {s}
-            </li>
-          ))}
-        </ul>
-        <Arrow />
-        <div className="rounded-lg border border-secondary/50 bg-secondary/5 p-3">
-          <p className="mb-2 text-[10px] font-semibold tracking-[0.14em] text-primary uppercase">Pipeline</p>
-          <ol className="grid gap-1.5">
-            {steps.map((s, i) => (
-              <li key={s} className="flex items-center gap-2 text-[11px] text-charcoal">
-                <span className="grid size-4 place-items-center rounded-full bg-primary text-[9px] font-bold text-white">{i + 1}</span>
-                {s}
-              </li>
-            ))}
-          </ol>
-          <p className="mt-2 mb-0 rounded bg-white px-2 py-1 text-[10px] text-muted">Checks: duplicates · formats · missing values</p>
+      {/* The journey, left to right on desktop and top to bottom on mobile. */}
+      <div className="group relative">
+        {/* Flowing connector: a dashed track behind the stages, with arrows that nudge forward on hover. */}
+        <div className="pointer-events-none absolute inset-x-6 top-1/2 hidden h-px border-t-2 border-dashed border-secondary/50 md:block" aria-hidden="true" />
+
+        <div className="relative grid items-stretch gap-2 md:grid-cols-[1fr_auto_1.15fr_auto_0.95fr_auto_0.95fr] md:gap-3">
+          {/* Stage 1 — scattered sources */}
+          <div className="rounded-lg bg-white p-1">
+            <p className="mb-2 flex items-center gap-2 text-[10px] font-semibold tracking-[0.14em] text-muted uppercase">
+              <span className="grid size-4 place-items-center rounded-full bg-charcoal text-[9px] font-bold text-white">1</span> Sources
+            </p>
+            <ul className="grid gap-2">
+              {sources.map((s) => (
+                <li key={s} className="rounded-md border border-border bg-surface px-3 py-2 text-[11px] font-medium text-charcoal">
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex items-center justify-center gap-1.5 transition-transform duration-300 md:group-hover:translate-x-1 md:py-8">
+            <span className="size-1.5 rounded-full bg-secondary" aria-hidden="true" />
+            <Arrow vertical />
+          </div>
+
+          {/* Stage 2 — the pipeline */}
+          <div className="rounded-lg border border-secondary/50 bg-secondary/5 p-3">
+            <p className="mb-2 flex items-center gap-2 text-[10px] font-semibold tracking-[0.14em] text-primary uppercase">
+              <span className="grid size-4 place-items-center rounded-full bg-primary text-[9px] font-bold text-white">2</span> Pipeline
+            </p>
+            <ol className="grid gap-1.5">
+              {steps.map((s, i) => (
+                <li key={s} className="flex items-center gap-2 rounded-md bg-white px-2 py-1.5 text-[11px] font-medium text-charcoal">
+                  <span className="grid size-4 shrink-0 place-items-center rounded-full bg-primary text-[9px] font-bold text-white">{i + 1}</span>
+                  {s}
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div className="flex items-center justify-center gap-1.5 transition-transform duration-300 md:group-hover:translate-x-1 md:py-8">
+            <span className="size-1.5 rounded-full bg-secondary" aria-hidden="true" />
+            <Arrow vertical />
+          </div>
+
+          {/* Stage 3 — one reporting store */}
+          <div className="rounded-lg border border-primary bg-primary p-3 text-center text-white">
+            <p className="mb-2 flex items-center justify-center gap-2 text-[10px] font-semibold tracking-[0.14em] text-white/80 uppercase">
+              <span className="grid size-4 place-items-center rounded-full bg-white text-[9px] font-bold text-primary">3</span> Store
+            </p>
+            <svg aria-hidden="true" viewBox="0 0 24 24" className="mx-auto mb-1 size-6" fill="none" stroke="currentColor" strokeWidth="1.6">
+              <ellipse cx="12" cy="6" rx="7" ry="2.5" />
+              <path d="M5 6v12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5" />
+            </svg>
+            <p className="mb-0 text-[11px] font-semibold">One reporting store</p>
+            <p className="mb-0 text-[10px] text-white/80">Single source of truth</p>
+          </div>
+          <div className="flex items-center justify-center gap-1.5 transition-transform duration-300 md:group-hover:translate-x-1 md:py-8">
+            <span className="size-1.5 rounded-full bg-secondary" aria-hidden="true" />
+            <Arrow vertical />
+          </div>
+
+          {/* Stage 4 — what comes out */}
+          <div className="rounded-lg bg-white p-1">
+            <p className="mb-2 flex items-center gap-2 text-[10px] font-semibold tracking-[0.14em] text-muted uppercase">
+              <span className="grid size-4 place-items-center rounded-full bg-gold text-[9px] font-bold text-white">4</span> Outputs
+            </p>
+            <div className="grid gap-2">
+              {outputs.map((d) => (
+                <span key={d} className="rounded-md border border-gold/40 bg-gold-tint px-3 py-2 text-center text-[11px] font-medium text-charcoal">
+                  {d}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
-        <Arrow />
-        <div className="rounded-lg border border-primary bg-primary p-3 text-center text-white">
-          <svg aria-hidden="true" viewBox="0 0 24 24" className="mx-auto mb-1 size-6" fill="none" stroke="currentColor" strokeWidth="1.6">
-            <ellipse cx="12" cy="6" rx="7" ry="2.5" />
-            <path d="M5 6v12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5" />
-          </svg>
-          <p className="mb-0 text-[11px] font-semibold">One reporting store</p>
-        </div>
-        <Arrow />
-        <div className="grid gap-2">
-          {["Dashboards", "Monthly reports", "Analysis"].map((d) => (
-            <span key={d} className="rounded-md border border-gold/40 bg-gold-tint px-3 py-2 text-center text-[11px] font-medium text-charcoal">
-              {d}
-            </span>
-          ))}
-        </div>
+      </div>
+
+      {/* Checks strip: every record is checked before it reaches the store. */}
+      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-lg border border-border bg-surface px-3 py-2.5">
+        <span className="text-[10px] font-semibold tracking-[0.14em] text-primary uppercase">Checks</span>
+        {checks.map((c) => (
+          <span key={c} className="flex items-center gap-1.5 text-[11px] font-medium text-charcoal">
+            <CheckIcon /> {c}
+          </span>
+        ))}
+        <span className="ml-auto hidden text-[10px] text-muted sm:block">Checked before anything is stored</span>
       </div>
     </MockFrame>
   );

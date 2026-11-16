@@ -35,7 +35,7 @@
      Not for text on charcoal (2.9:1): use gold-soft there. */
   --color-gold: #8c6a2f;
   --color-gold-soft: color-mix(in srgb, var(--color-gold) 55%, white); /* on charcoal: ornaments, eyebrows */
-  --color-gold-tint: color-mix(in srgb, var(--color-gold) 12%, white); /* featured cards. Gold text on it is 4.3:1: use charcoal/muted text there */
+  --color-gold-tint: color-mix(in srgb, var(--color-gold) 12%, white); /* featured cards. Gold text on it is 4.3:1: use charcoal, muted or gold-deep text there */
 
   /* Typography (overrides Tailwind's text-sm/lg/xl/2xl/3xl; other sizes keep defaults) */
   /* V2 brand fonts (next/font variables set on <html> in layout.tsx), with system fallbacks. */

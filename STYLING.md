@@ -65,7 +65,7 @@ Other tokens kept: font stack (Segoe UI system stack, no network fonts), type sc
 ## Colour
 - Existing tokens unchanged. Added `gold` (#8c6a2f, the V2 brand accent) plus derived `gold-soft` (on charcoal) and `gold-tint` (featured card fill).
 - Blue (`primary`) stays the action colour: primary buttons and links. Gold is editorial: eyebrows, folio numbers, rules, ornaments, card buttons.
-- Contrast: `gold` text only on white/surface. On charcoal use `gold-soft`. On `gold-tint` use charcoal or muted text (gold is 4.3:1 there).
+- Contrast: `gold` text only on white/surface. On charcoal use `gold-soft`. On `gold-tint` use charcoal or muted text (gold is 4.3:1 there). `gold-deep` (#7a5c28, added in the redesign) is the text-safe darker gold for small gold text on tinted backgrounds (`gold-tint`, `mist` — e.g. eyebrows, the workflow human-review label, dashboard trend chips); it passes 4.5:1 on white, surface, mist and gold-tint.
 
 ## Motifs (use them, do not invent new ones per page)
 - **Eyebrow** (`ui/Eyebrow`): folio number + gold rule + uppercase label. Every major section opens with one via `SectionHeading` (`folio`, `eyebrow` props). Number sections 01, 02... in page order.

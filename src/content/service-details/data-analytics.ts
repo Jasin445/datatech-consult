@@ -62,7 +62,7 @@ export const dataAnalytics: ServiceDetail = {
     body: "Tell us what you need to measure and where the data lives now. We’ll tell you how we can help.",
   },
   v2: {
-    heroPhoto: photos.analystWindow,
+    heroPhoto: photos.analyticsDashboard,
     hook: {
       heading: "Five teams, five versions of last month’s revenue.",
       paragraphs: [
