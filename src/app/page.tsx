@@ -54,7 +54,7 @@ export default function HomePage() {
 
       <ProblemStory {...problem} visual={<SpreadsheetMock />} tags={challenges.items.map((c) => c.title)} note={hero.note} />
 
-      <WhereDataLives {...dataPlaces} />
+      {/* <WhereDataLives {...dataPlaces} /> */}
 
       <Section id="services" labelledBy="services-heading">
         <SectionHeading id="services-heading" eyebrow={servicesIntro.eyebrow} heading={servicesIntro.heading} lead={servicesIntro.lead} />
