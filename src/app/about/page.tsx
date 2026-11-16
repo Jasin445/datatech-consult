@@ -4,6 +4,7 @@ import { AudienceMosaic } from "@/components/sections/AudienceMosaic";
 import { LeadershipGrid } from "@/components/sections/LeadershipGrid";
 import { NextStep } from "@/components/sections/NextStep";
 import { PageHero } from "@/components/sections/PageHero";
+import { ArchTransition } from "@/components/sections/ArchTransition";
 import { StatementBand } from "@/components/sections/StatementBand";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -109,7 +110,9 @@ export default function AboutPage() {
         </Section>
       ) : null}
 
-      <StatementBand text={aboutPage.statement.text} accent={aboutPage.statement.accent} />
+      <StatementBand {...aboutPage.statement} />
+
+      <ArchTransition />
 
       <NextStep id="about-next-heading" eyebrow={nextStep.eyebrow} heading={aboutPage.next.heading} options={nextStep.options} />
     </>
