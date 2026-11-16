@@ -133,23 +133,24 @@ Other tokens kept: font stack (Segoe UI system stack, no network fonts), type sc
 - Workflow track lines always sit BEHIND the step cards (`z-0` track, `z-10` list) and every card
   background must be fully opaque — translucent fills let the track show through. Step-number chips
   are `shrink-0` and kind labels are `whitespace-nowrap` so neither clips nor wraps mid-word.
-- `StatementBand`: full-bleed photograph (`opacity-50`) under an ink gradient wash
-  (`from-ink via-ink/80 to-ink/25`), with a gold hairline at the top and a white hairline
-  at the bottom. The photo is decorative; the wash keeps the white/gold text readable.
-  (Restored 2026-11-16: the solid-ink version was a misread of the owner's complaint —
-  the problem was two dark sections blending, not the photo.) No decorative rule under
-  the statement text itself — that motif stays removed.
-- Dark-on-dark adjacency is a defect: never put two dark sections directly next to each
-  other with no boundary. On /about the photo statement band is followed by the charcoal
-  closing section, so the band ends in an `ArchTransition` — a grand centred arch, gold-traced
-  (a firm line with a fainter echo, keystone diamond at the apex), cut into the bottom of the
-  band so the skyline shows through like a doorway and the charcoal rises to meet it. It
-  overlaps the band's bottom edge and adds no vertical space. Never a plain light band, a
-  plain hairline, or a centred circle between sections — a boundary must be a designed
-  moment, not a separator strip. (The earlier `SectionDivider` mist band was rejected by
-  the owner as plain/stupid and deleted.) `NextStep` itself stays charcoal everywhere
-  it is reused (/, /services, /case-studies, /insights) — do not change its background
-  for one page.
+- `StatementBand`: full-bleed photograph (`opacity-50`) under a charcoal wash — the
+  same dark blue as the closing section below, never ink (`#0e1f2d` is deeper/colder
+  than charcoal `#172b3a` and reads as a different dark). The wash is a horizontal
+  charcoal gradient for text legibility plus a vertical fade to solid charcoal at
+  the bottom, so the photo dissolves into the charcoal section below and no line
+  marks the join (no bottom hairline). Top gold hairline stays — it separates the
+  band from the light section above. The photo is decorative; the wash keeps the
+  white/gold text readable. (Restored 2026-11-16: the solid-ink version was a misread
+  of the owner's complaint — the problem was two dark sections blending, not the
+  photo.) No decorative rule under the statement text itself — that motif stays removed.
+- Dark-on-dark adjacency: do not fight it with a divider or a shape between the
+  sections. On /about the photo statement band is followed by the charcoal closing
+  section, so the band itself is tinted charcoal and melts into it — one continuous
+  dark blue, photo fading out at the bottom. (The `SectionDivider` mist band and the
+  `ArchTransition` gold arch were both rejected by the owner and deleted — no
+  separator strip, no arch, nothing between the sections.) `NextStep` itself stays
+  charcoal everywhere it is reused (/, /services, /case-studies, /insights) — do not
+  change its background for one page.
 
 ## Mobile-cut rule for mockups (added 2026-11-16)
 - Long coded visuals are CUT on mobile, not shrunk: below `md` each mockup shows its headline
