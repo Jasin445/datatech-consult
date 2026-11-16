@@ -120,6 +120,21 @@ Other tokens kept: font stack (Segoe UI system stack, no network fonts), type sc
 - Photos with mockups: use `visuals/InContext`; captions on photo strips describe settings, never clients.
 - Hover states always transition (global base rule, 250ms). Do not add `transition-none` to interactive elements.
 
+## Screenshot fixes (added 2026-11-16, owner feedback on the pushed redesign)
+- No rule + dot ornament under section headings (removed 2026-11-16 — it read as a stray line under the
+  heading). Section headings stand alone; spacing does the work. The same motif was removed from
+  `StatementBand`. Do not re-add a decorative rule under headings.
+- Showcase kickers are `Eyebrow` labels (mark + sentence-case gold-deep label), never a dark pill badge.
+- Diagrams: no connector lines, dashed tracks, dots or arrows between stages (removed 2026-11-16).
+  Flow is shown by numbering and left-to-right order only. Stage panels are equal height and fill
+  their own height (inner lists spread with `justify-between`), and every diagram must fit its
+  container at every width with no clipped text — use a plain equal-column grid (`grid-cols-4`),
+  `min-w-0` on every panel, and wrapping text, never fixed-width spacer/arrow columns.
+- Workflow track lines always sit BEHIND the step cards (`z-0` track, `z-10` list) and every card
+  background must be fully opaque — translucent fills let the track show through. Step-number chips
+  are `shrink-0` and kind labels are `whitespace-nowrap` so neither clips nor wraps mid-word.
+- `StatementBand`: solid ink background only — no photograph, no gradient wash, no hairline rules.
+
 ## Mobile-cut rule for mockups (added 2026-11-16)
 - Long coded visuals are CUT on mobile, not shrunk: below `md` each mockup shows its headline
   element only (hero dashboard: one KPI + trend chart; pipeline: a four-chip stage strip;

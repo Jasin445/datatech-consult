@@ -72,7 +72,7 @@ export default function HomePage() {
         <WorkShowcase items={showcase.items.map((item) => ({ ...item, visual: showcaseVisuals[item.key] }))} />
       </Section>
 
-      <StatementBand {...statement} />
+      <StatementBand text={statement.text} accent={statement.accent} />
 
       <WorkingWithUs
         eyebrow={workingWithUs.eyebrow}

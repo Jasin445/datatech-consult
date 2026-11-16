@@ -10,10 +10,12 @@ const steps = [
 
 const kindClass = {
   auto: "border-border bg-white",
-  ai: "border-secondary/50 bg-secondary/5",
+  // Solid white: the old translucent bg-secondary/5 let the progress track show through the card.
+  ai: "border-secondary/50 bg-white",
   human: "border-gold bg-gold-tint",
 } as const;
-const kindLabel = { auto: "Automated", ai: "AI-assisted", human: "Human review" } as const;
+/* "AI‑assisted" uses a non-breaking hyphen (U+2011) so the label can never split after "AI-" — the words are unchanged. */
+const kindLabel = { auto: "Automated", ai: "AI‑assisted", human: "Human review" } as const;
 const iconWrap = {
   auto: "bg-surface text-primary",
   ai: "bg-secondary/15 text-primary",
@@ -77,10 +79,12 @@ export function WorkflowDiagram({ className = "" }: { className?: string }) {
       className={className}
     >
       <div className="relative">
-        {/* Progress track: vertical on mobile (through the compact row icons), horizontal on desktop. The filled part runs to the human-review checkpoint. */}
-        <div className="absolute top-4 bottom-4 left-6 w-0.5 bg-border md:top-5 md:right-10 md:bottom-auto md:left-10 md:h-0.5 md:w-auto" aria-hidden="true" />
-        <div className="absolute top-4 left-6 h-[62%] w-0.5 bg-primary/60 md:top-5 md:left-10 md:h-0.5 md:w-[62%]" aria-hidden="true" />
-        <ol className="relative grid gap-1.5 md:grid-cols-5 md:gap-3">
+        {/* Progress track: vertical on mobile (through the compact row icons), horizontal on desktop. The filled part runs to the human-review checkpoint.
+            The track is z-0 and the step list is z-10, and every card background is fully opaque, so the line always
+            runs BEHIND the cards and never shows through one. */}
+        <div className="absolute top-4 bottom-4 left-6 z-0 w-0.5 bg-border md:top-5 md:right-10 md:bottom-auto md:left-10 md:h-0.5 md:w-auto" aria-hidden="true" />
+        <div className="absolute top-4 left-6 z-0 h-[62%] w-0.5 bg-primary/60 md:top-5 md:left-10 md:h-0.5 md:w-[62%]" aria-hidden="true" />
+        <ol className="relative z-10 grid gap-1.5 md:grid-cols-5 md:gap-3">
           {steps.map((s, i) => (
             <li key={s.title} className="relative flex md:block">
               <div className={`flex-1 rounded-lg border p-2.5 pl-12 md:p-3 md:pt-12 ${kindClass[s.kind]} ${s.kind === "human" ? "shadow-card" : ""}`}>
@@ -91,14 +95,14 @@ export function WorkflowDiagram({ className = "" }: { className?: string }) {
                 >
                   <IconFor title={s.title} />
                 </span>
-                <p className={`mb-1.5 hidden items-center gap-1.5 text-[9px] font-semibold tracking-[0.12em] uppercase md:flex ${s.kind === "human" ? "text-gold-deep" : "text-primary"}`}>
-                  <span className="grid size-3.5 place-items-center rounded-full bg-charcoal text-[8px] font-bold text-white tabular-nums">{i + 1}</span>
+                <p className={`mb-1.5 hidden text-[9px] leading-tight font-semibold tracking-[0.1em] uppercase md:block ${s.kind === "human" ? "text-gold-deep" : "text-primary"}`}>
                   {kindLabel[s.kind]}
                 </p>
                 <p className="mb-0 text-[12px] font-semibold text-charcoal">
-                  <span className="mr-1.5 inline-grid size-4 place-items-center rounded-full bg-charcoal align-middle text-[9px] font-bold text-white tabular-nums md:hidden">{i + 1}</span>
+                  <span className="mr-1.5 inline-grid size-4 shrink-0 place-items-center rounded-full bg-charcoal align-middle text-[9px] font-bold text-white tabular-nums md:hidden">{i + 1}</span>
+                  <span className="mr-1.5 hidden size-4 place-items-center rounded-full bg-charcoal align-middle text-[9px] font-bold text-white tabular-nums md:inline-grid">{i + 1}</span>
                   {s.title}
-                  <span className={`ml-2 inline-flex rounded-full px-1.5 py-0.5 align-middle text-[9px] font-semibold md:hidden ${s.kind === "human" ? "bg-gold-tint text-gold-deep" : "bg-mist text-primary"}`}>
+                  <span className={`ml-2 inline-flex rounded-full px-1.5 py-0.5 align-middle text-[9px] font-semibold whitespace-nowrap md:hidden ${s.kind === "human" ? "bg-gold-tint text-gold-deep" : "bg-mist text-primary"}`}>
                     {kindLabel[s.kind]}
                   </span>
                   {s.kind === "human" && (

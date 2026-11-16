@@ -107,7 +107,7 @@ export const servicePhotos: Record<string, Photo> = {
   "business-technology-consulting": photos.threeColleagues,
 };
 
-/** Full-bleed statement over a photograph. */
+/** Statement band: large serif statement on solid ink (no photograph). */
 export const statement = {
   text: "The best sign the work is done:",
   accent: "the meeting gets shorter.",

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ArrowRight } from "@/components/ui/Mark";
 
 export type ShowcaseItem = { kicker: string; title: string; text: string; href: string; linkLabel: string; visual: ReactNode };
@@ -16,7 +17,7 @@ export function WorkShowcase({ items }: { items: readonly ShowcaseItem[] }) {
           <div className={`min-w-0 lg:col-span-7 ${i % 2 === 1 ? "lg:order-2" : ""}`}>{item.visual}</div>
           <div className="lg:col-span-5">
             <p aria-hidden="true" className="mb-3 font-display text-6xl leading-none text-gold/25 tabular-nums select-none">{String(i + 1).padStart(2, "0")}</p>
-            <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-ink px-4 py-1.5 text-sm font-semibold text-gold-soft">{item.kicker}</p>
+            <Eyebrow>{item.kicker}</Eyebrow>
             <h3 className="mb-4 text-4xl">{item.title}</h3>
             <p className="mobile-detail mb-6 text-lg text-muted">{item.text}</p>
             <Link href={item.href} className="group inline-flex min-h-11 items-center gap-2 font-semibold">

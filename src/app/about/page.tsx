@@ -109,7 +109,7 @@ export default function AboutPage() {
         </Section>
       ) : null}
 
-      <StatementBand {...aboutPage.statement} />
+      <StatementBand text={aboutPage.statement.text} accent={aboutPage.statement.accent} />
 
       <NextStep id="about-next-heading" eyebrow={nextStep.eyebrow} heading={aboutPage.next.heading} options={nextStep.options} />
     </>
