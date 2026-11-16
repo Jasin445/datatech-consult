@@ -6,7 +6,6 @@ import { ButtonLink } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/Mark";
 import { NavLink } from "@/components/navigation/NavLink";
 import { MobileNav } from "@/components/navigation/MobileNav";
-import { ServicesMenu } from "@/components/navigation/ServicesMenu";
 import { services as serviceContent } from "@/content/services";
 import { getPrimaryNav, primaryCta } from "@/lib/site";
 import { hasPublishableCaseStudies, hasPublishableInsights } from "@/lib/content/registry";
@@ -36,13 +35,9 @@ export function SiteHeader() {
             <ul className="flex items-center gap-1 rounded-full border border-border bg-surface p-1.5 text-[0.95rem]">
               {items.map((item) => (
                 <li key={item.href}>
-                  {item.href === "/services" ? (
-                    <ServicesMenu services={menuServices} buttonClassName={trayItemClass} />
-                  ) : (
-                    <NavLink href={item.href} className={trayItemClass}>
-                      {item.label}
-                    </NavLink>
-                  )}
+                  <NavLink href={item.href} className={trayItemClass}>
+                    {item.label}
+                  </NavLink>
                 </li>
               ))}
             </ul>
