@@ -6,17 +6,14 @@ import { Hero } from "@/components/sections/Hero";
 import { NextStep } from "@/components/sections/NextStep";
 import { ProblemStory } from "@/components/sections/ProblemStory";
 import { StatementBand } from "@/components/sections/StatementBand";
-import { WorkingWithUs } from "@/components/sections/WorkingWithUs";
-import { WorkShowcase } from "@/components/sections/WorkShowcase";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { DashboardMock, OptionsMock, PipelineDiagram, SpreadsheetMock, WorkflowDiagram } from "@/components/visuals";
+import { DashboardMock, SpreadsheetMock } from "@/components/visuals";
 import { InContext } from "@/components/visuals/InContext";
 import { photos } from "@/content/media/photos";
-import { challenges, credibilityEvidence, hero, nextStep, problem, servicePhotos, servicesIntro, showcase, statement, workingWithUs } from "@/content/home";
+import { challenges, hero, nextStep, problem, servicePhotos, servicesIntro, statement } from "@/content/home";
 import { services } from "@/content/services";
 import { getPublishableInsights } from "@/lib/content/insights";
-import { filterPublishable } from "@/lib/content/status";
 import { getSiteUrl } from "@/lib/env";
 import { siteConfig } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo/page";
@@ -24,18 +21,12 @@ import { organizationJsonLd } from "@/lib/seo/structured-data";
 
 export const metadata: Metadata = pageMetadata({ description: siteConfig.description, path: "/" });
 
-const showcaseVisuals = {
-  pipeline: <PipelineDiagram />,
-  workflow: <WorkflowDiagram />,
-  options: <OptionsMock />,
-} as const;
-
 /**
  * Homepage (V4): hero (dashboard in its setting), problem (spreadsheet, tags, field note), where the data
- * comes from (photo strip), services, what the work looks like, statement, working with us, closing.
+ * comes from (photo strip), services, statement, closing. The showcase and working-with-us sections are
+ * commented out below (information overload) — restore them by uncommenting.
  */
 export default function HomePage() {
-  const evidence = filterPublishable(credibilityEvidence).map((e) => e.data);
   const latestInsights = getPublishableInsights().slice(0, 3);
   const siteUrl = getSiteUrl();
 
@@ -66,18 +57,24 @@ export default function HomePage() {
         </ul>
       </Section>
 
+      {/* Commented out 2026-11-16 (information overload): the showcase re-sells the services
+          already listed above. Restore by uncommenting.
       <Section tone="mist" labelledBy="showcase-heading">
         <SectionHeading id="showcase-heading" eyebrow={showcase.eyebrow} heading={showcase.heading} lead={showcase.lead} />
         <WorkShowcase items={showcase.items.map((item) => ({ ...item, visual: showcaseVisuals[item.key] }))} />
       </Section>
+      */}
 
       <StatementBand {...statement} />
 
+      {/* Commented out 2026-11-16 (information overload): the four principles restate the hero,
+          the problem story and the engagement shapes. Restore by uncommenting.
       <WorkingWithUs
         eyebrow={workingWithUs.eyebrow}
         heading={evidence.length > 0 ? "What we have done." : workingWithUs.heading}
         items={evidence.length > 0 ? evidence : workingWithUs.items}
       />
+      */}
 
       {/* Renders only when publishable articles exist (production: approved only). */}
       <InsightsPreview items={latestInsights} tone="surface" />

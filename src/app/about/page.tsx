@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import { AudienceMosaic } from "@/components/sections/AudienceMosaic";
 import { LeadershipGrid } from "@/components/sections/LeadershipGrid";
 import { NextStep } from "@/components/sections/NextStep";
 import { PageHero } from "@/components/sections/PageHero";
@@ -8,16 +6,14 @@ import { StatementBand } from "@/components/sections/StatementBand";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { ArrowRight } from "@/components/ui/Mark";
 import { Photo } from "@/components/ui/Photo";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { aboutPage } from "@/content/about";
-import { audiences, nextStep } from "@/content/home";
+import { nextStep } from "@/content/home";
 import { getPublishableLeadership } from "@/lib/content/leadership";
-import { getParentBrandUrl } from "@/lib/env";
 import { pageMetadata } from "@/lib/seo/page";
-import { ctas, siteConfig } from "@/lib/site";
+import { ctas } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: aboutPage.title,
@@ -27,8 +23,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function AboutPage() {
   const leadership = getPublishableLeadership();
-  const parentUrl = getParentBrandUrl();
-  const { overview, parent } = aboutPage;
+  const { overview } = aboutPage;
 
   return (
     <>
@@ -72,11 +67,13 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      {/* Commented out 2026-11-16 (information overload): the parent-brand relationship section
+          tells a visitor nothing that helps them decide to book. Restore by uncommenting.
       <Section tone="surface" labelledBy="parent-heading">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="relative flex aspect-[4/3] flex-col items-center justify-center gap-6 rounded-[1.5rem] border border-border bg-white p-10 shadow-lift lg:col-span-5">
             <span aria-hidden="true" className="absolute -top-px -right-px size-16 bg-[linear-gradient(to_bottom_left,var(--color-surface)_50%,var(--color-border)_50%)]" />
-            {/* Official logo, unchanged. */}
+            Official logo, unchanged.
             <Image src="/logos/datatechhub-logo.png" alt="Datatechhub logo" width={849} height={294} className="h-auto w-full max-w-[18rem]" />
             <p className="mb-0 text-center font-display text-2xl text-gold">{siteConfig.parentTagline}</p>
           </div>
@@ -96,11 +93,15 @@ export default function AboutPage() {
           </div>
         </div>
       </Section>
+      */}
 
+      {/* Commented out 2026-11-16 (information overload): four generic "we serve everyone" cards.
+          Restore by uncommenting.
       <Section labelledBy="audiences-heading">
         <SectionHeading id="audiences-heading" eyebrow={audiences.eyebrow} heading={audiences.heading} lead={audiences.lead} />
         <AudienceMosaic items={audiences.items} />
       </Section>
+      */}
 
       {leadership.length > 0 ? (
         <Section tone="surface" labelledBy="leadership-heading">

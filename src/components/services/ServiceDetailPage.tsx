@@ -2,13 +2,11 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { FolioCard } from "@/components/cards/FolioCard";
 import { Breadcrumb } from "@/components/sections/Breadcrumb";
-import { ContentsList } from "@/components/sections/ContentsList";
 import { EngagementLink } from "@/components/sections/EngagementLink";
 import { NextStep } from "@/components/sections/NextStep";
 import { PageHero } from "@/components/sections/PageHero";
 import { ProblemStory } from "@/components/sections/ProblemStory";
 import { ButtonLink } from "@/components/ui/Button";
-import { Mark } from "@/components/ui/Mark";
 import { Photo } from "@/components/ui/Photo";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -28,8 +26,9 @@ const heroVisuals: Record<string, ReactNode> = {
 
 /**
  * Shared template for the four service pages (V3 fixes). Order: hero, the service's mockup full width,
- * problem story with the problems as tags, one "what we do" list, what you get with the
- * page's single disclaimer, before we start, how engagements work, closing with related links.
+ * problem story with the problems as tags, one "what we do" list, how engagements work, closing with
+ * related links. The deliverables list (with the page's single disclaimer) and the considerations
+ * section are commented out below (information overload) — restore them by uncommenting.
  */
 export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
   const index = services.findIndex((s) => s.slug === detail.slug);
@@ -75,6 +74,10 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
         </ul>
       </Section>
 
+      {/* Commented out 2026-11-16 (information overload): the deliverables list duplicates the
+          capabilities list above ("Management dashboards" vs "Management dashboard", etc.).
+          Note: the page's single disclaimer line lives inside this section, so it is not shown
+          anywhere while the section is commented out. Restore by uncommenting.
       <Section tone="surface" labelledBy={`${p}-deliverables`}>
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
@@ -89,7 +92,10 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
           </div>
         </div>
       </Section>
+      */}
 
+      {/* Commented out 2026-11-16 (information overload): considerations are a third variation on
+          "problem first". Restore by uncommenting.
       <Section labelledBy={`${p}-considerations`}>
         <SectionHeading id={`${p}-considerations`} eyebrow="Before we start" heading={detail.considerations.heading} lead={detail.considerations.lead} />
         <ul className="grid gap-x-10 gap-y-8 border-t border-charcoal/15 pt-8 md:grid-cols-2 lg:grid-cols-3">
@@ -104,6 +110,7 @@ export function ServiceDetailPage({ detail }: { detail: ServiceDetail }) {
           ))}
         </ul>
       </Section>
+      */}
 
       <EngagementLink />
 

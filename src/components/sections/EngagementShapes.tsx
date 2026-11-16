@@ -1,13 +1,12 @@
-import { ArrowRight, Mark } from "@/components/ui/Mark";
-import { Panel } from "@/components/ui/Panel";
+import { ArrowRight } from "@/components/ui/Mark";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { engagement, STAGE_LABELS } from "@/content/engagement";
 
 /**
  * Engagement shapes as a connected track (diagnostic -> project -> support, start anywhere),
- * each showing which of the five stages it covers, followed by how pricing works. Shown once, on /services
- * (service pages link to it with EngagementLink).
+ * each showing which of the five stages it covers. The "how pricing works" panel is commented
+ * out below (information overload). Shown once, on /services (service pages link to it with EngagementLink).
  */
 export function EngagementShapes({ id = "engagement-heading", tone = "surface" }: { id?: string; tone?: "default" | "surface" }) {
   return (
@@ -52,6 +51,8 @@ export function EngagementShapes({ id = "engagement-heading", tone = "surface" }
           </li>
         ))}
       </ol>
+      {/* Commented out 2026-11-16 (information overload): the "how pricing works" panel promises
+          quoted prices but lists none. The three engagement shapes above stay. Restore by uncommenting.
       <Panel tone={tone === "surface" ? "surface" : "white"} compact className="mt-8">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-center lg:pr-14">
           <h3 className="mb-0 text-3xl lg:col-span-4">{engagement.pricing.heading}</h3>
@@ -65,6 +66,7 @@ export function EngagementShapes({ id = "engagement-heading", tone = "surface" }
           </ul>
         </div>
       </Panel>
+      */}
     </Section>
   );
 }
