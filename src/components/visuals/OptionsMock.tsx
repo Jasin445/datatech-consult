@@ -30,8 +30,8 @@ function Dots({ n }: { n: Rating }) {
 export function OptionsMock({ className = "" }: { className?: string }) {
   return (
     <MockFrame
-      title="Technology options appraisal · Illustrative"
-      label="Illustrative options appraisal comparing three options (fix the current system, add an integration layer, replace with a new platform) on cost, risk, time to value and how much of the problem each solves, with the integration layer recommended."
+      title="Technology options appraisal"
+      label="Options appraisal comparing three options (fix the current system, add an integration layer, replace with a new platform) on cost, risk, time to value and how much of the problem each solves, with the integration layer recommended."
       className={className}
     >
       <p className="mb-1 text-[10px] font-semibold tracking-[0.14em] text-gold uppercase">Section 4 · Options</p>

@@ -30,7 +30,7 @@ export function SpreadsheetMock({ className = "" }: { className?: string }) {
   return (
     <MockFrame
       title="sales_report_FINAL_v3 (2).xlsx"
-      label="Illustrative spreadsheet with common problems highlighted: mixed date formats, the same region spelled three ways, a duplicated row, a missing value and a broken formula."
+      label="Spreadsheet with common problems highlighted: mixed date formats, the same region spelled three ways, a duplicated row, a missing value and a broken formula."
       className={className}
       bodyClassName="p-0"
     >

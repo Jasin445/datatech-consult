@@ -1,13 +1,9 @@
 import type { ReactNode } from "react";
-import { Mark } from "@/components/ui/Mark";
-
-/** Every mock visual carries this caption (tests/visuals.test.ts enforces it). */
-export const ILLUSTRATIVE_CAPTION = "Illustrative example, not client data";
 
 /**
  * App-window frame for coded product mockups. The whole mock is exposed to assistive technology as one
- * image with a text description (`label`); its internals are hidden. The visible caption states that the
- * content is illustrative, so a mock is never mistaken for real client work or results.
+ * image with a text description (`label`); its internals are hidden. Mockups carry no illustrative
+ * caption or pill (removed 2026-11-17 by owner decision).
  */
 export function MockFrame({
   title,
@@ -30,16 +26,11 @@ export function MockFrame({
           <span className="size-2 rounded-full bg-gold/70 sm:size-2.5" />
           <span className="size-2 rounded-full bg-primary/70 sm:size-2.5" />
           <span className="ml-2 truncate text-[11px] font-semibold tracking-[0.02em] text-muted sm:ml-3 sm:text-xs">{title}</span>
-          <span className="ml-auto hidden shrink-0 rounded-full border border-border bg-white px-2 py-0.5 text-[9px] font-semibold tracking-[0.12em] text-muted uppercase sm:block">Illustrative</span>
         </div>
         <div aria-hidden="true" className={bodyClassName}>
           {children}
         </div>
       </div>
-      <figcaption className="mt-2.5 flex items-center gap-2 text-xs text-muted sm:mt-3">
-        <Mark variant="bullet" className="size-2.5 shrink-0 text-gold" />
-        {ILLUSTRATIVE_CAPTION}
-      </figcaption>
     </figure>
   );
 }

@@ -74,8 +74,8 @@ function IconFor({ title }: { title: string }) {
 export function WorkflowDiagram({ className = "" }: { className?: string }) {
   return (
     <MockFrame
-      title="Invoice processing workflow · Illustrative"
-      label="Illustrative automated workflow: an invoice arrives by email, AI extracts the key fields, rules check totals and duplicates, a person reviews only the flagged exceptions, and the invoice is posted to the accounting system."
+      title="Invoice processing workflow"
+      label="Automated workflow: an invoice arrives by email, AI extracts the key fields, rules check totals and duplicates, a person reviews only the flagged exceptions, and the invoice is posted to the accounting system."
       className={className}
     >
       <div className="relative">

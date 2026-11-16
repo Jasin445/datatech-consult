@@ -46,8 +46,8 @@ function Sparkline({ points, tone }: { points: readonly number[]; tone: "primary
 export function DashboardMock({ className = "" }: { className?: string }) {
   return (
     <MockFrame
-      title="Performance overview · Illustrative"
-      label="Illustrative management dashboard showing three headline figures, a monthly revenue trend against target, revenue by region and sales mix by product line."
+      title="Performance overview"
+      label="Management dashboard showing three headline figures, a monthly revenue trend against target, revenue by region and sales mix by product line."
       className={className}
       bodyClassName="p-3 sm:p-4"
     >

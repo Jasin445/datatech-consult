@@ -99,7 +99,7 @@ Other tokens kept: font stack (Segoe UI system stack, no network fonts), type sc
 ## V3 rules (supersede earlier V2 guidance where they differ)
 - Folio numbers only for genuinely numbered items (card sets, steps, contents, report sections), never on section eyebrows.
 - Gold italic heading accent only on: homepage hero, statement bands, contact, 404. Elsewhere headings are plain.
-- Show the work: prefer a coded mockup (src/components/visuals) over a stock photo where the section is about what we deliver. Every mockup must keep its visible illustrative caption (MockFrame); never cover it with overlapping elements.
+- Show the work: prefer a coded mockup (src/components/visuals) over a stock photo where the section is about what we deliver. Mockups carry no illustrative caption or pill (MockFrame) — both were removed 2026-11-17 by owner decision; do not re-add them. Never cover a mockup with overlapping elements.
 - Grid columns that hold mockups need `min-w-0`.
 - Calls to action: only `ctas.enquiry` and `ctas.consultation` from src/lib/site.ts.
 

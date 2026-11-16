@@ -3,4 +3,3 @@ export { SpreadsheetMock } from "./SpreadsheetMock";
 export { PipelineDiagram } from "./PipelineDiagram";
 export { WorkflowDiagram } from "./WorkflowDiagram";
 export { OptionsMock } from "./OptionsMock";
-export { ILLUSTRATIVE_CAPTION } from "./MockFrame";

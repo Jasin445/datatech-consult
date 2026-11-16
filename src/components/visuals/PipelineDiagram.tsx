@@ -36,8 +36,8 @@ function StageHeading({ n, label, tone, center = false }: { n: number; label: st
 export function PipelineDiagram({ className = "" }: { className?: string }) {
   return (
     <MockFrame
-      title="Data flow · Illustrative"
-      label="Illustrative data pipeline: an accounting system, a CRM, a field data app and spreadsheets feed an extract, clean and model step, which loads one reporting store that powers dashboards and reports."
+      title="Data flow"
+      label="Data pipeline: an accounting system, a CRM, a field data app and spreadsheets feed an extract, clean and model step, which loads one reporting store that powers dashboards and reports."
       className={className}
     >
       {/* Mobile: the journey as one compact strip — four stages, one line of checks. */}

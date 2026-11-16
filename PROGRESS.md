@@ -50,6 +50,8 @@ Remaining launch blockers: see RELEASE_CHECKLIST.md (unticked items).
 - Booking is a link, not an embed, until a provider is chosen.
 - Share image headline renders in the bundled regular-weight font.
 
+Illustrative-caption removal (2026-11-17, uncommitted — owner decision, no copy, content status, or business facts changed): the owner asked to remove "Illustrative example, not client data" from all chart/diagram mockups. The `<figcaption>` and the "Illustrative" pill in the mock window title bar are gone from `MockFrame.tsx` (all 5 mock visuals), along with the `ILLUSTRATIVE_CAPTION` const/export and the test assertion enforcing it (`tests/visuals.test.tsx`). The STYLING.md rule requiring the caption is updated to forbid re-adding it. Mock titles, labels, numbers and all other mock content are unchanged.
+
 ## Not verified
 - Screen-reader pass, real touch devices, Lighthouse/performance budget, deployment on the target host, real email delivery, real scheduling provider.
 
