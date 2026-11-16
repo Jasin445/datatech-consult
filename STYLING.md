@@ -119,3 +119,15 @@ Other tokens kept: font stack (Segoe UI system stack, no network fonts), type sc
 - Micro-labels are sentence case (no tracked uppercase), except inside mockups.
 - Photos with mockups: use `visuals/InContext`; captions on photo strips describe settings, never clients.
 - Hover states always transition (global base rule, 250ms). Do not add `transition-none` to interactive elements.
+
+## Mobile-cut rule for mockups (added 2026-11-16)
+- Long coded visuals are CUT on mobile, not shrunk: below `md` each mockup shows its headline
+  element only (hero dashboard: one KPI + trend chart; pipeline: a four-chip stage strip;
+  workflow: compact icon+title rows; options: name + total score; spreadsheet: four rows).
+  The full visual returns from `md` up. The cut uses responsive display classes
+  (`hidden md:block`, `hidden sm:block`) — never `hidden lg:...` on elements that already
+  set `display` in their base classes.
+- Charts (`visuals/charts.tsx`) are drawn like a deck: labelled y-axis (HTML labels, never
+  SVG text under a non-uniform stretch), hairline gridlines, a firm baseline, tabular numbers.
+- New tokens: `ink-soft`, `shadow-pop`, `shadow-glow`, `shadow-gold-glow`. Primary buttons carry
+  a depth shadow (`shadow-[0_12px_28px_-12px_rgb(30_100_171/65%)]` in `ui/Button.tsx`).

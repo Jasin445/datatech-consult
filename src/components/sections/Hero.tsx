@@ -33,20 +33,24 @@ export function Hero({
   return (
     <section aria-labelledby="page-heading" className="relative overflow-hidden pt-6 pb-10 sm:pt-10 lg:pt-14 lg:pb-16">
       <Container>
-        <div className="relative overflow-hidden rounded-[1.5rem] bg-ink px-6 py-12 text-white shadow-hero sm:px-10 sm:py-16 lg:rounded-[2rem] lg:px-14 lg:py-24">
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_80%_at_85%_0%,rgb(21_168_234/22%),transparent_70%),radial-gradient(50%_60%_at_0%_100%,rgb(140_106_47/25%),transparent_70%)]" />
+        <div className="relative overflow-hidden rounded-[1.5rem] bg-ink px-6 py-12 text-white shadow-hero ring-1 ring-white/10 sm:px-10 sm:py-16 lg:rounded-[2rem] lg:px-14 lg:py-24">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_80%_at_85%_0%,rgb(21_168_234/24%),transparent_70%),radial-gradient(50%_60%_at_0%_100%,rgb(140_106_47/28%),transparent_70%),radial-gradient(40%_50%_at_80%_85%,rgb(21_168_234/16%),transparent_70%)]" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgb(255_255_255/7%)_1px,transparent_1px)] bg-size-[26px_26px] [mask-image:radial-gradient(75%_90%_at_50%_0%,black,transparent)]" />
           <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gold/60" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-white/10" />
+          <div aria-hidden="true" className="pointer-events-none absolute top-5 right-5 hidden h-10 w-10 border-t-2 border-r-2 border-gold/50 lg:block" />
+          <div aria-hidden="true" className="pointer-events-none absolute bottom-5 left-5 hidden h-10 w-10 border-b-2 border-l-2 border-gold/50 lg:block" />
           <div className="relative grid items-center gap-10 sm:gap-14 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-6">
               <div>
                 <Eyebrow onDark>{eyebrow}</Eyebrow>
               </div>
-              <h1 id="page-heading" className="mb-5 text-display text-white sm:mb-7">
+              <h1 id="page-heading" className="mb-5 text-display text-white drop-shadow-[0_2px_14px_rgb(0_0_0/40%)] sm:mb-7">
                 {headline} <Accent onDark>{headlineAccent}</Accent>
               </h1>
               <p className="mb-6 max-w-[52ch] text-footer-text sm:mb-9 sm:text-lg">{body}</p>
               <div className="flex animate-rise flex-wrap items-center gap-x-8 gap-y-4 [animation-delay:270ms]">
-                <ButtonLink href={primary.href} size="lg">{primary.label}</ButtonLink>
+                <ButtonLink href={primary.href} size="lg" className="shadow-glow">{primary.label}</ButtonLink>
                 <Link href={secondary.href} className="group inline-flex min-h-11 items-center gap-2 font-display text-xl text-white italic no-underline hover:text-gold-soft">
                   {secondary.label}
                   <ArrowRight className="size-4 text-gold-soft transition-transform group-hover:translate-x-1" />
@@ -54,7 +58,10 @@ export function Hero({
               </div>
             </div>
 
-            <div className="relative min-w-0 animate-rise [animation-delay:200ms] lg:col-span-6 lg:pl-4">{visual}</div>
+            <div className="relative min-w-0 animate-rise [animation-delay:200ms] lg:col-span-6 lg:pl-4">
+              <div aria-hidden="true" className="pointer-events-none absolute -inset-6 rounded-full bg-secondary/20 blur-3xl" />
+              <div className="relative">{visual}</div>
+            </div>
           </div>
         </div>
       </Container>

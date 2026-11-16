@@ -29,11 +29,14 @@ export function SectionHeading({
           {eyebrow}
         </Eyebrow>
       )}
-      <h2 id={id} className={`mb-5 ${onDark ? "text-white" : ""}`}>
+      <h2 id={id} className={`mb-5 tracking-[-0.015em] ${onDark ? "text-white" : ""}`}>
         {heading}
       </h2>
-      <div aria-hidden="true" className={`mb-6 h-px w-16 bg-gold ${center ? "mx-auto" : ""}`} />
-      {lead && <p className={`mb-0 max-w-[58ch] text-lg ${center ? "mx-auto" : ""} ${onDark ? "text-footer-text" : "text-muted"}`}>{lead}</p>}
+      <div aria-hidden="true" className={`mb-6 flex items-center gap-2 ${center ? "justify-center" : ""}`}>
+        <span className="h-0.5 w-20 rounded-full bg-gold" />
+        <span className="size-1.5 rounded-full bg-gold/60" />
+      </div>
+      {lead && <p className={`mb-0 max-w-[60ch] text-lg ${center ? "mx-auto" : ""} ${onDark ? "text-footer-text" : "text-muted"}`}>{lead}</p>}
     </div>
   );
 }

@@ -24,18 +24,19 @@ export function MockFrame({
 }) {
   return (
     <figure className={`m-0 min-w-0 ${className}`}>
-      <div role="img" aria-label={label} className="overflow-hidden rounded-[1.25rem] border border-border bg-white shadow-lift transition-shadow duration-300 hover:shadow-hero">
-        <div aria-hidden="true" className="flex items-center gap-1.5 border-b border-border bg-surface px-4 py-2.5">
-          <span className="size-2.5 rounded-full bg-danger/70" />
-          <span className="size-2.5 rounded-full bg-gold/70" />
-          <span className="size-2.5 rounded-full bg-primary/70" />
-          <span className="ml-3 truncate text-xs font-medium text-muted">{title}</span>
+      <div role="img" aria-label={label} className="overflow-hidden rounded-[1.25rem] border border-border bg-white shadow-lift ring-1 ring-charcoal/5 transition-shadow duration-300 hover:shadow-hero">
+        <div aria-hidden="true" className="flex items-center gap-1.5 border-b border-border bg-linear-to-b from-white to-surface px-3 py-2 sm:px-4 sm:py-2.5">
+          <span className="size-2 rounded-full bg-danger/70 sm:size-2.5" />
+          <span className="size-2 rounded-full bg-gold/70 sm:size-2.5" />
+          <span className="size-2 rounded-full bg-primary/70 sm:size-2.5" />
+          <span className="ml-2 truncate text-[11px] font-semibold tracking-[0.02em] text-muted sm:ml-3 sm:text-xs">{title}</span>
+          <span className="ml-auto hidden shrink-0 rounded-full border border-border bg-white px-2 py-0.5 text-[9px] font-semibold tracking-[0.12em] text-muted uppercase sm:block">Illustrative</span>
         </div>
         <div aria-hidden="true" className={bodyClassName}>
           {children}
         </div>
       </div>
-      <figcaption className="mt-3 flex items-center gap-2 text-xs text-muted">
+      <figcaption className="mt-2.5 flex items-center gap-2 text-xs text-muted sm:mt-3">
         <Mark variant="bullet" className="size-2.5 shrink-0 text-gold" />
         {ILLUSTRATIVE_CAPTION}
       </figcaption>

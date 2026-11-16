@@ -101,9 +101,9 @@ export const servicesIntro = {
 
 /** Photo for each service card, keyed by service slug. */
 export const servicePhotos: Record<string, Photo> = {
-  "data-analytics": photos.analyticsDashboard,
-  "data-infrastructure": photos.dataCentre,
-  "ai-automation": photos.aiRobot,
+  "data-analytics": photos.analystWindow,
+  "data-infrastructure": photos.riverCity,
+  "ai-automation": photos.codeLaptop,
   "business-technology-consulting": photos.threeColleagues,
 };
 

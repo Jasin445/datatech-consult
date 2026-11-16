@@ -21,7 +21,11 @@ const issueSummary = [
   { n: "1", label: "broken formula" },
 ];
 
-/** Messy spreadsheet mockup: the starting point for most reporting work. */
+/**
+ * Messy spreadsheet mockup: the starting point for most reporting work.
+ * Mobile cut: below `md` two middle rows and the notes strip are hidden, so the sheet shows
+ * a clean row, a bad row, a clean row and the duplicate row — the whole story, in four rows.
+ */
 export function SpreadsheetMock({ className = "" }: { className?: string }) {
   return (
     <MockFrame
@@ -45,8 +49,8 @@ export function SpreadsheetMock({ className = "" }: { className?: string }) {
       {/* Issues found: a count strip above the grid. */}
       <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-b border-border bg-warning-bg px-3 py-2">
         <span className="text-[10px] font-bold tracking-[0.12em] text-warning-text uppercase">Issues found</span>
-        {issueSummary.map((s) => (
-          <span key={s.label} className="flex items-baseline gap-1 text-[11px] text-warning-text">
+        {issueSummary.map((s, i) => (
+          <span key={s.label} className={`items-baseline gap-1 text-[11px] text-warning-text ${i < 2 ? "flex" : "hidden sm:flex"}`}>
             <span className="font-display text-base leading-none tabular-nums">{s.n}</span>
             {s.label}
           </span>
@@ -54,7 +58,7 @@ export function SpreadsheetMock({ className = "" }: { className?: string }) {
       </div>
 
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[30rem] border-collapse text-[10px] sm:text-[11px]">
+        <table className="w-full min-w-[26rem] border-collapse text-[10px] sm:text-[11px]">
           <thead>
             <tr className="bg-surface text-muted">
               <th className="w-8 border-r border-b border-border px-1 py-1 font-normal" />
@@ -75,7 +79,7 @@ export function SpreadsheetMock({ className = "" }: { className?: string }) {
           </thead>
           <tbody>
             {rows.map((r, ri) => (
-              <tr key={ri} className={ri === 5 ? "bg-danger/10" : ""}>
+              <tr key={ri} className={`${ri === 5 ? "bg-danger/10" : ""} ${ri === 3 || ri === 4 ? "hidden md:table-row" : ""}`}>
                 <td className="border-r border-b border-border bg-surface px-1 py-1 text-center text-muted">
                   <span className="inline-flex items-center gap-1">
                     {ri + 2}
@@ -100,7 +104,7 @@ export function SpreadsheetMock({ className = "" }: { className?: string }) {
           </tbody>
         </table>
       </div>
-      <div className="flex flex-wrap gap-2 border-t border-border bg-surface px-4 py-3">
+      <div className="hidden flex-wrap gap-2 border-t border-border bg-surface px-4 py-3 md:flex">
         {notes.map((n) => (
           <span key={n} className="rounded-full border border-danger/30 bg-white px-2.5 py-1 text-[10px] font-semibold text-danger">
             {n}

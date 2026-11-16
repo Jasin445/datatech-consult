@@ -66,7 +66,7 @@ export const aiAutomation: ServiceDetail = {
     body: "Describe the task and what you’re considering. We’ll tell you whether automation or AI is likely to help.",
   },
   v2: {
-    heroPhoto: photos.aiRobot,
+    heroPhoto: photos.codeLaptop,
     hook: {
       heading: "Everyone wants AI; few can say which task it should take on.",
       paragraphs: [

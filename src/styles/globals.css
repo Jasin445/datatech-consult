@@ -15,6 +15,7 @@
   /* PROPOSED supporting colours (not verified official brand colours) */
   --color-charcoal: #172b3a;
   --color-ink: #0e1f2d; /* deeper charcoal for hero / statement panels */
+  --color-ink-soft: #16324a; /* panel surface on ink: cards and panels inside dark sections */
   --color-surface: #f3f7fa;
   --color-mist: #e9f1f6; /* warm blue-grey tint for alternating sections */
   --color-gold-deep: #7a5c28;
@@ -53,9 +54,9 @@
   --text-3xl: clamp(2.125rem, 1.6rem + 2.6vw, 3.5rem);
   --text-3xl--line-height: 1.15;
   /* V2 display sizes (serif headlines) */
-  --text-display: clamp(2.75rem, 1.6rem + 5vw, 5.75rem);
+  --text-display: clamp(2.9rem, 1.6rem + 5.4vw, 6.25rem);
   --text-display--line-height: 0.98;
-  --text-4xl: clamp(2.5rem, 1.8rem + 3.4vw, 4.25rem);
+  --text-4xl: clamp(2.5rem, 1.8rem + 3.4vw, 4.5rem);
   --text-4xl--line-height: 1.02;
 
   /* Shape and elevation */
@@ -66,6 +67,9 @@
   --shadow-card: 0 1px 2px rgb(23 43 58 / 8%), 0 4px 12px rgb(23 43 58 / 6%);
   --shadow-lift: 0 2px 4px rgb(23 43 58 / 8%), 0 18px 40px -18px rgb(23 43 58 / 35%);
   --shadow-hero: 0 2px 6px rgb(14 31 45 / 20%), 0 32px 70px -28px rgb(14 31 45 / 55%);
+  --shadow-pop: 0 1px 2px rgb(23 43 58 / 10%), 0 24px 48px -20px rgb(23 43 58 / 40%);
+  --shadow-glow: 0 0 0 1px rgb(255 255 255 / 10%), 0 30px 80px -30px rgb(21 168 234 / 55%);
+  --shadow-gold-glow: 0 0 0 1px rgb(140 106 47 / 25%), 0 24px 60px -24px rgb(140 106 47 / 55%);
 
   /* V2 motion: one staggered entrance on page load (disabled by the reduced-motion rule below). */
   --animate-rise: rise 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) both;

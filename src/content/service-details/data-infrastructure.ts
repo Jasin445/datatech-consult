@@ -63,7 +63,7 @@ export const dataInfrastructure: ServiceDetail = {
     body: "Tell us which systems hold your data and what isn’t working. We’ll tell you what is worth doing, and what isn’t.",
   },
   v2: {
-    heroPhoto: photos.dataCentre,
+    heroPhoto: photos.riverCity,
     hook: {
       heading: "Your people are doing the translating your systems should.",
       paragraphs: [

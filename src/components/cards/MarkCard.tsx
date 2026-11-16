@@ -30,7 +30,7 @@ export function MarkCard({
       className={`group relative flex h-full flex-col items-center rounded-[1.5rem] bg-white text-center text-charcoal shadow-lift transition-all duration-300 hover:-translate-y-1.5 hover:shadow-hero ${
         tall ? "min-h-[28rem] px-8 py-16 lg:min-h-[34rem] lg:px-14 lg:py-20" : "px-8 py-12 lg:px-12 lg:py-16"
       } ${
-        recommended ? "ring-2 ring-gold ring-offset-4 ring-offset-charcoal" : ""
+        recommended ? "shadow-gold-glow ring-2 ring-gold ring-offset-4 ring-offset-charcoal" : ""
       }`}
     >
       {recommended && (

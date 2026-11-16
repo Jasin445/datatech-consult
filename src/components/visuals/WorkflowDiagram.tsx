@@ -64,7 +64,11 @@ function IconFor({ title }: { title: string }) {
   );
 }
 
-/** Automation workflow with an explicit human-review step. A progress track runs through the five steps. */
+/**
+ * Automation workflow with an explicit human-review step. A progress track runs through the five steps.
+ * Mobile cut: below `md` each step is one compact row (icon, title, kind) with no description text —
+ * the full cards and the weekly stats return from `md` up.
+ */
 export function WorkflowDiagram({ className = "" }: { className?: string }) {
   return (
     <MockFrame
@@ -73,42 +77,48 @@ export function WorkflowDiagram({ className = "" }: { className?: string }) {
       className={className}
     >
       <div className="relative">
-        {/* Progress track: horizontal on desktop, vertical on mobile. The filled part runs to the human-review checkpoint. */}
-        <div className="absolute top-5 bottom-5 left-8 w-0.5 bg-border md:top-5 md:right-10 md:bottom-auto md:left-10 md:h-0.5 md:w-auto" aria-hidden="true" />
-        <div className="absolute top-5 left-8 h-[62%] w-0.5 bg-primary/60 md:top-5 md:left-10 md:h-0.5 md:w-[62%]" aria-hidden="true" />
-        <ol className="relative grid gap-2 md:grid-cols-5 md:gap-3">
+        {/* Progress track: vertical on mobile (through the compact row icons), horizontal on desktop. The filled part runs to the human-review checkpoint. */}
+        <div className="absolute top-4 bottom-4 left-6 w-0.5 bg-border md:top-5 md:right-10 md:bottom-auto md:left-10 md:h-0.5 md:w-auto" aria-hidden="true" />
+        <div className="absolute top-4 left-6 h-[62%] w-0.5 bg-primary/60 md:top-5 md:left-10 md:h-0.5 md:w-[62%]" aria-hidden="true" />
+        <ol className="relative grid gap-1.5 md:grid-cols-5 md:gap-3">
           {steps.map((s, i) => (
             <li key={s.title} className="relative flex md:block">
-              <div className={`flex-1 rounded-lg border p-3 pl-14 md:p-3 md:pt-12 ${kindClass[s.kind]} ${s.kind === "human" ? "shadow-card" : ""}`}>
+              <div className={`flex-1 rounded-lg border p-2.5 pl-12 md:p-3 md:pt-12 ${kindClass[s.kind]} ${s.kind === "human" ? "shadow-card" : ""}`}>
                 {/* Step icon sits on the track. */}
                 <span
-                  className={`absolute top-3 left-3 grid size-10 place-items-center rounded-full border-2 border-white shadow-card md:top-0 md:left-1/2 md:-translate-x-1/2 ${iconWrap[s.kind]}`}
+                  className={`absolute top-2 left-2 grid size-8 place-items-center rounded-full border-2 border-white shadow-card md:top-0 md:left-1/2 md:size-10 md:-translate-x-1/2 ${iconWrap[s.kind]}`}
                   aria-hidden="true"
                 >
                   <IconFor title={s.title} />
                 </span>
-                <p className={`mb-1.5 flex items-center gap-1.5 text-[9px] font-semibold tracking-[0.12em] uppercase ${s.kind === "human" ? "text-gold-deep" : "text-primary"}`}>
-                  <span className="grid size-3.5 place-items-center rounded-full bg-charcoal text-[8px] font-bold text-white">{i + 1}</span>
+                <p className={`mb-1.5 hidden items-center gap-1.5 text-[9px] font-semibold tracking-[0.12em] uppercase md:flex ${s.kind === "human" ? "text-gold-deep" : "text-primary"}`}>
+                  <span className="grid size-3.5 place-items-center rounded-full bg-charcoal text-[8px] font-bold text-white tabular-nums">{i + 1}</span>
                   {kindLabel[s.kind]}
                 </p>
-                <p className="mb-0.5 text-[12px] font-semibold text-charcoal">{s.title}</p>
-                <p className="mb-0 text-[10px] text-muted">{s.text}</p>
-                {s.kind === "human" && (
-                  <p className="mt-2 mb-0 inline-flex rounded-full bg-gold px-2 py-0.5 text-[9px] font-bold tracking-wide text-white uppercase">Checkpoint</p>
-                )}
+                <p className="mb-0 text-[12px] font-semibold text-charcoal">
+                  <span className="mr-1.5 inline-grid size-4 place-items-center rounded-full bg-charcoal align-middle text-[9px] font-bold text-white tabular-nums md:hidden">{i + 1}</span>
+                  {s.title}
+                  <span className={`ml-2 inline-flex rounded-full px-1.5 py-0.5 align-middle text-[9px] font-semibold md:hidden ${s.kind === "human" ? "bg-gold-tint text-gold-deep" : "bg-mist text-primary"}`}>
+                    {kindLabel[s.kind]}
+                  </span>
+                  {s.kind === "human" && (
+                    <span className="ml-2 inline-flex rounded-full bg-gold px-2 py-0.5 align-middle text-[9px] font-bold tracking-wide text-white uppercase md:mt-2 md:ml-0 md:block md:w-fit">Checkpoint</span>
+                  )}
+                </p>
+                <p className="mb-0 hidden text-[10px] text-muted md:block">{s.text}</p>
               </div>
             </li>
           ))}
         </ol>
       </div>
-      <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-border pt-3">
+      <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-border pt-3 md:mt-4">
         <span className="text-[10px] font-semibold tracking-[0.12em] text-muted uppercase">This week</span>
         {[
           { n: "412", label: "processed" },
           { n: "23", label: "sent for review" },
           { n: "0", label: "posted without a check" },
-        ].map((s) => (
-          <span key={s.label} className="inline-flex items-baseline gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 text-[11px] text-muted">
+        ].map((s, j) => (
+          <span key={s.label} className={`items-baseline gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 text-[11px] text-muted ${j === 0 ? "inline-flex" : "hidden sm:inline-flex"}`}>
             <span className="font-display text-base leading-none font-normal text-charcoal tabular-nums">{s.n}</span>
             {s.label}
           </span>

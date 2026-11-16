@@ -61,9 +61,6 @@ export const photos = {
   colleaguesLaptop: unsplash("two-colleagues-laptop", 1800, 1200, "Two women working through something on a laptop in a bright office", "https://unsplash.com/photos/two-women-sitting-at-a-table-with-a-laptop-P67JZsh6wr0", "Ninthgrid"),
   laptopReview: unsplash("laptop-review", 1800, 1200, "A man and a woman reviewing something together on a laptop", "https://unsplash.com/photos/a-man-and-a-woman-are-looking-at-a-laptop-KljeL88lgkk", "Ninthgrid"),
   tabletProfessional: unsplash("tablet-professional", 1350, 1800, "A smiling woman in a headscarf working on a tablet at a desk", "https://unsplash.com/photos/a-woman-sitting-at-a-table-with-a-tablet-jLKDfxikHzM", "Francis Odeyemi"),
-  dataCentre: unsplash("data-centre", 1800, 1010, "Server racks with network cables and indicator lights in a data centre", "https://unsplash.com/photos/cable-network-M5tzZtFCOfs", "Taylor Vick"),
-  analyticsDashboard: unsplash("analytics-dashboard", 1800, 1200, "A laptop screen showing performance analytics charts and metrics", "https://unsplash.com/photos/graphs-of-performance-analytics-on-a-laptop-screen-JKUTrJ4vK00", "Luke Chesser"),
-  aiRobot: unsplash("ai-robot", 1800, 1200, "A white humanoid robot holding a tablet", "https://unsplash.com/photos/white-robot-near-brown-wall-2EJCSULRwC8", "Alex Knight"),
 } as const satisfies Record<string, Photo>;
 
 export type PhotoId = keyof typeof photos;

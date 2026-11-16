@@ -22,7 +22,11 @@ function Dots({ n }: { n: Rating }) {
   );
 }
 
-/** Options appraisal page from an advisory report: three options rated against criteria, one recommended. */
+/**
+ * Options appraisal page from an advisory report: three options rated against criteria, one recommended.
+ * Mobile cut: below `md` the criteria dot-matrix is hidden — each option shows its name and total
+ * score only, so the three cards stay short. The full appraisal returns from `md` up.
+ */
 export function OptionsMock({ className = "" }: { className?: string }) {
   return (
     <MockFrame
@@ -39,15 +43,15 @@ export function OptionsMock({ className = "" }: { className?: string }) {
           return (
             <article
               key={o.name}
-              className={`relative overflow-hidden rounded-lg border p-3.5 ${o.recommended ? "border-gold bg-gold-tint shadow-card" : "border-border bg-white"}`}
+              className={`relative overflow-hidden rounded-lg border p-3.5 ${o.recommended ? "border-gold bg-gold-tint shadow-card" : "hidden border-border bg-white md:block"}`}
             >
               {o.recommended && (
                 <span className="absolute top-3 right-3 rounded-full bg-gold px-2 py-0.5 text-[9px] font-bold tracking-wide text-white uppercase">Recommended</span>
               )}
-              <p className={`mb-3 min-h-[2.6em] text-[13px] leading-snug font-semibold text-charcoal ${o.recommended ? "pr-20" : ""}`}>{o.name}</p>
+              <p className={`mb-0 text-[13px] leading-snug font-semibold text-charcoal md:mb-3 md:min-h-[2.6em] ${o.recommended ? "pr-20" : ""}`}>{o.name}</p>
 
-              {/* Criteria as a dot matrix: one row per criterion, three dots per row. */}
-              <ul className="grid gap-2 border-t border-border/70 pt-3">
+              {/* Criteria as a dot matrix: one row per criterion, three dots per row. Desktop only. */}
+              <ul className="hidden gap-2 border-t border-border/70 pt-3 md:grid">
                 {o.ratings.map((r, i) => (
                   <li key={criteria[i] ?? i} className="flex items-center justify-between gap-2 text-[11px]">
                     <span className="text-muted">{criteria[i] ?? ""}</span>
@@ -57,7 +61,7 @@ export function OptionsMock({ className = "" }: { className?: string }) {
               </ul>
 
               {/* Total score bar. */}
-              <div className="mt-3 border-t border-border/70 pt-3">
+              <div className="mt-3 border-t border-border/70 pt-3 md:mt-3">
                 <div className="mb-1.5 flex items-baseline justify-between">
                   <span className="text-[10px] font-semibold tracking-[0.12em] text-muted uppercase">Total score</span>
                   <span className="font-display text-xl leading-none text-charcoal tabular-nums">
@@ -76,7 +80,28 @@ export function OptionsMock({ className = "" }: { className?: string }) {
         })}
       </div>
 
-      <p className="mt-3 mb-0 text-[10px] text-muted">More dots = better on that criterion (lower cost, lower risk, faster, solves more of the problem).</p>
+      {/* Mobile: the two non-recommended options as single-line rows — the recommended card above carries the section. */}
+      <ul className="mt-3 grid gap-2 md:hidden">
+        {options
+          .filter((o) => !o.recommended)
+          .map((o) => {
+            const total = o.ratings.reduce<number>((a, b) => a + b, 0);
+            return (
+              <li key={o.name} className="flex items-center gap-3 rounded-lg border border-border bg-white px-3 py-2.5">
+                <span className="min-w-0 flex-1 truncate text-[12px] font-semibold text-charcoal">{o.name}</span>
+                <span className="h-1.5 w-16 shrink-0 overflow-hidden rounded-full bg-border/60">
+                  <span className="block h-1.5 w-(--w) rounded-full bg-primary" style={{ "--w": `${(total / MAX_TOTAL) * 100}%` } as CSSProperties} />
+                </span>
+                <span className="shrink-0 font-display text-base leading-none text-charcoal tabular-nums">
+                  {total}
+                  <span className="text-xs text-muted"> / {MAX_TOTAL}</span>
+                </span>
+              </li>
+            );
+          })}
+      </ul>
+
+      <p className="mt-3 mb-0 hidden text-[10px] text-muted md:block">More dots = better on that criterion (lower cost, lower risk, faster, solves more of the problem).</p>
     </MockFrame>
   );
 }

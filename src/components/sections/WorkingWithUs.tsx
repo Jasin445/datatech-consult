@@ -16,7 +16,7 @@ export function WorkingWithUs({ eyebrow, heading, items }: { eyebrow: string; he
         </div>
         <ul className="grid gap-6 sm:grid-cols-2 lg:col-span-8">
           {items.map((item) => (
-            <li key={item.title} className="rounded-[1.25rem] border border-border bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lift sm:p-7">
+            <li key={item.title} className="rounded-[1.25rem] border border-border bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-pop sm:p-7">
               <Mark variant="bullet" className="mb-4 size-5 text-gold" />
               <h3 className="mb-2 text-2xl">{item.title}</h3>
               <p className="mobile-detail mb-0 text-muted">{item.text}</p>

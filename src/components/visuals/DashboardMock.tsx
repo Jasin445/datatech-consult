@@ -37,7 +37,12 @@ function Sparkline({ points, tone }: { points: readonly number[]; tone: "primary
   );
 }
 
-/** Management dashboard mockup: KPI tiles, trend vs target, region bars and product mix. */
+/**
+ * Management dashboard mockup: KPI tiles, trend vs target, region bars and product mix.
+ * Mobile cut: below `sm` only the headline KPI and the trend chart show; below `md` the
+ * region and sales-mix panels are hidden too, so the hero visual stays short on phones.
+ * The full dashboard returns from `md` up.
+ */
 export function DashboardMock({ className = "" }: { className?: string }) {
   return (
     <MockFrame
@@ -67,16 +72,18 @@ export function DashboardMock({ className = "" }: { className?: string }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-2 @[30rem]:gap-3">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 @[30rem]:gap-3">
           {kpis.map((k, i) => (
-            <div key={k.label} className="rounded-lg border border-border p-2.5 sm:p-3">
-              <p className="mb-1 min-h-[2.4em] text-[10px] leading-tight font-medium text-muted @[30rem]:min-h-0 @[30rem]:text-[11px]">{k.label}</p>
-              <p className="mb-1 font-display text-lg leading-none text-charcoal @[30rem]:text-2xl">{k.value}</p>
-              <p className="mb-1.5">
-                <span className={`inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-[10px] font-semibold ${k.up ? "bg-mist text-primary" : "bg-gold-tint text-gold-deep"}`}>
-                  {k.up ? "↑" : "↓"} {k.delta}
-                </span>
-              </p>
+            <div key={k.label} className={`rounded-lg border border-border p-2.5 sm:p-3 ${i > 0 ? "hidden sm:block" : ""}`}>
+              <p className="mb-1 text-[10px] leading-tight font-medium text-muted @[30rem]:text-[11px]">{k.label}</p>
+              <div className="flex items-baseline justify-between gap-2 sm:block">
+                <p className="mb-1 font-display text-xl leading-none whitespace-nowrap text-charcoal">{k.value}</p>
+                <p className="mb-1.5 sm:mt-1">
+                  <span className={`inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-[10px] font-semibold ${k.up ? "bg-mist text-primary" : "bg-gold-tint text-gold-deep"}`}>
+                    {k.up ? "↑" : "↓"} {k.delta}
+                  </span>
+                </p>
+              </div>
               <Sparkline points={k.spark} tone={i === 0 ? "primary" : i === 1 ? "secondary" : "gold"} />
             </div>
           ))}
@@ -94,10 +101,10 @@ export function DashboardMock({ className = "" }: { className?: string }) {
         <AreaChart values={actual} labels={months} max={60} tone="primary" endLabel="₦56.0m" compare={{ values: target, tone: "gold" }} />
       </div>
 
-      <div className="mt-3 grid gap-3 sm:grid-cols-2">
+      <div className="mt-3 hidden gap-3 md:grid md:grid-cols-2">
         <div className="rounded-lg border border-border p-3">
           <div className="mb-1 flex items-baseline justify-between">
-            <p className="mb-0 text-[11px] font-semibold text-charcoal">Revenue by region</p>
+            <p className="mb-0 text-[11px] font-semibold whitespace-nowrap text-charcoal">By region</p>
             <p className="mb-0 text-[10px] text-muted">
               Highest: <span className="font-semibold text-gold">West</span>
             </p>

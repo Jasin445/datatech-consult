@@ -64,7 +64,7 @@ export function ProblemStory({
               <p key={p} className={index > 0 ? "mobile-detail" : undefined}>{p}</p>
             ))}
           </div>
-          <p className="mt-6 mb-0 rounded-r-[1rem] border-l-2 border-gold bg-white/70 py-3 pl-4 font-display text-2xl text-charcoal sm:mt-8 sm:pl-5 sm:text-3xl">{turn}</p>
+          <p className="mt-6 mb-0 rounded-r-[1rem] border-l-[3px] border-gold bg-gold-tint/60 py-3 pl-4 font-display text-2xl text-charcoal shadow-card sm:mt-8 sm:pl-5 sm:text-3xl">{turn}</p>
           {tags && tags.length > 0 && (
             <ul className="mt-8 flex flex-wrap gap-2" aria-label="Common problems">
               {tags.map((t, index) => (
