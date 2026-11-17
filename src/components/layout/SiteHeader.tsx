@@ -6,7 +6,6 @@ import { ButtonLink } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/Mark";
 import { NavLink } from "@/components/navigation/NavLink";
 import { MobileNav } from "@/components/navigation/MobileNav";
-import { services as serviceContent } from "@/content/services";
 import { getPrimaryNav, primaryCta } from "@/lib/site";
 import { hasPublishableCaseStudies, hasPublishableInsights } from "@/lib/content/registry";
 
@@ -23,7 +22,6 @@ export function SiteHeader() {
     showCaseStudies: hasPublishableCaseStudies(),
     showInsights: hasPublishableInsights(),
   });
-  const menuServices = serviceContent.map((s) => ({ slug: s.slug, title: s.title, summary: s.summary, href: s.href }));
 
   return (
     <HeaderShell className="sticky top-0 z-50 bg-white transition-[background-color,box-shadow] duration-300 data-[scrolled=true]:bg-white/92 data-[scrolled=true]:shadow-[0_14px_34px_-22px_rgb(23_43_58/45%)] data-[scrolled=true]:backdrop-blur-md">
@@ -47,7 +45,7 @@ export function SiteHeader() {
             <ArrowRight />
           </ButtonLink>
           <div className="ml-auto lg:hidden">
-            <MobileNav items={items} cta={primaryCta} services={menuServices} />
+            <MobileNav items={items} cta={primaryCta} />
           </div>
         </Container>
       </div>

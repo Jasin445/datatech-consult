@@ -6,8 +6,6 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { NavLink } from "./NavLink";
 import type { NavItem } from "@/lib/site";
-import type { MenuService } from "./ServicesMenu";
-import { ServiceIcon } from "@/components/ui/ServiceIcon";
 import { ArrowRight } from "@/components/ui/Mark";
 
 /**
@@ -15,7 +13,7 @@ import { ArrowRight } from "@/components/ui/Mark";
  * Escape closes it and returns focus to the toggle. The menu closes on navigation because
  * open state is tied to the pathname it was opened on.
  */
-export function MobileNav({ items, cta, services = [] }: { items: NavItem[]; cta: NavItem; services?: MenuService[] }) {
+export function MobileNav({ items, cta }: { items: NavItem[]; cta: NavItem }) {
   const pathname = usePathname();
   const [openPath, setOpenPath] = useState<string | null>(null);
   const open = openPath === pathname;
@@ -61,18 +59,6 @@ export function MobileNav({ items, cta, services = [] }: { items: NavItem[]; cta
                     </span>
                     {item.label}
                   </NavLink>
-                  {item.href === "/services" && services.length > 0 && (
-                    <ul className="mb-4 grid gap-1 sm:grid-cols-2">
-                      {services.map((s) => (
-                        <li key={s.href}>
-                          <NavLink href={s.href} onClick={() => close(false)} className="w-full gap-3 rounded-md bg-surface px-3 py-2.5 text-[0.95rem] after:hidden">
-                            <ServiceIcon slug={s.slug} className="size-5 shrink-0 text-primary" />
-                            {s.title}
-                          </NavLink>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
                 </li>
               ))}
             </ul>
