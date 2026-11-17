@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import type { Photo as PhotoData } from "@/content/media/photos";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Mark } from "@/components/ui/Mark";
 import { Photo } from "@/components/ui/Photo";
 
 /** Problem told as a short story beside a tall photograph, ending on a turn line. */
@@ -69,7 +68,6 @@ export function ProblemStory({
             <ul className="mt-8 flex flex-wrap gap-2" aria-label="Common problems">
               {tags.map((t, index) => (
                 <li key={t} className={`inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-sm text-charcoal ${index > 2 ? "mobile-detail" : ""}`}>
-                  <Mark variant="bullet" className="size-2.5 text-gold" />
                   {t}
                 </li>
               ))}

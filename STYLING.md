@@ -111,8 +111,11 @@ Other tokens kept: font stack (Segoe UI system stack, no network fonts), type sc
 - Measure page height when adding sections (homepage target: about 7 sections).
 
 ## V4 rules (supersede earlier guidance where they differ)
-- Symbol: the readout mark (`ui/Mark`). Never the four-point star. `variant="bullet"` at list sizes.
-- Section labels: `Eyebrow` (mark + sentence-case label). No leading rules, no uppercase tracking on section labels.
+- Symbol: the readout mark (`ui/Mark`). Never the four-point star. The mark is design-only — CTA cards,
+  the statement band, standalone marks — never an inline prefix to text. `variant="bullet"` is for
+  genuine list bullets only (removed from `Eyebrow` and all text prefixes 2026-11-17, owner decision).
+- Section labels: `Eyebrow` (sentence-case label, no mark in front — the text simply starts). No leading
+  rules, no uppercase tracking on section labels.
 - Accent words: `Accent` (measurement bracket). No gold italic accent words. Keep accents short (it wraps as one unit).
 - Numbers: light tabular sans (big) or small semibold tabular (labels). No italic serif numerals.
 - Italics for real quotations, plus two owner-approved exceptions: statement-band accents (gold-soft italic), the hero secondary link ("Send an enquiry") and the closing-card (MarkCard) links, which are italic serif. Other links are sans semibold with an arrow.
@@ -124,7 +127,7 @@ Other tokens kept: font stack (Segoe UI system stack, no network fonts), type sc
 - No rule + dot ornament under section headings (removed 2026-11-16 — it read as a stray line under the
   heading). Section headings stand alone; spacing does the work. The same motif was removed from
   `StatementBand`. Do not re-add a decorative rule under headings.
-- Showcase kickers are `Eyebrow` labels (mark + sentence-case gold-deep label), never a dark pill badge.
+- Showcase kickers are `Eyebrow` labels (sentence-case gold-deep label, no mark), never a dark pill badge.
 - Diagrams: no connector lines, dashed tracks, dots or arrows between stages (removed 2026-11-16).
   Flow is shown by numbering and left-to-right order only. Stage panels are equal height and fill
   their own height (inner lists spread with `justify-between`), and every diagram must fit its

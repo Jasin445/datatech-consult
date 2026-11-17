@@ -52,6 +52,9 @@ Remaining launch blockers: see RELEASE_CHECKLIST.md (unticked items).
 
 Illustrative-caption removal (2026-11-17, uncommitted — owner decision, no copy, content status, or business facts changed): the owner asked to remove "Illustrative example, not client data" from all chart/diagram mockups. The `<figcaption>` and the "Illustrative" pill in the mock window title bar are gone from `MockFrame.tsx` (all 5 mock visuals), along with the `ILLUSTRATIVE_CAPTION` const/export and the test assertion enforcing it (`tests/visuals.test.tsx`). The STYLING.md rule requiring the caption is updated to forbid re-adding it. Mock titles, labels, numbers and all other mock content are unchanged.
 
+## Readout mark removed from text (2026-11-17, owner decision)
+The readout mark no longer sits in front of text anywhere: `Eyebrow` labels start clean (hero eyebrow, section headings), the top-banner text, the sample notice, and the problem-tag chips carry no mark. The mark stays only as design — the big mark on `MarkCard` (CTA cards), the statement-band watermark and standalone mark, and standalone design marks (`InsightCard`, `CaseCover`, contact talk band). Genuine vertical-list bullets (`ServiceFeature` helps-with, book-consultation prepare list, privacy bullets, case-study/insight bullets and takeaways) were kept — they are the lists' bullet markers, not text prefixes. Marks inside commented-out blocks (EngagementShapes pricing, detail-page Considerations) and the unreferenced `ServicesMenu.tsx` were left untouched.
+
 ## Not verified
 - Screen-reader pass, real touch devices, Lighthouse/performance budget, deployment on the target host, real email delivery, real scheduling provider.
 

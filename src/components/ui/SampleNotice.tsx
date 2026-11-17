@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { Mark } from "./Mark";
 
 /**
  * Visible in every environment: tells visitors that the content around it is a fictional sample.
@@ -8,7 +7,6 @@ import { Mark } from "./Mark";
 export function SampleNotice({ children }: { children: ReactNode }) {
   return (
     <p role="note" className="flex items-start gap-3 rounded-sm border-2 border-dashed border-warning-text bg-warning-bg px-4 py-3 text-sm text-warning-text">
-      <Mark variant="bullet" className="mt-0.5 size-4 shrink-0" />
       <span>
         <strong className="font-semibold">Sample content.</strong> {children}
       </span>

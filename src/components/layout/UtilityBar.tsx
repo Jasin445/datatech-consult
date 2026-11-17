@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { ArrowRight, Mark } from "@/components/ui/Mark";
+import { ArrowRight } from "@/components/ui/Mark";
 import { getPublicContactEmail } from "@/lib/env";
 import { ctas } from "@/lib/site";
 
@@ -14,7 +14,6 @@ export function UtilityBar() {
     <aside aria-label="Book a consultation" className="hidden bg-charcoal text-footer-text md:block">
       <Container className="flex min-h-(--utility-height) items-center justify-between gap-6 text-[0.8rem]">
         <p className="mb-0 flex min-w-0 items-center gap-2.5">
-          <Mark variant="bullet" className="size-3.5 shrink-0 text-gold-soft" />
           <span className="truncate">
             Planning a dashboard, an automation or a new system?
             <span className="max-lg:hidden"> Talk it through before you commit budget.</span>
